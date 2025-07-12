@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initPageCounter();
     initScrollAnimations();
     initTracking();
+    initPremiumButtonEffects();
+    initAutoHidingNav();
 });
 
 // Word Swapping Animation
@@ -98,7 +100,7 @@ function initTestimonialCarousel() {
 // Pricing Modal
 function initPricingModal() {
     const modal = document.getElementById('pricing-modal');
-    const openBtns = document.querySelectorAll('#main-cta, #spots-cta');
+    const openBtns = document.querySelectorAll('#main-cta, #spots-cta, #nav-cta');
     const closeBtn = document.getElementById('modal-close');
     const backdrop = document.querySelector('.modal-backdrop');
     
@@ -552,6 +554,99 @@ window.addEventListener('load', function() {
     }
 });
 
+// Premium Auto-Hiding Navigation
+function initAutoHidingNav() {
+    const nav = document.querySelector('.nav-storybook');
+    if (!nav) return;
+    
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
+    function updateNavVisibility() {
+        const scrollY = window.scrollY;
+        const scrollDelta = scrollY - lastScrollY;
+        
+        // Show nav at top of page or when scrolling up
+        if (scrollY <= 100 || scrollDelta < 0) {
+            nav.classList.remove('nav-hidden');
+            nav.classList.add('nav-visible');
+        }
+        // Hide nav when scrolling down (after 100px)
+        else if (scrollDelta > 0 && scrollY > 100) {
+            nav.classList.add('nav-hidden');
+            nav.classList.remove('nav-visible');
+        }
+        
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+    
+    function requestNavUpdate() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavVisibility);
+            ticking = true;
+        }
+    }
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', requestNavUpdate, { passive: true });
+    
+    // Always show nav initially
+    nav.classList.add('nav-visible');
+}
+
+// Premium Button Effects
+function initPremiumButtonEffects() {
+    const buttons = document.querySelectorAll('.story-button');
+    
+    buttons.forEach(button => {
+        // Add ripple effect on click
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+                z-index: 1;
+            `;
+            
+            button.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+        
+        // Add magnetic effect
+        button.addEventListener('mousemove', function(e) {
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = (e.clientX - centerX) * 0.1;
+            const deltaY = (e.clientY - centerY) * 0.1;
+            
+            button.style.transform = `translateY(-4px) scale(1.02) translate(${deltaX}px, ${deltaY}px)`;
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            button.style.transform = '';
+        });
+    });
+}
+
 // Error Handling
 window.addEventListener('error', function(e) {
     trackEvent('javascript_error', {
@@ -577,6 +672,13 @@ style.textContent = `
         to { 
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
         }
     }
 `;
