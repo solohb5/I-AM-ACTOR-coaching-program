@@ -4,7 +4,7 @@
    ========================================================================== */
 
 /* Magical Storybook Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
 
 /* Reset & Base */
 * {
@@ -23,7 +23,7 @@ body {
   color: #000000;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.5;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -225,7 +225,7 @@ body::before {
   align-items: center;
   justify-content: center;
   background: #FAF7F0;
-  padding-top: 5rem;
+  padding-top: 9rem;
   position: relative;
   overflow: hidden;
   color: #000000;
@@ -242,16 +242,16 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(240, 240, 240, 0.9);
-  color: #000000;
+  background: rgba(139, 92, 246, 0.08);
+  color: #6D28D9;
   padding: 0.5rem 1.2rem;
   border-radius: 1.5rem;
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.85rem;
   font-weight: 500;
   font-style: normal;
-  margin-bottom: 1.5rem;
-  border: 2px solid #2a2a2a;
+  margin-bottom: 3rem;
+  border: 2px solid #8B5CF6;
   letter-spacing: 0.3px;
   position: relative;
   transition: all 0.3s ease;
@@ -260,34 +260,43 @@ body::before {
 .badge-icon {
   width: 1rem;
   height: 1rem;
-  color: #8B5CF6;
-  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.8));
+  color: #FFD700;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
+  text-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.8),
+    0 0 16px rgba(255, 215, 0, 0.6),
+    0 0 24px rgba(255, 215, 0, 0.4);
 }
 
 /* Opening Text */
 .opening-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  color: #000000;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-  font-weight: 400;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: #1a1a1a;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+  font-weight: 500;
   font-style: normal;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 /* Hero Title */
 .hero-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
   font-weight: 600;
   color: #000000;
   line-height: 1.2;
-  margin: 2rem 0;
-  letter-spacing: 1px;
+  margin: 2rem 0 1.5rem;
+  letter-spacing: 0.2px;
   position: relative;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .word-swap {
@@ -326,15 +335,47 @@ body::before {
 /* Hero Description */
 .hero-description {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: #000000;
-  margin: 1.5rem 0 2rem;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: #1a1a1a;
+  margin: 2rem 0 1.5rem;
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+.private-sessions-text {
+  font-weight: 600;
+  color: #000000;
+  font-style: italic;
+}
+
+.private-sessions-bottom {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: #1a1a1a;
+  margin: 4rem 0 0;
+  line-height: 1.6;
+  font-weight: 500;
+  font-style: normal;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Button Text Responsive */
+.btn-desktop-text {
+  display: inline;
+}
+
+.btn-mobile-text {
+  display: none;
 }
 
 /* Story Button */
@@ -342,19 +383,20 @@ body::before {
   display: inline-block;
   background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
   color: #ffffff;
-  padding: 1rem 2.5rem;
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(2rem, 4vw, 2.5rem);
   font-family: 'Cinzel', serif;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   position: relative;
   overflow: hidden;
+  z-index: 2;
   box-shadow: 
     0 8px 25px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -394,6 +436,17 @@ body::before {
   opacity: 0.8;
 }
 
+.service-icons-subtitle-bottom {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #000000;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
 .service-icons {
   display: flex;
   align-items: center;
@@ -413,7 +466,7 @@ body::before {
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.3px;
   min-width: 90px;
   max-width: 110px;
   padding: 1rem 0.5rem;
@@ -582,8 +635,8 @@ body::before {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: rgba(245, 245, 220, 0.1);
-  border: 2px solid rgba(245, 245, 220, 0.3);
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -591,8 +644,11 @@ body::before {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #F5F5DC;
-  text-shadow: 0 0 10px rgba(245, 245, 220, 0.4);
+  color: #FFD700;
+  text-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.8),
+    0 0 24px rgba(255, 215, 0, 0.6),
+    0 0 36px rgba(255, 215, 0, 0.4);
 }
 
 .works-title {
@@ -624,7 +680,7 @@ body::before {
 .flexibility-note p {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
-  line-height: 1.7;
+  line-height: 1.5;
   color: #ffffff;
   margin: 0;
   opacity: 0.9;
@@ -648,7 +704,7 @@ body::before {
   font-weight: 600;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
   position: relative;
 }
 
@@ -761,13 +817,13 @@ body::before {
   font-family: 'Cinzel', serif;
   font-size: 3.5rem;
   font-weight: 600;
-  color: #F5F5DC;
+  color: #FFD700;
   line-height: 1;
   margin-bottom: 1.5rem;
   text-shadow: 
-    0 0 10px rgba(245, 245, 220, 0.6),
-    0 0 20px rgba(245, 245, 220, 0.4),
-    0 0 30px rgba(245, 245, 220, 0.2);
+    0 0 12px rgba(255, 215, 0, 0.8),
+    0 0 24px rgba(255, 215, 0, 0.6),
+    0 0 36px rgba(255, 215, 0, 0.4);
   position: relative;
 }
 
@@ -777,7 +833,7 @@ body::before {
   font-weight: 600;
   margin-bottom: 1.5rem;
   line-height: 1.3;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
 }
 
 .chapter:nth-child(even) .pathway-title {
@@ -820,9 +876,13 @@ body::before {
 }
 
 .chapter:nth-child(odd) .works-number {
-  background: rgba(139, 92, 246, 0.1);
-  border: 2px solid rgba(139, 92, 246, 0.3);
-  color: #6D28D9;
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  text-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.8),
+    0 0 24px rgba(255, 215, 0, 0.6),
+    0 0 36px rgba(255, 215, 0, 0.4);
 }
 
 .chapter:nth-child(odd) .service-icons-subtitle {
@@ -953,7 +1013,7 @@ body::before {
 .testimonial-quote {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
-  line-height: 1.7;
+  line-height: 1.5;
   margin-bottom: 2.5rem;
   font-weight: 400;
   font-style: italic;
@@ -1069,7 +1129,7 @@ body::before {
   font-weight: 600;
   margin-bottom: 2.5rem;
   line-height: 1.3;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
   position: relative;
 }
 
@@ -1086,7 +1146,7 @@ body::before {
 .about-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
-  line-height: 1.8;
+  line-height: 1.6;
   font-weight: 500;
   position: relative;
 }
@@ -1210,12 +1270,13 @@ body::before {
 
 .title-accent {
   color: #8B5CF6;
-  font-style: normal;
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
   position: relative;
   display: inline-block;
-  letter-spacing: 3px;
+  letter-spacing: 0.2px;
+  font-size: inherit;
   text-shadow: 
     0 2px 4px rgba(139, 92, 246, 0.4),
     0 4px 12px rgba(139, 92, 246, 0.3),
@@ -1431,7 +1492,7 @@ body::before {
   font-weight: 600;
   color: #000000;
   margin-bottom: 1.5rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
   text-align: center;
   position: relative;
 }
@@ -1536,7 +1597,7 @@ body::before {
   font-size: 1.3rem;
   font-weight: 600;
   color: #000000;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
   margin-bottom: 1rem;
 }
 
@@ -1716,7 +1777,7 @@ body::before {
   font-family: 'Cinzel', serif;
   font-size: 0.8rem;
   color: #ffffff;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -1724,16 +1785,16 @@ body::before {
 /* Hero Knight */
 .hero-knight {
   position: absolute;
-  bottom: -1rem;
+  bottom: 0;
   left: -2.5rem;
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0.55;
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
 .hero-knight-image {
-  height: 200px;
+  height: clamp(200px, 15vw, 320px);
   width: auto;
   display: block;
 }
@@ -1805,6 +1866,61 @@ body:hover .knight-background {
     display: inline;
   }
   
+  .hero-title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    margin: 0.6rem 0;
+    max-width: 320px;
+    line-height: 1.1;
+  }
+  
+  .opening-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    margin: 1.8rem 0 1.5rem;
+    line-height: 1.7;
+  }
+  
+  .story-button {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    padding: 0.8rem 2rem;
+  }
+  
+  .artist-badge {
+    margin-bottom: 2rem;
+  }
+  
+  .opening-text {
+    margin-bottom: 1.8rem;
+  }
+  
+  .hero-description {
+    margin: 2.2rem 0 1.8rem;
+  }
+  
+  .private-sessions-bottom {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-desktop-text {
+    display: none;
+  }
+  
+  .btn-mobile-text {
+    display: inline;
+  }
+  
+  .hero-knight-image {
+    height: 180px;
+  }
+  
   .chapter-container {
     padding: 0 1.5rem;
   }
@@ -1834,14 +1950,32 @@ body:hover .knight-background {
   }
   
   
+  .service-icons {
+    gap: 0.8rem;
+    flex-wrap: nowrap;
+    padding: 0 0.5rem;
+  }
+  
   .service-icon {
-    min-width: 80px;
+    min-width: 70px;
+    max-width: 90px;
+    font-size: 0.65rem;
+    padding: 0.8rem 0.3rem;
+    gap: 0.5rem;
   }
   
   .icon-circle {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  
+  .icon-circle svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .service-line {
+    font-size: 0.65rem;
   }
   
   .modal-container {
