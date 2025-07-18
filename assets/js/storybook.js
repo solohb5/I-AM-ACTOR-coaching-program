@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTracking();
     initPremiumButtonEffects();
     initAutoHidingNav();
+    initScrollOffer();
 });
 
 // Word Swapping Animation
@@ -645,6 +646,39 @@ function initPremiumButtonEffects() {
             button.style.transform = '';
         });
     });
+}
+
+// Scroll offer effect
+function initScrollOffer() {
+    const nav = document.querySelector('.nav-storybook');
+    let lastScrollY = window.scrollY;
+    
+    function handleScroll() {
+        const currentScrollY = window.scrollY;
+        
+        // Show offer when scrolled down more than 200px
+        if (currentScrollY > 200) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+        
+        lastScrollY = currentScrollY;
+    }
+    
+    // Throttle scroll events for performance
+    let ticking = false;
+    function throttledScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', throttledScroll);
 }
 
 // Error Handling
