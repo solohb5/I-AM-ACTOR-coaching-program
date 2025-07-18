@@ -482,12 +482,12 @@ function measurePerformance() {
         const timing = window.performance.timing;
         const loadTime = timing.loadEventEnd - timing.navigationStart;
         
-        console.log('Page load time:', loadTime + 'ms');
+        // Page loaded in ${loadTime}ms
         
         // Track Core Web Vitals
         if ('web-vital' in window) {
             // This would be used with a library like web-vitals
-            console.log('Core Web Vitals tracking enabled');
+            // Core Web Vitals tracking enabled
         }
     }
 }

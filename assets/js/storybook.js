@@ -457,7 +457,7 @@ function trackEvent(eventName, eventData = {}) {
         page_url: window.location.href
     };
     
-    console.log('Storybook Event:', eventName, trackingData);
+    // Analytics tracking only
     
     // Google Analytics 4
     if (typeof gtag !== 'undefined') {

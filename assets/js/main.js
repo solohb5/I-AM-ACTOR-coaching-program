@@ -312,8 +312,7 @@ function trackEvent(eventName, eventData = {}) {
         fbq('track', eventName, eventData);
     }
     
-    // Console log for debugging
-    console.log('Event tracked:', eventName, eventData);
+    // Analytics tracking only
 }
 
 // Track CTA clicks
@@ -372,7 +371,7 @@ window.addEventListener('load', function() {
 
 // Error Tracking
 window.addEventListener('error', function(e) {
-    console.error('JavaScript error:', e.error);
+    // Error logged to analytics
     trackEvent('javascript_error', {
         error_message: e.message,
         error_filename: e.filename,
@@ -385,10 +384,10 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js')
             .then(function(registration) {
-                console.log('SW registered: ', registration);
+                // Service worker registered successfully
             })
             .catch(function(registrationError) {
-                console.log('SW registration failed: ', registrationError);
+                // Service worker registration failed
             });
     });
 }

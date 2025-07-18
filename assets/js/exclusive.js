@@ -593,7 +593,7 @@ function trackPremiumEvent(eventName, eventData = {}) {
         page_url: window.location.href
     };
     
-    console.log('Premium Event:', eventName, premiumData);
+    // Track premium event for analytics (Google Analytics 4, Facebook Pixel)
     
     // Google Analytics 4
     if (typeof gtag !== 'undefined') {

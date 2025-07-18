@@ -475,7 +475,7 @@ function trackEvent(eventName, eventData = {}) {
         page_url: window.location.href
     };
     
-    console.log('Dark Luxury Event:', eventName, trackingData);
+    // Track event for analytics (Google Analytics 4, Facebook Pixel)
     
     // Google Analytics 4
     if (typeof gtag !== 'undefined') {
