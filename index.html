@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hans - Creative Acting Coaching</title>
-    <meta name="description" content="Awaken the fearless artist within. Private breakthrough sessions with Hans.">
+    <meta name="description" content="Awaken the fearless artist within. Private breakthrough sessions with Hans. One-on-one acting coaching for self-tape mastery, character development, and career navigation.">
+    <meta name="keywords" content="acting coach, self-tape coaching, character development, acting career, private coaching, Hans, I AM ACTOR">
+    <meta name="author" content="Hans - I AM ACTOR">
+    <meta property="og:title" content="Hans - Creative Acting Coaching">
+    <meta property="og:description" content="Awaken the fearless artist within. Private breakthrough sessions with Hans.">
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:url" content="https://iamactor.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://iamactor.com">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
     
+    <!-- Performance Optimization -->
+    <link rel="preload" href="assets/css/storybook.css" as="style">
+    <link rel="preload" href="assets/js/storybook.js" as="script">
+    <link rel="preload" href="assets/images/logo-dark.png" as="image">
+    <link rel="preload" href="assets/images/knight.png" as="image">
+    
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/storybook.css">
+    <link rel="stylesheet" href="assets/css/mobile-fixes.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -36,7 +52,7 @@
                 <div class="offer-sub">Only 7 Days Left • Save $200+</div>
             </div>
             <div class="nav-cta">
-                <button class="nav-book-button" id="nav-cta">
+                <button class="nav-book-button" id="nav-cta" aria-label="Book coaching session">
                     <span class="btn-full-text">Book Session</span>
                     <span class="btn-short-text">Book</span>
                 </button>
@@ -55,9 +71,7 @@
             <div class="opening-content">
                 <!-- Badge at top -->
                 <div class="artist-badge">
-                    <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M9.663 17h4.673M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/>
-                    </svg>
+                    <span class="badge-star">🌟</span>
                     <span>Private One-on-One Guidance</span>
                 </div>
                 
@@ -96,10 +110,10 @@
                 </div>
                 
                 <!-- CTA Button -->
-                <button class="story-button" id="main-cta">
+                <button class="story-button" id="main-cta" aria-label="Book your private coaching session">
                     <span class="btn-desktop-text">BOOK YOUR PRIVATE COACHING SESSION</span>
                     <span class="btn-mobile-text">BOOK PRIVATE COACHING</span>
-                    <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </button>
@@ -357,7 +371,7 @@
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress-fill"></div>
                     </div>
-                    <button class="story-button spots-cta" id="spots-cta">
+                    <button class="story-button spots-cta" id="spots-cta" aria-label="Book your first coaching session">
                         Book Your First Session
                     </button>
                 </div>
@@ -370,7 +384,7 @@
         <div class="modal-backdrop"></div>
         <div class="modal-container">
             <div class="modal-content">
-                <button class="modal-close" id="modal-close">×</button>
+                <button class="modal-close" id="modal-close" aria-label="Close pricing modal">×</button>
                 
                 <div class="limited-offer-banner">
                     <div class="offer-badge">LIMITED TIME</div>
@@ -408,7 +422,7 @@
                                     <span>Follow-up resources</span>
                                 </div>
                             </div>
-                            <button class="story-button pricing-select">Begin This Journey</button>
+                            <button class="story-button pricing-select" aria-label="Select Essential package for $97">Begin This Journey</button>
                         </div>
                     </div>
                     

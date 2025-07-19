@@ -91,10 +91,12 @@ function initTestimonialCarousel() {
         });
     });
     
-    // Auto-advance testimonials every 8 seconds
+    // Auto-advance testimonials every 8 seconds (only when page is visible)
     setInterval(() => {
-        const nextIndex = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(nextIndex);
+        if (!document.hidden) {
+            const nextIndex = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(nextIndex);
+        }
     }, 8000);
 }
 
@@ -253,10 +255,11 @@ function initAvailabilityCounter() {
     const spotsElements = document.querySelectorAll('#spots-remaining, #spots-large');
     
     function updateSpots() {
-        if (spotsRemaining > 5) {
+        // Only update if user is actively viewing the page
+        if (!document.hidden && spotsRemaining > 5) {
             const timeOfDay = new Date().getHours();
             const isBusinessHours = timeOfDay >= 9 && timeOfDay <= 18;
-            const chance = isBusinessHours ? 0.2 : 0.1;
+            const chance = isBusinessHours ? 0.15 : 0.08; // Reduced frequency
             
             if (Math.random() < chance) {
                 const decrease = Math.random() > 0.8 ? 2 : 1;
@@ -278,13 +281,13 @@ function initAvailabilityCounter() {
             }
         }
         
-        // Schedule next update (10-30 minutes)
-        const nextUpdate = (10 + Math.random() * 20) * 60 * 1000;
+        // Schedule next update (15-45 minutes) - less frequent
+        const nextUpdate = (15 + Math.random() * 30) * 60 * 1000;
         setTimeout(updateSpots, nextUpdate);
     }
     
-    // Start after 5 minutes
-    setTimeout(updateSpots, 5 * 60 * 1000);
+    // Start after 8 minutes (longer delay)
+    setTimeout(updateSpots, 8 * 60 * 1000);
 }
 
 function animateNumberChange(element, newNumber) {
@@ -631,16 +634,18 @@ function initPremiumButtonEffects() {
             }, 600);
         });
         
-        // Add magnetic effect
-        button.addEventListener('mousemove', function(e) {
-            const rect = button.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const deltaX = (e.clientX - centerX) * 0.1;
-            const deltaY = (e.clientY - centerY) * 0.1;
-            
-            button.style.transform = `translateY(-4px) scale(1.02) translate(${deltaX}px, ${deltaY}px)`;
-        });
+        // Add magnetic effect (only on desktop)
+        if (window.innerWidth > 768) {
+            button.addEventListener('mousemove', function(e) {
+                const rect = button.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const deltaX = (e.clientX - centerX) * 0.1;
+                const deltaY = (e.clientY - centerY) * 0.1;
+                
+                button.style.transform = `translateY(-4px) scale(1.02) translate(${deltaX}px, ${deltaY}px)`;
+            });
+        }
         
         button.addEventListener('mouseleave', function() {
             button.style.transform = '';
