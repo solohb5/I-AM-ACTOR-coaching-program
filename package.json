@@ -1,0 +1,21 @@
+{
+  "name": "i-am-actor-coaching",
+  "version": "1.0.0",
+  "description": "Premium acting coaching platform with Stripe integration",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step needed'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "stripe": "^14.21.0",
+    "micro": "^10.0.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.21"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

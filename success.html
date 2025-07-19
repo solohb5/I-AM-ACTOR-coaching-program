@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - I AM ACTOR</title>
+    <link rel="stylesheet" href="assets/css/storybook.css">
+    <link rel="stylesheet" href="assets/css/mobile-fixes.css">
+    <style>
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFFFFF;
+            padding: 2rem;
+        }
+        
+        .success-card {
+            max-width: 600px;
+            text-align: center;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .success-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .success-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #6B7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .calendly-button {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .calendly-button:hover {
+            background: #F59E0B;
+            transform: translateY(-2px);
+        }
+        
+        .confirmation-details {
+            background: #F9FAFB;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        
+        .confirmation-details h3 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">🎭</div>
+            <h1 class="success-title">Welcome to Your Journey!</h1>
+            <p class="success-subtitle">
+                Your payment was successful. You're now ready to begin your creative transformation with personalized one-on-one coaching.
+            </p>
+            
+            <a href="#" id="calendly-link" class="calendly-button">
+                📅 Schedule Your First Session
+            </a>
+            
+            <div class="confirmation-details">
+                <h3>Your Purchase Details</h3>
+                <div class="detail-row">
+                    <span>Package:</span>
+                    <span id="package-name">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span>Sessions Included:</span>
+                    <span id="sessions-count">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span>Amount Paid:</span>
+                    <span id="amount-paid">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span>Session ID:</span>
+                    <span id="session-id">Loading...</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #6B7280; font-size: 0.9rem;">
+                📧 You'll receive a confirmation email shortly with all the details and additional resources.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Get session ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        
+        if (sessionId) {
+            document.getElementById('session-id').textContent = sessionId;
+            
+            // Fetch session details from Stripe (you'd implement this endpoint)
+            // For now, we'll use placeholder data
+            // TODO: Implement /api/get-session endpoint to fetch details
+            
+            // Placeholder data - replace with actual session data
+            document.getElementById('package-name').textContent = 'Artistic Journey';
+            document.getElementById('sessions-count').textContent = '3 Sessions';
+            document.getElementById('amount-paid').textContent = '$237.00';
+            
+            // Set Calendly link (you'll customize this based on package)
+            document.getElementById('calendly-link').href = 'https://calendly.com/your-username/coaching-session';
+        }
+    </script>
+</body>
+</html>
