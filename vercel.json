@@ -1,13 +1,10 @@
 {
   "functions": {
-    "api/**/*.js": {
-      "runtime": "@vercel/node@18.x"
+    "api/create-checkout.js": {
+      "runtime": "@vercel/node@20.x"
+    },
+    "api/webhook.js": {
+      "runtime": "@vercel/node@20.x"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ]
+  }
 }
