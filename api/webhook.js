@@ -5,7 +5,7 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -114,7 +114,7 @@ function generateCalendlyLink(packageType) {
 }
 
 // Configure this endpoint to handle raw body for Stripe webhooks
-export const config = {
+module.exports.config = {
   api: {
     bodyParser: {
       sizeLimit: '1mb',
