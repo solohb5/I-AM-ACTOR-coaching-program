@@ -1,8 +1,8 @@
 {
   "name": "i-am-actor-coaching",
   "version": "1.0.0",
-  "type": "module",
   "dependencies": {
+    "dotenv": "^17.2.0",
     "stripe": "^14.21.0"
   },
   "engines": {

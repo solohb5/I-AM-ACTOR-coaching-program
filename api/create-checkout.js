@@ -1,5 +1,5 @@
 // Vercel Serverless Function for Stripe Checkout
-import Stripe from 'stripe';
+const Stripe = require('stripe');
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -10,7 +10,7 @@ const packages = {
   mastery: { price: 32500, name: 'Creative Mastery', sessions: 5 }
 };
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
