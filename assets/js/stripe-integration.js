@@ -211,9 +211,15 @@ function showPaymentError(message) {
     }, 10000);
 }
 
-// Initialize when DOM is ready
+// Initialize when DOM is ready AND after other scripts
 document.addEventListener('DOMContentLoaded', function() {
-    initStripeIntegration();
+    // Wait a bit for other scripts to load, then take control
+    setTimeout(initStripeIntegration, 100);
+});
+
+// Also initialize after window load to be extra sure
+window.addEventListener('load', function() {
+    setTimeout(initStripeIntegration, 100);
 });
 
 // Handle successful return from Stripe
