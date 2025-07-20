@@ -160,8 +160,8 @@ function initPricingModal() {
                 spots_remaining: spotsRemaining
             });
             
-            // Show booking confirmation
-            showBookingConfirmation(packageName, price);
+            // Stripe integration handles payment flow now
+            // showBookingConfirmation(packageName, price);
         });
     });
 }

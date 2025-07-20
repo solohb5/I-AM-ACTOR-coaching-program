@@ -34,12 +34,17 @@ function initStripeIntegration() {
     const pricingSelects = document.querySelectorAll('.pricing-select');
     
     pricingSelects.forEach(btn => {
-        btn.addEventListener('click', async function(e) {
+        // Remove all existing event listeners by cloning the element
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', async function(e) {
             e.preventDefault();
+            e.stopImmediatePropagation();
             
             // Disable button to prevent double clicks
-            btn.disabled = true;
-            btn.textContent = 'Processing...';
+            newBtn.disabled = true;
+            newBtn.textContent = 'Processing...';
             
             // Get package information
             const card = this.closest('.pricing-card');
@@ -47,7 +52,7 @@ function initStripeIntegration() {
             
             if (!packageId) {
                 console.error('Could not determine package type');
-                resetButton(btn);
+                resetButton(newBtn);
                 return;
             }
             
@@ -64,7 +69,7 @@ function initStripeIntegration() {
             } catch (error) {
                 console.error('Checkout error:', error);
                 showPaymentError(error.message);
-                resetButton(btn);
+                resetButton(newBtn);
             }
         });
     });
