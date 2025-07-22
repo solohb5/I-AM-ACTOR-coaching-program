@@ -368,8 +368,9 @@ body::before {
   padding: clamp(6rem, 10vw, 8rem) 2rem;
 }
 
-/* MOBILE-OPTIMIZED Hero Section */
+/* HERO SECTION - Mobile-First Foundation */
 .chapter-opening {
+  /* Desktop base */
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -381,7 +382,7 @@ body::before {
   color: #2d2319;
 }
 
-/* Remove chapter-container padding from hero section */
+/* Desktop container */
 .chapter-opening .chapter-container {
   padding: 0 2rem;
 }
@@ -527,21 +528,7 @@ body::before {
   border-radius: 1px;
 }
 
-/* Hero Description - Clean Typography */
-.hero-description {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  color: #4a4a4a;
-  margin: 2rem 0 1.5rem;
-  line-height: 1.6;
-  font-weight: 500;
-  font-style: normal;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  letter-spacing: 0.1px;
-}
+/* Hero Description removed - handled by mobile-fixes.css */
 
 .private-sessions-text {
   font-weight: 600;
@@ -2789,8 +2776,9 @@ body:hover .knight-background {
     padding: clamp(4rem, 8vw, 6rem) 1rem;
   }
   
-  .chapter-opening .chapter-container {
-    padding: 0 1rem;
+  /* Mobile hero - consolidated with mobile-fixes.css for iPhone 15 Pro */
+  .chapter-opening {
+    /* Let mobile-fixes.css handle mobile layout completely */
   }
   
   .story-question {
@@ -2823,8 +2811,9 @@ body:hover .knight-background {
     padding: clamp(5rem, 9vw, 7rem) 1.5rem;
   }
   
+  /* Container padding handled by mobile-fixes.css */
   .chapter-opening .chapter-container {
-    padding: 0 1.5rem;
+    /* Mobile-fixes.css takes precedence */
   }
   
   .nav-container {
@@ -2918,10 +2907,9 @@ body:hover .knight-background {
     margin-bottom: 1.5rem;
   }
   
-  /* Mobile Hero Layout */
+  /* Mobile layout delegated to mobile-fixes.css for consistency */
   .chapter-opening {
-    min-height: 75vh;
-    padding: 3rem 0;
+    /* Mobile-fixes.css handles iPhone 15 Pro optimization */
   }
   
   .opening-content {

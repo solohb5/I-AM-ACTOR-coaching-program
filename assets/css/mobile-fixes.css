@@ -67,10 +67,243 @@
         width: 100% !important;
         max-width: 393px !important;
         height: 100% !important;
-        padding: 0 !important;
+        padding: 1rem !important;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    
+    /* Hero content styling */
+    section.chapter.chapter-opening .hero-content {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        padding: 0 1rem;
+    }
+    
+    /* Hero Badge */
+    section.chapter.chapter-opening .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #FDFDF8;
+        border: 2px solid #333333;
+        border-radius: 25px;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    section.chapter.chapter-opening .badge-star {
+        font-size: 0.9rem;
+        line-height: 1;
+    }
+    
+    section.chapter.chapter-opening .badge-text {
+        font-family: 'Cinzel', serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #333333;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    
+    /* GROUP 1: Opening story - storybook typography */
+    section.chapter.chapter-opening .hero-opening {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        line-height: 1.4;
+        color: #333333;
+        margin: 3rem 0 0.75rem 0;
+    }
+    
+    section.chapter.chapter-opening .hero-intro {
+        font-style: italic;
+        color: #666666;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 2.5rem;
+        font-family: 'Cormorant Garamond', serif;
+    }
+    
+    /* GROUP 2: Main headline - centered in viewport */
+    section.chapter.chapter-opening .hero-headline {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 1.15;
+        color: #1a1510;
+        margin: 0 0 3rem 0;
+        text-shadow: 0 1px 2px rgba(45, 35, 25, 0.1);
+    }
+    
+    /* GROUP 3: Call to action section - proper spacing */
+    section.chapter.chapter-opening .hero-subtitle {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #222222;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: 0.5px;
+    }
+    
+    section.chapter.chapter-opening .hero-description {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #555555;
+        margin: 0 0 2.5rem 0;
+        font-style: italic;
+        text-align: center;
+    }
+    
+    /* Special CTA Button */
+    section.chapter.chapter-opening .hero-cta {
+        background: linear-gradient(135deg, #2d2319 0%, #3d3227 100%);
+        color: #FDFDF8;
+        border: 2px solid #1a1510;
+        padding: 1rem 2rem;
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        border-radius: 35px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        z-index: 20;
+        box-shadow: 
+            0 4px 12px rgba(45, 35, 25, 0.3),
+            0 2px 6px rgba(45, 35, 25, 0.2);
+    }
+    
+    section.chapter.chapter-opening .hero-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.6s;
+    }
+    
+    section.chapter.chapter-opening .hero-cta:hover {
+        background: linear-gradient(135deg, #3d3227 0%, #4d4237 100%);
+        transform: translateY(-2px);
+        box-shadow: 
+            0 6px 20px rgba(45, 35, 25, 0.4),
+            0 3px 12px rgba(45, 35, 25, 0.3);
+        border-color: #2d2319;
+    }
+    
+    section.chapter.chapter-opening .hero-cta:hover::before {
+        left: 100%;
+    }
+    
+    section.chapter.chapter-opening .hero-cta:active {
+        transform: translateY(0);
+        box-shadow: 
+            0 2px 8px rgba(45, 35, 25, 0.3),
+            0 1px 4px rgba(45, 35, 25, 0.2);
+    }
+    
+    /* Conversion-Optimized Hero Elements */
+    
+    /* Social proof section */
+    section.chapter.chapter-opening .hero-social-proof {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 0 0 2.5rem 0;
+        flex-wrap: wrap;
+    }
+    
+    section.chapter.chapter-opening .proof-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    section.chapter.chapter-opening .stat-number {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2d2319;
+        line-height: 1;
+    }
+    
+    section.chapter.chapter-opening .stat-text {
+        font-family: 'Cinzel', serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #666666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+    
+    section.chapter.chapter-opening .proof-separator {
+        color: #999999;
+        font-size: 1.2rem;
+    }
+    
+    /* CTA Group - centered in lower area */
+    section.chapter.chapter-opening .hero-cta-group {
+        margin-bottom: 2rem;
+    }
+    
+    section.chapter.chapter-opening .cta-subtext {
+        font-family: 'Cinzel', serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #d2691e;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+    
+    /* Trust testimonial - positioned at bottom */
+    section.chapter.chapter-opening .hero-trust-line {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #666666;
+        text-align: center;
+        margin: 3rem 0 0 0;
+        line-height: 1.4;
+        position: relative;
+        bottom: -2rem;
+    }
+    
+    /* CRITICAL: Knight positioning - bottom edge aligns with hero container */
+    section.chapter.chapter-opening .hero-knight {
+        position: absolute;
+        bottom: 0; /* Bottom edge of knight = bottom edge of hero */
+        left: -2rem; /* Position on left side */
+        z-index: 5;
+        opacity: 0.4;
+        pointer-events: none; /* Don't interfere with content */
+    }
+    
+    section.chapter.chapter-opening .hero-knight-image {
+        width: 180px; /* Optimized size for 393px container */
+        height: auto;
+        display: block;
+        filter: 
+            sepia(0.1) 
+            contrast(0.9)
+            brightness(1.05)
+            drop-shadow(0 2px 4px rgba(45, 35, 25, 0.1));
     }
 }
 
