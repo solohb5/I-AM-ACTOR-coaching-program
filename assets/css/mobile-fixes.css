@@ -36,57 +36,90 @@
 @media (max-width: 768px) {
     .hero-knight {
         position: absolute;
-        bottom: 1.5rem; /* Move knight up 0.5rem (was 1rem, now 1.5rem) */
-        left: -5px; /* Position on LEFT side for mobile */
-        z-index: 10;
-        opacity: 0.5; /* 50% opacity as requested */
-        transform: none; /* Remove flip - use original orientation */
-        pointer-events: none; /* Disable all interactions */
+        bottom: 3rem;
+        left: -1rem;
+        z-index: 5;
+        opacity: 0.4;
+        pointer-events: none;
     }
     
     .hero-knight-image {
-        width: 220px; /* Even larger for better impact */
+        width: 220px;
         height: auto;
-        max-width: 220px;
         filter: 
             sepia(0.15) 
             contrast(0.95)
             brightness(1.1)
             drop-shadow(0 2px 4px rgba(45, 35, 25, 0.15));
-        transition: none; /* Remove all transitions */
-    }
-    
-    /* Remove any hover effects on mobile */
-    .chapter-opening:hover .hero-knight,
-    .chapter-opening .hero-knight:hover {
-        opacity: 0.5 !important; /* Keep same opacity on hover */
-        transform: none !important;
-        transition: none !important;
     }
     
     .chapter-opening {
-        padding: 5rem 1rem 0; /* Remove bottom padding to prevent next section showing */
+        padding: 5rem 1rem 1rem; /* Tight padding for iPhone viewport */
         position: relative;
-        height: 100vh; /* Full viewport height for 710x1195 */
-        min-height: 100vh; /* Use viewport height, not fixed pixels */
-        max-height: 100vh; /* Prevent overflow beyond viewport */
+        height: 100vh; /* Fixed height to fit iPhone 667px viewport */
+        max-height: 100vh;
         display: flex;
-        align-items: center;
-        overflow: hidden; /* Prevent any content from spilling out */
-        box-sizing: border-box; /* Include padding in height calculation */
+        align-items: flex-start; /* Start from top to maximize space */
+        justify-content: center;
+        overflow: hidden; /* Prevent overflow on iPhone */
+        box-sizing: border-box;
     }
     
     .story-question {
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
-        line-height: 1.1;
+        font-size: clamp(1.4rem, 6vw, 2rem); /* Optimized for standard mobile */
+        line-height: 1.08;
+        font-weight: 800;
+        text-align: center;
+        color: #2d2319;
+        margin: 0 0 1.2rem;
     }
+    
     
     .story-button {
         width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        padding: 1rem;
-        font-size: 0.875rem;
+        max-width: 280px;
+        margin: 0 auto 1.2rem;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 50px;
+        text-align: center;
+    }
+    
+    /* Optimized mobile text for iPhone viewport */
+    .story-opening {
+        font-size: clamp(0.9rem, 3.8vw, 1.1rem);
+        line-height: 1.3;
+        text-align: center;
+        color: #2d2319;
+        margin: 0 0 0.7rem;
+    }
+    
+    .story-whisper {
+        font-size: clamp(0.85rem, 3.4vw, 1rem);
+        text-align: center;
+        color: #6b7280;
+        font-style: italic;
+        margin: 0 0 1rem;
+    }
+    
+    .story-invitation-title,
+    .story-invitation-subtitle {
+        text-align: center;
+        color: #2d2319;
+        margin: 0;
+    }
+    
+    .story-invitation-title {
+        font-size: clamp(1.1rem, 4.4vw, 1.3rem);
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+    
+    .story-invitation-subtitle {
+        font-size: clamp(0.9rem, 3.6vw, 1.1rem);
+        color: #6b7280;
+        margin-bottom: 1.2rem;
     }
     
     .btn-desktop-text {
@@ -110,39 +143,34 @@
         text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
     }
     
-    /* Move ONLY the badge down 2rem without affecting other content */
+    /* Compact mobile spacing optimized for iPhone viewport */
     .artist-badge {
-        position: relative;
-        top: 2rem; /* Move badge down 2rem from its original position */
-        margin-bottom: 1.5rem; /* Keep tight spacing underneath */
-        margin-top: 0; /* Remove margin-top to not push other content */
+        margin-bottom: 1.2rem;
+        margin-top: 0;
     }
     
-    /* Reduce space around main story sections */
+    /* Compact spacing for story sections */
     .story-block-1 {
-        margin-bottom: 1.5rem; /* Reduce space after first block */
+        margin-bottom: 1rem;
     }
     
     .story-block-2 {
-        margin-bottom: 1.5rem; /* Reduce space after main question */
+        margin-bottom: 1.2rem;
     }
     
     .story-block-3 {
-        margin-bottom: 0.8rem; /* Minimize space before button */
+        margin-bottom: 1.5rem;
     }
     
-    /* Move button and everything below it up 2rem */
+    /* Compact button positioning */
     .story-button {
-        position: relative;
-        top: -2rem; /* Move button up 2rem */
-        margin-top: 0.8rem; /* Minimize space above button */
-        margin-bottom: 2rem; /* Control space below button */
+        margin: 1.2rem auto 1.5rem;
+        display: block;
     }
     
-    /* Move service icons up 3rem total (was -2rem, now -3rem = up 1rem more) */
+    /* Compact service icons positioning */
     .service-icons {
-        position: relative;
-        top: -3rem; /* Move service icons up 3rem total */
+        margin-top: 0.8rem;
     }
 }
 
@@ -386,7 +414,7 @@ html, body {
     overflow-x: hidden;
 }
 
-/* Fix viewport issues */
+/* iPhone 375x667 optimization - ultra-compact for complete content fit */
 @media (max-width: 480px) {
     .chapter-container {
         padding: 0 1rem;
@@ -394,5 +422,147 @@ html, body {
     
     .modal-content {
         padding: 1rem;
+    }
+    
+    .chapter-opening {
+        padding: 4.5rem 0.75rem 0.5rem; /* Ultra-tight for iPhone */
+        height: 100vh; /* Force iPhone viewport height */
+    }
+    
+    .story-question {
+        font-size: clamp(1.2rem, 5.5vw, 1.6rem); /* Much smaller for iPhone */
+        line-height: 1.05;
+        margin-bottom: 0.8rem;
+    }
+    
+    .story-opening {
+        font-size: clamp(0.85rem, 3.8vw, 1rem);
+        margin-bottom: 0.5rem;
+    }
+    
+    .story-whisper {
+        font-size: clamp(0.8rem, 3.2vw, 0.9rem);
+        margin-bottom: 0.7rem;
+    }
+    
+    .story-invitation-title {
+        font-size: clamp(1rem, 4.2vw, 1.2rem);
+        margin-bottom: 0.3rem;
+    }
+    
+    .story-invitation-subtitle {
+        font-size: clamp(0.85rem, 3.6vw, 1rem);
+        margin-bottom: 1rem;
+    }
+    
+    .story-button {
+        max-width: 260px;
+        padding: 0.7rem 1rem;
+        font-size: 0.8rem;
+        margin: 1rem auto 1rem;
+    }
+    
+    .hero-knight-image {
+        width: 140px;
+    }
+    
+    .service-icons {
+        gap: 0.8rem;
+        margin-top: 0.5rem;
+    }
+    
+    .icon-circle {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .service-text {
+        font-size: 0.65rem;
+        line-height: 1.1;
+    }
+    
+    .artist-badge {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Ultra-compact story block spacing for iPhone */
+    .story-block-1 {
+        margin-bottom: 0.6rem;
+    }
+    
+    .story-block-2 {
+        margin-bottom: 0.8rem;
+    }
+    
+    .story-block-3 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Intermediate mobile sizes - balanced design */
+@media (min-width: 481px) and (max-width: 768px) {
+    .chapter-opening {
+        padding: 6rem 1.5rem 2.5rem;
+    }
+    
+    .story-question {
+        font-size: clamp(2rem, 7.5vw, 2.8rem);
+    }
+    
+    .story-button {
+        max-width: 340px;
+    }
+    
+    .icon-circle {
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+    
+    .service-text {
+        font-size: 0.85rem;
+    }
+}
+
+/* Ensure proper spacing and service icons visibility */
+@media (max-width: 768px) {
+    .opening-content {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero-story-space {
+        width: 100%;
+    }
+    
+    /* Proper service icons matching target design */
+    .service-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    .service-icon {
+        flex: 0 1 auto;
+        text-align: center;
+    }
+    
+    .icon-circle {
+        width: 3rem;
+        height: 3rem;
+        margin: 0 auto 0.5rem;
+    }
+    
+    .service-text {
+        font-size: 0.8rem;
+        line-height: 1.2;
+    }
+    
+    .service-line {
+        margin: 0;
     }
 }

@@ -1,0 +1,244 @@
+/* ========================================
+   PROFESSIONAL PRICING MODAL - DESKTOP ENHANCEMENTS
+   Works WITH mobile-fixes.css, only applies to desktop
+   ======================================== */
+
+/* === DESKTOP ONLY IMPROVEMENTS === */
+@media (min-width: 769px) {
+  
+  /* Override modal styling for desktop only */
+  .modal-backdrop {
+    background: rgba(58, 47, 42, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+
+  .modal-content {
+    background: linear-gradient(135deg, 
+      rgba(250, 247, 240, 0.98) 0%, 
+      rgba(245, 238, 220, 0.96) 100%) !important;
+    border: 2px solid rgba(139, 115, 85, 0.3) !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+      0 20px 60px rgba(58, 47, 42, 0.4),
+      0 0 40px rgba(58, 47, 42, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  }
+
+  .modal-title {
+    color: #3A2F2A !important;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 600 !important;
+  }
+
+  .modal-subtitle {
+    color: rgba(139, 115, 85, 0.8) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+  }
+
+  /* Desktop grid layout */
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Desktop card styling */
+  .pricing-card {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(250, 247, 240, 0.95) 100%) !important;
+    border: 2px solid rgba(139, 115, 85, 0.2) !important;
+    border-radius: 0.75rem !important;
+    padding: 2rem 1.5rem !important;
+    min-height: 480px !important;
+    max-width: 320px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Make Gold package stand out on desktop */
+  .pricing-card.popular {
+    border-color: rgba(139, 115, 85, 0.6) !important;
+    border-width: 3px !important;
+    box-shadow: 
+      0 12px 35px rgba(139, 115, 85, 0.25),
+      0 0 30px rgba(139, 115, 85, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(252, 248, 240, 0.98) 50%,
+      rgba(250, 245, 235, 0.96) 100%) !important;
+    transform: translateY(-8px) scale(1.05) !important;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 
+      0 15px 40px rgba(139, 115, 85, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .pricing-card.popular:hover {
+    transform: translateY(-12px) scale(1.06) !important;
+    box-shadow: 
+      0 20px 50px rgba(139, 115, 85, 0.3),
+      0 0 40px rgba(139, 115, 85, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  }
+
+  /* Desktop badge improvements */
+  .popular-badge {
+    background: linear-gradient(135deg, #8b7355 0%, #a69077 100%) !important;
+    color: white !important;
+    border: 1px solid rgba(139, 115, 85, 0.3) !important;
+    box-shadow: 
+      0 6px 20px rgba(139, 115, 85, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .silver-badge {
+    background: linear-gradient(135deg, #C0C0C0 0%, #E8E8E8 100%) !important;
+    color: #444 !important;
+    border: 1px solid rgba(192, 192, 192, 0.3) !important;
+  }
+
+  .premium-badge {
+    background: linear-gradient(135deg, #7877BA 0%, #9896C7 100%) !important;
+    color: white !important;
+    border: 1px solid rgba(120, 119, 186, 0.3) !important;
+  }
+
+  /* Desktop typography */
+  .pricing-name {
+    color: #3A2F2A !important;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 600 !important;
+    font-size: 1.3rem !important;
+  }
+
+  .pricing-sessions {
+    color: rgba(139, 115, 85, 0.8) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+  }
+
+  .feature {
+    color: #444 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+  }
+
+  /* Desktop price formatting with CSS dollar signs */
+  .pricing-price {
+    color: #3A2F2A !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 700 !important;
+    font-size: 2.5rem !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    gap: 0.1rem !important;
+  }
+
+  .pricing-price::before {
+    content: '$';
+    font-size: 0.6em;
+    opacity: 0.8;
+  }
+
+  /* Fix premium card price size */
+  .pricing-card.premium .pricing-price {
+    font-size: 2rem !important;
+  }
+
+  /* Desktop button styling */
+  .pricing-select {
+    background: linear-gradient(135deg, #8b7355 0%, #a69077 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0.5rem !important;
+    padding: 0.875rem 1.5rem !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 
+      0 4px 15px rgba(139, 115, 85, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    margin-top: auto !important;
+  }
+
+  .pricing-select:hover {
+    background: linear-gradient(135deg, #9a8264 0%, #b5a086 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 
+      0 6px 20px rgba(139, 115, 85, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* Gold card button enhancement */
+  .pricing-card.popular .pricing-select {
+    background: linear-gradient(135deg, #3A2F2A 0%, #4A3F3A 100%) !important;
+    box-shadow: 
+      0 6px 20px rgba(58, 47, 42, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .pricing-card.popular .pricing-select:hover {
+    background: linear-gradient(135deg, #4A3F3A 0%, #5A4F4A 100%) !important;
+    box-shadow: 
+      0 8px 25px rgba(58, 47, 42, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* Desktop feature dots */
+  .pricing-card.silver .feature-dot {
+    background: #C0C0C0 !important;
+  }
+
+  .pricing-card.popular .feature-dot {
+    background: #8b7355 !important;
+  }
+
+  .pricing-card.premium .feature-dot {
+    background: #7877BA !important;
+  }
+
+  /* Desktop footer */
+  .guarantee-text {
+    color: rgba(139, 115, 85, 0.9) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+  }
+
+  .guarantee-text strong {
+    font-weight: 600 !important;
+    color: #3A2F2A !important;
+  }
+}
+
+/* === TABLET SPECIFIC === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 700px !important;
+  }
+  
+  .pricing-card:last-child {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+    max-width: 320px !important;
+  }
+  
+  .pricing-card.popular {
+    transform: translateY(-4px) scale(1.02) !important;
+  }
+  
+  .pricing-card.popular:hover {
+    transform: translateY(-6px) scale(1.04) !important;
+  }
+}
