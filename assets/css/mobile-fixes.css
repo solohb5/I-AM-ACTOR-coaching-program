@@ -32,37 +32,72 @@
     }
 }
 
-/* Mobile Hero Section */
-@media (max-width: 768px) {
-    .hero-knight {
-        position: absolute;
-        bottom: 3rem;
-        left: -1rem;
-        z-index: 5;
-        opacity: 0.4;
-        pointer-events: none;
-    }
-    
-    .hero-knight-image {
-        width: 220px;
-        height: auto;
-        filter: 
-            sepia(0.15) 
-            contrast(0.95)
-            brightness(1.1)
-            drop-shadow(0 2px 4px rgba(45, 35, 25, 0.15));
-    }
-    
+/* Desktop/Tablet Hero Section */
+@media (min-width: 769px) {
     .chapter-opening {
-        padding: 5rem 1rem 1rem; /* Tight padding for iPhone viewport */
-        position: relative;
-        height: 100vh; /* Fixed height to fit iPhone 667px viewport */
-        max-height: 100vh;
+        height: calc(100vh - 5rem); /* Full viewport minus nav bar height */
+        width: 100vw;
+        margin-top: 5rem; /* Account for fixed nav bar */
         display: flex;
-        align-items: flex-start; /* Start from top to maximize space */
+        align-items: center;
         justify-content: center;
-        overflow: hidden; /* Prevent overflow on iPhone */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .chapter-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile Hero Section - ONLY target hero, leave other sections alone */
+@media (max-width: 768px) {
+    /* ONLY override the hero section */
+    .chapter.chapter-opening {
+        /* Override ONLY hero-specific paddings */
+        padding: 0 !important; /* Remove base chapter padding ONLY for hero */
+        padding-top: 0 !important; /* Remove hero padding-top */
+        
+        /* Set exact viewport dimensions */
+        width: 100vw;
+        height: 100vh;
+        max-width: 393px;
+        min-height: 100vh !important; /* Override 85vh */
+        margin: 0 auto;
+        
+        /* Keep original layout properties */
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
+        background: #FFFFFF;
+        overflow: hidden;
+    }
+    
+    /* Reset next section to original behavior except for the transform */
+    .chapter.chapter-pathways {
+        transform: none !important; /* Remove original -2rem translate */
+        /* Keep all other original chapter styles intact */
+    }
+    
+    .chapter-container {
+        width: 100%;
+        max-width: 393px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Ensure next section starts exactly after hero */
+    .chapter-pathways {
+        margin-top: 0;
+        padding-top: 0;
     }
     
     .story-question {
