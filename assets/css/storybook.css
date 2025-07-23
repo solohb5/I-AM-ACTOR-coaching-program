@@ -64,10 +64,10 @@ body::before {
   left: 0;
   right: 0;
   z-index: 50;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #0f0f0f 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(0);
 }
@@ -123,14 +123,14 @@ body::before {
 }
 
 .logo-image {
-  height: 5.2rem;
+  height: 6.5rem;  /* Larger logo for more presence */
   width: auto;
   transition: all 0.4s ease;
   display: block;
   vertical-align: middle;
-  margin: -0.4rem 0;
-  opacity: 0.95;
-  filter: brightness(1.1);
+  margin: -0.6rem 0;
+  opacity: 1;
+  filter: brightness(1.15) contrast(1.05);
   transition: all 0.4s ease;
 }
 
@@ -195,9 +195,9 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
+  gap: 0.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
   color: #ffffff;
   font-weight: 500;
   font-style: normal;
@@ -209,17 +209,34 @@ body::before {
   opacity: 1;
   transform: translateX(0);
   transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .spots-number {
-  color: #FFFACD;
+  color: #ff6b35;  /* Urgent orange-red */
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.4rem;  /* Much larger and prominent */
   font-family: 'Cinzel', serif;
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+  animation: urgentPulse 3s ease-in-out infinite;
 }
 
 .spots-text {
-  font-weight: 400;
+  font-weight: 500;
+  color: #FFFACD;
+}
+
+/* Subtle pulse animation for urgency */
+@keyframes urgentPulse {
+  0%, 100% { 
+    text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+    transform: scale(1.05);
+  }
 }
 
 .nav-cta {
@@ -230,23 +247,24 @@ body::before {
 }
 
 .nav-book-button {
-  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  background: linear-gradient(135deg, #2d2319 0%, #1a150f 50%, #0f0f0f 100%);
   color: #FFFACD;
-  padding: 0.6rem 1.5rem;
+  padding: 0.8rem 2rem;  /* Larger clickable area */
   font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 2px solid rgba(255, 250, 205, 0.3);
+  font-size: 0.95rem;  /* Larger text */
+  font-weight: 700;  /* Bolder */
+  letter-spacing: 0.8px;  /* More dramatic spacing */
+  border: 2px solid rgba(255, 250, 205, 0.4);
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  text-transform: uppercase;
   box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .nav-book-button:hover {
@@ -368,24 +386,8 @@ body::before {
   padding: clamp(6rem, 10vw, 8rem) 2rem;
 }
 
-/* HERO SECTION - Mobile-First Foundation */
-.chapter-opening {
-  /* Desktop base */
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #FDFDF8;
-  padding-top: clamp(4rem, 12vw, 6rem);
-  position: relative;
-  overflow: hidden;
-  color: #2d2319;
-}
+/* HERO SECTION - Let mobile-fixes.css handle all hero styling */
 
-/* Desktop container */
-.chapter-opening .chapter-container {
-  padding: 0 2rem;
-}
 
 /* Move pathways section up by 2rem */
 .chapter-pathways {

@@ -32,7 +32,7 @@
     }
 }
 
-/* ISOLATED Hero Section - iPhone 15 Pro optimized */
+/* ISOLATED Hero Section - iPhone 15 Pro optimized, extends to all sizes */
 @media (max-width: 768px) {
     /* Target ONLY the hero section with high specificity */
     section.chapter.chapter-opening {
@@ -159,7 +159,6 @@
         font-style: italic;
         text-align: center;
     }
-    
     /* Special CTA Button */
     section.chapter.chapter-opening .hero-cta {
         background: linear-gradient(135deg, #2d2319 0%, #3d3227 100%);
@@ -304,6 +303,175 @@
             contrast(0.9)
             brightness(1.05)
             drop-shadow(0 2px 4px rgba(45, 35, 25, 0.1));
+    }
+}
+
+/* EXTEND MOBILE PERFECTION TO ALL SCREEN SIZES */
+@media (min-width: 769px) {
+    /* Keep the exact mobile design but allow natural scaling */
+    section.chapter.chapter-opening {
+        padding: 0 !important;
+        margin: 0 !important;
+        
+        /* Make it truly full screen and ensure it covers everything */
+        width: 100vw;
+        height: 100vh !important;
+        max-width: none; /* Remove mobile width constraint */
+        min-height: 100vh !important;
+        max-height: 100vh; /* Prevent it from being taller than viewport */
+        
+        position: relative;
+        display: flex;
+        align-items: center; /* Center content vertically */
+        justify-content: center;
+        box-sizing: border-box;
+        background: #FDFDF8;
+        overflow: hidden;
+        z-index: 10; /* Ensure it covers any underlying content */
+    }
+    
+    section.chapter.chapter-opening .chapter-container {
+        width: 100% !important;
+        max-width: none !important; /* Remove mobile width constraint */
+        height: 100% !important;
+        padding: 1rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    section.chapter.chapter-opening .hero-content {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+        width: 100%;
+        max-width: 900px; /* Wider for desktop */
+        padding: 0 clamp(1rem, 3vw, 2rem); /* Less aggressive side padding */
+        transform: translateY(0); /* Remove vertical offset */
+        margin: 0 auto; /* Center the content horizontally */
+    }
+    
+    /* Properly scaled desktop typography */
+    section.chapter.chapter-opening .hero-opening {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.1rem, 2vw, 1.4rem); /* Smaller max size */
+        font-weight: 500;
+        line-height: 1.4;
+        color: #333333;
+        margin: clamp(0.75rem, 2vh, 1.5rem) 0 clamp(0.5rem, 1vh, 0.75rem) 0; /* Tighter margins */
+    }
+    
+    section.chapter.chapter-opening .hero-intro {
+        font-style: italic;
+        color: #666666;
+        font-size: clamp(1.1rem, 2vw, 1.4rem); /* Smaller max size */
+        font-weight: 500;
+        margin-bottom: clamp(1.5rem, 2vh, 2rem); /* Tighter margin */
+        font-family: 'Cormorant Garamond', serif;
+    }
+    
+    section.chapter.chapter-opening .hero-headline {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.5rem, 6vw, 4.5rem); /* More reasonable max size */
+        font-weight: 600;
+        line-height: 1.15;
+        color: #1a1510;
+        margin: 0 0 clamp(1.5rem, 3vh, 2.5rem) 0; /* Tighter margin */
+        text-shadow: 0 1px 2px rgba(45, 35, 25, 0.1);
+    }
+    
+    section.chapter.chapter-opening .hero-subtitle {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem); /* Smaller max size */
+        font-weight: 600;
+        color: #222222;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: 0.5px;
+    }
+    
+    section.chapter.chapter-opening .hero-description {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.1rem, 2vw, 1.3rem); /* Smaller max size */
+        font-weight: 500;
+        color: #555555;
+        margin: 0 0 clamp(1.5rem, 2vh, 2rem) 0; /* Tighter margin */
+        font-style: italic;
+        text-align: center;
+    }
+    
+    /* Keep the EXACT mobile button styling but scaled appropriately */
+    section.chapter.chapter-opening .hero-cta {
+        background: linear-gradient(135deg, #2d2319 0%, #3d3227 100%);
+        color: #FDFDF8;
+        border: 2px solid #1a1510;
+        padding: clamp(1rem, 1.5vw, 1.2rem) clamp(2rem, 3vw, 2.5rem); /* Tighter scaling */
+        font-family: 'Cinzel', serif;
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Smaller max size */
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        border-radius: 35px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        margin-bottom: clamp(0.75rem, 1vh, 1rem); /* Tighter margin */
+        z-index: 20;
+        box-shadow: 
+            0 4px 12px rgba(45, 35, 25, 0.3),
+            0 2px 6px rgba(45, 35, 25, 0.2);
+    }
+    
+    section.chapter.chapter-opening .cta-subtext {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(0.7rem, 1.2vw, 0.9rem); /* Smaller max size */
+        font-weight: 500;
+        color: #d2691e;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+    
+    section.chapter.chapter-opening .hero-trust-line {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Smaller max size */
+        font-style: italic;
+        color: #666666;
+        text-align: center;
+        margin: clamp(1.5rem, 2vh, 2rem) 0 0 0; /* Tighter top margin */
+        line-height: 1.4;
+        position: relative;
+        bottom: 0; /* Remove the bottom offset to keep it visible */
+    }
+    
+    /* Keep knight but allow it to scale */
+    section.chapter.chapter-opening .hero-knight {
+        position: absolute;
+        bottom: 0;
+        left: -2rem;
+        z-index: 5;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    
+    section.chapter.chapter-opening .hero-knight-image {
+        width: clamp(180px, 25vw, 500px); /* Allow knight to scale up */
+        height: auto;
+        display: block;
+        filter: 
+            sepia(0.1) 
+            contrast(0.9)
+            brightness(1.05)
+            drop-shadow(0 2px 4px rgba(45, 35, 25, 0.1));
+    }
+    
+    /* Ensure next section doesn't interfere with hero */
+    section.chapter.chapter-pathways {
+        margin-top: 0 !important;
+        transform: none !important;
+        position: relative;
+        z-index: 5; /* Lower than hero section */
     }
 }
 
