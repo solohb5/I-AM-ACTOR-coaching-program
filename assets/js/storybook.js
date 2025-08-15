@@ -145,109 +145,31 @@ function initPricingModal() {
         }
     });
     
-    // Handle pricing selection
-    const pricingSelects = document.querySelectorAll('.pricing-select');
-    pricingSelects.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const card = this.closest('.pricing-card');
-            const packageName = card.querySelector('.pricing-name').textContent;
-            const price = card.querySelector('.pricing-price').textContent;
-            
-            // Track selection
-            trackEvent('package_selected', {
-                package_name: packageName,
-                price: price,
-                spots_remaining: spotsRemaining
-            });
-            
-            // Show booking confirmation
-            showBookingConfirmation(packageName, price);
-        });
-    });
+    // Handle pricing selection - DISABLED, Stripe integration takes over
+    // const pricingSelects = document.querySelectorAll('.pricing-select');
+    // pricingSelects.forEach(btn => {
+    //     btn.addEventListener('click', function() {
+    //         const card = this.closest('.pricing-card');
+    //         const packageName = card.querySelector('.pricing-name').textContent;
+    //         const price = card.querySelector('.pricing-price').textContent;
+    //         
+    //         // Track selection
+    //         trackEvent('package_selected', {
+    //             package_name: packageName,
+    //             price: price,
+    //             spots_remaining: spotsRemaining
+    //         });
+    //         
+    //         // Stripe integration handles payment flow now
+    //         // showBookingConfirmation(packageName, price);
+    //     });
+    // });
 }
 
 function showBookingConfirmation(packageName, price) {
-    // Create booking confirmation modal
-    const confirmation = document.createElement('div');
-    confirmation.innerHTML = `
-        <div style="
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(58, 47, 42, 0.9);
-            backdrop-filter: blur(20px);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        ">
-            <div style="
-                background: #FDFDF8;
-                border: 2px solid rgba(210, 105, 30, 0.3);
-                border-radius: 1.5rem;
-                padding: 3rem;
-                text-align: center;
-                max-width: 500px;
-                box-shadow: 0 20px 60px rgba(210, 105, 30, 0.3);
-                animation: slideInUp 0.4s ease;
-            ">
-                <h3 style="
-                    font-family: 'Cormorant Garamond', serif;
-                    font-size: 2rem;
-                    color: #3A2F2A;
-                    margin-bottom: 1rem;
-                ">${packageName}</h3>
-                <p style="
-                    font-family: 'Crimson Text', serif;
-                    color: #6B5B73;
-                    margin-bottom: 2rem;
-                    font-size: 1.125rem;
-                    font-style: italic;
-                ">${price}</p>
-                <p style="
-                    font-family: 'Crimson Text', serif;
-                    color: #6B5B73;
-                    margin-bottom: 2rem;
-                ">This would connect to your sacred booking system:</p>
-                <ul style="
-                    text-align: left;
-                    margin-bottom: 2rem;
-                    color: #8B7355;
-                    font-family: 'Libre Baskerville', serif;
-                    font-size: 0.875rem;
-                ">
-                    <li>Calendly Premium Integration</li>
-                    <li>Stripe Payment Processing</li>
-                    <li>Automated Email Sequences</li>
-                    <li>CRM & Creative Analytics</li>
-                </ul>
-                <button onclick="this.closest('div').remove(); document.body.style.overflow = ''" style="
-                    background: #D2691E;
-                    color: #FDFDF8;
-                    border: none;
-                    padding: 1rem 2rem;
-                    border-radius: 0.5rem;
-                    font-family: 'Libre Baskerville', serif;
-                    font-weight: 400;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                ">Begin Your Creative Journey</button>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(confirmation);
-    
-    // Auto-remove after 15 seconds
-    setTimeout(() => {
-        if (confirmation.parentNode) {
-            confirmation.remove();
-            document.body.style.overflow = '';
-        }
-    }, 15000);
+    // DISABLED - Stripe integration handles payment flow now
+    console.log('Old booking confirmation disabled - using Stripe integration');
+    return;
 }
 
 // Availability Counter

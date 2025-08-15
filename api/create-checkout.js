@@ -11,10 +11,19 @@ const packages = {
 };
 
 module.exports = async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Security headers and CORS
+  const allowedOrigins = [
+    'https://i-am-actor-coaching-program.vercel.app',
+    'https://i-am-actor-coaching-program-git-main-hans-projects-9a2b05f1.vercel.app'
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -25,10 +34,21 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // Validate environment
+    if (!process.env.STRIPE_SECRET_KEY) {
+      console.error('STRIPE_SECRET_KEY not configured');
+      return res.status(500).json({ error: 'Payment system not configured' });
+    }
+
     const { packageType } = req.body;
     
-    if (!packageType || !packages[packageType]) {
+    // Input validation
+    if (!packageType || typeof packageType !== 'string') {
       return res.status(400).json({ error: 'Invalid package type' });
+    }
+    
+    if (!packages[packageType]) {
+      return res.status(400).json({ error: 'Package not found' });
     }
 
     const pkg = packages[packageType];
