@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Simple pricing modal
 function initPricingModal() {
-    const buttons = document.querySelectorAll('#main-cta, #nav-cta, #spots-cta');
+    const buttons = document.querySelectorAll('#hero-cta, #nav-cta, #spots-cta, .story-button, .nav-book-button');
     const modal = document.getElementById('pricing-modal');
     const closeBtn = document.getElementById('modal-close');
     const backdrop = document.querySelector('.modal-backdrop');
@@ -17,15 +17,16 @@ function initPricingModal() {
     
     buttons.forEach(button => {
         if (button) {
-            button.addEventListener('click', () => {
-                modal.style.display = 'block';
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
         }
     });
     
     function closeModal() {
-        modal.style.display = 'none';
+        modal.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
     

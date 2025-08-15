@@ -1,0 +1,224 @@
+/* ==========================================================================
+   PROFESSIONAL POLISH - Premium refinements for I Am Actor
+   ========================================================================== */
+
+/* Smooth page load animation */
+body {
+  animation: pageLoad 0.6s ease-out;
+}
+
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Enhanced button interactions */
+button {
+  transform: translateZ(0); /* Enable hardware acceleration */
+  backface-visibility: hidden; /* Prevent flicker */
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Professional scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Account for fixed nav */
+}
+
+/* Consistent section spacing */
+.chapter + .chapter {
+  margin-top: 0; /* Remove any gaps between sections */
+}
+
+/* Grid alignment fixes */
+.pathways-grid,
+.how-it-works-grid,
+.pricing-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start; /* Align tops of cards */
+}
+
+@media (min-width: 768px) {
+  .pathways-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .how-it-works-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card hover states */
+.pathway-card,
+.how-it-works-card,
+.pricing-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pathway-card:hover,
+.how-it-works-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Typography refinements */
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+/* Professional form inputs */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #8B7355;
+  box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+}
+
+/* Loading states */
+.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #8B7355;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Professional touch targets (mobile) */
+@media (max-width: 768px) {
+  button,
+  a.button,
+  .story-button {
+    min-height: 44px; /* iOS recommended touch target */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Ensure testimonial dots stay circular */
+  .testimonial-dots .dot {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px;
+    min-height: 12px;
+    border-radius: 50% !important;
+    aspect-ratio: 1 / 1;
+  }
+  
+  /* Fix wrapping text in testimonials section - just slightly smaller */
+  .chapter-testimonials .chapter-title {
+    font-size: clamp(1.9rem, 5vw, 2.5rem) !important;
+  }
+  
+  /* Make "Transformations" fit on mobile */
+  .title-line-2 {
+    display: inline-block;
+    white-space: nowrap;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+a,
+button,
+.card,
+.testimonial-card,
+.pricing-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fix for testimonial carousel - removed broken absolute positioning */
+
+/* Navigation polish */
+.nav-storybook {
+  will-change: transform; /* Optimize for animations */
+}
+
+.nav-storybook.scrolled {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent text orphans */
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Professional focus states */
+:focus-visible {
+  outline: 2px solid #8B7355;
+  outline-offset: 2px;
+}
+
+/* Disable focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Print styles */
+@media print {
+  .nav-storybook,
+  .pricing-modal,
+  .footer,
+  button {
+    display: none;
+  }
+  
+  .chapter {
+    page-break-inside: avoid;
+  }
+}

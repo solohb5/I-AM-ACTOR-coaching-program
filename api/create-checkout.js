@@ -5,9 +5,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Package configurations
 const packages = {
-  single: { price: 9700, name: 'Creative Single', sessions: 1 },
-  journey: { price: 23700, name: 'Artistic Journey', sessions: 3 },
-  mastery: { price: 32500, name: 'Creative Mastery', sessions: 5 }
+  single: { price: 9900, name: 'Discovery Session', sessions: 1 },
+  growth: { price: 26700, name: 'Growth Package', sessions: 3 },
+  transformation: { price: 47400, name: 'Transformation Package', sessions: 6 }
 };
 
 module.exports = async function handler(req, res) {

@@ -1,0 +1,329 @@
+/* ==========================================================================
+   PRICING MODAL - Clean, Professional Redesign
+   ========================================================================== */
+
+/* Modal Base */
+.pricing-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.pricing-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  z-index: 1;
+}
+
+.modal-content {
+  background: #FDFDF8;
+  border-radius: 16px;
+  padding: 3rem;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.pricing-modal.active .modal-content {
+  transform: translateY(0);
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: rotate(90deg);
+}
+
+/* Header */
+.modal-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.modal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.modal-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Pricing Options Grid */
+.pricing-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Option Cards */
+.option-card {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  min-height: 320px;
+}
+
+/* Silver Tier - Subtle silver glow */
+.option-card.silver-tier {
+  border: 1px solid #C0C0C0;
+  box-shadow: 0 0 20px rgba(192, 192, 192, 0.2);
+}
+
+.option-card.silver-tier:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(192, 192, 192, 0.3),
+              0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Gold Tier - Warm gold glow */
+.option-card.gold-tier {
+  border: 2px solid #FFD700;
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(to bottom, #FFFEF9, #FFFFFF);
+}
+
+.option-card.gold-tier:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4),
+              0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Diamond Tier - Brilliant prismatic glow */
+.option-card.diamond-tier {
+  border: 1px solid #B9D4F1;
+  box-shadow: 0 0 25px rgba(185, 212, 241, 0.3),
+              inset 0 0 15px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #FFFFFF, #FAFCFF, #FFFFFF);
+}
+
+.option-card.diamond-tier:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(185, 212, 241, 0.4),
+              0 10px 25px rgba(0, 0, 0, 0.1),
+              inset 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Option Ribbon */
+.option-ribbon {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #1a1a1a;
+  padding: 4px 20px;
+  border-radius: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Option Header */
+.option-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.option-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+
+.option-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: #8B7355;
+  font-style: italic;
+}
+
+/* Option Body */
+.option-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.option-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  min-height: 3em;
+}
+
+.option-price {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+
+.option-savings {
+  display: inline-block;
+  background: #10B981;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+/* Option Button */
+.option-button {
+  width: 100%;
+  background: white;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 0.875rem 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.option-button:hover {
+  background: #1a1a1a;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.option-button-featured {
+  background: #1a1a1a;
+  color: white;
+}
+
+.option-button-featured:hover {
+  background: #8B7355;
+  border-color: #8B7355;
+}
+
+/* Footer */
+.modal-footer {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.session-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: #8B7355;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.75rem;
+  }
+  
+  .pricing-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .option-card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .option-card.featured {
+    transform: scale(1);
+  }
+  
+  .option-title {
+    font-size: 1.3rem;
+  }
+  
+  .option-price {
+    font-size: 2rem;
+  }
+  
+  .option-ribbon {
+    top: -8px;
+    font-size: 0.6rem;
+    padding: 3px 16px;
+  }
+}

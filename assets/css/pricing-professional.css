@@ -1,0 +1,196 @@
+/* ==========================================================================
+   PROFESSIONAL PRICING LAYOUT
+   ========================================================================== */
+
+/* Pricing Grid - Clean 3-column layout */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Pricing Cards - Clean, professional design */
+.pricing-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Badges - Clean and minimal */
+.silver-badge,
+.popular-badge,
+.premium-badge {
+  background: #F9FAFB;
+  color: #1a1a1a;
+  text-align: center;
+  padding: 0.75rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.popular-badge {
+  background: #FFD700;
+  color: #1a1a1a;
+}
+
+.premium-badge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #1a1a1a;
+}
+
+/* Pricing Content */
+.pricing-content {
+  padding: 2rem;
+}
+
+.pricing-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.pricing-price {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.pricing-savings {
+  display: inline-block;
+  background: #10B981;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.pricing-sessions {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4B5563;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: #6B7280;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+/* Features */
+.pricing-features {
+  margin-bottom: 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature-dot {
+  width: 6px;
+  height: 6px;
+  background: #FFD700;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.feature span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: #4B5563;
+  line-height: 1.4;
+}
+
+/* CTA Buttons */
+.pricing-select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Popular card emphasis */
+.pricing-card.popular {
+  border: 2px solid #FFD700;
+  transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+  transform: scale(1.08) translateY(-4px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .pricing-card.popular {
+    transform: scale(1);
+  }
+  
+  .pricing-card.popular:hover {
+    transform: translateY(-4px);
+  }
+  
+  .pricing-price {
+    font-size: 2.5rem;
+  }
+}
+
+/* Price comparison styling */
+.price-per-session {
+  display: block;
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin-top: 0.25rem;
+}
+
+/* Highlight best value */
+.pricing-card.premium .pricing-price {
+  position: relative;
+}
+
+.pricing-card.premium .pricing-price::after {
+  content: 'BEST VALUE';
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  background: #10B981;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}

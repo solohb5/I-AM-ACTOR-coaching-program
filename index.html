@@ -28,6 +28,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/storybook.css">
     <link rel="stylesheet" href="assets/css/mobile-fixes.css">
+    <link rel="stylesheet" href="assets/css/about-section-fix.css">
+    <link rel="stylesheet" href="assets/css/pricing-redesign.css">
+    <link rel="stylesheet" href="assets/css/professional-polish.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -192,7 +195,7 @@
     <section class="chapter chapter-testimonials" data-section="2">
         <div class="chapter-container">
             <div class="chapter-header">
-                <h2 class="chapter-title">Creative<br>Transformations</h2>
+                <h2 class="chapter-title"><span class="title-line-1">Creative</span><br><span class="title-line-2">Transformations</span></h2>
                 <p class="chapter-subtitle">From stuck to free, from fearful to playful</p>
             </div>
             
@@ -266,186 +269,110 @@
     <!-- Chapter 4: About Your Creative Guide -->
     <section class="chapter chapter-about" data-section="3">
         <div class="chapter-container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="about-grid-simple">
-                        <div class="about-text">
-                            <h2 class="about-title">Hey — I'm Hans</h2>
-                            
-                            <p>I'm an actor and the creator of I AM ACTOR—a space built for artists who are done just taking classes and ready to dedicate themselves to the craft.</p>
-                            
-                            <p>I've played roles that shook me, failed hard, and found my voice by helping others find theirs. This isn't about chasing fame—it's about tapping into that artist that lives within all of us so that we can own our creative power.</p>
-                            
-                            <p>In here, you're not just learning to act.<br>
-                            You learn to share the stories only you can tell.</p>
-                            
-                            <div class="hans-signature">
-                                <img src="assets/images/Hans-Sign.png" alt="" class="signature-image">
-                            </div>
-                        </div>
-                        
-                        <div class="hans-photo">
-                            <img src="assets/images/hans-bio.jpg" alt="Hans" class="hans-image">
-                        </div>
+            <div class="about-grid-simple">
+                <div class="about-text">
+                    <h2 class="about-title">Hey — I'm Hans</h2>
+                    
+                    <p>I'm an actor and the creator of I AM ACTOR—a space built for artists who are done just taking classes and ready to dedicate themselves to the craft.</p>
+                    
+                    <p>I've played roles that shook me, failed hard, and found my voice by helping others find theirs. This isn't about chasing fame—it's about tapping into that artist that lives within all of us so that we can own our creative power.</p>
+                    
+                    <p>In here, you're not just learning to act.<br>
+                    You learn to share the stories only you can tell.</p>
+                    
+                    <div class="hans-signature">
+                        <img src="assets/images/Hans-Sign.png" alt="" class="signature-image">
                     </div>
                 </div>
                 
-                <div class="spots-card">
-                    <div class="spots-number-large" id="spots-large">8</div>
-                    <div class="spots-label">
-                        private coaching spots available<br>
-                        <span class="spots-total">of 50 total</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                    <button class="story-button spots-cta" id="spots-cta" aria-label="Book your first coaching session">
-                        Book Your First Session
-                    </button>
+                <div class="hans-photo">
+                    <img src="assets/images/hans-bio.jpg" alt="Hans" class="hans-image">
                 </div>
+            </div>
+            
+            <!-- Simple CTA with spots text -->
+            <div class="spots-availability-section">
+                <button class="story-button spots-cta" id="spots-cta" aria-label="Book your first coaching session">
+                    Book Your First Session
+                </button>
+                <p class="spots-text">
+                    <span class="spots-number-inline" id="spots-large">8</span> private coaching spots available
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Modal -->
+    <!-- Pricing Modal - Redesigned -->
     <div class="pricing-modal" id="pricing-modal">
         <div class="modal-backdrop"></div>
         <div class="modal-container">
             <div class="modal-content">
-                <button class="modal-close" id="modal-close" aria-label="Close pricing modal">×</button>
-                
-                <div class="limited-offer-banner">
-                    <div class="offer-badge">LIMITED TIME</div>
-                    <div class="offer-content">
-                        <div class="offer-title">50% OFF Launch Special</div>
-                        <div class="offer-subtitle">Only 7 Days Left • 50 Spots Available</div>
-                    </div>
-                </div>
+                <button class="modal-close" id="modal-close" aria-label="Close">×</button>
                 
                 <div class="modal-header">
-                    <h3 class="modal-title">Choose Your Coaching Package</h3>
-                    <p class="modal-subtitle">Flexible sessions for your creative breakthrough</p>
-                    </div>
+                    <h3 class="modal-title">Begin Your Journey</h3>
+                    <p class="modal-subtitle">Choose how deep you want to go</p>
+                </div>
                 
-                <div class="pricing-grid">
-                    <div class="pricing-card silver">
-                        <div class="silver-badge">Essential</div>
-                        <div class="pricing-content">
-                            <h4 class="pricing-name">Creative Single</h4>
-                            <div class="pricing-price">$97</div>
-                            <div class="pricing-sessions">1 Coaching Session</div>
-                            <div class="pricing-description">Perfect for immediate breakthrough</div>
-                            <div class="original-price">Originally $194</div>
-                            <div class="pricing-features">
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>60-minute breakthrough session</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Self-tape, character, or career focus</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Follow-up resources</span>
-                                </div>
-                            </div>
-                            <button class="story-button pricing-select" aria-label="Select Essential package for $97">Begin This Journey</button>
+                <div class="pricing-options">
+                    <div class="option-card silver-tier">
+                        <div class="option-header">
+                            <div class="option-title">Single Session</div>
+                            <div class="option-tagline">Test the waters</div>
                         </div>
+                        <div class="option-body">
+                            <div class="option-description">
+                                One powerful session to break through what's blocking you
+                            </div>
+                            <div class="option-price">1 × $109</div>
+                        </div>
+                        <button class="option-button" data-package="single">
+                            Book Single Session
+                        </button>
                     </div>
                     
-                    <div class="pricing-card popular">
-                        <div class="popular-badge">Most Popular</div>
-                        <div class="pricing-content">
-                            <h4 class="pricing-name">Artistic Journey</h4>
-                            <div class="pricing-price">$237</div>
-                            <div class="pricing-savings">Save $54</div>
-                            <div class="pricing-sessions">3 Coaching Sessions</div>
-                            <div class="pricing-description">Most artists choose this ($79 each)</div>
-                            <div class="original-price">Originally $474</div>
-                            <div class="pricing-features">
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>3 flexible coaching sessions</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Email support between sessions</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Personalized growth plan</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Creative safe space guarantee</span>
-                                </div>
-                            </div>
-                            <button class="story-button pricing-select">Begin This Journey</button>
+                    <div class="option-card featured gold-tier">
+                        <div class="option-ribbon">Most Popular</div>
+                        <div class="option-header">
+                            <div class="option-title">Three Sessions</div>
+                            <div class="option-tagline">Real transformation</div>
                         </div>
+                        <div class="option-body">
+                            <div class="option-description">
+                                Build trust, break patterns, and find your authentic voice
+                            </div>
+                            <div class="option-price">3 × $89</div>
+                            <div class="option-savings">Save $60</div>
+                        </div>
+                        <button class="option-button option-button-featured" data-package="growth">
+                            Start Your Journey
+                        </button>
                     </div>
                     
-                    <div class="pricing-card premium">
-                        <div class="premium-badge">Premium</div>
-                        <div class="pricing-content">
-                            <h4 class="pricing-name">Creative Mastery</h4>
-                            <div class="pricing-price">$325</div>
-                            <div class="pricing-savings">Save $160</div>
-                            <div class="pricing-sessions">5 Coaching Sessions</div>
-                            <div class="pricing-description">Maximum value & flexibility ($65 each)</div>
-                            <div class="original-price">Originally $650</div>
-                            <div class="pricing-features">
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>5 sessions for maximum growth</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Unlimited email support</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Personalized session planning</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>Recording access</span>
-                                </div>
-                                <div class="feature">
-                                    <div class="feature-dot"></div>
-                                    <span>60-day joy guarantee</span>
-                                </div>
-                            </div>
-                            <button class="story-button pricing-select">Begin This Journey</button>
+                    <div class="option-card diamond-tier">
+                        <div class="option-header">
+                            <div class="option-title">Six Sessions</div>
+                            <div class="option-tagline">Complete journey</div>
                         </div>
+                        <div class="option-body">
+                            <div class="option-description">
+                                Deep dive to completely transform your relationship with acting
+                            </div>
+                            <div class="option-price">6 × $79</div>
+                            <div class="option-savings">Save $180</div>
+                        </div>
+                        <button class="option-button" data-package="transformation">
+                            Commit to Growth
+                        </button>
                     </div>
                 </div>
                 
                 <div class="modal-footer">
-                    <div class="guarantee-text">
-                        <strong>60-day transformation guarantee:</strong> Feel genuinely excited about auditions or receive a full refund
-                    </div>
-                    <div class="sacred-note">
-                        ✨ All sessions include trauma-safe emotional work and sacred space guarantee
-                    </div>
+                    <p class="session-note">Each session is 60 minutes of pure creative exploration</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-text">
-                Questions? Contact: 
-                <a href="mailto:hans@iamactor.com" class="footer-link">hans@iamactor.com</a>
-            </div>
-            <div class="footer-credit">
-                PROFESSIONAL ACTING COACHING
-            </div>
-        </div>
-    </footer>
-
 
     <!-- Scripts -->
     <script src="assets/js/minimal-safe.js"></script>

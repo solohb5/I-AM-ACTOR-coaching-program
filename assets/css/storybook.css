@@ -214,11 +214,11 @@ body::before {
 }
 
 .spots-number {
-  color: #ff6b35;  /* Urgent orange-red */
+  color: #F5F5DC;  /* Light cream color like active dot */
   font-weight: 700;
   font-size: 1.4rem;  /* Much larger and prominent */
   font-family: 'Cinzel', serif;
-  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+  text-shadow: 0 0 8px rgba(245, 245, 220, 0.4);
   animation: urgentPulse 3s ease-in-out infinite;
 }
 
@@ -282,8 +282,9 @@ body::before {
 
 /* Chapter Styling */
 .chapter {
-  padding: clamp(2rem, 5vw, 4rem) 0;
+  padding: clamp(3rem, 6vw, 5rem) 0;
   position: relative;
+  overflow: visible;
 }
 
 /* COMPACT Hero Service Icons */
@@ -928,18 +929,21 @@ body::before {
 /* Magical Chapter Headers */
 .chapter-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   position: relative;
+  padding: 1rem 0;
+  overflow: visible;
 }
 
 .chapter-title {
   font-family: 'Cinzel', serif;
-  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: 0.3px;
   position: relative;
+  overflow: visible;
 }
 
 /* Dark section adjustments */
@@ -954,9 +958,9 @@ body::before {
 
 .chapter-subtitle {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 3vw, 1.1rem);
-  max-width: clamp(300px, 85%, 650px);
-  margin: 0 auto clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  max-width: clamp(300px, 85%, 700px);
+  margin: 0 auto 2rem;
   line-height: 1.6;
   font-weight: 400;
   font-style: italic;
@@ -1316,8 +1320,10 @@ body::before {
 .testimonial-dots {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   margin-top: 2rem;
+  height: 20px; /* Fixed height to prevent stretching */
 }
 
 .dot {
@@ -2780,8 +2786,13 @@ body:hover .knight-background {
   
   /* Mobile hero - consolidated with mobile-fixes.css for iPhone 15 Pro */
   .chapter-opening {
-    /* Let mobile-fixes.css handle mobile layout completely */
-  }
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
   
   .story-question {
     font-size: clamp(3.2rem, 10vw, 4.2rem) !important;
@@ -2815,7 +2826,7 @@ body:hover .knight-background {
   
   /* Container padding handled by mobile-fixes.css */
   .chapter-opening .chapter-container {
-    /* Mobile-fixes.css takes precedence */
+    padding: 2rem;
   }
   
   .nav-container {
@@ -3362,6 +3373,16 @@ body:hover .knight-background {
     brightness(1.05)
     drop-shadow(0 2px 8px rgba(45, 35, 25, 0.1));
   transition: all 0.4s ease;
+}
+
+.hero-knight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .chapter-opening:hover .hero-knight {

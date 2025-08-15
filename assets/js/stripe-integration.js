@@ -7,49 +7,50 @@
 const STRIPE_PACKAGES = {
     single: {
         id: 'single',
-        name: 'Creative Single',
-        price: '$97',
+        name: 'Discovery Session',
+        price: '$99',
         sessions: 1,
-        description: 'Perfect for immediate breakthrough'
+        description: 'Perfect starting point'
     },
-    journey: {
-        id: 'journey', 
-        name: 'Artistic Journey',
-        price: '$237',
+    growth: {
+        id: 'growth', 
+        name: 'Growth Package',
+        price: '$267',
         sessions: 3,
-        description: 'Most artists choose this'
+        description: '$89 per session'
     },
-    mastery: {
-        id: 'mastery',
-        name: 'Creative Mastery', 
-        price: '$325',
-        sessions: 5,
-        description: 'Maximum value & flexibility'
+    transformation: {
+        id: 'transformation',
+        name: 'Transformation Package', 
+        price: '$474',
+        sessions: 6,
+        description: '$79 per session - Best value'
     }
 };
 
 // Initialize Stripe integration
 function initStripeIntegration() {
-    // Replace the existing pricing selection handler
-    const pricingSelects = document.querySelectorAll('.pricing-select');
+    // Handle option-button buttons
+    const optionButtons = document.querySelectorAll('.option-button');
     
-    pricingSelects.forEach(btn => {
+    optionButtons.forEach(btn => {
         btn.addEventListener('click', async function(e) {
             e.preventDefault();
             
-            // Disable button to prevent double clicks
-            btn.disabled = true;
-            btn.textContent = 'Processing...';
-            
-            // Get package information
-            const card = this.closest('.pricing-card');
-            const packageId = determinePackageId(card);
+            // Get package directly from data attribute
+            const packageId = this.dataset.package;
             
             if (!packageId) {
-                console.error('Could not determine package type');
-                resetButton(btn);
+                console.error('No package ID found');
                 return;
             }
+            
+            // Store original button content
+            const originalContent = this.innerHTML;
+            
+            // Disable button to prevent double clicks
+            btn.disabled = true;
+            btn.innerHTML = 'Processing...';
             
             // Track selection
             trackEvent('stripe_checkout_initiated', {
@@ -64,7 +65,8 @@ function initStripeIntegration() {
             } catch (error) {
                 console.error('Checkout error:', error);
                 showPaymentError(error.message);
-                resetButton(btn);
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
             }
         });
     });
@@ -75,15 +77,15 @@ function determinePackageId(card) {
     const packageName = card.querySelector('.pricing-name')?.textContent?.trim();
     
     // Map package names to IDs
-    if (packageName?.includes('Creative Single')) return 'single';
-    if (packageName?.includes('Artistic Journey')) return 'journey'; 
-    if (packageName?.includes('Creative Mastery')) return 'mastery';
+    if (packageName?.includes('Discovery Session')) return 'single';
+    if (packageName?.includes('Growth Package')) return 'growth'; 
+    if (packageName?.includes('Transformation Package')) return 'transformation';
     
     // Fallback: check price
     const price = card.querySelector('.pricing-price')?.textContent?.trim();
-    if (price?.includes('97')) return 'single';
-    if (price?.includes('237')) return 'journey';
-    if (price?.includes('325')) return 'mastery';
+    if (price?.includes('99')) return 'single';
+    if (price?.includes('267')) return 'growth';
+    if (price?.includes('474')) return 'transformation';
     
     return null;
 }

@@ -1,0 +1,99 @@
+/* ==========================================================================
+   ABOUT SECTION FIX - Clean layout with spots card below
+   ========================================================================== */
+
+/* About section - clean two-column layout */
+.about-grid-simple {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 4rem;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.about-text {
+  order: 1;
+}
+
+.hans-photo {
+  order: 2;
+}
+
+.hans-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Spots availability section - simple CTA with text */
+.spots-availability-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.spots-cta {
+  margin-bottom: 1rem;
+}
+
+.spots-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+.spots-number-inline {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #FFD700;
+  font-size: 1.4rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation spots number - gold color */
+.nav-spots .spots-number {
+  color: #FFD700;
+  font-weight: 700;
+  font-size: 1.4rem;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .about-grid-simple {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .about-text {
+    order: 1;
+  }
+  
+  .hans-photo {
+    order: 2;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  
+  .spots-availability-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  
+  .spots-text {
+    font-size: 1.1rem;
+  }
+  
+  .spots-number-inline {
+    font-size: 1.3rem;
+  }
+}
