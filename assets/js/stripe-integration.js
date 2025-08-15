@@ -8,7 +8,7 @@ const STRIPE_PACKAGES = {
     single: {
         id: 'single',
         name: 'Discovery Session',
-        price: '$99',
+        price: '$109',
         sessions: 1,
         description: 'Perfect starting point'
     },
@@ -77,13 +77,13 @@ function determinePackageId(card) {
     const packageName = card.querySelector('.pricing-name')?.textContent?.trim();
     
     // Map package names to IDs
-    if (packageName?.includes('Discovery Session')) return 'single';
+    if (packageName?.includes('Discovery Session') || packageName?.includes('Single Session')) return 'single';
     if (packageName?.includes('Growth Package')) return 'growth'; 
     if (packageName?.includes('Transformation Package')) return 'transformation';
     
     // Fallback: check price
     const price = card.querySelector('.pricing-price')?.textContent?.trim();
-    if (price?.includes('99')) return 'single';
+    if (price?.includes('109')) return 'single';
     if (price?.includes('267')) return 'growth';
     if (price?.includes('474')) return 'transformation';
     

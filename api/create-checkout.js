@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Package configurations
 const packages = {
-  single: { price: 9900, name: 'Discovery Session', sessions: 1 },
+  single: { price: 10900, name: 'Discovery Session', sessions: 1 },
   growth: { price: 26700, name: 'Growth Package', sessions: 3 },
   transformation: { price: 47400, name: 'Transformation Package', sessions: 6 }
 };
