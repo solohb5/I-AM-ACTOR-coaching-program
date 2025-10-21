@@ -547,20 +547,8 @@
             }
         }
 
-        /* Primary CTA - Hero and Investment */
+        /* === COMPONENT: HERO CTA === */
         .hero-cta {
-            background: var(--old-gold);
-            color: var(--deep-charcoal);
-            border: none;
-            padding: 16px 48px;
-            font-family: 'Alegreya', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(212, 193, 55, 0.4);
             animation: fade-in-scale 1s ease-out 3s both;
         }
 
@@ -575,92 +563,44 @@
             }
         }
 
-        .hero-cta:hover {
-            background: #E5D157;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 193, 55, 0.5);
-        }
-
         .hero-cta-subtext {
-            font-size: 0.95rem;
-            color: rgba(255, 254, 240, 0.6);
-            margin-bottom: 3rem;
+            font-size: var(--text-sm);
+            color: rgba(255, 254, 240, var(--opacity-text-muted));
+            margin-bottom: var(--space-lg);
             animation: fade-in-up 1s ease-out 3.3s both;
         }
 
-        .hero .testimonial {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            border-top: 1px solid rgba(212, 193, 55, 0.2);
-            margin-top: 3rem;
-            animation: fade-in-up 1s ease-out 3.8s both;
-        }
-
+        /* === COMPONENT: TESTIMONIALS === */
         .testimonial {
             max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            border-top: 1px solid rgba(212, 193, 55, 0.2);
-            margin-top: 3rem;
+            margin: var(--space-lg) auto 0;
+            padding: var(--space-md) 0;
+            border-top: 1px solid rgba(212, 193, 55, var(--opacity-border-medium));
+        }
+
+        .hero .testimonial {
+            animation: fade-in-up 1s ease-out 3.8s both;
         }
 
         .testimonial-stars {
             color: var(--old-gold);
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-sm);
         }
 
         .testimonial-quote {
-            font-size: 1.1rem;
+            font-size: var(--text-base);
             line-height: 1.7;
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-sm);
         }
 
         .testimonial-author {
-            font-size: 0.85rem;
-            font-family: 'Alegreya', serif;
+            font-size: var(--text-xs);
+            font-family: 'Crimson Text', Georgia, serif;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.7;
-        }
-
-        /* ===== SECTION HEADERS ===== */
-        .section-label {
-            font-family: 'Alegreya', serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .section-light .section-label {
-            color: var(--adventure-green);
-            opacity: 0.8;
-        }
-
-        .section-dark .section-label {
-            color: var(--old-gold);
-            font-family: 'Cinzel', serif;
-            letter-spacing: 3px;
-            font-size: 0.75rem;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.25;
-        }
-
-        .section-subtitle {
-            font-size: 1.35rem;
-            margin-bottom: 3rem;
-            opacity: 0.85;
-            font-weight: 400;
-            max-width: none;
+            opacity: var(--opacity-text-muted);
         }
 
         .section-dark .section-subtitle {
@@ -682,98 +622,101 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== PHASE CARDS (3-Phase Quest) ===== */
-        .phases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .phase-card {
+        /* ===== CARD SYSTEM ===== */
+        /* Base Card */
+        .card {
             text-align: center;
-            padding: 3rem 2.5rem;
-            background: rgba(90, 140, 58, 0.03);
-            border: 1px solid rgba(90, 140, 58, 0.12);
+            padding: var(--space-lg) var(--space-md);
+            background: rgba(90, 140, 58, var(--opacity-bg-subtle));
+            border: 1px solid rgba(90, 140, 58, var(--opacity-border-subtle));
             border-radius: 8px;
             transition: all 0.3s ease;
         }
 
-        .phase-card:hover {
-            background: rgba(90, 140, 58, 0.05);
-            border-color: rgba(90, 140, 58, 0.2);
+        .card:hover {
+            background: rgba(90, 140, 58, var(--opacity-bg-light));
+            border-color: rgba(90, 140, 58, var(--opacity-border-medium));
             transform: translateY(-4px);
         }
 
-        .phase-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
+        /* Card Grids */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        /* Phase Card Elements */
+        .card__icon {
+            font-size: var(--text-5xl);
+            margin-bottom: var(--space-md);
             display: block;
             line-height: 1;
         }
 
-        .phase-number {
-            font-family: 'Alegreya', serif;
-            font-size: 0.85rem;
+        .card__label {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: var(--text-xs);
             font-weight: 700;
             color: var(--adventure-green);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-sm);
         }
 
-        .phase-title {
+        .card__title {
             font-family: 'Crimson Text', Georgia, serif;
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-sm);
             font-weight: 700;
         }
 
-        .phase-weeks {
-            font-size: 0.95rem;
+        .card__subtitle {
+            font-size: var(--text-sm);
             font-weight: 600;
             color: var(--adventure-green);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-md);
             letter-spacing: 0.5px;
         }
 
-        .phase-description {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
+        .card__description {
+            font-size: var(--text-base);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
             color: #555;
         }
 
-        .phase-shift {
-            font-size: 1.1rem;
+        .card__footer {
+            font-size: var(--text-base);
             font-weight: 600;
             color: var(--adventure-green);
             font-style: italic;
-            border-top: 2px solid rgba(90, 140, 58, 0.3);
-            padding-top: 1.75rem;
-            margin-top: 2rem;
+            border-top: 2px solid rgba(90, 140, 58, var(--opacity-border-strong));
+            padding-top: var(--space-md);
+            margin-top: var(--space-md);
             line-height: 1.5;
         }
 
-        /* ===== CHECKLIST ===== */
+        /* ===== LIST SYSTEM ===== */
         .checklist {
             list-style: none;
             max-width: 700px;
-            margin: 3rem auto;
+            margin: var(--space-lg) auto;
             padding: 0;
         }
 
         .checklist li {
-            font-size: 1.125rem;
-            padding: 1.5rem 0;
-            padding-left: 3rem;
+            font-size: var(--text-base);
+            padding: var(--space-md) 0;
+            padding-left: var(--space-lg);
             position: relative;
-            border-bottom: 1px solid rgba(90, 140, 58, 0.12);
+            border-bottom: 1px solid rgba(90, 140, 58, var(--opacity-border-subtle));
             line-height: 1.7;
         }
 
         .checklist li:first-child {
-            border-top: 1px solid rgba(90, 140, 58, 0.12);
+            border-top: 1px solid rgba(90, 140, 58, var(--opacity-border-subtle));
         }
 
         .checklist li::before {
@@ -782,8 +725,8 @@
             left: 0;
             color: var(--adventure-green);
             font-weight: 700;
-            font-size: 1.4rem;
-            top: 1.35rem;
+            font-size: var(--text-lg);
+            top: var(--space-md);
         }
 
         .checklist li strong {
@@ -792,7 +735,7 @@
         }
 
         .section-dark .checklist li {
-            border-bottom-color: rgba(212, 193, 55, 0.2);
+            border-bottom-color: rgba(212, 193, 55, var(--opacity-border-medium));
         }
 
         .section-dark .checklist li::before {
@@ -887,26 +830,7 @@
             line-height: 1.6;
         }
 
-        .investment-btn {
-            background: var(--adventure-green);
-            color: var(--ivory);
-            border: none;
-            padding: 1.1rem 2rem;
-            font-family: 'Alegreya', serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            border-radius: 4px;
-        }
-
-        .investment-btn:hover {
-            background: #4a7a2f;
-            transform: translateY(-2px);
-        }
+        /* Old investment-btn removed - use .btn .btn--primary */
 
         /* ===== ABOUT SECTION (Hans) ===== */
         .about-grid {
@@ -1096,19 +1020,36 @@
             padding: var(--space-sm) calc(var(--space-lg) + var(--space-md));
         }
 
-        /* ===== HIGHLIGHT BOX ===== */
+        /* ===== COMPONENT: HIGHLIGHT BOX ===== */
         .highlight-box {
-            background: rgba(90, 140, 58, 0.06);
+            background: rgba(90, 140, 58, var(--opacity-bg-light));
             border-left: 4px solid var(--adventure-green);
-            padding: 2.5rem 3rem;
-            margin: 3rem auto;
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-lg) auto;
             border-radius: 4px;
             max-width: 700px;
         }
 
         .section-dark .highlight-box {
-            background: rgba(212, 193, 55, 0.08);
+            background: rgba(212, 193, 55, var(--opacity-bg-medium));
             border-left-color: var(--old-gold);
+        }
+
+        /* ===== COMPONENT: SECTION LABELS ===== */
+        .section-label {
+            display: inline-block;
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: var(--text-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--adventure-green);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-dark .section-label {
+            color: var(--old-gold);
+            text-shadow: 0 0 20px rgba(212, 193, 55, var(--opacity-border-strong));
         }
 
         /* ===== FOOTER ===== */
