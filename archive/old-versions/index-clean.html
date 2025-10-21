@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Tape Challenge - Stop Taking Classes, Start Booking Roles</title>
+    <meta name="description" content="Learn more in 30 tapes than most actors learn in years. Transform your career with daily self-tape practice and community support over 6 weeks.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/cinematic-theme.css">
+    <link rel="stylesheet" href="assets/css/premium-effects.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            background: #1a1a1a;
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Single Border Frame */
+        .page-frame {
+            position: fixed;
+            top: 40px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-right: none;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Right border split for text */
+        .frame-right-top {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            height: calc(50% - 60px);
+            width: 1px;
+            background: rgba(212, 175, 55, 0.35);
+            z-index: 9999;
+        }
+        
+        .frame-right-bottom {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            height: calc(50% - 60px);
+            width: 1px;
+            background: rgba(212, 175, 55, 0.35);
+            z-index: 9999;
+        }
+        
+        /* Text integrated into right border */
+        .border-text {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            z-index: 10000;
+            color: #D4AF37;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0 20px;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        
+        .border-text:hover {
+            color: #FFD700;
+            letter-spacing: 0.4em;
+        }
+        
+        /* Minimal Top Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            z-index: 10001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: #1a1a1a;
+        }
+        
+        .top-nav a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .top-nav a:hover {
+            opacity: 1;
+        }
+        
+        /* Gold Dot */
+        .gold-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #D4AF37;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        /* Corner Brackets - Remove to avoid double borders */
+        
+        /* Main Content Area */
+        .main-content {
+            margin-top: 40px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, #1a1a1a 0%, #252525 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #1a1a1a;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .section-dark {
+            background: linear-gradient(180deg, #1a1a1a 0%, #252525 100%);
+        }
+        
+        .section-light {
+            background: #f5f5f5;
+            color: #1a1a1a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <a href="#"><span class="gold-dot"></span>I AM ACTOR</a>
+        <a href="#" style="font-size: 0.7rem;">HOME</a>
+    </nav>
+    
+    <!-- Single Page Border Frame -->
+    <div class="page-frame"></div>
+    <div class="frame-right-top"></div>
+    <div class="frame-right-bottom"></div>
+    
+    <!-- Text breaking the right border -->
+    <div class="border-text" onclick="scrollToPricing()">
+        TAKE THE CHALLENGE
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>
+                    THE<br>
+                    SELF-TAPE<br>
+                    CHALLENGE
+                </h1>
+                <p>Stop Taking Classes and Start Booking Roles</p>
+                <button class="btn-primary" onclick="scrollToPricing()">
+                    Join The 30 Tape Challenge
+                </button>
+            </div>
+        </section>
+        
+        <!-- What's The Challenge -->
+        <section class="section section-light">
+            <div class="container">
+                <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 2rem;">
+                    What's the challenge?
+                </h2>
+                <p style="font-size: 1.25rem; line-height: 1.8;">
+                    The Self-Tape Challenge is a 6 week immersive journey designed to sharpen your self-tape skills, 
+                    break past creative blocks, and push your acting to the next level. Through guided exercises, 
+                    feedback, and community support, you'll put up 30 tapes over 6 weeks to elevate your craft, 
+                    learn new approaches, and build the confidence to deliver powerful auditions—every time.
+                </p>
+            </div>
+        </section>
+        
+        <!-- More sections would go here... -->
+    </div>
+    
+    <script>
+        function scrollToPricing() {
+            // Scroll to pricing section
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

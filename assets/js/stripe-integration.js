@@ -3,6 +3,12 @@
    Connects pricing modal to Stripe Checkout
    ========================================================================== */
 
+// Simple analytics stub (replace with real analytics later)
+function trackEvent(eventName, eventData = {}) {
+    console.log('[Analytics]', eventName, eventData);
+    // TODO: Integrate with Google Analytics, Plausible, or other service
+}
+
 // Package configurations (must match backend)
 const STRIPE_PACKAGES = {
     single: {

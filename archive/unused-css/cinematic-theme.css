@@ -1,0 +1,340 @@
+/* ==========================================================================
+   30 TAPE CHALLENGE - Cinematic Minimalist Theme
+   Dark, bold, professional with viewfinder aesthetic
+   ========================================================================== */
+
+/* Corner Bracket Frames */
+.frame-corners::before,
+.frame-corners::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid currentColor;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.frame-corners::before {
+  top: 20px;
+  left: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame-corners::after {
+  bottom: 20px;
+  right: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+.frame-corners-bottom::before,
+.frame-corners-bottom::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid currentColor;
+  pointer-events: none;
+}
+
+.frame-corners-bottom::before {
+  bottom: 20px;
+  left: 20px;
+  border-right: none;
+  border-top: none;
+}
+
+.frame-corners-bottom::after {
+  top: 20px;
+  right: 20px;
+  border-left: none;
+  border-bottom: none;
+}
+
+/* Dark Cinematic Hero */
+.hero-dark {
+  background: #0a0a0a;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
+}
+
+/* Simplified Navigation */
+.nav-minimal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-minimal.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-minimal-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav-cta-minimal {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.nav-cta-minimal:hover {
+  background: #ffffff;
+  color: #0a0a0a;
+  transform: translateY(-2px);
+}
+
+/* Bold Typography */
+.headline-massive {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.headline-subtitle {
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 300;
+  line-height: 1.4;
+  margin-top: 2rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Increased Section Spacing */
+.section-spacious {
+  padding: 8rem 2rem;
+  position: relative;
+}
+
+.section-dark {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.section-light {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+/* Content Container */
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Red Accent Button */
+.btn-primary-red {
+  background: #DC2626;
+  color: #ffffff;
+  border: none;
+  padding: 1.25rem 3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  border-radius: 0;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+.btn-primary-red:hover {
+  background: #B91C1C;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+}
+
+/* Clean Cards */
+.card-minimal {
+  background: #ffffff;
+  padding: 3rem;
+  border: 1px solid #e5e5e5;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.card-minimal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-dark {
+  background: #141414;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Number Accents */
+.number-large {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #DC2626;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+/* Testimonial Integration */
+.testimonial-inline {
+  padding: 4rem 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-inline::before {
+  content: '"';
+  position: absolute;
+  top: 2rem;
+  left: -2rem;
+  font-size: 6rem;
+  color: #DC2626;
+  opacity: 0.3;
+  font-family: Georgia, serif;
+}
+
+.testimonial-author {
+  font-style: normal;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Grid Layouts */
+.grid-three {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+/* Pricing Section */
+.pricing-inline {
+  background: #0a0a0a;
+  color: #ffffff;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.price-card {
+  background: #141414;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  max-width: 400px;
+  margin: 3rem auto;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.price-card:hover {
+  border-color: #DC2626;
+  transform: translateY(-5px);
+}
+
+.price-amount {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.price-currency {
+  font-size: 2rem;
+  vertical-align: super;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .frame-corners::before,
+  .frame-corners::after,
+  .frame-corners-bottom::before,
+  .frame-corners-bottom::after {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .headline-massive {
+    font-size: 2.5rem;
+  }
+  
+  .section-spacious {
+    padding: 4rem 1.5rem;
+  }
+  
+  .grid-three {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .nav-minimal-container {
+    padding: 1rem;
+  }
+  
+  .btn-primary-red {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+  }
+}

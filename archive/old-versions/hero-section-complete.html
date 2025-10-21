@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Tape Challenge - I Am Actor</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 16px 20px;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #111111;
+        }
+        
+        .nav-cta {
+            background: #111111;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .nav-cta:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px;
+            position: relative;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Badge */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 8px 16px;
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+        }
+        
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Headline */
+        .hero-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #111111;
+        }
+        
+        .hero-headline .highlight {
+            color: #dc2626;
+            position: relative;
+        }
+        
+        /* Subtitle */
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 400;
+            line-height: 1.5;
+            color: #666666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* CTA Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .btn-primary {
+            background: #111111;
+            color: white;
+            border: 2px solid #111111;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: #111111;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #111111;
+            border: 2px solid #e5e5e5;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #111111;
+        }
+        
+        /* Trust Elements */
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .trust-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111111;
+            line-height: 1;
+        }
+        
+        .trust-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 16px 32px;
+            }
+            
+            .hero-headline {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+                margin-bottom: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                margin-bottom: 40px;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-trust {
+                gap: 24px;
+            }
+            
+            .trust-number {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">I AM ACTOR</div>
+            <button class="nav-cta">Join Now</button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <!-- Live Badge -->
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>12 Spots Remaining</span>
+            </div>
+            
+            <!-- Main Headline -->
+            <h1 class="hero-headline">
+                Learn More in <span class="highlight">30 Tapes</span><br>
+                Than Most Actors Learn in Years
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="hero-subtitle">
+                Stop taking endless classes. Start booking real roles. 
+                The only challenge that pays you back for doing the work.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Join the 30 Tape Challenge</a>
+                <a href="#" class="btn-secondary">See How It Works</a>
+            </div>
+            
+            <!-- Trust Elements -->
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <div class="trust-number">500+</div>
+                    <div class="trust-label">Actors Transformed</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">30</div>
+                    <div class="trust-label">Days to Success</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">95%</div>
+                    <div class="trust-label">Completion Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

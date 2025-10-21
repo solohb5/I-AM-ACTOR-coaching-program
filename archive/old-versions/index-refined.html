@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Self-Tape Challenge</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-weight: 300;
+            background: #fafafa;
+            color: #2a2a2a;
+            line-height: 1.7;
+        }
+        
+        /* Clean nav */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(250, 250, 250, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-brand {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            color: #2a2a2a;
+        }
+        
+        .nav-link {
+            font-size: 0.85rem;
+            color: #2a2a2a;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            opacity: 1;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 40px;
+            background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.125rem;
+            color: #888;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        /* Clean button */
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #2a2a2a;
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #1a1a1a;
+            transform: translateY(-2px);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-alt {
+            background: #fafafa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-label {
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        /* Clean content blocks */
+        .content-block {
+            margin-bottom: 3rem;
+        }
+        
+        .content-block h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+        
+        .content-block p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Features list */
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature {
+            padding: 0;
+        }
+        
+        .feature h4 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #2a2a2a;
+        }
+        
+        .feature p {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.6;
+        }
+        
+        /* Guarantee */
+        .guarantee {
+            text-align: center;
+            padding: 60px;
+            background: #fafafa;
+            border: 1px solid #eee;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .guarantee-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .guarantee-text {
+            font-size: 1.125rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Pricing */
+        .pricing {
+            text-align: center;
+            padding: 80px 40px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .pricing-details {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-details span {
+            display: block;
+            margin: 0.5rem 0;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px;
+            text-align: center;
+            background: #2a2a2a;
+            color: #999;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 20px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand">I AM ACTOR</div>
+        <a href="#join" class="nav-link">Join Challenge</a>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">The Self-Tape Challenge</h1>
+            <p class="hero-subtitle">Stop Taking Classes and Start Booking Roles</p>
+            <p class="hero-description">Learn more in 30 tapes than most actors learn in years</p>
+            <a href="#join" class="btn">Begin Your Transformation</a>
+        </div>
+    </section>
+    
+    <!-- What It Is -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">What It Is</p>
+                <h2 class="section-title">Make the Self-Tape Your Superpower</h2>
+                <p class="section-subtitle">30 tapes. 6 weeks. Real industry sides.</p>
+            </div>
+            
+            <div class="content-block">
+                <p style="text-align: center; font-size: 1.125rem; line-height: 1.8; color: #666;">
+                    I give you everything: sides, tools, platform, system.<br>
+                    You don't worry about doing it right. Just do it.<br>
+                    Each week builds a new skill. By week 6, your tapes transform.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why It Works -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Why It Works</p>
+                <h2 class="section-title">You Learn by Doing</h2>
+            </div>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.5rem; margin-bottom: 2rem; font-weight: 400;">
+                    You don't learn by being taught.<br>
+                    You learn by doing.
+                </p>
+                <p style="font-size: 1.125rem; color: #888;">
+                    Most training teaches waiting.<br>
+                    This teaches working.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What You Get -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">What You Get</p>
+                <h2 class="section-title">Everything You Need</h2>
+            </div>
+            
+            <div class="features-list">
+                <div class="feature">
+                    <h4>30 Professional Sides</h4>
+                    <p>Industry-standard scenes selected for skill building</p>
+                </div>
+                <div class="feature">
+                    <h4>Complete Self-Tape System</h4>
+                    <p>Step-by-step process that removes the guesswork</p>
+                </div>
+                <div class="feature">
+                    <h4>Community Access</h4>
+                    <p>Connect with actors on the same journey</p>
+                </div>
+                <div class="feature">
+                    <h4>Memory Template & Tools</h4>
+                    <p>Professional techniques that actually work</p>
+                </div>
+                <div class="feature">
+                    <h4>AI Coaching Available 24/7</h4>
+                    <p>Get feedback whenever you need it</p>
+                </div>
+                <div class="feature">
+                    <h4>Live Sessions with Hans</h4>
+                    <p>Weekly group coaching and support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Guarantee -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">The Guarantee</p>
+                <h2 class="section-title">Do the Work, Get It Free</h2>
+            </div>
+            
+            <div class="guarantee">
+                <h3 class="guarantee-title">Complete 30 Tapes = 100% Refund</h3>
+                <p class="guarantee-text">
+                    Finish all 30 tapes in 6 weeks and get your money back.<br>
+                    Keep everything. Get it all free if you do the work.<br><br>
+                    That's how confident I am this will transform you.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section class="section" id="join">
+        <div class="container">
+            <div class="pricing">
+                <div class="price">$279</div>
+                <div class="pricing-details">
+                    <span>Challenge starts in 10 days</span>
+                    <span>20 spots available</span>
+                    <span>Lifetime community access</span>
+                </div>
+                <button class="btn" style="width: 100%;">Secure Your Spot</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 I AM ACTOR. All rights reserved.</p>
+    </footer>
+</body>
+</html>

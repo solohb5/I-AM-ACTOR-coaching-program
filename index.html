@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hans - Creative Acting Coaching</title>
-    <meta name="description" content="Awaken the fearless artist within. Private breakthrough sessions with Hans. One-on-one acting coaching for self-tape mastery, character development, and career navigation.">
-    <meta name="keywords" content="acting coach, self-tape coaching, character development, acting career, private coaching, Hans, I AM ACTOR">
-    <meta name="author" content="Hans - I AM ACTOR">
-    <meta property="og:title" content="Hans - Creative Acting Coaching">
-    <meta property="og:description" content="Awaken the fearless artist within. Private breakthrough sessions with Hans.">
+    <title>30 Tape Challenge - Stop Taking Classes, Start Booking Roles</title>
+    <meta name="description" content="Learn more in 30 tapes than most actors learn in years. Transform your career with daily self-tape practice and community support over 6 weeks.">
+    <meta name="keywords" content="30 tape challenge, self-tape practice, acting community, book more roles, stop taking classes, actor transformation">
+    <meta name="author" content="Hans - 30 Tape Challenge">
+    <meta property="og:title" content="30 Tape Challenge - Transform Your Acting Career">
+    <meta property="og:description" content="Learn more in 30 tapes than most actors learn in years. Join the challenge today.">
     <meta property="og:image" content="assets/images/logo.png">
     <meta property="og:url" content="https://iamactor.com">
     <meta name="twitter:card" content="summary_large_image">
@@ -27,10 +27,22 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/storybook.css">
-    <link rel="stylesheet" href="assets/css/mobile-fixes.css">
-    <link rel="stylesheet" href="assets/css/about-section-fix.css">
-    <link rel="stylesheet" href="assets/css/pricing-redesign.css">
-    <link rel="stylesheet" href="assets/css/professional-polish.css">
+    <link rel="stylesheet" href="assets/css/production-overrides.css">
+    
+    <style>
+        /* Page Border Frame */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -43,20 +55,20 @@
     <nav class="nav-storybook">
         <div class="nav-container">
             <div class="nav-spots">
-                <span class="spots-number" id="spots-remaining">8</span>
-                <span class="spots-text">spots left</span>
+                <span class="spots-number" id="spots-remaining" style="color: #FFE066; text-shadow: 0 0 10px rgba(255, 224, 102, 0.5);">12</span>
+                <span class="spots-text">SPOTS REMAINING</span>
             </div>
             <div class="nav-logo">
                 <img src="assets/images/logo-dark.png" alt="I AM ACTOR" class="logo-image">
             </div>
             <div class="nav-offer-center" id="nav-offer-center">
-                <div class="offer-main">50% OFF LAUNCH WEEK</div>
-                <div class="offer-sub">Only 7 Days Left • Save $200+</div>
+                <div class="offer-main">30 TAPE CHALLENGE</div>
+                <div class="offer-sub">Community Access Included</div>
             </div>
             <div class="nav-cta">
-                <button class="nav-book-button" id="nav-cta" aria-label="Book coaching session">
-                    <span class="btn-full-text">Book Session</span>
-                    <span class="btn-short-text">Book</span>
+                <button class="nav-book-button" id="nav-cta" aria-label="Join the challenge">
+                    <span class="btn-full-text">Join Challenge</span>
+                    <span class="btn-short-text">Join</span>
                 </button>
             </div>
         </div>
@@ -64,221 +76,322 @@
 
     <!-- Chapter 1: The Opening -->
     <section class="chapter chapter-opening" data-section="0">
-        <!-- Knight positioned at bottom-left -->
-        <div class="hero-knight">
-            <img src="assets/images/knight.png" alt="" class="hero-knight-image">
-        </div>
-        
         <div class="chapter-container">
+            <!-- Knight positioned at bottom-left -->
+            <div class="hero-knight">
+                <img src="assets/images/knight.png" alt="" class="hero-knight-image">
+            </div>
             <div class="hero-content">
-                <div class="hero-opening">
-                    Remember that little artist who used to<br>
-                    play freely and perform with pure joy?
+                <!-- Main headline group -->
+                <div class="hero-headline-group">
+                    <h1 class="hero-headline">
+                        Learn More in <span>30 Tapes</span><br>
+                        Than Most Actors Learn<br>
+                        in <span>Years!</span>
+                    </h1>
+                    
+                    <div class="hero-subtitle">
+                        Stop Taking Classes<br>
+                        <span>Start Booking Roles</span>
+                    </div>
+                    
+                    <div class="hero-description">
+                        The only challenge that <span>pays you back</span> for doing the work
+                    </div>
                 </div>
                 
-                <div class="hero-intro">They're still in there...</div>
-                
-                <h1 class="hero-headline">
-                    What if the secret<br>
-                    to booking<br>
-                    is reconnecting to<br>
-                    that magic?
-                </h1>
-                
-                <div class="hero-subtitle">Awaken the Artist Within</div>
-                <div class="hero-description">with personalized one-on-one coaching</div>
-                
+                <!-- CTA group -->
                 <div class="hero-cta-group">
-                    <button class="hero-cta primary" id="hero-cta">🌟 BEGIN JOURNEY</button>
-                    <div class="cta-subtext">50% OFF Launch Week • Only 8 Spots Left</div>
+                    <button class="hero-cta primary" id="hero-cta">
+                        Join The 30 Tape Challenge
+                    </button>
+                    <div class="cta-subtext">
+                        Challenge closes when spots fill
+                    </div>
                 </div>
                 
+                <!-- Trust indicators -->
                 <div class="hero-trust-line">
-                    "Hans reminded me what a fun and creative outlet self-taping can be!" - Deb LeClaire
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Chapter 2: Three Creative Pathways -->
-    <section class="chapter chapter-pathways" data-section="1">
-        <div class="chapter-container">
-            <div class="chapter-header">
-                <h2 class="chapter-title">Choose Your<br>Coaching Focus</h2>
-                <p class="chapter-subtitle">
-                    Every 60-minute coaching session is completely flexible. Choose your focus each time—self-tape coaching, character preparation, or career navigation. You decide what you need most, and we'll spend the full hour bringing that vision to life.
-                </p>
-            </div>
-            
-            <div class="pathways-grid">
-                <div class="pathway-card">
-                    <div class="pathway-number">I.</div>
-                    <h3 class="pathway-title">Self-Tape Focus</h3>
-                    <p class="pathway-description">
-                        Use your session for live audition guidance until you capture that authentic, magnetic energy. 
-                        Perfect your technique and build confidence for any role with real-time coaching.
-                    </p>
-                    <div class="pathway-essence">
-                        → From nervous takes to booking confidence
-                    </div>
-                </div>
-                
-                <div class="pathway-card">
-                    <div class="pathway-number">II.</div>
-                    <h3 class="pathway-title">Character Focus</h3>
-                    <p class="pathway-description">
-                        Dedicate your session to deep character work and story exploration. Develop your approach to roles with 
-                        creative techniques that make every character feel real and personal.
-                    </p>
-                    <div class="pathway-essence">
-                        → Fall in love with creating characters again
-                    </div>
-                </div>
-                
-                <div class="pathway-card">
-                    <div class="pathway-number">III.</div>
-                    <h3 class="pathway-title">Career Focus</h3>
-                    <p class="pathway-description">
-                        Focus your session on strategic business planning for your acting career. Map out your next steps, 
-                        build your plan, and create sustainable success on your terms.
-                    </p>
-                    <div class="pathway-essence">
-                        → Build a career that feeds your creativity
-                    </div>
+                    "Hans reminded me what a fun and creative outlet self-taping can be!"
+                    <span>— DEB LECLAIR</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
-    <section class="chapter chapter-how-it-works" data-section="2">
+    <section class="chapter chapter-how-it-works" data-section="1">
         <div class="chapter-container">
             <div class="chapter-header">
-                <h2 class="chapter-title">How Your Sessions Work</h2>
-                <p class="chapter-subtitle">Simple, flexible, and completely personalized to your creative journey</p>
+                <span style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 1rem; opacity: 0.9;">HOW IT WORKS</span>
+                <h2 class="chapter-title">Simple. Daily. Transformative.</h2>
+                <p class="chapter-subtitle">30 tapes in 6 weeks. That's it.</p>
             </div>
             
             <div class="how-it-works-grid">
                 <div class="how-it-works-card">
                     <div class="works-number">1</div>
-                    <h3 class="works-title">Book Your Session</h3>
+                    <h3 class="works-title">Get Your Sides</h3>
                     <p class="works-description">
-                        Choose your preferred package and schedule your first 60-minute breakthrough session.
+                        Professional scenes delivered daily.<br>
+                        <span style="color: #D4AF37;">Real casting director material.</span>
                     </p>
                 </div>
                 
                 <div class="how-it-works-card">
                     <div class="works-number">2</div>
-                    <h3 class="works-title">Pick Your Focus</h3>
+                    <h3 class="works-title">Record & Share</h3>
                     <p class="works-description">
-                        Each session, decide what serves you best—self-tape coaching, character work, or career strategy.
+                        One tape. Every day. Post it.<br>
+                        <span style="color: #D4AF37;">Get feedback. Get better.</span>
                     </p>
                 </div>
                 
                 <div class="how-it-works-card">
                     <div class="works-number">3</div>
-                    <h3 class="works-title">Evolve & Grow</h3>
+                    <h3 class="works-title">Transform</h3>
                     <p class="works-description">
-                        Change your focus as your needs evolve. Use sessions however your creative journey unfolds.
+                        30 days = New actor.<br>
+                        <span style="color: #D4AF37;">Complete all 30 = Win 12 months.</span>
                     </p>
                 </div>
             </div>
             
-            <div class="flexibility-note">
-                <p><strong>Your Sessions Save Forever:</strong> Buy now, use whenever you need—last-minute auditions, booking prep, story work, even headshot strategy. I reserve emergency hours daily for urgent coaching. No expiration, total flexibility.</p>
+            <div class="flexibility-note" style="background: rgba(212, 175, 55, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 3rem;">
+                <p style="font-size: 1.1rem; color: #666;"><strong style="color: #D4AF37;">The Deal:</strong> Complete all 30 tapes → Get 12 months of community (normally $948) for just $279.</p>
             </div>
         </div>
     </section>
 
-    <!-- Chapter 3: Transformation Stories -->
-    <section class="chapter chapter-testimonials" data-section="2">
+    <!-- Chapter 2: The Transformation -->
+    <section class="chapter chapter-pathways" data-section="2">
         <div class="chapter-container">
             <div class="chapter-header">
-                <h2 class="chapter-title"><span class="title-line-1">Creative</span><br><span class="title-line-2">Transformations</span></h2>
-                <p class="chapter-subtitle">From stuck to free, from fearful to playful</p>
+                <span style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 1rem; opacity: 0.9;">THE TRANSFORMATION</span>
+                <h2 class="chapter-title">From Nervous to Natural<br>in 30 Days</h2>
+                <p class="chapter-subtitle" style="font-size: 1.3rem; margin-bottom: 3rem; color: #666;">
+                    Stop dreading self-tapes. Start booking roles.
+                </p>
             </div>
             
-            <div class="testimonial-container">
-                <div class="testimonial-card active" data-testimonial="0">
-                    <blockquote class="testimonial-quote">
-                        "I love that this isn't just about one way to approach the business. It gave me a plan and a path for how to get there."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-name">Brandon Sutton</div>
-                    </div>
+            <div class="pathways-grid">
+                <div class="pathway-card">
+                    <div class="pathway-number">1</div>
+                    <h3 class="pathway-title">Daily Practice</h3>
+                    <p class="pathway-description">
+                        One tape every day for 30 days.<br>
+                        <span style="color: #D4AF37; font-weight: 600;">No overthinking. Just doing.</span>
+                    </p>
                 </div>
                 
-                <div class="testimonial-card" data-testimonial="1">
-                    <blockquote class="testimonial-quote">
-                        "This helps actors take control of their careers, demystifying the industry into tangible actions and steps."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-name">Trew Mullen</div>
-                    </div>
+                <div class="pathway-card">
+                    <div class="pathway-number">2</div>
+                    <h3 class="pathway-title">Real Feedback</h3>
+                    <p class="pathway-description">
+                        Share your work. Get better.<br>
+                        <span style="color: #D4AF37; font-weight: 600;">Learn what actually works.</span>
+                    </p>
                 </div>
                 
-                <div class="testimonial-card" data-testimonial="2">
-                    <blockquote class="testimonial-quote">
-                        "He has given me direction, inspiration, and accountability. I'm so grateful for Hans and this program."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-name">Genevieve Aitken</div>
-                    </div>
+                <div class="pathway-card">
+                    <div class="pathway-number">3</div>
+                    <h3 class="pathway-title">Booking Ready</h3>
+                    <p class="pathway-description">
+                        30 tapes = transformation complete.<br>
+                        <span style="color: #D4AF37; font-weight: 600;">Auditions become easy wins.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section class="chapter chapter-dark" data-section="2">
+        <div class="chapter-container">
+            <div class="chapter-header">
+                <h2 class="chapter-title">What's Included</h2>
+                <p class="chapter-subtitle">Everything you need to transform your self-tape game</p>
+            </div>
+            
+            <div class="pathways-grid">
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">I.</div>
+                    <h3 class="pathway-title">Professional Sides Provided</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Industry-standard scenes carefully selected to build your skills progressively</p>
                 </div>
                 
-                <div class="testimonial-card" data-testimonial="3">
-                    <blockquote class="testimonial-quote">
-                        "This community has transformed self-taping into something I genuinely look forward to!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-name">Benjamin Eio</div>
-                    </div>
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">II.</div>
+                    <h3 class="pathway-title">Complete Self-Tape System</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Step-by-step framework that takes the guesswork out of every audition</p>
                 </div>
                 
-                <div class="testimonial-card" data-testimonial="4">
-                    <blockquote class="testimonial-quote">
-                        "The self-tape games and challenge was everything I didn't know I needed!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-name">Mark Saldana</div>
-                    </div>
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">III.</div>
+                    <h3 class="pathway-title">I AM ACTOR Community</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Private community of actors taking the challenge together</p>
                 </div>
                 
-                <div class="testimonial-card" data-testimonial="5">
-                    <blockquote class="testimonial-quote">
-                        "Hans has reminded me what a fun and creative outlet self-taping can be!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-name">Deb LeClaire</div>
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">IV.</div>
+                    <h3 class="pathway-title">Memory Template + Tools</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Professional acting techniques that help you memorize and perform authentically</p>
+                </div>
+                
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">V.</div>
+                    <h3 class="pathway-title">AI Coaches 24/7</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Trained on the I AM ACTOR method - help with prep, business, and character work</p>
+                </div>
+                
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">VI.</div>
+                    <h3 class="pathway-title">Live Sessions with Hans</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Weekly group coaching calls to answer questions and refine technique</p>
+                </div>
+                
+                <div class="pathway-card" style="min-height: 300px; padding: 2rem 1.8rem;">
+                    <div class="pathway-number" style="font-size: 2rem;">VII.</div>
+                    <h3 class="pathway-title">Platform Access</h3>
+                    <p class="pathway-description" style="font-size: 0.95rem;">Post your tapes, get feedback, and track your progress in one place</p>
+                </div>
+            </div>
+            
+            <!-- Testimonial like Deb Leclair -->
+            <div class="hero-trust-line" style="margin-top: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center;">
+                ⭐⭐⭐⭐⭐<br>
+                "This community has transformed self-taping into something I genuinely look forward to!"
+                <span>— BENJAMIN EIO</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Win Big Section -->
+    <section class="chapter chapter-dark" data-section="3">
+        <div class="chapter-container">
+            <div class="chapter-header">
+                <h2 class="chapter-title">Win Big When You Complete</h2>
+                <p class="chapter-subtitle" style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.8);">
+                    Exclusive to the first 20 actors
+                </p>
+            </div>
+            
+            <div style="max-width: 700px; margin: 3rem auto; text-align: center;">
+                <div style="padding: 3rem 2rem; border: 2px solid #FFD700; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #1a1a1a; padding: 0 20px;">
+                        <span style="color: #FFD700; font-size: 1rem; font-weight: 700; letter-spacing: 1px;">FOUNDING MEMBER OFFER</span>
+                    </div>
+                    
+                    <p style="font-size: 1.9rem; color: #FFD700; font-weight: 700; margin-bottom: 2rem; line-height: 1.3;">
+                        Complete all 30 tapes =<br>
+                        WIN a FULL YEAR of community
+                    </p>
+                    
+                    <p style="font-size: 1.3rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;">
+                        Most actors pay <span style="color: #FFD700; font-weight: 700; font-size: 1.4rem;">$948</span> for a year.<br>
+                        You get it <span style="color: #FFD700; font-weight: 700;">FREE</span> just by doing the work.
+                    </p>
+                    
+                    <div style="margin: 2rem 0; padding: 2rem 0; border-top: 1px solid rgba(255, 215, 0, 0.3); border-bottom: 1px solid rgba(255, 215, 0, 0.3);">
+                        <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.85); line-height: 1.7;">
+                            You're paying $279 either way.<br>
+                            The difference? <span style="color: #FFD700; font-weight: 600;">2 months vs. an entire year.</span>
+                        </p>
+                    </div>
+                    
+                    <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.8); margin-top: 2rem;">
+                        The choice is yours. The work is the same.<br>
+                        <span style="color: #FFD700;">Only the first 20 get this shot.</span>
+                    </p>
+                </div>
+                
+                <div style="padding: 2rem; border: 2px solid rgba(255, 215, 0, 0.3); border-left: 4px solid #FFD700; margin: 3rem auto; max-width: 650px;">
+                    <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); font-style: italic; margin: 0; line-height: 1.7;">
+                        "I only want actors who finish what they start. Show me you're one of them, and I'll reward you with a full year of support."
+                    </p>
+                    <p style="color: #FFD700; margin-top: 1.5rem; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">— Hans</p>
+                </div>
+                
+                <p style="margin-top: 2.5rem; font-size: 1.05rem; color: rgba(255, 255, 255, 0.7); text-transform: uppercase; letter-spacing: 1px;">
+                    After 20 spots fill, future members pay full price.
+                </p>
+            </div>
+            
+            <!-- Testimonial like Deb Leclair -->
+            <div class="hero-trust-line" style="margin-top: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center;">
+                ⭐⭐⭐⭐⭐<br>
+                "The self-tape games and challenge was everything I didn't know I needed!"
+                <span>— MARK SALDANA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Foundation Tools Section -->
+    <section class="chapter chapter-light" data-section="4">
+        <div class="chapter-container">
+            <div class="chapter-header">
+                <span style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 1rem; opacity: 0.9;">BONUS TOOLS</span>
+                <h2 class="chapter-title">5 Performance Frameworks</h2>
+                <p class="chapter-subtitle" style="font-style: normal; color: #666;">$497 value - Released weekly to match your progress</p>
+            </div>
+            
+            <!-- Featured Image at Top -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <img src="assets/images/tools1.png" alt="5 Performance Tools" style="max-width: 600px; width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 8px;">
+            </div>
+            
+            <!-- Tools List -->
+            <div style="max-width: 700px; margin: 2rem auto;">
+                <div style="padding: 0 2rem;">
+                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(139, 115, 85, 0.2);">
+                        <h4 style="font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1rem; margin-bottom: 0.5rem;">WEEK 1</h4>
+                        <h3 style="font-size: 1.3rem; color: #2a2a2a; margin-bottom: 0.3rem;">The Quiet Center</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Eliminate audition nerves and camera anxiety</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(139, 115, 85, 0.2);">
+                        <h4 style="font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1rem; margin-bottom: 0.5rem;">WEEK 2</h4>
+                        <h3 style="font-size: 1.3rem; color: #2a2a2a; margin-bottom: 0.3rem;">3 Day Audition Playbook</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Master any audition in 72 hours</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(139, 115, 85, 0.2);">
+                        <h4 style="font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1rem; margin-bottom: 0.5rem;">WEEK 3</h4>
+                        <h3 style="font-size: 1.3rem; color: #2a2a2a; margin-bottom: 0.3rem;">Memory Mastery Guide</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Lock in lines for flawless self-tapes</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(139, 115, 85, 0.2);">
+                        <h4 style="font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1rem; margin-bottom: 0.5rem;">WEEK 4</h4>
+                        <h3 style="font-size: 1.3rem; color: #2a2a2a; margin-bottom: 0.3rem;">Into the Well</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Access authentic emotions on camera</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1rem; margin-bottom: 0.5rem;">WEEK 5</h4>
+                        <h3 style="font-size: 1.3rem; color: #2a2a2a; margin-bottom: 0.3rem;">Character Creation Journey</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Transform completely for any role</p>
                     </div>
                 </div>
             </div>
             
-            <div class="testimonial-dots">
-                <button class="dot active" data-testimonial="0"></button>
-                <button class="dot" data-testimonial="1"></button>
-                <button class="dot" data-testimonial="2"></button>
-                <button class="dot" data-testimonial="3"></button>
-                <button class="dot" data-testimonial="4"></button>
-                <button class="dot" data-testimonial="5"></button>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.2rem; color: #2a2a2a; font-weight: 500;">
+                    <span style="color: #D4AF37; font-weight: 700; font-size: 1.3rem;">$497 value</span> — Released weekly to match your progress
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Chapter 4: About Your Creative Guide -->
-    <section class="chapter chapter-about" data-section="3">
+    <section class="chapter chapter-about" data-section="5">
         <div class="chapter-container">
             <div class="about-grid-simple">
                 <div class="about-text">
                     <h2 class="about-title">Hey — I'm Hans</h2>
                     
-                    <p>I'm an actor and the creator of I AM ACTOR—a space built for artists who are done just taking classes and ready to dedicate themselves to the craft.</p>
+                    <p>I'm Hans, creator of the 30 Tape Challenge—a proven method that's helped actors stop overthinking and start booking.</p>
                     
-                    <p>I've played roles that shook me, failed hard, and found my voice by helping others find theirs. This isn't about chasing fame—it's about tapping into that artist that lives within all of us so that we can own our creative power.</p>
+                    <p>After years of watching actors get stuck in endless classes, I developed this simple system: 30 tapes in 6 weeks. The results? Actors who couldn't book for years are now working consistently.</p>
                     
-                    <p>In here, you're not just learning to act.<br>
-                    You learn to share the stories only you can tell.</p>
+                    <p>This isn't about perfection.<br>
+                    It's about practice that leads to paid work.</p>
                     
                     <div class="hans-signature">
                         <img src="assets/images/Hans-Sign.png" alt="" class="signature-image">
@@ -292,11 +405,11 @@
             
             <!-- Simple CTA with spots text -->
             <div class="spots-availability-section">
-                <button class="story-button spots-cta" id="spots-cta" aria-label="Book your first coaching session">
-                    Book Your First Session
+                <button class="story-button spots-cta" id="spots-cta" aria-label="Join the challenge">
+                    Start Your 30 Tape Challenge
                 </button>
                 <p class="spots-text">
-                    <span class="spots-number-inline" id="spots-large">8</span> private coaching spots available
+                    Limited time offer • Join the community
                 </p>
             </div>
         </div>
@@ -310,65 +423,36 @@
                 <button class="modal-close" id="modal-close" aria-label="Close">×</button>
                 
                 <div class="modal-header">
-                    <h3 class="modal-title">Begin Your Journey</h3>
-                    <p class="modal-subtitle">Choose how deep you want to go</p>
+                    <h3 class="modal-title">Join The 30 Tape Challenge</h3>
+                    <p class="modal-subtitle">One payment, full 6-week program</p>
                 </div>
                 
                 <div class="pricing-options">
-                    <div class="option-card silver-tier">
+                    <div class="option-card featured gold-tier" style="max-width: 400px; margin: 0 auto;">
+                        <div class="option-ribbon">Limited Time Offer</div>
                         <div class="option-header">
-                            <div class="option-title">Single Session</div>
-                            <div class="option-tagline">Test the waters</div>
+                            <div class="option-title">30 Tape Challenge</div>
+                            <div class="option-tagline">Transform in 6 Weeks</div>
                         </div>
                         <div class="option-body">
                             <div class="option-description">
-                                One powerful session to break through what's blocking you
+                                • 30 professional sides in 6 weeks<br>
+                                • Weekly live sessions with Hans<br>
+                                • AI coaching available 24/7<br>
+                                • 6-week community access<br>
+                                • 100% refund if you complete all 30
                             </div>
-                            <div class="option-price">1 × $109</div>
+                            <div class="option-price">$279</div>
+                            <div class="option-savings">Challenge starts in 10 days • 12 spots remaining</div>
                         </div>
-                        <button class="option-button" data-package="single">
-                            Book Single Session
-                        </button>
-                    </div>
-                    
-                    <div class="option-card featured gold-tier">
-                        <div class="option-ribbon">Most Popular</div>
-                        <div class="option-header">
-                            <div class="option-title">Three Sessions</div>
-                            <div class="option-tagline">Real transformation</div>
-                        </div>
-                        <div class="option-body">
-                            <div class="option-description">
-                                Build trust, break patterns, and find your authentic voice
-                            </div>
-                            <div class="option-price">3 × $89</div>
-                            <div class="option-savings">Save $60</div>
-                        </div>
-                        <button class="option-button option-button-featured" data-package="growth">
-                            Start Your Journey
-                        </button>
-                    </div>
-                    
-                    <div class="option-card diamond-tier">
-                        <div class="option-header">
-                            <div class="option-title">Six Sessions</div>
-                            <div class="option-tagline">Complete journey</div>
-                        </div>
-                        <div class="option-body">
-                            <div class="option-description">
-                                Deep dive to completely transform your relationship with acting
-                            </div>
-                            <div class="option-price">6 × $79</div>
-                            <div class="option-savings">Save $180</div>
-                        </div>
-                        <button class="option-button" data-package="transformation">
-                            Commit to Growth
+                        <button class="option-button option-button-featured" data-package="challenge">
+                            Start Challenge Today
                         </button>
                     </div>
                 </div>
                 
                 <div class="modal-footer">
-                    <p class="session-note">Each session is 60 minutes of pure creative exploration</p>
+                    <p class="session-note">Join actors transforming their careers in 6 weeks</p>
                 </div>
             </div>
         </div>

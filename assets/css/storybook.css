@@ -225,6 +225,22 @@ body::before {
 .spots-text {
   font-weight: 500;
   color: #FFFACD;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
+  opacity: 0.9;
+}
+
+.spots-number-inline {
+  font-weight: 700;
+  color: #FFD700;
+  font-size: 1.3em;
+  display: inline-block;
+  margin: 0 0.3rem;
+  font-family: 'Cinzel', serif;
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.6),
+    0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 /* Subtle pulse animation for urgency */
@@ -977,24 +993,23 @@ body::before {
 /* Pathways Grid */
 .pathways-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   margin-top: clamp(2rem, 5vw, 3rem);
+  align-items: stretch;
 }
 
 .pathway-card {
   border-radius: 1.5rem;
-  padding: 4rem 3.5rem;
+  padding: 3rem 2.5rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  min-height: 400px;
+  min-height: 450px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 500px;
-  margin: 0 auto;
 }
 
 /* Light section pathway cards */
@@ -1059,11 +1074,11 @@ body::before {
 
 .pathway-number {
   font-family: 'Cinzel', serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 600;
   color: #FFD700;
   line-height: 1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-shadow: 
     0 0 12px rgba(255, 215, 0, 0.8),
     0 0 24px rgba(255, 215, 0, 0.6),
@@ -1073,11 +1088,12 @@ body::before {
 
 .pathway-title {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 1.25rem;
   line-height: 1.3;
   letter-spacing: 0.3px;
+  text-transform: uppercase;
 }
 
 .chapter:nth-child(even) .pathway-title {
@@ -1090,10 +1106,11 @@ body::before {
 
 .pathway-description {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.1rem, 3.2vw, 1.25rem);
-  line-height: 1.6;
-  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  margin-bottom: auto;
   font-weight: 400;
+  flex-grow: 1;
 }
 
 .chapter:nth-child(even) .pathway-description {
@@ -1153,6 +1170,9 @@ body::before {
     0 0 30px rgba(245, 245, 220, 0.2);
   font-weight: 500;
   font-style: italic;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(245, 245, 220, 0.2);
 }
 
 /* Testimonials */
@@ -1634,8 +1654,19 @@ body::before {
   animation: shimmer 2s infinite;
 }
 
+/* Bottom CTA Section */
+.spots-availability-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .spots-cta {
-  width: 100%;
+  width: auto;
+  display: inline-block;
+  padding: 1rem 3rem;
+  margin: 0 auto;
 }
 
 /* Pricing Modal */
@@ -3209,10 +3240,14 @@ body:hover .knight-background {
     padding: 2rem;
   }
   
+  .pathways-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
   .pathway-card {
     padding: 2.5rem 2rem;
-    min-height: 350px;
-    max-width: 100%;
+    min-height: 380px;
   }
   
   .testimonial-card {
@@ -3257,6 +3292,28 @@ body:hover .knight-background {
   
   .spots-number-large {
     font-size: 3rem;
+  }
+  
+  .pathways-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .pathway-card {
+    padding: 2rem 1.75rem;
+    min-height: auto;
+  }
+  
+  .pathway-number {
+    font-size: 2.5rem;
+  }
+  
+  .pathway-title {
+    font-size: 1.1rem;
+  }
+  
+  .pathway-description {
+    font-size: 1rem;
   }
 }
 
