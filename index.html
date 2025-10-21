@@ -51,11 +51,51 @@
 
         /* Light sections: sophisticated literary feel */
         .section-light {
-            font-size: 1.05rem;
+            font-size: 1.125rem;
+            line-height: 1.8;
         }
 
         .section-light p {
             font-weight: 400;
+            max-width: 65ch;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.8rem;
+        }
+
+        /* Storybook paragraph spacing */
+        .section-light .storybook-text {
+            max-width: 60ch;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.9;
+            font-size: 1.2rem;
+        }
+
+        .section-light .storybook-text p {
+            margin-bottom: 2rem;
+        }
+
+        /* Pull quote style for emphasis */
+        .pull-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--adventure-green);
+            font-weight: 600;
+            margin: 3rem auto;
+            max-width: 55ch;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Chapter break */
+        .chapter-break {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--adventure-green);
+            margin: 4rem auto 2rem;
+            font-family: 'Crimson Text', Georgia, serif;
         }
 
         /* Page Border Frame - subtle storybook effect */
@@ -648,18 +688,28 @@
         /* ===== PHASE CARDS (3-Phase Quest) ===== */
         .phases-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             margin-top: 4rem;
         }
 
         .phase-card {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2.5rem;
+            background: rgba(90, 140, 58, 0.03);
+            border: 1px solid rgba(90, 140, 58, 0.12);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            background: rgba(90, 140, 58, 0.05);
+            border-color: rgba(90, 140, 58, 0.2);
+            transform: translateY(-4px);
         }
 
         .phase-icon {
-            font-size: 5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             display: block;
             line-height: 1;
@@ -667,55 +717,66 @@
 
         .phase-number {
             font-family: 'Alegreya', serif;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--adventure-green);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
 
         .phase-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
         }
 
         .phase-weeks {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--adventure-green);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
         }
 
         .phase-description {
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 1.05rem;
+            line-height: 1.75;
             margin-bottom: 1.5rem;
+            color: #555;
         }
 
         .phase-shift {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--adventure-green);
             font-style: italic;
-            border-top: 2px solid var(--adventure-green);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
+            border-top: 2px solid rgba(90, 140, 58, 0.3);
+            padding-top: 1.75rem;
+            margin-top: 2rem;
+            line-height: 1.5;
         }
 
         /* ===== CHECKLIST ===== */
         .checklist {
             list-style: none;
-            max-width: 650px;
-            margin: 2rem auto;
+            max-width: 700px;
+            margin: 3rem auto;
+            padding: 0;
         }
 
         .checklist li {
-            font-size: 1.15rem;
-            padding: 1rem 0;
-            padding-left: 2.5rem;
+            font-size: 1.125rem;
+            padding: 1.5rem 0;
+            padding-left: 3rem;
             position: relative;
-            border-bottom: 1px solid rgba(90, 140, 58, 0.15);
+            border-bottom: 1px solid rgba(90, 140, 58, 0.12);
+            line-height: 1.7;
+        }
+
+        .checklist li:first-child {
+            border-top: 1px solid rgba(90, 140, 58, 0.12);
         }
 
         .checklist li::before {
@@ -724,7 +785,13 @@
             left: 0;
             color: var(--adventure-green);
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            top: 1.35rem;
+        }
+
+        .checklist li strong {
+            font-weight: 700;
+            color: var(--charcoal);
         }
 
         .section-dark .checklist li {
@@ -1030,15 +1097,16 @@
 
         /* ===== HIGHLIGHT BOX ===== */
         .highlight-box {
-            background: rgba(90, 140, 58, 0.08);
+            background: rgba(90, 140, 58, 0.06);
             border-left: 4px solid var(--adventure-green);
-            padding: 2rem;
-            margin: 2rem 0;
+            padding: 2.5rem 3rem;
+            margin: 3rem auto;
             border-radius: 4px;
+            max-width: 700px;
         }
 
         .section-dark .highlight-box {
-            background: rgba(212, 193, 55, 0.1);
+            background: rgba(212, 193, 55, 0.08);
             border-left-color: var(--old-gold);
         }
 
@@ -1259,34 +1327,40 @@
     <!-- SECTION 2: LIGHT - Call to Adventure -->
     <section class="section section-light">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-right">
-        <div class="container-narrow text-center">
-            <span class="section-label">Your Call to Adventure</span>
-            <h2 class="section-title">
-                You've Been Working.<br>
-                Training. Auditioning.<br>
-                Showing Up Again and Again.
-            </h2>
-
-            <p class="text-lg mt-3">
-                You have the passion. The drive. The willingness to face fear and do it anyway.
-            </p>
-
-            <p class="text-xl mt-3 highlight-green">
-                But here's what's been missing:
-            </p>
-
-            <p class="text-lg mb-2">
-                A clear path forward.
-            </p>
-
-            <div class="emphasis-block-light mt-3">
-                You're not scattered because you're not good enough.<br>
-                You're scattered because no one ever showed you <strong>the journey.</strong>
+        <div class="container-narrow">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label">Your Call to Adventure</span>
+                <h2 class="section-title">
+                    You've Been Working.<br>
+                    Training. Auditioning.<br>
+                    Showing Up Again and Again.
+                </h2>
             </div>
 
-            <p class="text-2xl highlight-green mt-4">
-                Until now.
-            </p>
+            <div class="storybook-text">
+                <p>
+                    You have the passion. The drive. The willingness to face fear and do it anyway.
+                </p>
+
+                <p class="pull-quote" style="margin: 3rem auto;">
+                    But here's what's been missing:
+                </p>
+
+                <p style="font-size: 1.3rem; margin-bottom: 3rem;">
+                    A clear path forward.
+                </p>
+
+                <div style="max-width: 65ch; margin: 4rem auto; padding: 2.5rem 3rem; background: rgba(90, 140, 58, 0.06); border-left: 4px solid var(--adventure-green); text-align: center;">
+                    <p style="font-size: 1.25rem; line-height: 1.7; margin: 0;">
+                        You're not scattered because you're not good enough.<br>
+                        You're scattered because no one ever showed you <strong style="color: var(--adventure-green);">the journey.</strong>
+                    </p>
+                </div>
+
+                <p class="chapter-break">
+                    Until now.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -1294,16 +1368,16 @@
     <section class="section section-light">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-left">
         <div class="container">
-            <div class="text-center">
+            <div style="text-align: center; margin-bottom: 4rem;">
                 <span class="section-label">The 3-Phase Quest</span>
-                <h2 class="section-title">
+                <h2 class="section-title" style="margin-bottom: 1rem;">
                     Every Great Adventure Has Stages.<br>
                     Every Transformation Requires a Path.
                 </h2>
-                <p class="section-subtitle">Here's yours.</p>
+                <p style="font-size: 1.3rem; font-style: italic; color: #666; margin-top: 1.5rem;">Here's yours.</p>
             </div>
 
-            <div class="phases-grid">
+            <div class="phases-grid" style="gap: 3.5rem;">
                 <!-- Phase 1 -->
                 <div class="phase-card">
                     <span class="phase-icon">⚔️</span>
@@ -1417,20 +1491,22 @@
     <!-- SECTION 5: LIGHT - What's Included -->
     <section class="section section-light">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-right">
-        <div class="container-narrow text-center">
-            <span class="section-label">What's Included</span>
-            <h2 class="section-title">Your Complete Arsenal</h2>
+        <div class="container-narrow">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label">What's Included</span>
+                <h2 class="section-title">Your Complete Arsenal</h2>
+            </div>
 
-            <ul class="checklist" style="text-align: left; margin-top: 3rem;">
-                <li><strong>12 weeks of live transformation</strong> - Weekly calls with Hans</li>
-                <li><strong>The 3-Phase Curriculum</strong> - Identity → Character → Materials</li>
-                <li><strong>Circle Community Access</strong> - Fellow actors on the same quest</li>
-                <li><strong>The Self-Tape Academy</strong> - 30 tapes, 20 challenges, 12 weeks</li>
-                <li><strong>The 5 Actor's Tools (Bonus)</strong> - Memory, Emotion, Presence, Character, Audition mastery</li>
-                <li><strong>Your Complete Arsenal</strong> - Headshots, reels, castability sheet</li>
+            <ul class="checklist">
+                <li><strong>12 weeks of live transformation</strong> — Weekly calls with Hans</li>
+                <li><strong>The 3-Phase Curriculum</strong> — Identity → Character → Materials</li>
+                <li><strong>Circle Community Access</strong> — Fellow actors on the same quest</li>
+                <li><strong>The Self-Tape Academy</strong> — 30 tapes, 20 challenges, 12 weeks</li>
+                <li><strong>The 5 Actor's Tools (Bonus)</strong> — Memory, Emotion, Presence, Character, Audition mastery</li>
+                <li><strong>Your Complete Arsenal</strong> — Headshots, reels, castability sheet</li>
             </ul>
 
-            <p style="font-size: 1.3rem; color: var(--adventure-green); font-weight: 700; margin-top: 3rem;">
+            <p style="font-size: 1.2rem; color: var(--adventure-green); font-weight: 600; margin-top: 4rem; text-align: center; font-style: italic;">
                 Only 10 spots available
             </p>
         </div>
