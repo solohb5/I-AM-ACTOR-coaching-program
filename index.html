@@ -298,24 +298,9 @@
         }
 
         .nav-cta-btn {
-            background: var(--old-gold);
-            color: var(--deep-charcoal);
-            border: none;
-            padding: 14px 36px;
-            font-family: 'Alegreya', serif;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(212, 193, 55, 0.3);
             white-space: nowrap;
-        }
-
-        .nav-cta-btn:hover {
-            background: #E5D157;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 193, 55, 0.4);
+            font-size: var(--text-sm);
+            padding: var(--space-sm) var(--space-md);
         }
 
         @media (max-width: 768px) {
@@ -1232,7 +1217,7 @@
         <div class="nav-logo">
             <img src="assets/images/logo-dark.png" alt="I AM ACTOR" onclick="window.location.href='#'">
         </div>
-        <button class="nav-cta-btn" onclick="window.location.href='#investment'">
+        <button class="btn btn--primary nav-cta-btn" onclick="window.location.href='#investment'">
             Begin Journey
         </button>
     </nav>
@@ -1249,7 +1234,7 @@
                 The fire has always been in you.<br>
                 You've just needed to know the way.
             </div>
-            <button class="hero-cta" onclick="window.location.href='#investment'">
+            <button class="btn btn--primary btn--hero hero-cta" onclick="window.location.href='#investment'">
                 Begin Your Journey
             </button>
             <div class="hero-cta-subtext">
@@ -1319,63 +1304,63 @@
                 <p style="font-size: 1.3rem; font-style: italic; color: #666; margin-top: 1.5rem;">Here's yours.</p>
             </div>
 
-            <div class="phases-grid" style="gap: 3.5rem;">
+            <div class="card-grid">
                 <!-- Phase 1 -->
-                <div class="phase-card">
-                    <span class="phase-icon">⚔️</span>
-                    <div class="phase-number">Phase 1</div>
-                    <h3 class="phase-title">Awaken the Artist</h3>
-                    <div class="phase-weeks">Weeks 1-4</div>
+                <div class="card">
+                    <span class="card__icon">⚔️</span>
+                    <div class="card__label">Phase 1</div>
+                    <h3 class="card__title">Awaken the Artist</h3>
+                    <div class="card__subtitle">Weeks 1-4</div>
 
-                    <p class="phase-description">
+                    <p class="card__description">
                         Who am I, really? Where am I going? What makes me different?
                     </p>
 
-                    <p class="phase-description">
+                    <p class="card__description">
                         You'll extract the <strong>Seeds of Character</strong> from your life story and discover the superpower you've had all along.
                     </p>
 
-                    <div class="phase-shift">
+                    <div class="card__footer">
                         From "I can be anything" to "I am UNMISTAKABLY this."
                     </div>
                 </div>
 
                 <!-- Phase 2 -->
-                <div class="phase-card">
-                    <span class="phase-icon">🗡️</span>
-                    <div class="phase-number">Phase 2</div>
-                    <h3 class="phase-title">Character Mastery</h3>
-                    <div class="phase-weeks">Weeks 5-8</div>
+                <div class="card">
+                    <span class="card__icon">🗡️</span>
+                    <div class="card__label">Phase 2</div>
+                    <h3 class="card__title">Character Mastery</h3>
+                    <div class="card__subtitle">Weeks 5-8</div>
 
-                    <p class="phase-description">
+                    <p class="card__description">
                         Build your <strong>Character Cards</strong> - the three types you were born to play.
                     </p>
 
-                    <p class="phase-description">
+                    <p class="card__description">
                         Learn the <strong>Tethering Process:</strong> connect YOUR truth to EVERY role you audition for.
                     </p>
 
-                    <div class="phase-shift">
+                    <div class="card__footer">
                         From generic actor to THE actor casting directors remember.
                     </div>
                 </div>
 
                 <!-- Phase 3 -->
-                <div class="phase-card">
-                    <span class="phase-icon">🏔️</span>
-                    <div class="phase-number">Phase 3</div>
-                    <h3 class="phase-title">Material Mastery</h3>
-                    <div class="phase-weeks">Weeks 9-12</div>
+                <div class="card">
+                    <span class="card__icon">🏔️</span>
+                    <div class="card__label">Phase 3</div>
+                    <h3 class="card__title">Material Mastery</h3>
+                    <div class="card__subtitle">Weeks 9-12</div>
 
-                    <p class="phase-description">
+                    <p class="card__description">
                         <strong>Reps can't sell you if you don't know what you're selling.</strong>
                     </p>
 
-                    <p class="phase-description">
+                    <p class="card__description">
                         Your headshots align with your types. Your <strong>Castability Sheet</strong> tells reps how to pitch you. Your materials showcase the story only you can tell.
                     </p>
 
-                    <div class="phase-shift">
+                    <div class="card__footer">
                         From "trying to get seen" to "impossible to ignore."
                     </div>
                 </div>
