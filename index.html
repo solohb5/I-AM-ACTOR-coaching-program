@@ -25,80 +25,177 @@
     <link rel="preload" href="assets/images/knightartfire (500 x 500 px).png" as="image">
 
     <style>
-        /* ===== STORYBOOK COLOR PALETTE ===== */
+        /* ===============================================
+           DESIGN SYSTEM - The Actor's Journey
+           "Storybook Meets Cinematic Epic"
+           =============================================== */
+
+        /* ===== FOUNDATION: COLORS ===== */
         :root {
+            /* Primary Palette */
             --ivory: #FFFEF0;
             --adventure-green: #5A8C3A;
             --old-gold: #D4C137;
             --charcoal: #2C2C2C;
-            --deep-charcoal: #1A1A1A;
+            --deep-charcoal: #0F0F0F;
+
+            /* Systematic Opacity Scale */
+            --opacity-bg-subtle: 0.03;
+            --opacity-bg-light: 0.06;
+            --opacity-bg-medium: 0.1;
+
+            --opacity-border-subtle: 0.12;
+            --opacity-border-medium: 0.2;
+            --opacity-border-strong: 0.3;
+
+            --opacity-text-muted: 0.85;
+            --opacity-text-medium: 0.9;
+            --opacity-text-full: 0.95;
+
+            /* Spacing System (5 values only) */
+            --space-xs: 0.5rem;   /* 8px */
+            --space-sm: 1rem;     /* 16px */
+            --space-md: 2rem;     /* 32px */
+            --space-lg: 4rem;     /* 64px */
+            --space-xl: 8rem;     /* 128px */
+
+            /* Typography Scale */
+            --text-xs: 0.875rem;  /* 14px */
+            --text-sm: 1rem;      /* 16px */
+            --text-base: 1.125rem;/* 18px */
+            --text-lg: 1.25rem;   /* 20px */
+            --text-xl: 1.5rem;    /* 24px */
+            --text-2xl: 2rem;     /* 32px */
+            --text-3xl: 2.5rem;   /* 40px */
+            --text-4xl: 3rem;     /* 48px */
+            --text-5xl: 4rem;     /* 64px */
+            --text-hero: 6rem;    /* 96px */
         }
 
-        /* ===== RESET & BASE ===== */
+        /* ===== RESET ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* ===== TYPOGRAPHY SYSTEM ===== */
+        /*
+           3 Fonts Only:
+           - Cinzel: Epic/dramatic (dark sections, hero)
+           - Crimson Text: Elegant headings (light sections)
+           - Lora: All body text
+        */
+
         body {
             font-family: 'Lora', Georgia, serif;
-            font-size: 19px;
-            line-height: 1.75;
+            font-size: var(--text-base);
+            line-height: 1.7;
             color: var(--charcoal);
             background: var(--ivory);
-        }
-
-        /* Light sections: sophisticated literary feel */
-        .section-light {
-            font-size: 1.125rem;
-            line-height: 1.8;
-        }
-
-        .section-light p {
             font-weight: 400;
-            max-width: 65ch;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 1.8rem;
         }
 
-        /* Storybook paragraph spacing */
-        .section-light .storybook-text {
+        /* Default Headings - Light Sections */
+        h1, h2, h3, h4 {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--charcoal);
+            margin: 0;
+        }
+
+        h1 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-md);
+        }
+
+        h2 {
+            font-size: var(--text-3xl);
+            margin-bottom: var(--space-md);
+        }
+
+        h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Dark Sections - Epic Typography */
+        .section-dark h1,
+        .section-dark h2,
+        .section-dark h3 {
+            font-family: 'Cinzel', Georgia, serif;
+            color: var(--old-gold);
+        }
+
+        .section-dark h2 {
+            font-size: var(--text-4xl);
+            text-shadow: 0 0 20px rgba(212, 193, 55, 0.2);
+        }
+
+        /* Paragraph System */
+        p {
+            margin-bottom: var(--space-md);
+            line-height: 1.7;
+            max-width: 65ch;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        .section-light strong {
+            color: var(--charcoal);
+        }
+
+        .section-dark strong {
+            color: var(--old-gold);
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* Typography Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        /* Storybook Text Container */
+        .storybook-text {
             max-width: 60ch;
             margin: 0 auto;
             text-align: center;
-            line-height: 1.9;
-            font-size: 1.2rem;
         }
 
-        .section-light .storybook-text p {
-            margin-bottom: 2rem;
+        .storybook-text p {
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Pull quote style for emphasis */
+        /* Pull Quote */
         .pull-quote {
-            font-size: 1.5rem;
+            font-size: var(--text-xl);
             font-style: italic;
             color: var(--adventure-green);
             font-weight: 600;
-            margin: 3rem auto;
+            margin: var(--space-lg) auto;
             max-width: 55ch;
             line-height: 1.6;
             text-align: center;
         }
 
-        /* Chapter break */
+        /* Chapter Break */
         .chapter-break {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: var(--text-2xl);
             font-weight: 700;
             color: var(--adventure-green);
-            margin: 4rem auto 2rem;
+            margin: var(--space-lg) auto var(--space-md);
             font-family: 'Crimson Text', Georgia, serif;
         }
 
-        /* Page Border Frame - subtle storybook effect */
+        /* Page Border Frame */
         body::after {
             content: '';
             position: fixed;
@@ -106,100 +203,16 @@
             left: 10px;
             right: 10px;
             bottom: 10px;
-            border: 1px solid rgba(44, 44, 44, 0.15);
+            border: 1px solid rgba(44, 44, 44, var(--opacity-border-subtle));
             pointer-events: none;
             z-index: 9999;
         }
 
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4 {
-            font-family: 'Alegreya', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.3;
-            color: var(--charcoal);
-        }
+        /* ===== LAYOUT SYSTEM ===== */
 
-        /* Dark sections get epic Cinzel typography */
-        .section-dark h1,
-        .section-dark h2,
-        .section-dark h3 {
-            font-family: 'Cinzel', 'Alegreya', Georgia, serif;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Epic sizing for dark section titles */
-        .section-dark h1 {
-            font-size: 4.5rem;
-            line-height: 1.15;
-            font-weight: 800;
-        }
-
-        .section-dark h2 {
-            font-size: 3rem;
-            line-height: 1.2;
-            font-weight: 700;
-            color: var(--old-gold);
-            text-shadow: 0 0 20px rgba(212, 193, 55, 0.15);
-            margin-bottom: 1.5rem;
-        }
-
-        .section-light h2 {
-            font-family: 'Crimson Text', 'Bookman Old Style', 'Georgia', serif;
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--charcoal);
-            line-height: 1.3;
-        }
-
-        .section-light h3 {
-            font-family: 'Crimson Text', 'Bookman Old Style', 'Georgia', serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--charcoal);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            max-width: 65ch;
-        }
-
-        strong {
-            font-weight: 600;
-            color: var(--adventure-green);
-        }
-
-        /* Light sections: use green more sparingly */
-        .section-light strong {
-            color: var(--charcoal);
-            font-weight: 700;
-        }
-
-        em {
-            font-style: italic;
-            color: var(--charcoal);
-        }
-
-        /* ===== LAYOUT CONTAINERS ===== */
+        /* Section Containers */
         .section {
-            padding: 6rem 2rem;
+            padding: var(--space-xl) var(--space-md);
             position: relative;
         }
 
@@ -210,21 +223,18 @@
 
         .section-dark {
             background: var(--deep-charcoal);
-            color: rgba(255, 254, 240, 0.95);
+            color: rgba(255, 254, 240, var(--opacity-text-full));
             position: relative;
         }
 
-        /* Subtle texture overlay for premium feel */
+        /* Subtle texture overlay */
         .section-dark::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(212, 193, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(212, 193, 55, 0.02) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(212, 193, 55, var(--opacity-bg-subtle)) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 193, 55, var(--opacity-bg-subtle)) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -234,16 +244,7 @@
             z-index: 1;
         }
 
-        .section-dark strong {
-            color: var(--old-gold);
-            font-weight: 600;
-        }
-
-        /* Add subtle glow to gold in dark sections */
-        .section-dark .section-label {
-            text-shadow: 0 0 20px rgba(212, 193, 55, 0.3);
-        }
-
+        /* Content Width Containers */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -252,10 +253,6 @@
         .container-narrow {
             max-width: 750px;
             margin: 0 auto;
-        }
-
-        .text-center {
-            text-align: center;
         }
 
         /* ===== NAVIGATION - Premium Dark Design ===== */
@@ -1051,48 +1048,52 @@
             line-height: 1.6;
         }
 
-        /* ===== BUTTONS & LINKS ===== */
+        /* ===== BUTTON SYSTEM ===== */
+        /* Base Button */
         .btn {
-            font-family: 'Alegreya', serif;
+            font-family: 'Crimson Text', Georgia, serif;
             font-weight: 700;
-            padding: 1rem 2.5rem;
-            font-size: 1.15rem;
+            font-size: var(--text-lg);
+            padding: var(--space-sm) var(--space-lg);
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
             text-decoration: none;
             display: inline-block;
             border-radius: 4px;
+            text-align: center;
         }
 
-        .btn-primary {
+        /* Primary CTA - Solid Gold */
+        .btn--primary {
             background: var(--old-gold);
             color: var(--deep-charcoal);
-            font-size: 1.25rem;
-            padding: 16px 48px;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(212, 193, 55, 0.4);
+            box-shadow: 0 4px 12px rgba(212, 193, 55, var(--opacity-border-strong));
         }
 
-        .btn-primary:hover {
+        .btn--primary:hover {
             background: #E5D157;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 193, 55, 0.5);
+            box-shadow: 0 6px 20px rgba(212, 193, 55, 0.4);
         }
 
-        .btn-secondary {
+        /* Secondary CTA - Outline Gold */
+        .btn--secondary {
             background: transparent;
             border: 2px solid var(--old-gold);
             color: var(--old-gold);
-            font-size: 1.25rem;
-            padding: 16px 48px;
-            font-weight: 700;
         }
 
-        .btn-secondary:hover {
+        .btn--secondary:hover {
             background: var(--old-gold);
             color: var(--deep-charcoal);
-            box-shadow: 0 4px 12px rgba(212, 193, 55, 0.3);
+            box-shadow: 0 4px 12px rgba(212, 193, 55, var(--opacity-border-strong));
+        }
+
+        /* Hero Button - Larger */
+        .btn--hero {
+            font-size: var(--text-xl);
+            padding: var(--space-sm) calc(var(--space-lg) + var(--space-md));
         }
 
         /* ===== HIGHLIGHT BOX ===== */
