@@ -15,10 +15,10 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://iamactor.com">
 
-    <!-- Typography: Bookman Old Style (Shel Silverstein) + Cinzel (epic/dark) + Alegreya (literary/light) + Lora (body) -->
+    <!-- Typography: Bookman/Bentham (Shel Silverstein) + Cinzel (epic/dark) + Crimson Text (light headings) + Lora (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Bentham&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Bentham&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Performance Optimization -->
     <link rel="preload" href="assets/images/logo-dark.png" as="image">
@@ -52,12 +52,12 @@
             --opacity-text-medium: 0.9;
             --opacity-text-full: 0.95;
 
-            /* Spacing System (5 values only) */
-            --space-xs: 0.5rem;   /* 8px */
-            --space-sm: 1rem;     /* 16px */
-            --space-md: 2rem;     /* 32px */
-            --space-lg: 4rem;     /* 64px */
-            --space-xl: 8rem;     /* 128px */
+            /* Spacing System (8-point grid) */
+            --space-xs: 8px;      /* 8px */
+            --space-sm: 16px;     /* 16px */
+            --space-md: 32px;     /* 32px */
+            --space-lg: 64px;     /* 64px */
+            --space-xl: 120px;    /* 120px - premium section spacing */
 
             /* Typography Scale */
             --text-xs: 0.875rem;  /* 14px */
@@ -79,6 +79,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* ===== TYPOGRAPHY SYSTEM ===== */
         /*
            3 Fonts Only:
@@ -96,13 +100,19 @@
             font-weight: 400;
         }
 
-        /* Default Headings - Light Sections */
+        /* Default Headings - Light Sections (Shel Silverstein aesthetic) */
         h1, h2, h3, h4 {
-            font-family: 'Crimson Text', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.25;
+            font-family: 'Bentham', 'Bookman Old Style', 'URW Bookman L', 'EB Garamond', Georgia, serif;
+            font-weight: 400;
+            line-height: 1.3;
             color: var(--charcoal);
             margin: 0;
+        }
+
+        /* Stronger weight for H2/H3 in light sections */
+        .section-light h2,
+        .section-light h3 {
+            font-weight: 600;
         }
 
         h1 {
@@ -221,6 +231,10 @@
             color: var(--charcoal);
         }
 
+        .section-light p {
+            line-height: 1.7;
+        }
+
         .section-dark {
             background: var(--deep-charcoal);
             color: rgba(255, 254, 240, var(--opacity-text-full));
@@ -303,6 +317,19 @@
             padding: var(--space-sm) var(--space-md);
         }
 
+        /* Tablet breakpoint for better scaling */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 4rem 2rem 3rem;
+            }
+            .hero-main {
+                font-size: 3.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.75rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav {
                 padding: 1rem 1.5rem;
@@ -345,7 +372,7 @@
 
         /* ===== HERO SECTION ===== */
         .hero {
-            min-height: 90vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -353,7 +380,7 @@
             background: #0A0A0A;
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem;
+            padding: 6rem 2rem 4rem;
         }
 
         /* Subtle vignette for spotlight effect */
@@ -381,37 +408,32 @@
             bottom: 0;
             left: 50px;
             height: 200px;
-            opacity: 0.2;
+            opacity: 0.25;
+            transition: opacity 0.4s ease;
         }
 
-        .hero h1 {
-            font-family: 'Bentham', 'Bookman Old Style', 'URW Bookman L', 'Georgia', serif;
-            font-size: 7rem;
-            color: var(--ivory);
+        .hero:hover .hero-knight {
+            opacity: 0.35;
+        }
+
+        /* Hero Title Container */
+        .hero-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 2.5rem;
-            line-height: 1.25;
+        }
+
+        /* "The" - Chapter Marker Style */
+        .hero-article {
+            font-size: 1.5rem;
             font-weight: 400;
-            letter-spacing: 0px;
-            overflow: visible;
-            padding-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 4rem;
-                padding-bottom: 1.5rem;
-            }
-        }
-
-        /* "The" - small, subtle, uppercase */
-        .hero h1 .the-text {
-            display: block;
-            font-size: 2.5rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            letter-spacing: 8px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.5rem;
+            opacity: 0.7;
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--ivory);
             animation: fade-in-down 1.5s ease-out 0.3s both;
         }
 
@@ -421,18 +443,20 @@
                 transform: translateY(-15px);
             }
             100% {
-                opacity: 1;
+                opacity: 0.7;
                 transform: translateY(0);
             }
         }
 
-        /* "Actor's Journey" - HUGE with magical shimmer */
-        .hero h1 .actors-journey-text {
+        /* "Actor's Journey" - Main Hero Text */
+        .hero-main {
             display: block;
             font-style: italic;
-            font-size: 6.5rem;
+            font-size: 5rem;
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1;
+            letter-spacing: -0.015em;
+            font-family: 'Bentham', 'Bookman Old Style', 'URW Bookman L', 'Georgia', serif;
             white-space: nowrap;
             background: linear-gradient(
                 120deg,
@@ -449,18 +473,10 @@
             position: relative;
             animation: magical-sweep 4s ease-in-out 0.8s both;
             filter: drop-shadow(0 0 25px rgba(212, 193, 55, 0.25));
-            padding-bottom: 0.25rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 .actors-journey-text {
-                font-size: 3.5rem;
-                white-space: normal;
-            }
         }
 
         /* Soft magical glow behind text */
-        .hero h1 .actors-journey-text::before {
+        .hero-main::before {
             content: attr(data-text);
             position: absolute;
             left: 0;
@@ -479,6 +495,18 @@
             background-clip: text;
             filter: blur(20px);
             opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero-article {
+                font-size: 1rem;
+                letter-spacing: 0.15em;
+            }
+
+            .hero-main {
+                font-size: 2.75rem;
+                white-space: normal;
+            }
         }
 
         @keyframes magical-sweep {
@@ -500,23 +528,23 @@
         }
 
         .hero-subtitle {
-            font-family: 'Lora', serif;
-            font-size: 1.75rem;
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 2rem;
             color: var(--ivory);
-            margin-bottom: 2rem;
-            font-weight: 400;
-            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.25;
             animation: fade-in-up 1.2s ease-out 2s both;
         }
 
         .hero-tagline {
             font-family: 'Lora', serif;
-            font-size: 1.5rem;
+            font-size: 1.125rem;
             color: rgba(255, 254, 240, 0.9);
             font-style: italic;
-            font-weight: 300;
-            margin-bottom: 3rem;
-            margin-top: 2rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
             line-height: 1.6;
             animation: fade-in-up 1.2s ease-out 2.5s both;
         }
@@ -549,18 +577,27 @@
         }
 
         .hero-cta-subtext {
-            font-size: var(--text-sm);
+            font-size: 1rem;
             color: rgba(255, 254, 240, var(--opacity-text-muted));
+            margin-top: 1.25rem;
             margin-bottom: var(--space-lg);
+            font-weight: 600;
+            letter-spacing: 0.02em;
             animation: fade-in-up 1s ease-out 3.3s both;
+        }
+
+        .hero-cta-subtext strong,
+        .hero-cta-subtext .hero-spots {
+            color: var(--old-gold);
+            font-weight: 700;
         }
 
         /* === COMPONENT: TESTIMONIALS === */
         .testimonial {
             max-width: 600px;
-            margin: var(--space-lg) auto 0;
-            padding: var(--space-md) 0;
-            border-top: 1px solid rgba(212, 193, 55, var(--opacity-border-medium));
+            margin: 4rem auto 0;
+            padding: 3rem 0 0;
+            border-top: 1px solid rgba(212, 193, 55, 0.2);
         }
 
         .hero .testimonial {
@@ -574,10 +611,10 @@
         }
 
         .testimonial-quote {
-            font-size: var(--text-base);
-            line-height: 1.7;
+            font-size: 1.125rem;
+            line-height: 1.6;
             font-style: italic;
-            margin-bottom: var(--space-sm);
+            margin: 1rem 0;
         }
 
         .testimonial-author {
@@ -767,11 +804,22 @@
             text-align: center;
             position: relative;
             border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .investment-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(90, 140, 58, 0.25);
+            border-color: var(--old-gold);
         }
 
         .investment-card.featured {
             border-color: var(--adventure-green);
             box-shadow: 0 10px 40px rgba(90, 140, 58, 0.2);
+        }
+
+        .investment-card.featured:hover {
+            box-shadow: 0 16px 56px rgba(90, 140, 58, 0.3);
         }
 
         .investment-label {
@@ -1001,8 +1049,17 @@
 
         /* Hero Button - Larger */
         .btn--hero {
-            font-size: var(--text-xl);
-            padding: var(--space-sm) calc(var(--space-lg) + var(--space-md));
+            font-size: 1.3rem;
+            padding: 22px 52px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(212, 193, 55, 0.4);
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+        }
+
+        .btn--hero:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(212, 193, 55, 0.5);
         }
 
         /* ===== COMPONENT: HIGHLIGHT BOX ===== */
@@ -1035,6 +1092,280 @@
         .section-dark .section-label {
             color: var(--old-gold);
             text-shadow: 0 0 20px rgba(212, 193, 55, var(--opacity-border-strong));
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-accordion {
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(212, 193, 55, 0.2);
+            margin-bottom: 0;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid rgba(212, 193, 55, 0.2);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 24px 0;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--ivory);
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--old-gold);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--old-gold);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease;
+            overflow: hidden;
+        }
+
+        .faq-answer-inner {
+            min-height: 0;
+            padding-bottom: 0;
+            transition: padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-item.active .faq-answer-inner {
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: rgba(255, 254, 240, 0.9);
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .faq-question {
+                font-size: 1.125rem;
+                padding: 20px 0;
+            }
+
+            .faq-answer p {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== PRICE ANCHORING SECTION ===== */
+        .price-anchor-wrapper {
+            max-width: 650px;
+            margin: 80px auto;
+        }
+
+        .price-anchor-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--charcoal);
+        }
+
+        .price-anchor-card {
+            text-align: left;
+        }
+
+        .price-anchor-intro {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        .price-anchor-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 48px;
+        }
+
+        .price-anchor-item {
+            font-size: 1.125rem;
+            line-height: 2;
+            margin-bottom: 16px;
+            padding-left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .price-anchor-item strong {
+            font-family: 'Cinzel', serif;
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            font-weight: 700;
+        }
+
+        .price-anchor-total {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            padding-top: 32px;
+            margin-top: 32px;
+            border-top: 2px solid var(--charcoal);
+            margin-bottom: 64px;
+            font-weight: 700;
+        }
+
+        .price-anchor-conclusion {
+            font-size: 1.75rem;
+            line-height: 1.4;
+            font-weight: 700;
+            color: var(--adventure-green);
+            text-align: center;
+            margin-bottom: 16px;
+            font-family: 'Crimson Text', Georgia, serif;
+        }
+
+        .price-anchor-tagline {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+            opacity: 0.75;
+        }
+
+        /* ===== GUARANTEE SECTION ===== */
+        .guarantee-wrapper {
+            margin-top: 64px;
+            text-align: center;
+        }
+
+        .guarantee-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 48px 0;
+        }
+
+        .guarantee-badge {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border: 3px solid var(--old-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .guarantee-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--adventure-green);
+            margin-bottom: 16px;
+        }
+
+        .guarantee-text {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .guarantee-subtext {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-mobile-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--old-gold);
+            padding: 16px 24px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 998;
+            display: none;
+        }
+
+        .sticky-mobile-cta.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-mobile-cta-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 16px;
+        }
+
+        .sticky-mobile-cta button {
+            flex: 1;
+            background: var(--deep-charcoal);
+            color: var(--ivory);
+            border: none;
+            padding: 16px 24px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Crimson Text', Georgia, serif;
+            cursor: pointer;
+            border-radius: 4px;
+            min-height: 56px;
+        }
+
+        .sticky-mobile-cta-dismiss {
+            background: transparent;
+            border: none;
+            color: var(--deep-charcoal);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+            opacity: 0.7;
+            flex-shrink: 0;
+            min-height: auto;
+        }
+
+        @media (min-width: 769px) {
+            .sticky-mobile-cta {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sticky-mobile-cta {
+                display: block;
+            }
         }
 
         /* ===== FOOTER ===== */
@@ -1164,14 +1495,40 @@
 
             .section { padding: 4rem 1.5rem; }
             .hero {
-                min-height: 75vh;
-                padding: 6rem 1.5rem;
+                min-height: auto;
+                padding: 3rem 1.5rem 3rem;
             }
-            .hero h1 {
-                font-size: 3rem;
-                letter-spacing: 0.5px;
+            .hero-article {
+                font-size: 1rem;
             }
-            .hero-subtitle { font-size: 1.5rem; }
+            .hero-main {
+                font-size: 2.25rem;
+                white-space: normal;
+                line-height: 1.1;
+            }
+            .hero-subtitle {
+                font-size: 1.25rem;
+                line-height: 1.3;
+            }
+            .hero-tagline {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            .btn--hero {
+                width: 100%;
+                padding: 18px 32px;
+            }
+
+            .nav-cta-btn {
+                min-height: 48px;
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            .hero-knight {
+                max-width: 120px;
+                height: auto;
+                opacity: 0.15;
+            }
 
             .section-dark h1 { font-size: 3rem; }
             .section-dark h2 { font-size: 2.25rem; }
@@ -1218,7 +1575,7 @@
             <img src="assets/images/logo-dark.png" alt="I AM ACTOR" onclick="window.location.href='#'">
         </div>
         <button class="btn btn--primary nav-cta-btn" onclick="window.location.href='#investment'">
-            Begin Journey
+            Claim Your Spot
         </button>
     </nav>
 
@@ -1226,7 +1583,10 @@
     <section class="hero section-dark">
         <img src="assets/images/knightartfire (500 x 500 px).png" alt="" class="hero-knight">
         <div class="container-narrow text-center">
-            <h1><span class="the-text">The</span> <span class="actors-journey-text" data-text="Actor's Journey">Actor's Journey</span></h1>
+            <h1 class="hero-title">
+                <span class="hero-article">The</span>
+                <span class="hero-main" data-text="Actor's Journey">Actor's Journey</span>
+            </h1>
             <div class="hero-subtitle">
                 12 Weeks to Become the Actor<br>Casting Directors Fight For
             </div>
@@ -1235,10 +1595,10 @@
                 You've just needed to know the way.
             </div>
             <button class="btn btn--primary btn--hero hero-cta" onclick="window.location.href='#investment'">
-                Begin Your Journey
+                Start Your Transformation
             </button>
             <div class="hero-cta-subtext">
-                Quest begins November 4, 2025 • Only 10 spots
+                Quest begins November 4, 2025 • <span class="hero-spots">Only 10 spots</span>
             </div>
 
             <div class="testimonial">
@@ -1277,12 +1637,10 @@
                     A clear path forward.
                 </p>
 
-                <div style="max-width: 65ch; margin: 4rem auto; padding: 2.5rem 3rem; background: rgba(90, 140, 58, 0.06); border-left: 4px solid var(--adventure-green); text-align: center;">
-                    <p style="font-size: 1.25rem; line-height: 1.7; margin: 0;">
-                        You're not scattered because you're not good enough.<br>
-                        You're scattered because no one ever showed you <strong style="color: var(--adventure-green);">the journey.</strong>
-                    </p>
-                </div>
+                <p class="pull-quote" style="margin: 4rem auto; max-width: 55ch;">
+                    You're not scattered because you're not good enough.<br>
+                    You're scattered because no one ever showed you the journey.
+                </p>
 
                 <p class="chapter-break">
                     Until now.
@@ -1368,7 +1726,59 @@
         </div>
     </section>
 
-    <!-- SECTION 4: DARK - Your Training Ground -->
+    <!-- SECTION 4: LIGHT - You're Ready If -->
+    <section class="section section-light">
+        <div class="container-narrow text-center">
+            <span class="section-label">Is This Journey Right for You?</span>
+            <h2 class="section-title" style="margin-bottom: 48px;">
+                You're Ready for This Journey If...
+            </h2>
+
+            <div style="max-width: 650px; margin: 0 auto 48px; text-align: left;">
+                <div style="display: grid; gap: 24px;">
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're tired of scattered training that doesn't translate to bookings</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You have the passion but need clear direction</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to discover your unique superpower as an actor</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're willing to invest 4-6 hours weekly for 12 weeks</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You want lifetime clarity, not quick fixes</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to become the actor casting directors fight for</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 48px;">
+                <a href="#investment" class="btn btn--primary btn--hero">
+                    Yes, This Is Me - Apply Now
+                </a>
+            </div>
+
+            <!-- Knight placeholder for future custom illustration -->
+            <div style="margin-top: 64px; opacity: 0.15;">
+                <div style="width: 200px; height: 200px; margin: 0 auto; border: 2px dashed var(--adventure-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--adventure-green); font-size: 0.875rem;">
+                    Knight illustration placeholder
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: DARK - Your Training Ground -->
     <section class="section section-dark">
         <div class="container-narrow text-center">
             <span class="section-label">Your Training Ground</span>
@@ -1380,30 +1790,50 @@
                 <strong style="color: var(--old-gold); font-style: normal;">We're going to make yours impossible to ignore.</strong>
             </p>
 
-            <div style="max-width: 600px; margin: 4rem auto;">
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; padding: 3rem 2rem; background: rgba(212, 193, 55, 0.05); border: 1px solid rgba(212, 193, 55, 0.2); border-radius: 8px;">
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--old-gold); font-family: 'Cinzel', serif; margin-bottom: 0.5rem;">30</div>
-                        <div style="font-size: 0.9rem; opacity: 0.8; letter-spacing: 1px;">TAPES</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--old-gold); font-family: 'Cinzel', serif; margin-bottom: 0.5rem;">20</div>
-                        <div style="font-size: 0.9rem; opacity: 0.8; letter-spacing: 1px;">CHALLENGES</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--old-gold); font-family: 'Cinzel', serif; margin-bottom: 0.5rem;">12</div>
-                        <div style="font-size: 0.9rem; opacity: 0.8; letter-spacing: 1px;">WEEKS</div>
-                    </div>
+            <div style="max-width: 700px; margin: 4rem auto; text-align: left;">
+                <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
+                    <p style="font-size: 1.125rem; margin-bottom: 1rem;"><strong>📽️ Before you begin...</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Introduction to the Academy</p>
                 </div>
+
+                <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
+                    <p style="font-size: 1.125rem; margin-bottom: 1rem;"><strong>🏆 30 Tape Challenge</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Your foundation building</p>
+                </div>
+
+                <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem; text-align: center; font-family: 'Crimson Text', Georgia, serif;">
+                    THE GAMES — 5 Series, 20 Challenges
+                </p>
+
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>🎭 Series 1: The Quiet Center</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 1-4: Emotional stillness & grounding</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>🔵 Series 2: 3-Day Audition Playbook</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 5-8: Fast-track audition prep</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>💎 Series 3: Memory Mastery Guide</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 9-12: Line work & retention</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>🟢 Series 4: Into the Well</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 13-16: Deep character access</p>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>⚔️ Series 5: Character Journey</strong></p>
+                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 17-20: Complete transformation</p>
+                </div>
+
+                <p style="font-size: 1.125rem; line-height: 1.7; text-align: center; font-style: italic; opacity: 0.9; margin-top: 4rem;">
+                    Train like an athlete. Build your craft one muscle at a time.
+                </p>
             </div>
-
-            <p style="font-size: 1.15rem; line-height: 1.7; max-width: 650px; margin: 3rem auto;">
-                Every week, you'll tackle new challenges designed to master specific skills: <strong style="color: var(--old-gold);">emotional access, memorization, presence, character work, and technical mastery.</strong>
-            </p>
-
-            <p style="font-size: 1.15rem; margin-top: 2.5rem; font-style: italic; opacity: 0.9;">
-                Train like an athlete. Build your craft one muscle at a time.
-            </p>
 
             <div class="testimonial" style="margin-top: 5rem;">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
@@ -1455,15 +1885,27 @@
                 </p>
 
                 <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    I know what it's like to have the fire but not the clarity. To work endlessly without knowing if you're on the right path.
+                    I know what it's like to have the fire but not the clarity. To audition for everything and wonder why nothing sticks. To work endlessly without knowing if you're on the right path.
                 </p>
 
                 <p class="text-xl highlight-gold" style="margin: 2rem auto;">
-                    I've been on this journey.
+                    I've been exactly where you are.
+                </p>
+
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    For years, I chased every role. Commercial guy. Leading man. Character actor. I thought being "versatile" meant being valuable. But casting directors didn't see versatility—they saw confusion.
+                </p>
+
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Everything changed when I stopped trying to be everything and started discovering <strong style="color: var(--old-gold);">who I actually was</strong> as an actor. My type. My superpower. The roles only I could play.
                 </p>
 
                 <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
-                    I've faced the fears, done the work, booked the roles. And I've spent 3+ years helping actors discover their superpowers and build careers around them.
+                    That clarity transformed my career. And for the past 3+ years, I've been helping actors find theirs. Over 50 actors have gone through this journey. They've booked network TV, streaming series, and roles they didn't even know they could play.
+                </p>
+
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
+                    Not because I taught them tricks. But because I helped them discover the truth that was already there.
                 </p>
 
                 <p class="text-lg highlight-gold" style="margin: 2rem auto;">
@@ -1618,6 +2060,45 @@
                 <p class="section-subtitle">Choose your path</p>
             </div>
 
+            <!-- Price Anchoring: What This Journey Replaces -->
+            <div class="price-anchor-wrapper">
+                <h3 class="price-anchor-title">
+                    What This Journey Replaces
+                </h3>
+                <div class="price-anchor-card">
+                    <p class="price-anchor-intro">
+                        Most actors piece together their training:
+                    </p>
+                    <ul class="price-anchor-list">
+                        <li class="price-anchor-item">
+                            <span>12 weeks of private coaching</span>
+                            <strong>$1,800+</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>Self-tape courses</span>
+                            <strong>$300-500</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>Headshot strategy consultations</span>
+                            <strong>$200-400</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>Career clarity sessions</span>
+                            <strong>$150-300</strong>
+                        </li>
+                    </ul>
+                    <p class="price-anchor-total">
+                        <strong>Total: $2,500-$3,000+ for fragmented guidance</strong>
+                    </p>
+                    <p class="price-anchor-conclusion">
+                        The Actor's Journey: $1,297 for your complete transformation system.
+                    </p>
+                    <p class="price-anchor-tagline">
+                        Everything you need. One integrated path.
+                    </p>
+                </div>
+            </div>
+
             <div class="investment-grid">
                 <!-- One-Time Payment -->
                 <div class="investment-card featured">
@@ -1625,11 +2106,11 @@
                     <h3 class="investment-title">One-Time Payment</h3>
                     <div class="investment-price">$1,297</div>
                     <p class="investment-description">
-                        Full payment • Save $50<br>
+                        Full payment • Save $3<br>
                         Quest begins November 4, 2025
                     </p>
-                    <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="investment-btn">
-                        Begin Your Journey
+                    <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn btn--primary">
+                        Secure Your Spot - Pay in Full
                     </a>
                 </div>
 
@@ -1637,19 +2118,37 @@
                 <div class="investment-card">
                     <h3 class="investment-title">Payment Plan</h3>
                     <div class="investment-price">
-                        $449<span class="investment-price-note">/mo</span>
+                        $325<span class="investment-price-note">/mo</span>
                     </div>
                     <p class="investment-description">
-                        3 monthly payments ($1,347 total)<br>
+                        4 monthly payments ($1,300 total)<br>
                         Quest begins November 4, 2025
                     </p>
-                    <a href="https://buy.stripe.com/9B6aEWbBKgJt47ScxQ1ck0m" class="investment-btn">
-                        Start Payment Plan
+                    <a href="https://buy.stripe.com/4gM14meNW8cX6g069s1ck0n" class="btn btn--primary">
+                        Secure Your Spot - 4 Payments
                     </a>
                 </div>
             </div>
 
-            <div class="text-center" style="margin-top: 3rem;">
+            <!-- 30-Day Money-Back Guarantee -->
+            <div class="guarantee-wrapper">
+                <div class="guarantee-card">
+                    <div class="guarantee-badge">
+                        ✓
+                    </div>
+                    <h3 class="guarantee-title">
+                        30-Day Money-Back Guarantee
+                    </h3>
+                    <p class="guarantee-text">
+                        If The Actor's Journey isn't right for you within 30 days, we'll refund your investment. No questions asked.
+                    </p>
+                    <p class="guarantee-subtext">
+                        This journey requires commitment and deep work—but you shouldn't risk your hard-earned money to find out if it's your path.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 48px;">
                 <p style="font-size: 1.1rem; margin-bottom: 1rem;">
                     <strong>Quest Begins:</strong> November 4, 2025
                 </p>
@@ -1657,19 +2156,250 @@
                     Spots Available: 10 actors only
                 </p>
 
-                <div class="highlight-box" style="margin-top: 3rem;">
+                <div class="highlight-box" style="margin-top: 48px;">
                     <p style="font-size: 1.05rem; margin-bottom: 0.5rem;">
                         Still have questions? Let's talk:
                     </p>
                     <p>
-                        <a href="https://calendly.com/hans-magic/actors-road-map-coaching" style="color: var(--adventure-green); font-weight: 600; text-decoration: none; font-size: 1.1rem;">Book a 30-Minute Call →</a>
+                        <a href="https://calendly.com/hans-magic/actors-journey-quick-chat" style="color: var(--adventure-green); font-weight: 600; text-decoration: none; font-size: 1.1rem;">Book a Quick Chat →</a>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 10: DARK - What You're Really Claiming + Final CTA -->
+    <!-- SECTION 10: DARK - FAQ -->
+    <section class="section section-dark">
+        <div class="container-narrow">
+            <div class="text-center" style="margin-bottom: 64px;">
+                <span class="section-label">Your Questions Answered</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about The Actor's Journey</p>
+            </div>
+
+            <div class="faq-accordion" style="max-width: 800px; margin: 0 auto;">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>When does the program start?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Cohort 3 begins November 4, 2025. The journey runs for 12 weeks with weekly live calls. All sessions are recorded and available within 24 hours if you need to catch a replay.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What if I miss a live session?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Life happens! Every session is recorded and available within 24 hours. You'll have access to all recordings and materials during your 12-week program.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How much time do I need to commit each week?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Plan for 4-6 hours weekly: 90-minute live call, 2-3 hours for self-tape challenges, and 1-2 hours for reflection and exercises. This is a transformation journey, not a passive course.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Will this work if I'm just starting my acting career?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Absolutely. The journey works for beginners through working actors. You'll discover your unique superpower regardless of experience level. The only requirement is willingness to do the work.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Will this work if I'm already booking some roles?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yes! Many working actors lack clear direction despite occasional bookings. This program helps you identify your type, build strategic materials, and book more consistently.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do I need to live in LA or NY?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>No. The program is 100% virtual, and the self-tape skills are essential everywhere. Actors from all markets have succeeded in this journey.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I do this with a full-time job?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yes. Most participants balance day jobs. Live calls are scheduled to accommodate working actors, and all work is asynchronous except the weekly call.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's included in the 12 weeks?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>You get: 12 weekly live group calls, The 3-Phase transformation curriculum (Identity → Character → Materials), The Self-Tape Academy (30 tapes, 20 challenges), I AM ACTOR Community access, The 5 Actor's Tools (bonus), and your complete arsenal (headshot strategy, castability sheet, reel guidance).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is this just another acting class?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>No. Most classes teach technique. This is about discovering WHO you are as an actor and building your career around that truth. You'll leave with clarity, materials, and a roadmap—not just more exercises.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Will I work directly with Hans?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yes. Every weekly call is led by Hans. You'll receive feedback on your self-tapes, guidance on your materials, and personalized direction throughout the 12 weeks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 11 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's the Self-Tape Academy?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>A structured system of 30 self-tape challenges over 12 weeks, designed to master emotional access, memorization, presence, character work, and technical execution. You'll build confidence through repetition.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 12 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Why is there a payment plan option?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>We want this accessible to committed actors. You can pay $1,297 upfront or 4 monthly payments of $325 ($1,300 total). Both options get you full access immediately.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 13 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's your guarantee?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>30-day money-back guarantee. If you feel this isn't right for you within 30 days, we'll refund your investment. No questions asked.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 14 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What happens after the 12 weeks?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>You'll have access to all recordings and materials during your 12-week program. Continued access is available through I AM ACTOR Community membership. You'll have everything you need to continue your journey.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 15 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Are there only 10 spots?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yes. We cap each cohort at 10 actors to ensure personalized feedback and intimate community. When spots fill, you'll join the waitlist for the next cohort.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 16 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What makes this different from other acting programs?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Most programs teach you to be versatile. We help you discover your superpower and build your career around it. You'll leave knowing exactly who you are as an actor, what types you play best, and how to market yourself strategically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA after FAQ -->
+            <div style="text-align: center; margin-top: 80px;">
+                <p style="font-size: 1.25rem; margin-bottom: 32px; opacity: 0.9;">
+                    Ready to begin your transformation?
+                </p>
+                <a href="#investment" class="btn btn--primary btn--hero">
+                    Apply for The Journey
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: DARK - What You're Really Claiming + Final CTA -->
     <section class="section section-dark">
         <div class="container-narrow text-center">
             <h2 class="section-title">What You're Really Claiming</h2>
@@ -1701,12 +2431,12 @@
                 </h3>
 
                 <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; margin: 0 auto;">
-                    <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn btn-primary" style="padding: 1.25rem 2rem; font-size: 1.2rem;">
-                        Claim Your Spot - $1,297
+                    <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn btn--primary" style="padding: 1.25rem 2rem; font-size: 1.2rem;">
+                        Begin Journey - Pay in Full ($1,297)
                     </a>
 
-                    <a href="https://buy.stripe.com/9B6aEWbBKgJt47ScxQ1ck0m" class="btn btn-secondary" style="padding: 1.25rem 2rem; font-size: 1.2rem;">
-                        Payment Plan - 3 × $449
+                    <a href="https://buy.stripe.com/4gM14meNW8cX6g069s1ck0n" class="btn btn--secondary" style="padding: 1.25rem 2rem; font-size: 1.2rem;">
+                        Begin Journey - 4 Payments ($325/mo)
                     </a>
                 </div>
             </div>
@@ -1732,6 +2462,14 @@
         </div>
     </section>
 
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta" id="stickyMobileCTA">
+        <div class="sticky-mobile-cta-content">
+            <button onclick="window.location.href='#investment'">Claim Your Spot (10 Left)</button>
+            <button class="sticky-mobile-cta-dismiss" onclick="dismissStickyCTA()">✕</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <img src="assets/images/logo-dark.png" alt="I AM ACTOR" class="footer-logo">
@@ -1743,6 +2481,57 @@
 
     <!-- Journey-specific JavaScript -->
     <script src="assets/js/journey.js"></script>
+
+    <!-- FAQ Accordion Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+
+                    // If this item wasn't active, open it
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Sticky Mobile CTA Script -->
+    <script>
+        let stickyDismissed = sessionStorage.getItem('stickyCtaDismissed');
+        const stickyCTA = document.getElementById('stickyMobileCTA');
+
+        function dismissStickyCTA() {
+            stickyCTA.classList.remove('visible');
+            sessionStorage.setItem('stickyCtaDismissed', 'true');
+        }
+
+        // Show sticky CTA when scrolling past hero
+        if (!stickyDismissed) {
+            window.addEventListener('scroll', function() {
+                const heroSection = document.querySelector('.hero');
+                const heroHeight = heroSection ? heroSection.offsetHeight : 800;
+                const scrollPos = window.scrollY;
+
+                if (scrollPos > heroHeight && window.innerWidth <= 768) {
+                    stickyCTA.classList.add('visible');
+                } else {
+                    stickyCTA.classList.remove('visible');
+                }
+            });
+        }
+    </script>
 
     <!-- Spots Counter (Update SPOTS_AVAILABLE when spots are filled) -->
     <script>
