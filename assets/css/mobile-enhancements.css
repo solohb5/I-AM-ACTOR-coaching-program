@@ -588,3 +588,28 @@ img[loading="lazy"]:not(.loaded) {
     display: none !important;
   }
 }
+
+/* ===== PENTAGON KNIGHTS MOBILE FIX ===== */
+
+@media (max-width: 768px) {
+  /* Make pentagon knights visible on mobile */
+  img[src*="whiteknight"],
+  img[src*="redknight"],
+  img[src*="greenknight"],
+  img[src*="blueknight"],
+  img[src*="blackknight"] {
+    display: block !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    mix-blend-mode: normal !important;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)) !important;
+  }
+
+  /* Ensure pentagon container scales on mobile */
+  div[style*="width: 650px"][style*="height: 650px"] {
+    width: 90vw !important;
+    max-width: 500px !important;
+    height: 90vw !important;
+    max-height: 500px !important;
+  }
+}
