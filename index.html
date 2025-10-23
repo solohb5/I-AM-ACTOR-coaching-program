@@ -34,7 +34,7 @@
         :root {
             /* Primary Palette */
             --ivory: #FFFEF0;
-            --adventure-green: #5A8C3A;
+            --salmon: #E86952; /* Salmon red to match knight's fire cape */
             --old-gold: #D4C137;
             --charcoal: #2C2C2C;
             --deep-charcoal: #0F0F0F;
@@ -96,7 +96,7 @@
             font-size: var(--text-base);
             line-height: 1.7;
             color: var(--charcoal);
-            background: var(--ivory);
+            background: var(--deep-charcoal);
             font-weight: 400;
         }
 
@@ -173,7 +173,7 @@
 
         /* Storybook Text Container */
         .storybook-text {
-            max-width: 60ch;
+            max-width: 52ch;
             margin: 0 auto;
             text-align: center;
         }
@@ -181,13 +181,34 @@
         .storybook-text p {
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.65;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .storybook-text p.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Act Content Scroll Reveal */
+        .act-content {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .act-content.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Pull Quote */
         .pull-quote {
             font-size: var(--text-xl);
             font-style: italic;
-            color: var(--adventure-green);
+            color: var(--salmon);
             font-weight: 600;
             margin: var(--space-lg) auto;
             max-width: 55ch;
@@ -200,7 +221,7 @@
             text-align: center;
             font-size: var(--text-2xl);
             font-weight: 700;
-            color: var(--adventure-green);
+            color: var(--salmon);
             margin: var(--space-lg) auto var(--space-md);
             font-family: 'Crimson Text', Georgia, serif;
         }
@@ -241,14 +262,16 @@
             position: relative;
         }
 
-        /* Subtle texture overlay */
+        /* Subtle texture overlay with spotlight effect */
         .section-dark::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(212, 193, 55, var(--opacity-bg-subtle)) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(212, 193, 55, var(--opacity-bg-subtle)) 0%, transparent 50%);
+                radial-gradient(circle at 50% 30%, rgba(212, 193, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 20% 60%, rgba(232, 105, 82, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(212, 193, 55, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(255, 254, 240, 0.02) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
         }
@@ -269,14 +292,17 @@
             margin: 0 auto;
         }
 
-        /* ===== NAVIGATION - Premium Dark Design ===== */
+        /* ===== NAVIGATION - Premium Glass Design ===== */
         .nav {
             position: sticky;
             top: 0;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(212, 193, 55, 0.15);
+            padding: 1rem 3rem;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
@@ -286,11 +312,15 @@
 
         .nav-logo {
             flex-shrink: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav-logo img {
-            height: 80px;
+            height: 70px;
             transition: opacity 0.3s ease;
+            filter: brightness(0) invert(1);
         }
 
         .nav-logo img:hover {
@@ -315,6 +345,17 @@
             white-space: nowrap;
             font-size: var(--text-sm);
             padding: var(--space-sm) var(--space-md);
+            background: rgba(212, 193, 55, 0.15) !important;
+            border: 1px solid rgba(212, 193, 55, 0.4) !important;
+            color: var(--old-gold) !important;
+            box-shadow: 0 2px 8px rgba(212, 193, 55, 0.1) !important;
+        }
+
+        .nav-cta-btn:hover {
+            background: rgba(212, 193, 55, 0.25) !important;
+            border-color: rgba(212, 193, 55, 0.6) !important;
+            box-shadow: 0 4px 12px rgba(212, 193, 55, 0.2) !important;
+            transform: translateY(-1px);
         }
 
         /* Tablet breakpoint for better scaling */
@@ -408,12 +449,12 @@
             bottom: 0;
             left: 50px;
             height: 200px;
-            opacity: 0.25;
+            opacity: 0.45;
             transition: opacity 0.4s ease;
         }
 
         .hero:hover .hero-knight {
-            opacity: 0.35;
+            opacity: 0.6;
         }
 
         /* Hero Title Container */
@@ -454,7 +495,7 @@
             font-style: italic;
             font-size: 5rem;
             font-weight: 700;
-            line-height: 1;
+            line-height: 1.2;
             letter-spacing: -0.015em;
             font-family: 'Bentham', 'Bookman Old Style', 'URW Bookman L', 'Georgia', serif;
             white-space: nowrap;
@@ -473,6 +514,8 @@
             position: relative;
             animation: magical-sweep 4s ease-in-out 0.8s both;
             filter: drop-shadow(0 0 25px rgba(212, 193, 55, 0.25));
+            padding: 0.1em 0.15em;
+            overflow: visible;
         }
 
         /* Soft magical glow behind text */
@@ -681,7 +724,7 @@
             font-family: 'Crimson Text', Georgia, serif;
             font-size: var(--text-xs);
             font-weight: 700;
-            color: var(--adventure-green);
+            color: var(--salmon);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: var(--space-sm);
@@ -697,7 +740,7 @@
         .card__subtitle {
             font-size: var(--text-sm);
             font-weight: 600;
-            color: var(--adventure-green);
+            color: var(--salmon);
             margin-bottom: var(--space-md);
             letter-spacing: 0.5px;
         }
@@ -712,7 +755,7 @@
         .card__footer {
             font-size: var(--text-base);
             font-weight: 600;
-            color: var(--adventure-green);
+            color: var(--salmon);
             font-style: italic;
             border-top: 2px solid rgba(90, 140, 58, var(--opacity-border-strong));
             padding-top: var(--space-md);
@@ -745,7 +788,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--adventure-green);
+            color: var(--salmon);
             font-weight: 700;
             font-size: var(--text-lg);
             top: var(--space-md);
@@ -799,7 +842,7 @@
 
         .investment-card {
             background: white;
-            border: 3px solid var(--adventure-green);
+            border: 3px solid var(--salmon);
             padding: 2.5rem 2rem;
             text-align: center;
             position: relative;
@@ -814,7 +857,7 @@
         }
 
         .investment-card.featured {
-            border-color: var(--adventure-green);
+            border-color: var(--salmon);
             box-shadow: 0 10px 40px rgba(90, 140, 58, 0.2);
         }
 
@@ -827,7 +870,7 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--adventure-green);
+            background: var(--salmon);
             color: var(--ivory);
             padding: 0.4rem 1.5rem;
             font-family: 'Alegreya', serif;
@@ -847,7 +890,7 @@
             font-family: 'Alegreya', serif;
             font-size: 3.5rem;
             font-weight: 800;
-            color: var(--adventure-green);
+            color: var(--salmon);
             margin: 1rem 0;
         }
 
@@ -995,7 +1038,7 @@
 
         .tool-title {
             font-size: 1.4rem;
-            color: var(--adventure-green);
+            color: var(--salmon);
             margin-bottom: 0.5rem;
         }
 
@@ -1021,7 +1064,7 @@
             text-align: center;
         }
 
-        /* Primary CTA - Solid Gold */
+        /* Primary CTA - Solid Gold (for dark sections) */
         .btn--primary {
             background: var(--old-gold);
             color: var(--deep-charcoal);
@@ -1032,6 +1075,19 @@
             background: #E5D157;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(212, 193, 55, 0.4);
+        }
+
+        /* Primary CTA - Salmon Red (for light sections) */
+        .btn--salmon {
+            background: var(--salmon);
+            color: var(--cream);
+            box-shadow: 0 4px 12px rgba(232, 105, 82, 0.3);
+        }
+
+        .btn--salmon:hover {
+            background: #F17A5F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 105, 82, 0.4);
         }
 
         /* Secondary CTA - Outline Gold */
@@ -1065,7 +1121,7 @@
         /* ===== COMPONENT: HIGHLIGHT BOX ===== */
         .highlight-box {
             background: rgba(90, 140, 58, var(--opacity-bg-light));
-            border-left: 4px solid var(--adventure-green);
+            border-left: 4px solid var(--salmon);
             padding: var(--space-md) var(--space-lg);
             margin: var(--space-lg) auto;
             border-radius: 4px;
@@ -1085,7 +1141,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--adventure-green);
+            color: var(--salmon);
             margin-bottom: var(--space-md);
         }
 
@@ -1244,7 +1300,7 @@
             font-size: 1.75rem;
             line-height: 1.4;
             font-weight: 700;
-            color: var(--adventure-green);
+            color: var(--salmon);
             text-align: center;
             margin-bottom: 16px;
             font-family: 'Crimson Text', Georgia, serif;
@@ -1285,7 +1341,7 @@
         .guarantee-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--adventure-green);
+            color: var(--salmon);
             margin-bottom: 16px;
         }
 
@@ -1373,8 +1429,12 @@
             background: var(--deep-charcoal);
             color: rgba(255, 254, 240, 0.7);
             padding: 3rem 2rem;
-            text-align: center;
+            text-align: center !important;
             border-top: 1px solid rgba(255, 254, 240, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .footer-logo {
@@ -1402,7 +1462,7 @@
 
         /* Key phrases - green highlight for light sections */
         .highlight-green {
-            color: var(--adventure-green);
+            color: var(--salmon);
             font-weight: 700;
         }
 
@@ -1441,7 +1501,7 @@
             content: '→';
             position: absolute;
             left: 0;
-            color: var(--adventure-green);
+            color: var(--salmon);
             font-weight: 700;
             font-size: 1.5rem;
         }
@@ -1474,7 +1534,7 @@
             font-weight: 600;
             margin: 2.5rem auto;
             padding: 1.5rem;
-            border-left: 4px solid var(--adventure-green);
+            border-left: 4px solid var(--salmon);
             background: rgba(90, 140, 58, 0.05);
         }
 
@@ -1527,7 +1587,7 @@
             .hero-knight {
                 max-width: 120px;
                 height: auto;
-                opacity: 0.15;
+                opacity: 0.35;
             }
 
             .section-dark h1 { font-size: 3rem; }
@@ -1572,7 +1632,7 @@
     <nav class="nav">
         <div class="nav-spots">10 SPOTS LEFT</div>
         <div class="nav-logo">
-            <img src="assets/images/logo-dark.png" alt="I AM ACTOR" onclick="window.location.href='#'">
+            <img src="assets/images/logo.png" alt="I AM ACTOR" onclick="window.location.href='#'">
         </div>
         <button class="btn btn--primary nav-cta-btn" onclick="window.location.href='#investment'">
             Claim Your Spot
@@ -1581,7 +1641,7 @@
 
     <!-- SECTION 1: DARK - Hero -->
     <section class="hero section-dark">
-        <img src="assets/images/knightartfire (500 x 500 px).png" alt="" class="hero-knight">
+        <img src="assets/images/knightartfirered (500 x 500 px)(2).png" alt="" class="hero-knight">
         <div class="container-narrow text-center">
             <h1 class="hero-title">
                 <span class="hero-article">The</span>
@@ -1612,37 +1672,38 @@
     </section>
 
     <!-- SECTION 2: LIGHT - Call to Adventure -->
-    <section class="section section-light">
+    <section class="section section-light" style="position: relative; padding: 6rem 2rem;">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-right">
-        <div class="container-narrow">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <span class="section-label">Your Call to Adventure</span>
-                <h2 class="section-title">
-                    You've Been Working.<br>
-                    Training. Auditioning.<br>
-                    Showing Up Again and Again.
-                </h2>
-            </div>
+        <div class="container-narrow" style="max-width: 900px;">
+            <div style="text-align: center;">
+                <span class="section-label" style="font-size: 1rem; letter-spacing: 3px; margin-bottom: 2rem; display: block;">YOUR CALL TO ADVENTURE</span>
 
-            <div class="storybook-text">
-                <p>
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 2.75rem; line-height: 1.3; font-weight: 700; color: var(--charcoal); margin: 0 auto 3rem; max-width: 850px;">
+                    You've been working. Training.<br>
+                    Auditioning. Showing up again and again.
+                </p>
+
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.5rem; line-height: 1.6; color: var(--charcoal); margin: 0 auto 3rem; max-width: 700px;">
                     You have the passion. The drive. The willingness to face fear and do it anyway.
                 </p>
 
-                <p class="pull-quote" style="margin: 3rem auto;">
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 2.25rem; line-height: 1.4; font-style: italic; color: var(--salmon); margin: 3rem auto 1.5rem; max-width: 750px;">
                     But here's what's been missing:
                 </p>
 
-                <p style="font-size: 1.3rem; margin-bottom: 3rem;">
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 3rem; line-height: 1.3; font-weight: 600; color: var(--charcoal); margin: 0 auto 3.5rem; max-width: 700px;">
                     A clear path forward.
                 </p>
 
-                <p class="pull-quote" style="margin: 4rem auto; max-width: 55ch;">
-                    You're not scattered because you're not good enough.<br>
-                    You're scattered because no one ever showed you the journey.
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.75rem; line-height: 1.5; font-style: italic; color: var(--charcoal); margin: 3.5rem auto; max-width: 800px;">
+                    You're not scattered because you're not good enough.
                 </p>
 
-                <p class="chapter-break">
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.75rem; line-height: 1.5; font-style: italic; color: var(--charcoal); margin: 0 auto 3.5rem; max-width: 800px;">
+                    You're scattered because no one ever showed you the way.
+                </p>
+
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 3.5rem; line-height: 1.2; font-weight: 700; color: var(--salmon); margin: 5rem auto 0; max-width: 600px;">
                     Until now.
                 </p>
             </div>
@@ -1650,188 +1711,256 @@
     </section>
 
     <!-- SECTION 3: LIGHT - The 3-Phase Quest -->
-    <section class="section section-light">
-        <img src="assets/images/knight.png" alt="" class="knight-companion knight-left">
+    <section class="section section-light" style="position: relative;">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 4rem;">
-                <span class="section-label">The 3-Phase Quest</span>
-                <h2 class="section-title" style="margin-bottom: 1rem;">
-                    Every Great Adventure Has Stages.<br>
-                    Every Transformation Requires a Path.
+            <div style="text-align: center; margin-bottom: 14rem;">
+                <span class="section-label">The Journey</span>
+                <h2 class="section-title" style="margin-bottom: 2rem; font-size: 2.25rem;">
+                    The path forward has three acts.
                 </h2>
-                <p style="font-size: 1.3rem; font-style: italic; color: #666; margin-top: 1.5rem;">Here's yours.</p>
+                <p style="font-size: 1.2rem; line-height: 1.6; color: #666; max-width: 600px; margin: 0 auto;">
+                    Like every great story, your transformation unfolds in stages. Each one builds on the last. Each one brings you closer to who you're meant to become.
+                </p>
             </div>
 
-            <div class="card-grid">
-                <!-- Phase 1 -->
-                <div class="card">
-                    <span class="card__icon">⚔️</span>
-                    <div class="card__label">Phase 1</div>
-                    <h3 class="card__title">Awaken the Artist</h3>
-                    <div class="card__subtitle">Weeks 1-4</div>
+            <!-- Storybook Journey Layout -->
+            <div style="max-width: 1200px; margin: 0 auto;">
 
-                    <p class="card__description">
-                        Who am I, really? Where am I going? What makes me different?
-                    </p>
+                <!-- Act 1 - Offset from left with knight on right -->
+                <div style="display: grid; grid-template-columns: 0.125fr 1.3fr 1fr 0.7fr 0.125fr; gap: 2rem; margin-bottom: 5rem; position: relative;">
+                    <!-- Empty space on far left -->
+                    <div></div>
 
-                    <p class="card__description">
-                        You'll extract the <strong>Seeds of Character</strong> from your life story and discover the superpower you've had all along.
-                    </p>
+                    <!-- Act 1 Content -->
+                    <div class="act-content" style="text-align: left;">
+                        <!-- Icon placeholder -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <img src="assets/images/act1-icon.png" alt="" style="height: 60px; opacity: 0.8;">
+                        </div>
 
-                    <div class="card__footer">
-                        From "I can be anything" to "I am UNMISTAKABLY this."
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: var(--salmon); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;">Act I</div>
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2;">Awaken the Artist</h3>
+                        <div style="font-size: 1rem; font-style: italic; color: #666; margin-bottom: 1.25rem;">Weeks 1-4</div>
+
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
+                            Most actors are told to be versatile. But casting directors don't want versatile, they want <strong>specific</strong>. In these first four weeks, we dig into your life story to extract the <strong>Seeds of Character</strong>, the experiences, wounds, and triumphs that make you unmistakably YOU. You'll discover your unique superpower as an actor, the thing only you can bring to every role. This isn't about learning technique. It's about claiming your identity. By the end of Act I, you'll know exactly who you are and what makes you irreplaceable.
+                        </p>
+
+                        <p style="font-size: 1rem; font-style: italic; color: var(--salmon); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(90, 140, 58, 0.2);">
+                            From "I can be anything" to "I am UNMISTAKABLY this."
+                        </p>
                     </div>
+
+                    <!-- Empty middle space -->
+                    <div></div>
+
+                    <!-- Knight - positioned center with more distance -->
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/knight.png" alt="" style="height: 180px; opacity: 0.35;">
+                    </div>
+
+                    <!-- Empty space on far right -->
+                    <div></div>
                 </div>
 
-                <!-- Phase 2 -->
-                <div class="card">
-                    <span class="card__icon">🗡️</span>
-                    <div class="card__label">Phase 2</div>
-                    <h3 class="card__title">Character Mastery</h3>
-                    <div class="card__subtitle">Weeks 5-8</div>
+                <!-- Act 2 - Right side with knight on left -->
+                <div style="display: grid; grid-template-columns: 0.125fr 0.7fr 1fr 1.3fr 0.125fr; gap: 2rem; margin-bottom: 5rem; position: relative;">
+                    <!-- Empty space on far left -->
+                    <div></div>
 
-                    <p class="card__description">
-                        Build your <strong>Character Cards</strong> - the three types you were born to play.
-                    </p>
-
-                    <p class="card__description">
-                        Learn the <strong>Tethering Process:</strong> connect YOUR truth to EVERY role you audition for.
-                    </p>
-
-                    <div class="card__footer">
-                        From generic actor to THE actor casting directors remember.
+                    <!-- Knight in left area -->
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/knight.png" alt="" style="height: 180px; opacity: 0.35;">
                     </div>
+
+                    <!-- Empty middle space -->
+                    <div></div>
+
+                    <!-- Act 2 Content - Right area -->
+                    <div class="act-content" style="text-align: left;">
+                        <!-- Icon placeholder -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <img src="assets/images/act2-icon.png" alt="" style="height: 60px; opacity: 0.8;">
+                        </div>
+
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: var(--salmon); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;">Act II</div>
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2;">Character Creation</h3>
+                        <div style="font-size: 1rem; font-style: italic; color: #666; margin-bottom: 1.25rem;">Weeks 5-8</div>
+
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
+                            Now that you know who you are, we build your <strong>Character Cards</strong>, the three specific types you were born to play. These aren't arbitrary choices. They're the roles that align perfectly with your truth, the characters you can embody without pretending. You'll learn the <strong>Tethering Process</strong>, a technique that lets you connect YOUR life to EVERY role you audition for, no matter how different it seems. This is where you stop being a generic actor trying to fit the role, and become THE actor casting directors remember because you brought something no one else could.
+                        </p>
+
+                        <p style="font-size: 1rem; font-style: italic; color: var(--salmon); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(90, 140, 58, 0.2);">
+                            From generic actor to THE actor casting directors remember.
+                        </p>
+                    </div>
+
+                    <!-- Empty space on far right -->
+                    <div></div>
                 </div>
 
-                <!-- Phase 3 -->
-                <div class="card">
-                    <span class="card__icon">🏔️</span>
-                    <div class="card__label">Phase 3</div>
-                    <h3 class="card__title">Material Mastery</h3>
-                    <div class="card__subtitle">Weeks 9-12</div>
+                <!-- Act 3 - Left side with knight on right -->
+                <div style="display: grid; grid-template-columns: 0.125fr 1.3fr 1fr 0.7fr 0.125fr; gap: 2rem; position: relative;">
+                    <!-- Empty space on far left -->
+                    <div></div>
 
-                    <p class="card__description">
-                        <strong>Reps can't sell you if you don't know what you're selling.</strong>
-                    </p>
+                    <!-- Act 3 Content - Left area -->
+                    <div class="act-content" style="text-align: left;">
+                        <!-- Icon placeholder -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <img src="assets/images/act3-icon.png" alt="" style="height: 60px; opacity: 0.8;">
+                        </div>
 
-                    <p class="card__description">
-                        Your headshots align with your types. Your <strong>Castability Sheet</strong> tells reps how to pitch you. Your materials showcase the story only you can tell.
-                    </p>
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: var(--salmon); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;">Act III</div>
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2;">Material Mastery</h3>
+                        <div style="font-size: 1rem; font-style: italic; color: #666; margin-bottom: 1.25rem;">Weeks 9-12</div>
 
-                    <div class="card__footer">
-                        From "trying to get seen" to "impossible to ignore."
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
+                            <strong>Reps can't sell you if you don't know what you're selling.</strong> In these final four weeks, everything comes together. Your headshots now align perfectly with your Character Cards. Your <strong>Castability Sheet</strong> tells agents and managers exactly how to pitch you, not as a generic actor, but as THE person for specific types of roles. Your reel showcases the story only you can tell. Every material, every piece of your brand reflects the truth you discovered in Act I and the characters you created in Act II. You're no longer hoping to be seen. You're impossible to ignore.
+                        </p>
+
+                        <p style="font-size: 1rem; font-style: italic; color: var(--salmon); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(90, 140, 58, 0.2);">
+                            From "trying to get seen" to "impossible to ignore."
+                        </p>
                     </div>
+
+                    <!-- Empty middle space -->
+                    <div></div>
+
+                    <!-- Knight on right side -->
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/knight.png" alt="" style="height: 180px; opacity: 0.35;">
+                    </div>
+
+                    <!-- Empty space on far right -->
+                    <div></div>
                 </div>
+
+            </div>
+
+            <!-- Bridge to Self-Tape Games -->
+            <div style="max-width: 700px; margin: 6rem auto 0; text-align: center;">
+                <p style="font-size: 1.3rem; line-height: 1.5; font-style: italic; color: #555;">
+                    Identity is the foundation. But identity without practice is just theory.
+                </p>
+                <p style="font-size: 1.5rem; line-height: 1.4; margin-top: 1.5rem; font-weight: 600; color: var(--charcoal);">
+                    This is where you build the muscle.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: LIGHT - You're Ready If -->
-    <section class="section section-light">
-        <div class="container-narrow text-center">
-            <span class="section-label">Is This Journey Right for You?</span>
-            <h2 class="section-title" style="margin-bottom: 48px;">
-                You're Ready for This Journey If...
-            </h2>
-
-            <div style="max-width: 650px; margin: 0 auto 48px; text-align: left;">
-                <div style="display: grid; gap: 24px;">
-                    <div style="display: flex; align-items: flex-start; gap: 16px;">
-                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're tired of scattered training that doesn't translate to bookings</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 16px;">
-                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You have the passion but need clear direction</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 16px;">
-                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to discover your unique superpower as an actor</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 16px;">
-                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're willing to invest 4-6 hours weekly for 12 weeks</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 16px;">
-                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You want lifetime clarity, not quick fixes</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 16px;">
-                        <span style="color: var(--adventure-green); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to become the actor casting directors fight for</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 48px;">
-                <a href="#investment" class="btn btn--primary btn--hero">
-                    Yes, This Is Me - Apply Now
-                </a>
-            </div>
-
-            <!-- Knight placeholder for future custom illustration -->
-            <div style="margin-top: 64px; opacity: 0.15;">
-                <div style="width: 200px; height: 200px; margin: 0 auto; border: 2px dashed var(--adventure-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--adventure-green); font-size: 0.875rem;">
-                    Knight illustration placeholder
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5: DARK - Your Training Ground -->
-    <section class="section section-dark">
-        <div class="container-narrow text-center">
+    <!-- SECTION 4: DARK - Your Training Ground -->
+    <section class="section section-dark" style="position: relative;">
+        <div class="container text-center">
             <span class="section-label">Your Training Ground</span>
 
-            <h2 class="section-title">The Self-Tape Academy</h2>
+            <h2 class="section-title">The Self-Tape Games</h2>
 
-            <p style="font-size: 1.5rem; font-weight: 400; line-height: 1.7; max-width: 650px; margin: 2rem auto 3rem; font-style: italic;">
-                Your self-tape is your calling card. It's how casting directors see you when you're not in the room.
-                <strong style="color: var(--old-gold); font-style: normal;">We're going to make yours impossible to ignore.</strong>
-            </p>
+            <!-- The Hook -->
+            <div style="max-width: 700px; margin: 3rem auto 5rem;">
+                <p style="font-size: 1.4rem; line-height: 1.6; margin-bottom: 2rem; font-weight: 600;">
+                    There's nothing that will get you closer to booking than learning how to self-tape. Nothing.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.6; color: rgba(255, 254, 240, 0.85); margin-bottom: 1.5rem;">
+                    No book. No class. No theory. The one thing that transforms actors from hoping to booking is doing the work.
+                </p>
+                <p style="font-size: 1.3rem; line-height: 1.5; margin-top: 2rem; color: var(--old-gold); font-style: italic;">
+                    So we made it impossible not to.
+                </p>
+            </div>
 
-            <div style="max-width: 700px; margin: 4rem auto; text-align: left;">
-                <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
-                    <p style="font-size: 1.125rem; margin-bottom: 1rem;"><strong>📽️ Before you begin...</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Introduction to the Academy</p>
-                </div>
+            <!-- What You Get -->
+            <div style="max-width: 800px; margin: 0 auto 6rem;">
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem; opacity: 0.9;">
+                    Five series. Twenty challenges. Each one gives you the scene, the material, and a specific skill to focus on. You get readers, community feedback on Self-Tape Jam Session Fridays, and a platform to submit your work.
+                </p>
+                <p style="font-size: 1.15rem; line-height: 1.6; font-weight: 600;">
+                    All you have to do is show up and tape.
+                </p>
+            </div>
 
-                <div style="margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
-                    <p style="font-size: 1.125rem; margin-bottom: 1rem;"><strong>🏆 30 Tape Challenge</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Your foundation building</p>
-                </div>
-
-                <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem; text-align: center; font-family: 'Crimson Text', Georgia, serif;">
-                    THE GAMES — 5 Series, 20 Challenges
+            <!-- The Arc -->
+            <div style="max-width: 1100px; margin: 6rem auto;">
+                <p style="font-size: 1.2rem; font-family: 'Crimson Text', Georgia, serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4rem; opacity: 0.8;">
+                    The Five Series
                 </p>
 
-                <div style="margin-bottom: 2rem;">
-                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>🎭 Series 1: The Quiet Center</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 1-4: Emotional stillness & grounding</p>
+                <!-- Pentagon Circle Layout -->
+                <div style="position: relative; width: 400px; height: 400px; margin: 0 auto;">
+                    <!-- Series 1 - Top -->
+                    <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); text-align: center;">
+                        <div style="margin-bottom: 0.5rem;">
+                            <img src="assets/images/knight-white.png" alt="Series 1" style="height: 70px; opacity: 0.9;">
+                        </div>
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 1px;">Series 1</div>
+                    </div>
+
+                    <!-- Series 2 - Top Right -->
+                    <div style="position: absolute; top: 30%; right: 5%; text-align: center;">
+                        <div style="margin-bottom: 0.5rem;">
+                            <img src="assets/images/knight-red.png" alt="Series 2" style="height: 70px; opacity: 0.9;">
+                        </div>
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: #E86952; text-transform: uppercase; letter-spacing: 1px;">Series 2</div>
+                    </div>
+
+                    <!-- Series 3 - Bottom Right -->
+                    <div style="position: absolute; bottom: 15%; right: 15%; text-align: center;">
+                        <div style="margin-bottom: 0.5rem;">
+                            <img src="assets/images/knight-green.png" alt="Series 3" style="height: 70px; opacity: 0.9;">
+                        </div>
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: #5A8C3A; text-transform: uppercase; letter-spacing: 1px;">Series 3</div>
+                    </div>
+
+                    <!-- Series 4 - Bottom Left -->
+                    <div style="position: absolute; bottom: 15%; left: 15%; text-align: center;">
+                        <div style="margin-bottom: 0.5rem;">
+                            <img src="assets/images/knight-blue.png" alt="Series 4" style="height: 70px; opacity: 0.9;">
+                        </div>
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: #4A90E2; text-transform: uppercase; letter-spacing: 1px;">Series 4</div>
+                    </div>
+
+                    <!-- Series 5 - Top Left -->
+                    <div style="position: absolute; top: 30%; left: 5%; text-align: center;">
+                        <div style="margin-bottom: 0.5rem;">
+                            <img src="assets/images/knight-black.png" alt="Series 5" style="height: 70px; opacity: 0.9;">
+                        </div>
+                        <div style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1px;">Series 5</div>
+                    </div>
                 </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>🔵 Series 2: 3-Day Audition Playbook</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 5-8: Fast-track audition prep</p>
-                </div>
+                <p style="font-size: 1rem; line-height: 1.6; opacity: 0.8; max-width: 700px; margin: 0 auto 3rem; font-style: italic;">
+                    Each series has four challenges. Each challenge focuses on one specific aspect of your tape. Master them one at a time, then watch them strengthen everything you do.
+                </p>
 
-                <div style="margin-bottom: 2rem;">
-                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>💎 Series 3: Memory Mastery Guide</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 9-12: Line work & retention</p>
+                <!-- Progression System -->
+                <div style="max-width: 650px; margin: 4rem auto 0; padding: 2rem; background: rgba(255, 254, 240, 0.05); border-radius: 8px; border: 1px solid rgba(212, 193, 55, 0.2);">
+                    <p style="font-size: 1.1rem; line-height: 1.6; text-align: center; margin-bottom: 1rem; color: var(--old-gold); font-weight: 600;">
+                        Track Your Progress
+                    </p>
+                    <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.85; text-align: center;">
+                        White Knight (1-10 tapes) → Red Knight (11-30 tapes) → Green Knight (31-60 tapes) → Blue Knight (61-99 tapes) → <strong style="color: var(--old-gold);">Black Knight (100+ tapes)</strong>
+                    </p>
                 </div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>🟢 Series 4: Into the Well</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 13-16: Deep character access</p>
-                </div>
-
-                <div style="margin-bottom: 3rem;">
-                    <p style="font-size: 1.125rem; margin-bottom: 0.75rem;"><strong>⚔️ Series 5: Character Journey</strong></p>
-                    <p style="font-size: 1rem; opacity: 0.85; margin-left: 2rem;">Lessons 17-20: Complete transformation</p>
-                </div>
-
-                <p style="font-size: 1.125rem; line-height: 1.7; text-align: center; font-style: italic; opacity: 0.9; margin-top: 4rem;">
-                    Train like an athlete. Build your craft one muscle at a time.
+            <!-- The 30 Tape Challenge -->
+            <div style="max-width: 750px; margin: 8rem auto 6rem; padding: 3rem; background: rgba(212, 193, 55, 0.08); border-radius: 12px; border: 2px solid rgba(212, 193, 55, 0.3);">
+                <p style="font-size: 0.9rem; font-family: 'Crimson Text', Georgia, serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--old-gold); margin-bottom: 1rem;">
+                    The Challenge
+                </p>
+                <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; line-height: 1.2;">
+                    The 30 Tape Challenge
+                </h3>
+                <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Complete 30 self-tapes in 90 days.
+                </p>
+                <p style="font-size: 1.3rem; line-height: 1.6; font-weight: 600; color: var(--old-gold); margin-bottom: 1rem;">
+                    Win a FREE YEAR of I Am Actor community access.
+                </p>
+                <p style="font-size: 1rem; line-height: 1.6; opacity: 0.85; font-style: italic;">
+                    I only want actors who are willing to work. Because there's nothing you can do that will make you grow faster than self-taping and actually doing it.
                 </p>
             </div>
 
@@ -1845,89 +1974,136 @@
         </div>
     </section>
 
-    <!-- SECTION 5: LIGHT - What's Included -->
-    <section class="section section-light">
-        <img src="assets/images/knight.png" alt="" class="knight-companion knight-right">
-        <div class="container-narrow">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <span class="section-label">What's Included</span>
-                <h2 class="section-title">Your Complete Arsenal</h2>
+    <!-- SECTION 5: LIGHT - The Community -->
+    <section class="section section-light" style="position: relative;">
+        <div class="container text-center">
+            <span class="section-label">Your Team</span>
+            <h2 class="section-title" style="margin-bottom: 2.5rem;">I Am Actor Community</h2>
+
+            <div style="max-width: 650px; margin: 0 auto 4rem;">
+                <p style="font-size: 1.15rem; line-height: 1.7; color: #666; margin-bottom: 1.5rem;">
+                    You can't do this alone. Every actor who's made it had people in their corner, a community that understood the struggle, allies who showed up on the hard days and celebrated the wins.
+                </p>
+                <p style="font-size: 1.15rem; line-height: 1.7; color: var(--charcoal); font-weight: 600; margin-bottom: 0;">
+                    This is yours.
+                </p>
             </div>
 
-            <ul class="checklist">
-                <li><strong>12 weeks of live transformation</strong> — Weekly calls with Hans</li>
-                <li><strong>The 3-Phase Curriculum</strong> — Identity → Character → Materials</li>
-                <li><strong>Circle Community Access</strong> — Fellow actors on the same quest</li>
-                <li><strong>The Self-Tape Academy</strong> — 30 tapes, 20 challenges, 12 weeks</li>
-                <li><strong>The 5 Actor's Tools (Bonus)</strong> — Memory, Emotion, Presence, Character, Audition mastery</li>
-                <li><strong>Your Complete Arsenal</strong> — Headshots, reels, castability sheet</li>
-            </ul>
+            <!-- Four Features with Visual Markers -->
+            <div style="max-width: 650px; margin: 0 auto; text-align: left;">
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; background: rgba(232, 105, 82, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 0.25rem;">
+                        <span style="color: var(--salmon); font-size: 1.25rem; font-weight: 700;">✓</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--charcoal);">
+                            Weekly Group Calls
+                        </h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: #666; margin: 0;">
+                            Live coaching, hot seats, and Q&A. Bring your questions, your challenges, your breakthroughs.
+                        </p>
+                    </div>
+                </div>
 
-            <p style="font-size: 1.2rem; color: var(--adventure-green); font-weight: 600; margin-top: 4rem; text-align: center; font-style: italic;">
-                Only 10 spots available
-            </p>
-        </div>
-    </section>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; background: rgba(232, 105, 82, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 0.25rem;">
+                        <span style="color: var(--salmon); font-size: 1.25rem; font-weight: 700;">✓</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--charcoal);">
+                            Self-Tape Jam Session Fridays
+                        </h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: #666; margin: 0;">
+                            Submit your work. Get real feedback. Watch other actors tackle the same challenges.
+                        </p>
+                    </div>
+                </div>
 
-    <!-- SECTION 6: DARK - Your Guide (Hans) -->
-    <section class="section section-dark">
-        <div class="container-narrow text-center">
-            <span class="section-label">Your Guide</span>
-            <h2 class="section-title" style="font-size: 2.75rem; margin-bottom: 3rem;">Hans Christopher</h2>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(44, 44, 44, 0.1);">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; background: rgba(232, 105, 82, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 0.25rem;">
+                        <span style="color: var(--salmon); font-size: 1.25rem; font-weight: 700;">✓</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--charcoal);">
+                            Accountability & Support
+                        </h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: #666; margin: 0;">
+                            A space where actors show up for each other. Where you're not alone in the struggle.
+                        </p>
+                    </div>
+                </div>
 
-            <div style="max-width: 400px; margin: 0 auto 3rem;">
-                <img src="assets/images/hans-bio.jpg" alt="Hans Christopher" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
-            </div>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                    <div style="flex-shrink: 0; width: 40px; height: 40px; background: rgba(232, 105, 82, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 0.25rem;">
+                        <span style="color: var(--salmon); font-size: 1.25rem; font-weight: 700;">✓</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--charcoal);">
+                            Ongoing Resources & Training
+                        </h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: #666; margin: 0;">
+                            Beyond the 12 weeks, you'll have access to a growing library of workshops, masterclasses, and tools. The journey doesn't end. It evolves.
+                        </p>
+                    </div>
+                </div>
 
-            <div style="max-width: 650px; margin: 0 auto;">
-                <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    I'm an actor. Not a coach - an <strong>actor who mentors other actors.</strong>
-                </p>
-
-                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    I know what it's like to have the fire but not the clarity. To audition for everything and wonder why nothing sticks. To work endlessly without knowing if you're on the right path.
-                </p>
-
-                <p class="text-xl highlight-gold" style="margin: 2rem auto;">
-                    I've been exactly where you are.
-                </p>
-
-                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    For years, I chased every role. Commercial guy. Leading man. Character actor. I thought being "versatile" meant being valuable. But casting directors didn't see versatility—they saw confusion.
-                </p>
-
-                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    Everything changed when I stopped trying to be everything and started discovering <strong style="color: var(--old-gold);">who I actually was</strong> as an actor. My type. My superpower. The roles only I could play.
-                </p>
-
-                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
-                    That clarity transformed my career. And for the past 3+ years, I've been helping actors find theirs. Over 50 actors have gone through this journey. They've booked network TV, streaming series, and roles they didn't even know they could play.
-                </p>
-
-                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
-                    Not because I taught them tricks. But because I helped them discover the truth that was already there.
-                </p>
-
-                <p class="text-lg highlight-gold" style="margin: 2rem auto;">
-                    I'm not here to be the hero of this story.
-                </p>
-
-                <p class="text-2xl highlight-gold" style="margin: 1.5rem auto;">
-                    You are the hero.
-                </p>
-
-                <p style="font-size: 1.15rem; margin-bottom: 2.5rem;">
-                    I'm just the guide who knows the way.
-                </p>
-
-                <div class="signature" style="filter: brightness(0) invert(1); opacity: 0.8; margin: 0 auto;">
-                    <img src="assets/images/Hans-Sign.png" alt="Hans signature">
+                <div style="max-width: 600px; margin: 4rem auto 0; padding: 2rem; background: rgba(212, 193, 55, 0.08); border-radius: 8px; border-left: 4px solid var(--old-gold);">
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #555; text-align: left; font-style: italic;">
+                        "It's truly special to be part of a community of like-minded artists willing to grow together. Hans has created a safe space for actors to explore, take risks, fail, and win!"
+                    </p>
+                    <p style="font-size: 0.95rem; margin-top: 1rem; text-align: right; opacity: 0.8;">
+                        — Monique
+                    </p>
                 </div>
             </div>
         </div>
+    </section>
+    <!-- SECTION 6: DARK - Your Guide (Hans) -->
+    <section class="section section-dark" style="position: relative;">
+        <div class="container-narrow text-center">
+            <span class="section-label">Your Guide</span>
+            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 3rem;">Hans Christopher</h2>
 
-            <!-- As Seen On - Scrolling Posters -->
-            <div class="credits-posters">
+            <!-- Side-by-side layout: message left, image right -->
+            <div style="max-width: 800px; margin: 0 auto 3rem; display: flex; gap: 2.5rem; align-items: flex-start; text-align: left; position: relative;">
+                <!-- Message on left -->
+                <div style="flex: 1;">
+                    <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                        <strong>I sat in my car for two hours before my first acting class.</strong> Worst stage fright you can imagine. But I couldn't leave. That pull was stronger than the terror.
+                    </p>
+
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                        <strong>It took me 7 years to break through and learn what I know.</strong> I built this journey so you can learn it in 3 months, the complete path and everything you need to do.
+                    </p>
+
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                        I'm an actor who mentors actors. Over 50 actors have gone through this journey, booking network TV, streaming series, and roles they didn't know they could play.
+                    </p>
+
+                    <p style="font-size: 1.15rem; line-height: 1.6; color: var(--old-gold); font-weight: 600; margin-bottom: 1.25rem;">
+                        I'm not here to be the hero of this story. You are.
+                    </p>
+
+                    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem;">
+                        <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0; flex: 1;">
+                            I'm just the guide who knows the way.
+                        </p>
+
+                        <!-- Signature to the right of the text, diagonal -->
+                        <div style="flex-shrink: 0; transform: rotate(-5deg) translateY(10px);">
+                            <img src="assets/images/Hans-Sign.png" alt="Hans signature" style="filter: brightness(0) invert(1); opacity: 0.8; width: 140px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taller image on right -->
+                <div style="flex-shrink: 0;">
+                    <img src="assets/images/hans-bio.jpg" alt="Hans Christopher" style="width: 180px; height: 240px; object-fit: cover; object-position: center 30%; border-radius: 8px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);">
+                </div>
+            </div>
+
+            <!-- Credits strip underneath -->
+            <div class="credits-posters" style="margin-top: 3rem;">
                 <div class="credits-posters-track">
                     <!-- First set -->
                     <img src="assets/images/poster-walkingdead.jpg" alt="The Walking Dead">
@@ -1958,99 +2134,194 @@
         </div>
     </section>
 
-    <!-- SECTION 7: LIGHT - Founding Cohort Bonus -->
+    <!-- SECTION 7: LIGHT - You're Ready If -->
     <section class="section section-light">
+        <div class="container-narrow text-center">
+            <span class="section-label">Is This Journey Right for You?</span>
+            <h2 class="section-title" style="margin-bottom: 48px;">
+                You're Ready for This Journey If...
+            </h2>
+
+            <div style="max-width: 650px; margin: 0 auto 48px; text-align: left;">
+                <div style="display: grid; gap: 24px;">
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;"><strong>You feel the pull despite the fear</strong></p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;"><strong>You're willing to discover who you are, not just learn technique</strong></p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're tired of scattered training that doesn't translate to bookings</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You have the passion but need clear direction</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to invest 4-6 hours weekly for 12 weeks</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You want lifetime clarity, not quick fixes</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to become the actor casting directors fight for</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="max-width: 650px; margin: 0 auto 48px; font-size: 1.125rem; line-height: 1.7; text-align: center;">
+                <strong>You don't need to have it all figured out. You don't need to be fearless.</strong><br>
+                <strong>You just need to be willing to take the next step.</strong>
+            </p>
+
+            <div style="margin-top: 48px;">
+                <a href="#investment" class="btn btn--salmon btn--hero">
+                    Yes, This Is Me - Apply Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: DARK - Your Founding Gift -->
+    <section class="section section-dark">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-right">
         <div class="container-narrow text-center">
-            <span class="section-label">Founding Cohort Bonus</span>
-            <h2 class="section-title">The 5 Actor's Tools</h2>
-            <p class="section-subtitle">Sign up for this founding cohort and unlock the complete toolkit</p>
+            <span class="section-label">First 10 Only</span>
+            <h2 class="section-title">Your Founding Gift</h2>
+            <p class="section-subtitle" style="font-size: 1.3rem; color: var(--old-gold); font-weight: 600;">The 5 Actor's Tools</p>
 
-            <img src="assets/images/tools1.png" alt="The 5 Actor's Tools" class="tools-image">
+            <img src="assets/images/tools1.png" alt="The 5 Actor's Tools" style="max-width: 700px; width: 100%; margin: 3rem auto; display: block; filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 40px rgba(212, 193, 55, 0.15)); border-radius: 8px;">
 
-            <p style="font-size: 1.2rem; margin: 3rem auto;">
-                A complete system of 5 powerful guides that transform how you work:
+            <p style="font-size: 1.15rem; margin: 2.5rem auto; max-width: 650px; line-height: 1.7;">
+                As a founding member, you'll receive all 5 powerful guides unlocked over your 12-week journey. Each one gives you a clear, proven system to master a critical skill:
             </p>
 
-            <div class="tools-list" style="text-align: left;">
-                <div class="tool-item">
-                    <h3 class="tool-title">✓ Memory Mastery Guide</h3>
-                    <p class="tool-description">Never forget your lines under pressure</p>
+            <div style="max-width: 600px; margin: 0 auto; text-align: left; display: grid; gap: 1.5rem;">
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <span style="color: var(--old-gold); font-size: 1.5rem; flex-shrink: 0;">✓</span>
+                    <div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--ivory);">Memory Mastery Guide</h3>
+                        <p style="font-size: 1rem; opacity: 0.85; margin: 0;">Never forget your lines under pressure</p>
+                    </div>
                 </div>
 
-                <div class="tool-item">
-                    <h3 class="tool-title">✓ Into the Well</h3>
-                    <p class="tool-description">Cry on cue. Access real emotion instantly</p>
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <span style="color: var(--old-gold); font-size: 1.5rem; flex-shrink: 0;">✓</span>
+                    <div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--ivory);">Into the Well</h3>
+                        <p style="font-size: 1rem; opacity: 0.85; margin: 0;">Cry on cue. Access real emotion instantly</p>
+                    </div>
                 </div>
 
-                <div class="tool-item">
-                    <h3 class="tool-title">✓ The Quiet Center</h3>
-                    <p class="tool-description">Overcome stage fright and performance anxiety</p>
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <span style="color: var(--old-gold); font-size: 1.5rem; flex-shrink: 0;">✓</span>
+                    <div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--ivory);">The Quiet Center</h3>
+                        <p style="font-size: 1rem; opacity: 0.85; margin: 0;">Overcome stage fright and performance anxiety</p>
+                    </div>
                 </div>
 
-                <div class="tool-item">
-                    <h3 class="tool-title">✓ Character Creation</h3>
-                    <p class="tool-description">Build compelling characters that feel real, not acted</p>
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <span style="color: var(--old-gold); font-size: 1.5rem; flex-shrink: 0;">✓</span>
+                    <div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--ivory);">Character Creation Journey</h3>
+                        <p style="font-size: 1rem; opacity: 0.85; margin: 0;">Build compelling characters that feel real, not acted</p>
+                    </div>
                 </div>
 
-                <div class="tool-item">
-                    <h3 class="tool-title">✓ 3-Day Audition Playbook</h3>
-                    <p class="tool-description">Your roadmap to conquer any audition in 72 hours</p>
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <span style="color: var(--old-gold); font-size: 1.5rem; flex-shrink: 0;">✓</span>
+                    <div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--ivory);">3-Day Audition Playbook</h3>
+                        <p style="font-size: 1rem; opacity: 0.85; margin: 0;">Your roadmap to conquer any audition in 72 hours</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="highlight-box text-center" style="margin-top: 3rem;">
-                <p style="font-size: 1.2rem; margin-bottom: 1rem;">
-                    <strong>You've already mastered Tool #1. Four more await.</strong>
+            <div style="margin-top: 3.5rem; padding: 2rem; background: rgba(212, 193, 55, 0.1); border: 2px solid rgba(212, 193, 55, 0.3); border-radius: 8px; max-width: 650px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 1.15rem; margin-bottom: 0.75rem; color: var(--old-gold); font-weight: 700;">
+                    These aren't just PDFs to download and forget.
                 </p>
-                <p style="font-size: 1.05rem;">
-                    These tools aren't just theory - they're practical systems that working actors use every day.
+                <p style="font-size: 1.05rem; margin: 0; opacity: 0.9;">
+                    Each tool unlocks at the perfect moment in your journey when you're ready to apply it. They're practical systems working actors use every day.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 8: DARK - The Path Is Calling -->
+    <!-- SECTION 9: LIGHT - What's Included -->
+    <section class="section section-light">
+        <img src="assets/images/knight.png" alt="" class="knight-companion knight-right">
+        <div class="container-narrow">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label">What's Included</span>
+                <h2 class="section-title">Your Complete Arsenal</h2>
+            </div>
+
+            <ul class="checklist">
+                <li><strong>12 weeks of live transformation</strong> — Weekly calls with Hans</li>
+                <li><strong>The 3-Phase Curriculum</strong> — Identity → Character → Materials</li>
+                <li><strong>Circle Community Access</strong> — Fellow actors on the same quest</li>
+                <li><strong>The Self-Tape Games</strong> — 30 tapes, 20 challenges, 12 weeks</li>
+                <li><strong>The 5 Actor's Tools (Bonus)</strong> — Memory, Emotion, Presence, Character, Audition mastery</li>
+                <li><strong>Your Complete Arsenal</strong> — Headshots, reels, castability sheet</li>
+            </ul>
+
+            <!-- Graduate Bonus - Highlighted -->
+            <div style="margin-top: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(232, 105, 82, 0.08), rgba(212, 193, 55, 0.08)); border: 2px solid var(--salmon); border-radius: 12px; box-shadow: 0 8px 24px rgba(232, 105, 82, 0.15); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <div style="text-align: center;">
+                    <span style="display: inline-block; background: var(--salmon); color: white; padding: 0.5rem 1.25rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">Exclusive Graduate Bonus</span>
+
+                    <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 1.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.25rem; line-height: 1.3;">
+                        Complete the Journey. Unlock the Secret.
+                    </h3>
+
+                    <p style="font-size: 1.15rem; line-height: 1.7; color: var(--charcoal); margin-bottom: 1rem;">
+                        Finish all 12 weeks and gain lifetime access to a proprietary tool that makes you <strong>undeniable</strong> for your reps to pitch and sell.
+                    </p>
+
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--charcoal); opacity: 0.85; font-style: italic;">
+                        You'll hear about it in Week 12. Trust us, you won't want to miss this.
+                    </p>
+                </div>
+            </div>
+
+            <p style="font-size: 1.2rem; color: var(--salmon); font-weight: 600; margin-top: 4rem; text-align: center; font-style: italic;">
+                Only 10 spots available
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 10: DARK - The Choice -->
     <section class="section section-dark">
         <div class="container-narrow text-center">
-            <h2 class="section-title">The Path Is Calling</h2>
-            <p class="section-subtitle">Maybe you've felt it for a while now</p>
-
-            <p class="text-xl mt-4" style="font-style: italic;">
-                "There's more. I'm capable of more. I just need someone to show me how."
+            <p style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; line-height: 1.3; font-weight: 600; color: var(--ivory); margin: 0 auto 3rem; max-width: 850px;">
+                You've seen the path.<br>
+                You know what you need.
             </p>
 
-            <p class="text-xl highlight-gold mt-4">
-                You're right. You are capable of more.
+            <p style="font-size: 1.25rem; line-height: 1.7; color: var(--ivory); opacity: 0.9; margin: 0 auto 3rem; max-width: 700px;">
+                Most actors spend years wandering, hoping someone will show them the way. You're here because that's not you. You're ready to claim it.
             </p>
 
-            <p class="text-lg mt-3">
-                The fire has always been in you. The talent. The work ethic. The heart.
+            <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.75rem; line-height: 1.5; color: var(--old-gold); margin: 3rem auto; max-width: 650px;">
+                The cohort begins November 4th.<br>
+                10 actors. 6 spots remaining.
             </p>
 
-            <div class="emphasis-block mt-4">
-                What you've needed is the journey itself.
-            </div>
-
-            <p class="text-lg mt-3">
-                The path from where you are to where you're meant to be.
+            <p style="font-size: 1.35rem; line-height: 1.7; color: var(--ivory); opacity: 0.9; margin: 3.5rem auto 0; max-width: 700px;">
+                The only question left is: are you one of them?
             </p>
-
-            <p class="text-2xl highlight-gold mt-5">
-                This is it.
-            </p>
-
-            <div class="testimonial mt-4">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <div class="testimonial-quote">
-                    "Hans has given me direction, inspiration, and accountability."
-                </div>
-                <div class="testimonial-author">— Gen</div>
-            </div>
         </div>
     </section>
 
-    <!-- SECTION 9: LIGHT - Investment Section -->
+    <!-- SECTION 11: LIGHT - Investment Section -->
     <section class="section section-light" id="investment">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-left">
         <div class="container">
@@ -2060,41 +2331,51 @@
                 <p class="section-subtitle">Choose your path</p>
             </div>
 
-            <!-- Price Anchoring: What This Journey Replaces -->
+            <!-- Value Stack -->
             <div class="price-anchor-wrapper">
-                <h3 class="price-anchor-title">
-                    What This Journey Replaces
-                </h3>
                 <div class="price-anchor-card">
                     <p class="price-anchor-intro">
-                        Most actors piece together their training:
+                        <strong>Your Complete Transformation System:</strong>
                     </p>
                     <ul class="price-anchor-list">
                         <li class="price-anchor-item">
-                            <span>12 weeks of private coaching</span>
-                            <strong>$1,800+</strong>
+                            <span>12-Week Small Group Intensive (1-to-10 coaching)</span>
+                            <strong>$2,400</strong>
                         </li>
                         <li class="price-anchor-item">
-                            <span>Self-tape courses</span>
-                            <strong>$300-500</strong>
+                            <span>Weekly Office Hours with Hans</span>
+                            <strong>$600</strong>
                         </li>
                         <li class="price-anchor-item">
-                            <span>Headshot strategy consultations</span>
-                            <strong>$200-400</strong>
+                            <span>Self-Tape Games Course (25+ video lessons)</span>
+                            <strong>$497</strong>
                         </li>
                         <li class="price-anchor-item">
-                            <span>Career clarity sessions</span>
-                            <strong>$150-300</strong>
+                            <span>30 Tape Challenge Mini-Course</span>
+                            <strong>$297</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>Private Community Access (3 months)</span>
+                            <strong>$297</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>Self-Tape Jam Session Access</span>
+                            <strong>$197</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>The 5 Actor's Tools</span>
+                            <strong>$200</strong>
+                        </li>
+                        <li class="price-anchor-item">
+                            <span>Exclusive Graduate Bonus (Perfect Pitch Access)</span>
+                            <strong>Priceless</strong>
                         </li>
                     </ul>
                     <p class="price-anchor-total">
-                        <strong>Total: $2,500-$3,000+ for fragmented guidance</strong>
+                        <strong>Total Value: $4,488+</strong>
                     </p>
                     <p class="price-anchor-conclusion">
-                        The Actor's Journey: $1,297 for your complete transformation system.
-                    </p>
-                    <p class="price-anchor-tagline">
-                        Everything you need. One integrated path.
+                        <strong style="font-size: 1.4rem; color: var(--salmon);">Founders Price: $1,297</strong>
                     </p>
                 </div>
             </div>
@@ -2102,15 +2383,15 @@
             <div class="investment-grid">
                 <!-- One-Time Payment -->
                 <div class="investment-card featured">
-                    <div class="investment-label">Most Popular</div>
+                    <div class="investment-label">Best Value - Save $203</div>
                     <h3 class="investment-title">One-Time Payment</h3>
                     <div class="investment-price">$1,297</div>
                     <p class="investment-description">
-                        Full payment • Save $3<br>
+                        Full payment • Save $203<br>
                         Quest begins November 4, 2025
                     </p>
                     <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn btn--primary">
-                        Secure Your Spot - Pay in Full
+                        Claim Your Spot - Pay in Full
                     </a>
                 </div>
 
@@ -2118,14 +2399,14 @@
                 <div class="investment-card">
                     <h3 class="investment-title">Payment Plan</h3>
                     <div class="investment-price">
-                        $325<span class="investment-price-note">/mo</span>
+                        $375<span class="investment-price-note">/mo</span>
                     </div>
                     <p class="investment-description">
-                        4 monthly payments ($1,300 total)<br>
+                        4 monthly payments ($1,500 total)<br>
                         Quest begins November 4, 2025
                     </p>
                     <a href="https://buy.stripe.com/4gM14meNW8cX6g069s1ck0n" class="btn btn--primary">
-                        Secure Your Spot - 4 Payments
+                        Claim Your Spot - 4 Payments
                     </a>
                 </div>
             </div>
@@ -2143,7 +2424,7 @@
                         If The Actor's Journey isn't right for you within 30 days, we'll refund your investment. No questions asked.
                     </p>
                     <p class="guarantee-subtext">
-                        This journey requires commitment and deep work—but you shouldn't risk your hard-earned money to find out if it's your path.
+                        This journey requires commitment and deep work, but you shouldn't risk your hard-earned money to find out if it's your path.
                     </p>
                 </div>
             </div>
@@ -2152,7 +2433,7 @@
                 <p style="font-size: 1.1rem; margin-bottom: 1rem;">
                     <strong>Quest Begins:</strong> November 4, 2025
                 </p>
-                <p class="investment-spots" style="font-size: 1.2rem; color: var(--adventure-green); font-weight: 700;">
+                <p class="investment-spots" style="font-size: 1.2rem; color: var(--salmon); font-weight: 700;">
                     Spots Available: 10 actors only
                 </p>
 
@@ -2161,14 +2442,14 @@
                         Still have questions? Let's talk:
                     </p>
                     <p>
-                        <a href="https://calendly.com/hans-magic/actors-journey-quick-chat" style="color: var(--adventure-green); font-weight: 600; text-decoration: none; font-size: 1.1rem;">Book a Quick Chat →</a>
+                        <a href="https://calendly.com/hans-magic/actors-journey-quick-chat" style="color: var(--salmon); font-weight: 600; text-decoration: none; font-size: 1.1rem;">Book a Quick Chat →</a>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 10: DARK - FAQ -->
+    <!-- SECTION 12: DARK - FAQ -->
     <section class="section section-dark">
         <div class="container-narrow">
             <div class="text-center" style="margin-bottom: 64px;">
@@ -2277,7 +2558,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <p>You get: 12 weekly live group calls, The 3-Phase transformation curriculum (Identity → Character → Materials), The Self-Tape Academy (30 tapes, 20 challenges), I AM ACTOR Community access, The 5 Actor's Tools (bonus), and your complete arsenal (headshot strategy, castability sheet, reel guidance).</p>
+                            <p>You get: 12 weekly live group calls, The 3-Phase transformation curriculum (Identity → Character → Materials), The Self-Tape Games (30 tapes, 20 challenges), I AM ACTOR Community access, The 5 Actor's Tools (bonus), and your complete arsenal (headshot strategy, castability sheet, reel guidance).</p>
                         </div>
                     </div>
                 </div>
@@ -2290,7 +2571,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <p>No. Most classes teach technique. This is about discovering WHO you are as an actor and building your career around that truth. You'll leave with clarity, materials, and a roadmap—not just more exercises.</p>
+                            <p>No. Most classes teach technique. This is about discovering WHO you are as an actor and building your career around that truth. You'll leave with clarity, materials, and a roadmap, not just more exercises.</p>
                         </div>
                     </div>
                 </div>
@@ -2311,7 +2592,7 @@
                 <!-- FAQ Item 11 -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>What's the Self-Tape Academy?</span>
+                        <span>What are the Self-Tape Games?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
@@ -2399,7 +2680,7 @@
         </div>
     </section>
 
-    <!-- SECTION 11: DARK - What You're Really Claiming + Final CTA -->
+    <!-- SECTION 13: DARK - What You're Really Claiming + Final CTA -->
     <section class="section section-dark">
         <div class="container-narrow text-center">
             <h2 class="section-title">What You're Really Claiming</h2>
@@ -2465,19 +2746,419 @@
     <!-- Sticky Mobile CTA -->
     <div class="sticky-mobile-cta" id="stickyMobileCTA">
         <div class="sticky-mobile-cta-content">
-            <button onclick="window.location.href='#investment'">Claim Your Spot (10 Left)</button>
+            <button onclick="window.location.href='#investment'">Claim Your Spot</button>
             <button class="sticky-mobile-cta-dismiss" onclick="dismissStickyCTA()">✕</button>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <img src="assets/images/logo-dark.png" alt="I AM ACTOR" class="footer-logo">
         <p>© 2025 I AM ACTOR. All rights reserved.</p>
-        <p style="opacity: 0.6; margin-top: 1rem;">
+        <p style="margin-top: 0.5rem;">
             Questions? <a href="https://calendly.com/hans-magic/actors-road-map-coaching">Book a call with Hans</a>
         </p>
     </footer>
+
+    <!-- Qualifying Modal -->
+    <div id="qualifyingModal" class="qualifying-modal">
+        <div class="qualifying-modal-content">
+            <!-- Hero Knight Icon -->
+            <img src="assets/images/knightartfirered (500 x 500 px)(2).png" alt="" class="qualifying-knight-icon">
+
+            <div class="qualifying-progress">
+                <div class="qualifying-progress-bar"></div>
+            </div>
+            <div class="qualifying-question-container">
+                <p class="qualifying-question"></p>
+                <div class="qualifying-buttons">
+                    <button class="btn-qualify btn-qualify-yes">Yes, That's Me</button>
+                    <button class="btn-qualify btn-qualify-no">Not Yet</button>
+                </div>
+            </div>
+
+            <div class="qualifying-thinking" style="display: none;">
+                <div class="thinking-spinner"></div>
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.2rem; color: var(--charcoal); text-align: center; margin-top: 1.5rem; opacity: 0.7;">Processing your response...</p>
+            </div>
+            <div class="qualifying-not-ready" style="display: none;">
+                <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; color: var(--charcoal); margin-bottom: 1.5rem;">This journey will be here when you're ready.</h3>
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem; color: var(--charcoal); opacity: 0.85;">The fire has always been in you. When the time is right, you'll know.</p>
+                <button class="btn-qualify btn-qualify-close">Close</button>
+            </div>
+
+            <div class="qualifying-success" style="display: none;">
+                <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; color: var(--old-gold); margin-bottom: 1rem; text-align: center;">Congratulations!</h3>
+                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; color: var(--charcoal); text-align: center;">You qualify for The Actor's Journey.</p>
+            </div>
+
+            <div class="qualifying-pricing" style="display: none;">
+                <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2.25rem; color: var(--charcoal); margin-bottom: 0.75rem; text-align: center; font-weight: 600;">Your Spot Is Reserved</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6; color: var(--charcoal); opacity: 0.85; margin-bottom: 2.5rem; text-align: center;">Complete your registration below to secure your place in the November 4th cohort.</p>
+
+                <div class="pricing-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <!-- One-Time Payment -->
+                    <div style="padding: 2rem 1.5rem; border: 2px solid var(--old-gold); border-radius: 8px; background: rgba(212, 193, 55, 0.05); text-align: center;">
+                        <div style="font-size: 0.875rem; color: var(--old-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Most Popular</div>
+                        <div style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem;">$1,297</div>
+                        <div style="font-size: 0.95rem; color: var(--charcoal); opacity: 0.75; margin-bottom: 1.5rem;">One-Time Payment<br>Save $291</div>
+                        <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn-qualify btn-qualify-yes" style="display: block; text-decoration: none; text-align: center;">Claim Your Spot</a>
+                    </div>
+
+                    <!-- Payment Plan -->
+                    <div style="padding: 2rem 1.5rem; border: 2px solid var(--charcoal); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 0.875rem; color: transparent; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">.</div>
+                        <div style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem;">$397<span style="font-size: 1.25rem; font-weight: 400;">/mo</span></div>
+                        <div style="font-size: 0.95rem; color: var(--charcoal); opacity: 0.75; margin-bottom: 1.5rem;">4 Monthly Payments<br>$1,588 total</div>
+                        <a href="https://buy.stripe.com/4gM14meNW8cX6g069s1ck0n" class="btn-qualify btn-qualify-no" style="display: block; text-decoration: none; text-align: center;">4 Payments</a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; padding: 1rem; background: rgba(232, 105, 82, 0.08); border-radius: 6px; border: 1px solid rgba(232, 105, 82, 0.2);">
+                    <p style="font-size: 0.95rem; color: var(--charcoal); margin: 0;">
+                        <strong>Only 6 spots remaining</strong> • Quest begins November 4, 2025
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Qualifying Modal Styles */
+        .qualifying-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .qualifying-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .qualifying-modal-content {
+            max-width: 700px;
+            width: 90%;
+            background: var(--ivory);
+            border: 1px solid rgba(44, 44, 44, 0.15);
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .qualifying-knight-icon {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            width: 80px;
+            height: 80px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .qualifying-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(44, 44, 44, 0.15);
+            border-radius: 2px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .qualifying-progress-bar {
+            height: 100%;
+            background: var(--old-gold);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .qualifying-question {
+            font-family: 'Bentham', Georgia, serif;
+            font-size: 1.75rem;
+            line-height: 1.4;
+            color: var(--charcoal);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .qualifying-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-qualify {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-width: 180px;
+        }
+
+        .btn-qualify-yes {
+            background: var(--old-gold);
+            color: var(--deep-charcoal);
+            box-shadow: 0 4px 12px rgba(212, 193, 55, 0.3);
+        }
+
+        .btn-qualify-yes:hover {
+            background: #E5D157;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 193, 55, 0.4);
+        }
+
+        .btn-qualify-no {
+            background: transparent;
+            border: 2px solid var(--charcoal);
+            color: var(--charcoal);
+        }
+
+        .btn-qualify-no:hover {
+            background: var(--charcoal);
+            color: var(--ivory);
+        }
+
+        .btn-qualify-close {
+            background: var(--charcoal);
+            border: 2px solid var(--charcoal);
+            color: var(--ivory);
+        }
+
+        .btn-qualify-close:hover {
+            background: transparent;
+            color: var(--charcoal);
+        }
+
+        .qualifying-not-ready {
+            text-align: center;
+        }
+
+        .qualifying-success {
+            text-align: center;
+        }
+
+        .qualifying-pricing {
+            text-align: center;
+        }
+
+        .qualifying-thinking {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .thinking-spinner {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border: 4px solid rgba(44, 44, 44, 0.1);
+            border-top: 4px solid var(--old-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .qualifying-pricing .pricing-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .qualifying-modal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .qualifying-question {
+                font-size: 1.25rem;
+                min-height: 100px;
+            }
+
+            .btn-qualify {
+                min-width: 140px;
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Qualifying Modal Script -->
+    <script>
+        const qualifyingQuestions = [
+            "Can you commit to 4-6 hours per week for the next 12 weeks?",
+            "Have you been training for a while but still unclear on your type or what makes you castable?",
+            "Are you currently working with an acting coach or in a structured program?",
+            "Is investing in yourself and your craft a priority for you right now?",
+            "Are you looking to start in the next 30 days?"
+        ];
+
+        let currentQuestionIndex = 0;
+        let noCount = 0;
+
+        function openQualifyingModal() {
+            const modal = document.getElementById('qualifyingModal');
+            const questionContainer = modal.querySelector('.qualifying-question-container');
+            const notReadyContainer = modal.querySelector('.qualifying-not-ready');
+            const successContainer = modal.querySelector('.qualifying-success');
+            const pricingContainer = modal.querySelector('.qualifying-pricing');
+            const thinkingContainer = modal.querySelector('.qualifying-thinking');
+
+            // Reset state
+            currentQuestionIndex = 0;
+            noCount = 0;
+            questionContainer.style.display = 'block';
+            notReadyContainer.style.display = 'none';
+            successContainer.style.display = 'none';
+            pricingContainer.style.display = 'none';
+            thinkingContainer.style.display = 'none';
+
+            // Show first question
+            showQuestion();
+
+            // Open modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQualifyingModal() {
+            const modal = document.getElementById('qualifyingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showQuestion() {
+            const questionEl = document.querySelector('.qualifying-question');
+            const progressBar = document.querySelector('.qualifying-progress-bar');
+
+            // Update content immediately
+            questionEl.textContent = qualifyingQuestions[currentQuestionIndex];
+            progressBar.style.width = ((currentQuestionIndex + 1) / qualifyingQuestions.length * 100) + '%';
+
+            // Ensure it's visible
+            questionEl.style.opacity = '1';
+        }
+
+        function handleYes() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < qualifyingQuestions.length) {
+                // Go directly to next question (no thinking between)
+                showQuestion();
+            } else {
+                // All questions answered - show thinking before success
+                showThinking();
+                setTimeout(() => {
+                    hideThinking();
+                    showSuccess();
+                }, 2000);
+            }
+        }
+
+        function showThinking() {
+            const questionContainer = document.querySelector('.qualifying-question-container');
+            const thinkingContainer = document.querySelector('.qualifying-thinking');
+
+            questionContainer.style.display = 'none';
+            thinkingContainer.style.display = 'block';
+        }
+
+        function hideThinking() {
+            const questionContainer = document.querySelector('.qualifying-question-container');
+            const thinkingContainer = document.querySelector('.qualifying-thinking');
+
+            thinkingContainer.style.display = 'none';
+        }
+
+        function showSuccess() {
+            const questionContainer = document.querySelector('.qualifying-question-container');
+            const successContainer = document.querySelector('.qualifying-success');
+            const pricingContainer = document.querySelector('.qualifying-pricing');
+
+            // Hide questions
+            questionContainer.style.display = 'none';
+
+            // Show success message
+            successContainer.style.display = 'block';
+
+            // After 2.5 seconds, transition to pricing
+            setTimeout(() => {
+                successContainer.style.display = 'none';
+                pricingContainer.style.display = 'block';
+            }, 2500);
+        }
+
+        function handleNo() {
+            noCount++;
+            currentQuestionIndex++;
+
+            // Check if disqualified (2 or more "No" answers)
+            if (noCount >= 2) {
+                const questionContainer = document.querySelector('.qualifying-question-container');
+                const notReadyContainer = document.querySelector('.qualifying-not-ready');
+
+                questionContainer.style.display = 'none';
+                notReadyContainer.style.display = 'block';
+            } else if (currentQuestionIndex < qualifyingQuestions.length) {
+                // Continue to next question
+                showQuestion();
+            } else {
+                // Finished all questions with only 1 "No" - still qualify
+                showThinking();
+                setTimeout(() => {
+                    hideThinking();
+                    showSuccess();
+                }, 2000);
+            }
+        }
+
+        // Wire up buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attach to all CTA buttons
+            const ctaButtons = document.querySelectorAll('.btn--hero, .nav-cta-btn, .btn--salmon, .btn--primary');
+            ctaButtons.forEach(btn => {
+                // Only intercept buttons that go to #investment
+                if (btn.getAttribute('href') === '#investment' || btn.getAttribute('onclick')?.includes('#investment')) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        openQualifyingModal();
+                    });
+                }
+            });
+
+            // Modal button handlers
+            document.querySelector('.btn-qualify-yes').addEventListener('click', handleYes);
+            document.querySelector('.btn-qualify-no').addEventListener('click', handleNo);
+            document.querySelector('.btn-qualify-close').addEventListener('click', closeQualifyingModal);
+
+            // Close on outside click
+            document.getElementById('qualifyingModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeQualifyingModal();
+                }
+            });
+        });
+    </script>
 
     <!-- Journey-specific JavaScript -->
     <script src="assets/js/journey.js"></script>
@@ -2556,6 +3237,42 @@
                 heroSubtext.textContent = heroSubtext.textContent.replace(/Only \d+/, 'Only ' + SPOTS_AVAILABLE);
             }
         });
+    </script>
+
+    <!-- Scroll Reveal Animation -->
+    <script>
+        function revealOnScroll() {
+            // Reveal storybook text paragraphs
+            const textElements = document.querySelectorAll('.storybook-text p');
+            textElements.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    // Add slight delay for staggered effect
+                    setTimeout(() => {
+                        element.classList.add('reveal');
+                    }, index * 100);
+                }
+            });
+
+            // Reveal act content blocks
+            const actElements = document.querySelectorAll('.act-content');
+            actElements.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 200;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('reveal');
+                }
+            });
+        }
+
+        // Run on scroll
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Run on page load
+        window.addEventListener('load', revealOnScroll);
     </script>
 </body>
 </html>
