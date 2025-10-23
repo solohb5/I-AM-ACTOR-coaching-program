@@ -523,10 +523,10 @@ img[loading="lazy"]:not(.loaded) {
   img[src*="Hans-Sign"] {
     display: block !important;
     margin: 1rem auto !important;
-    filter: brightness(0) invert(1) !important;
-    opacity: 0.8 !important;
+    opacity: 0.9 !important;
     width: 140px !important;
     height: auto !important;
+    mix-blend-mode: lighten !important;
   }
 
   /* Ensure tools image shows */
