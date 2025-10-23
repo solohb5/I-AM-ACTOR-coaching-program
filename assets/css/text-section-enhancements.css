@@ -4,10 +4,10 @@
    ========================================================================== */
 
 /* ==========================================================================
-   1. DROP CAPS - Storybook feel for opening paragraphs
+   1. DROP CAPS - Storybook feel for opening paragraphs (DISABLED - needs refinement)
    ========================================================================== */
 
-/* Call to Adventure section - dramatic opening */
+/* TEMPORARILY DISABLED - Drop caps need better targeting
 .section-light p:first-of-type::first-letter {
   font-size: 3.8em;
   line-height: 0.85;
@@ -24,6 +24,7 @@
     margin: 0.08em 0.1em 0 0;
   }
 }
+*/
 
 /* ==========================================================================
    2. PULL QUOTE STYLING - Highlight key phrases

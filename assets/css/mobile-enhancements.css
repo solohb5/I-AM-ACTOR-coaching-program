@@ -34,10 +34,10 @@ section,
     content: url('../images/knightartfire-mobile.png');
   }
 
-  /* Tools image - mobile optimized */
-  img[src*="tools"] {
+  /* Tools image - DISABLED, using original */
+  /* img[src*="tools"] {
     content: url('../images/tools-mobile.png');
-  }
+  } */
 }
 
 /* ===== IMPROVED MOBILE NAVIGATION ===== */
@@ -508,6 +508,8 @@ img[loading="lazy"]:not(.loaded) {
     margin: 0 auto 1.5rem auto !important;
     max-width: 200px !important;
     width: auto !important;
+    height: auto !important;
+    object-fit: cover !important;
   }
 
   /* Center bio text on mobile */
@@ -516,11 +518,25 @@ img[loading="lazy"]:not(.loaded) {
     text-align: center !important;
   }
 
-  /* Fix signature image */
+  /* Fix signature image - ensure visibility */
   img[alt*="signature"],
   img[src*="Hans-Sign"] {
     display: block !important;
     margin: 1rem auto !important;
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.8 !important;
+    width: 140px !important;
+    height: auto !important;
+  }
+
+  /* Ensure tools image shows */
+  img[alt*="Tools"],
+  img[src*="tools"] {
+    display: block !important;
+    margin: 3rem auto !important;
+    max-width: 90% !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
   /* Credits poster strip - ensure it doesn't overflow */
