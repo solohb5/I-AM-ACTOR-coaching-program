@@ -546,3 +546,45 @@ img[loading="lazy"]:not(.loaded) {
     overflow-x: auto !important;
   }
 }
+
+/* ===== ACT SECTIONS MOBILE LAYOUT ===== */
+
+@media (max-width: 768px) {
+  /* Convert Act sections to single column stacked layout */
+  .act-section {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    margin-bottom: 4rem !important;
+    padding: 0 !important;
+  }
+
+  /* Act content takes full width on mobile */
+  .act-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* Knights appear below content, centered and smaller */
+  .act-knight {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 2rem auto 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* Reduce knight size on mobile */
+  .act-knight img {
+    height: 120px !important;
+    opacity: 0.6 !important;
+  }
+
+  /* Hide empty spacer divs on mobile */
+  .act-section > div:empty {
+    display: none !important;
+  }
+}
