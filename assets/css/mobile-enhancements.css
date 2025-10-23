@@ -448,6 +448,50 @@ img[loading="lazy"]:not(.loaded) {
   }
 }
 
+/* ===== FIX CHECKMARK ALIGNMENT ON MOBILE ===== */
+
+@media (max-width: 768px) {
+  /* Fix checkmark alignment in lists */
+  div[style*="display: flex"][style*="align-items: flex-start"] {
+    align-items: center !important;
+  }
+
+  /* Ensure checkmarks align with text */
+  div[style*="display: flex"] > span:first-child {
+    line-height: 1 !important;
+    margin-top: 0.15rem !important;
+  }
+}
+
+/* ===== FIX CALL TO ADVENTURE FONT SIZES ON MOBILE ===== */
+
+@media (max-width: 768px) {
+  /* Preserve dramatic font sizing on mobile */
+  section p[style*="font-size: 2.75rem"] {
+    font-size: 2rem !important;
+  }
+
+  section p[style*="font-size: 3rem"] {
+    font-size: 2.25rem !important;
+  }
+
+  section p[style*="font-size: 3.5rem"] {
+    font-size: 2.5rem !important;
+  }
+
+  section p[style*="font-size: 2.25rem"] {
+    font-size: 1.75rem !important;
+  }
+
+  section p[style*="font-size: 1.75rem"] {
+    font-size: 1.4rem !important;
+  }
+
+  section p[style*="font-size: 1.5rem"] {
+    font-size: 1.25rem !important;
+  }
+}
+
 /* ===== FIX YOUR GUIDE SECTION ON MOBILE ===== */
 
 @media (max-width: 768px) {
