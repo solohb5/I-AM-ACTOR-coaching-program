@@ -285,8 +285,8 @@ img[loading="lazy"].loaded {
   opacity: 1;
 }
 
-/* Placeholder for lazy images */
-img[loading="lazy"]:not(.loaded) {
+/* Placeholder for lazy images - DISABLED to prevent shimmer on signature/photos */
+/* img[loading="lazy"]:not(.loaded) {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
@@ -299,7 +299,7 @@ img[loading="lazy"]:not(.loaded) {
   100% {
     background-position: 200% 0;
   }
-}
+} */
 
 /* ===== PERFORMANCE OPTIMIZATIONS ===== */
 

@@ -452,8 +452,8 @@
    ========================================================================== */
 
 @media (max-width: 768px) {
-  /* Shimmer effect for loading images */
-  img[loading="lazy"]:not(.loaded) {
+  /* Shimmer effect for loading images - DISABLED */
+  /* img[loading="lazy"]:not(.loaded) {
     background: linear-gradient(
       90deg,
       #f0f0f0 25%,
@@ -471,7 +471,7 @@
     100% {
       background-position: 200% 0;
     }
-  }
+  } */
 
   /* Prevent layout shift */
   img {
