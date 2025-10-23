@@ -1,0 +1,625 @@
+/* ==========================================================================
+   MOBILE DESIGN POLISH - I AM ACTOR
+   Premium $20K landing page experience for mobile
+   Clean, scannable, effortless
+   ========================================================================== */
+
+/* ==========================================================================
+   1. SPACING & RHYTHM - Systematic vertical flow
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Consistent section spacing */
+  .section,
+  section {
+    padding: 4rem 1.5rem !important;
+  }
+
+  /* Hero section - tighter on mobile */
+  .hero,
+  section.hero {
+    padding: 3rem 1.5rem 4rem !important;
+    min-height: 90vh !important;
+  }
+
+  /* Container spacing */
+  .container,
+  .container-narrow {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Internal element spacing - 8-point grid */
+  h1 + p,
+  h2 + p,
+  h3 + p {
+    margin-top: 1rem !important;
+  }
+
+  p + p {
+    margin-top: 1.5rem !important;
+  }
+
+  /* Section transitions - consistent gap */
+  section + section {
+    margin-top: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY SCALE - Smooth, readable hierarchy
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Body text - optimal readability */
+  body {
+    font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Heading scale - gradual reduction */
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem) !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Hero title - dramatic but readable */
+  .hero-title,
+  .hero h1 {
+    font-size: clamp(2.25rem, 7vw, 3.5rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Hero subtitle */
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem) !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Hero tagline */
+  .hero-tagline {
+    font-size: clamp(1rem, 3vw, 1.25rem) !important;
+    line-height: 1.5 !important;
+    opacity: 0.9 !important;
+  }
+
+  /* Paragraph max-width for readability */
+  p {
+    max-width: 680px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Tighter letter-spacing on mobile */
+  .section-label,
+  [style*="letter-spacing: 3px"] {
+    letter-spacing: 2px !important;
+  }
+}
+
+/* ==========================================================================
+   3. BUTTON & CTA PREMIUM TREATMENT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* All buttons - premium feel */
+  .btn,
+  button,
+  .hero-cta,
+  [class*="cta"],
+  a[class*="btn"] {
+    min-height: 52px !important;
+    padding: 0.875rem 2rem !important;
+    border-radius: 8px !important;
+    font-size: clamp(0.95rem, 3vw, 1.05rem) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12),
+                0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: none !important;
+  }
+
+  /* Button hover/active states */
+  .btn:active,
+  button:active {
+    transform: translateY(1px) scale(0.98) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Primary CTA - extra emphasis */
+  .btn--primary,
+  .hero-cta {
+    box-shadow: 0 4px 16px rgba(212, 193, 55, 0.25),
+                0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  /* CTA spacing */
+  .hero-cta {
+    margin: 2rem auto 1rem !important;
+    max-width: 280px !important;
+    width: 100% !important;
+  }
+
+  /* CTA subtext */
+  .hero-cta-subtext {
+    font-size: 0.85rem !important;
+    margin-top: 0.75rem !important;
+    opacity: 0.85 !important;
+  }
+
+  /* Navigation CTA - compact but touchable */
+  .nav-cta-btn {
+    padding: 0.65rem 1rem !important;
+    font-size: 0.8rem !important;
+    min-height: 44px !important;
+    box-shadow: none !important;
+    border: 1.5px solid currentColor !important;
+  }
+}
+
+/* ==========================================================================
+   4. WHITESPACE OPTIMIZATION - Luxury breathing room
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Content width - comfortable not cramped */
+  .container {
+    max-width: 90% !important;
+  }
+
+  .container-narrow {
+    max-width: 600px !important;
+  }
+
+  /* Card grids - consistent spacing */
+  [class*="grid"] {
+    gap: 1.5rem !important;
+  }
+
+  /* Text blocks - generous margins */
+  .section p:not(:last-child) {
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* List items - breathing room */
+  li {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Checkmark lists - optimal spacing */
+  div[style*="display: flex"] {
+    margin-bottom: 1.25rem !important;
+  }
+
+  /* Between major content blocks */
+  .hero + .section,
+  section + section {
+    padding-top: 4rem !important;
+  }
+}
+
+/* ==========================================================================
+   5. SECTION TRANSITIONS - Smooth visual flow
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Gradient fade between sections */
+  .section-dark {
+    position: relative !important;
+  }
+
+  .section-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.03));
+    pointer-events: none;
+  }
+
+  .section-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.03));
+    pointer-events: none;
+  }
+
+  /* Smooth color transitions */
+  section {
+    transition: background-color 0.4s ease !important;
+  }
+}
+
+/* ==========================================================================
+   6. NAVIGATION ENHANCEMENT - Premium header
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Glassmorphism effect */
+  .nav,
+  nav {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgba(26, 26, 26, 0.92) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15) !important;
+    padding: 0.875rem 1rem !important;
+  }
+
+  /* Logo - more presence */
+  .nav-logo img,
+  .logo-image {
+    height: 3.25rem !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) !important;
+  }
+
+  /* Spots counter - badge style */
+  .nav-spots {
+    background: rgba(212, 193, 55, 0.15) !important;
+    border: 1px solid rgba(212, 193, 55, 0.3) !important;
+    padding: 0.35rem 0.65rem !important;
+    border-radius: 12px !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .nav-spots .spots-number {
+    color: #D4AF37 !important;
+  }
+}
+
+/* ==========================================================================
+   7. COLOR CONTRAST & ACCESSIBILITY
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Ensure readable text contrast */
+  .section-light {
+    color: #1a1a1a !important;
+  }
+
+  .section-light p {
+    color: #2a2a2a !important;
+  }
+
+  .section-dark {
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  .section-dark p {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Salmon text - ensure visibility */
+  [style*="color: var(--salmon)"],
+  .pull-quote {
+    color: #E86952 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Gold text - readable on dark */
+  [style*="color: var(--old-gold)"],
+  .section-dark h2,
+  .section-dark h3 {
+    color: #D4C137 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+/* ==========================================================================
+   8. IMAGE TREATMENT - Polished presentation
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hero knight - subtle glow */
+  .hero-knight {
+    filter: drop-shadow(0 0 30px rgba(212, 193, 55, 0.15)) !important;
+    opacity: 0.4 !important;
+  }
+
+  /* Hans photo - premium treatment */
+  img[alt*="Hans"],
+  img[src*="hans-bio"] {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Tools graphic - elevated */
+  img[alt*="Tools"],
+  img[src*="tools"] {
+    border-radius: 8px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15),
+                0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* All images - smooth loading */
+  img {
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+  }
+
+  img[loading="lazy"] {
+    opacity: 0;
+  }
+
+  img[loading="lazy"].loaded {
+    opacity: 1;
+  }
+
+  /* Poster carousel - fade edges */
+  .credits-posters {
+    mask-image: linear-gradient(to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent) !important;
+    -webkit-mask-image: linear-gradient(to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent) !important;
+  }
+}
+
+/* ==========================================================================
+   9. MICRO-INTERACTIONS - Subtle motion design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Checkmarks - gentle reveal */
+  div[style*="display: flex"] > span:first-child {
+    animation: checkFadeIn 0.3s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+
+  @keyframes checkFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Cards - lift on view */
+  [class*="card"],
+  .testimonial-card,
+  .pathway-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s ease !important;
+  }
+
+  /* Scroll reveal - smooth entrance */
+  .act-content,
+  .reveal {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Navigation scroll effect */
+  .nav.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* Testimonial stars - subtle pulse */
+  .testimonial-stars {
+    animation: subtlePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes subtlePulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+}
+
+/* ==========================================================================
+   10. LOADING STATES - Premium feedback
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Shimmer effect for loading images */
+  img[loading="lazy"]:not(.loaded) {
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Prevent layout shift */
+  img {
+    aspect-ratio: attr(width) / attr(height);
+    object-fit: cover;
+  }
+
+  /* Smooth opacity transition when loaded */
+  img.loaded {
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* ==========================================================================
+   11. TESTIMONIAL SECTION POLISH
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .testimonial {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    padding: 2rem 1.5rem !important;
+    margin-top: 3rem !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .testimonial-quote {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+    font-style: italic !important;
+  }
+
+  .testimonial-author {
+    font-size: 0.9rem !important;
+    margin-top: 1rem !important;
+    opacity: 0.8 !important;
+  }
+
+  .testimonial-stars {
+    font-size: 1.1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   12. FAQ SECTION ENHANCEMENT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .faq-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .faq-question {
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+  }
+
+  .faq-answer {
+    padding-top: 1rem !important;
+    line-height: 1.65 !important;
+    opacity: 0.9 !important;
+  }
+}
+
+/* ==========================================================================
+   13. FINAL TOUCHES - Premium details
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Remove page border on mobile - cleaner */
+  body::after {
+    display: none !important;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Selection color - brand colored */
+  ::selection {
+    background: rgba(212, 193, 55, 0.3);
+    color: inherit;
+  }
+
+  /* Focus states - accessible and pretty */
+  *:focus-visible {
+    outline: 2px solid #D4C137;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Prevent text selection on UI elements */
+  button,
+  .nav,
+  [onclick] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Optimize font rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ==========================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hardware acceleration for smooth animations */
+  .nav,
+  .btn,
+  img,
+  [class*="card"] {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
