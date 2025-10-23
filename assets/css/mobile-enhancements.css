@@ -492,6 +492,20 @@ img[loading="lazy"].loaded {
   }
 }
 
+/* ===== DESKTOP IMAGE DISPLAY FIXES ===== */
+
+/* Force hans bio image to display on desktop */
+img[src*="hans-bio.jpg"] {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* Force tools image to display on desktop */
+img[src*="tools1.png"] {
+  display: block !important;
+  opacity: 1 !important;
+}
+
 /* ===== FIX YOUR GUIDE SECTION ON MOBILE ===== */
 
 @media (max-width: 768px) {
