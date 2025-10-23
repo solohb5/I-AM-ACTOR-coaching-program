@@ -3,6 +3,29 @@
    Optimizations for exceptional mobile experience
    ========================================================================== */
 
+/* ===== FIX HORIZONTAL SCROLLING ===== */
+
+/* Prevent any horizontal overflow */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Ensure all sections stay within viewport */
+* {
+  max-width: 100%;
+}
+
+section,
+.chapter,
+.container,
+.chapter-container,
+.hero,
+.section {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
 /* ===== RESPONSIVE IMAGES FOR MOBILE ===== */
 
 /* Hero knight - use mobile version on small screens */
@@ -20,49 +43,62 @@
 /* ===== IMPROVED MOBILE NAVIGATION ===== */
 
 @media (max-width: 768px) {
-  /* Replace absolute positioning with flexbox for reliability */
+  /* Fix navigation layout - centered logo */
+  .nav,
+  .nav-storybook {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
   .nav-container {
-    display: flex !important;
-    justify-content: space-between !important;
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
     align-items: center !important;
-    position: relative !important;
-    padding: 0.75rem 1rem !important;
+    justify-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem 0.75rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 
   .nav-spots {
-    position: relative !important;
-    left: auto !important;
-    font-size: 0.65rem !important;
+    font-size: 0.55rem !important;
     white-space: nowrap !important;
-    flex-shrink: 0 !important;
+    justify-self: start !important;
+    padding-left: 0.25rem !important;
   }
 
   .nav-spots .spots-number {
-    font-size: 0.85rem !important;
+    font-size: 0.75rem !important;
   }
 
   .nav-logo {
-    position: relative !important;
-    left: auto !important;
-    transform: none !important;
-    flex-shrink: 0 !important;
+    justify-self: center !important;
+    max-width: 120px !important;
   }
 
+  .nav-logo img,
   .logo-image {
-    height: 3.5rem !important;
+    height: 3rem !important;
     width: auto !important;
+    max-width: 120px !important;
   }
 
-  .nav-cta {
-    position: relative !important;
-    right: auto !important;
-    flex-shrink: 0 !important;
-  }
-
-  .nav-book-button {
-    padding: 0.5rem 0.85rem !important;
-    font-size: 0.7rem !important;
+  .nav-cta,
+  .nav-cta-btn {
+    justify-self: end !important;
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.65rem !important;
     white-space: nowrap !important;
+    min-width: auto !important;
+  }
+
+  /* Hide bottom sticky CTA on mobile */
+  .sticky-cta,
+  .floating-cta,
+  [class*="sticky"][class*="bottom"],
+  [class*="fixed"][class*="bottom"]:not(.modal):not(.nav) {
+    display: none !important;
   }
 }
 
@@ -367,5 +403,81 @@ img[loading="lazy"]:not(.loaded) {
   select {
     font-size: 16px !important; /* Prevent iOS zoom */
     padding: 0.875rem 1rem !important;
+  }
+}
+
+/* ===== FIX 3-PHASE JOURNEY SECTION ON MOBILE ===== */
+
+@media (max-width: 768px) {
+  /* Simplify complex grid layout for mobile */
+  .act-content {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Force all phase sections to single column */
+  [style*="grid-template-columns"] {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide decorative knight images in phases section */
+  section [style*="height: 180px"] {
+    display: none !important;
+  }
+
+  /* Act content - full width, centered */
+  .act-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+    text-align: left !important;
+  }
+
+  .act-content h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .act-content p {
+    text-align: left !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* ===== FIX YOUR GUIDE SECTION ON MOBILE ===== */
+
+@media (max-width: 768px) {
+  /* Fix bio section with image alignment */
+  [style*="display: flex"][style*="align-items: flex-start"] {
+    display: block !important;
+    text-align: center !important;
+  }
+
+  /* Stack bio image and text vertically */
+  section img[alt*="Hans"],
+  section img[src*="hans-bio"] {
+    display: block !important;
+    margin: 0 auto 1.5rem auto !important;
+    max-width: 200px !important;
+    width: auto !important;
+  }
+
+  /* Center bio text on mobile */
+  section [style*="flex: 1"] {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Fix signature image */
+  img[alt*="signature"],
+  img[src*="Hans-Sign"] {
+    display: block !important;
+    margin: 1rem auto !important;
+  }
+
+  /* Credits poster strip - ensure it doesn't overflow */
+  .credits-posters,
+  .credits-posters-track {
+    max-width: 100vw !important;
+    overflow-x: auto !important;
   }
 }
