@@ -501,9 +501,9 @@ img[loading="lazy"]:not(.loaded) {
     text-align: center !important;
   }
 
-  /* Stack bio image and text vertically */
-  section img[alt*="Hans"],
-  section img[src*="hans-bio"] {
+  /* Stack bio image and text vertically on mobile only */
+  section img[alt*="Hans Christopher"],
+  section img[src*="hans-bio.jpg"] {
     display: block !important;
     margin: 0 auto 1.5rem auto !important;
     max-width: 200px !important;
@@ -511,6 +511,23 @@ img[loading="lazy"]:not(.loaded) {
     height: auto !important;
     object-fit: cover !important;
   }
+}
+
+/* ===== DESKTOP FIXES ===== */
+
+/* Ensure hans bio image always displays on desktop */
+img[src*="hans-bio.jpg"],
+img[alt*="Hans Christopher"] {
+  display: block !important;
+}
+
+/* Ensure tools image always displays */
+img[src*="tools1.png"],
+img[src*="tools.png"] {
+  display: block !important;
+}
+
+@media (max-width: 768px) {
 
   /* Center bio text on mobile */
   section [style*="flex: 1"] {
@@ -518,20 +535,20 @@ img[loading="lazy"]:not(.loaded) {
     text-align: center !important;
   }
 
-  /* Fix signature image - ensure visibility */
+  /* Fix signature image - white on dark background */
   img[alt*="signature"],
   img[src*="Hans-Sign"] {
     display: block !important;
     margin: 1rem auto !important;
-    opacity: 0.9 !important;
+    opacity: 0.85 !important;
     width: 140px !important;
     height: auto !important;
-    mix-blend-mode: lighten !important;
+    filter: invert(1) brightness(1.2) !important;
   }
 
-  /* Ensure tools image shows */
-  img[alt*="Tools"],
-  img[src*="tools"] {
+  /* Ensure tools image shows - but don't override inline styles too aggressively */
+  img[src*="tools1.png"],
+  img[alt*="5 Actor's Tools"] {
     display: block !important;
     margin: 3rem auto !important;
     max-width: 90% !important;
