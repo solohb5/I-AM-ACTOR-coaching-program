@@ -1,0 +1,371 @@
+/* ==========================================================================
+   MOBILE ENHANCEMENTS - I AM ACTOR
+   Optimizations for exceptional mobile experience
+   ========================================================================== */
+
+/* ===== RESPONSIVE IMAGES FOR MOBILE ===== */
+
+/* Hero knight - use mobile version on small screens */
+@media (max-width: 768px) {
+  .hero-knight {
+    content: url('../images/knightartfire-mobile.png');
+  }
+
+  /* Tools image - mobile optimized */
+  img[src*="tools"] {
+    content: url('../images/tools-mobile.png');
+  }
+}
+
+/* ===== IMPROVED MOBILE NAVIGATION ===== */
+
+@media (max-width: 768px) {
+  /* Replace absolute positioning with flexbox for reliability */
+  .nav-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .nav-spots {
+    position: relative !important;
+    left: auto !important;
+    font-size: 0.65rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-spots .spots-number {
+    font-size: 0.85rem !important;
+  }
+
+  .nav-logo {
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo-image {
+    height: 3.5rem !important;
+    width: auto !important;
+  }
+
+  .nav-cta {
+    position: relative !important;
+    right: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-book-button {
+    padding: 0.5rem 0.85rem !important;
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* ===== OPTIMIZED CONTAINER WIDTHS FOR MOBILE ===== */
+
+/* Small phones (320px-375px) - iPhone SE, etc */
+@media (max-width: 375px) {
+  .chapter-container {
+    max-width: 85% !important;
+  }
+}
+
+/* Medium phones (376px-430px) - iPhone 12-15 standard */
+@media (min-width: 376px) and (max-width: 430px) {
+  .chapter-container {
+    max-width: 88% !important;
+  }
+}
+
+/* Larger phones (431px-768px) - Pro Max models */
+@media (min-width: 431px) and (max-width: 768px) {
+  .chapter-container {
+    max-width: 90% !important;
+  }
+}
+
+/* ===== FULL-SCREEN MODAL ON MOBILE ===== */
+
+@media (max-width: 768px) {
+  .pricing-modal .modal-container {
+    width: 100% !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .pricing-modal .modal-content {
+    max-height: 100vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 0 !important;
+  }
+
+  .pricing-modal .modal-close {
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 1001 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* Pricing cards - better mobile layout */
+  .pricing-options {
+    gap: 1.25rem !important;
+  }
+
+  .option-card {
+    min-height: auto !important;
+  }
+
+  /* Larger touch targets for pricing buttons */
+  .option-button {
+    min-height: 50px !important;
+    font-size: 0.95rem !important;
+    padding: 1rem 1.5rem !important;
+  }
+}
+
+/* ===== IMPROVED HERO SPACING FOR SHORT SCREENS ===== */
+
+/* Devices with short screens (< 600px height) */
+@media (max-height: 600px) {
+  section.chapter.chapter-opening .chapter-container {
+    padding: 80px 16px 20px !important;
+  }
+
+  section.chapter.chapter-opening .hero-headline {
+    font-size: 32px !important;
+    margin-bottom: 16px !important;
+  }
+
+  section.chapter.chapter-opening .hero-subtitle {
+    font-size: 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  section.chapter.chapter-opening .hero-description {
+    font-size: 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  section.chapter.chapter-opening .hero-cta {
+    padding: 14px 28px !important;
+    font-size: 15px !important;
+  }
+
+  section.chapter.chapter-opening .hero-knight-image {
+    width: 100px !important;
+  }
+
+  section.chapter.chapter-opening .hero-trust-line {
+    padding: 16px 0 0 0 !important;
+    font-size: 14px !important;
+  }
+}
+
+/* ===== TOUCH-OPTIMIZED INTERACTIONS ===== */
+
+@media (max-width: 768px) {
+  /* Ensure all interactive elements meet 44px minimum */
+  .btn,
+  .story-button,
+  .option-button,
+  .nav-cta,
+  button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  /* Better spacing between tappable elements */
+  .pathway-card,
+  .how-it-works-card,
+  .option-card {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Testimonial dots - larger touch targets */
+  .testimonial-dots .dot {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    margin: 0 6px !important;
+  }
+}
+
+/* ===== MOBILE-OPTIMIZED TYPOGRAPHY ===== */
+
+@media (max-width: 768px) {
+  /* Ensure readability on small screens */
+  body {
+    font-size: 16px !important; /* Never go below 16px to prevent zoom on iOS */
+  }
+
+  /* Smooth scaling for headings */
+  h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 5vw, 1.9rem) !important;
+    line-height: 1.3 !important;
+  }
+
+  p {
+    font-size: clamp(1rem, 3.5vw, 1.15rem) !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* ===== IMAGE LAZY LOADING OPTIMIZATION ===== */
+
+/* Add blur-up effect for images */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Placeholder for lazy images */
+img[loading="lazy"]:not(.loaded) {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== LANDSCAPE ORIENTATION FIXES ===== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce hero height in landscape */
+  section.chapter.chapter-opening {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 4rem 0 !important;
+  }
+
+  section.chapter.chapter-opening .chapter-container {
+    padding: 2rem 1rem !important;
+  }
+
+  /* Hide knight in landscape to save space */
+  section.chapter.chapter-opening .hero-knight {
+    display: none !important;
+  }
+}
+
+/* ===== SAFE AREA INSETS (iPhone X+) ===== */
+
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+    .nav-container {
+      padding-left: max(1rem, env(safe-area-inset-left)) !important;
+      padding-right: max(1rem, env(safe-area-inset-right)) !important;
+    }
+
+    .chapter-container {
+      padding-left: max(1.5rem, env(safe-area-inset-left)) !important;
+      padding-right: max(1.5rem, env(safe-area-inset-right)) !important;
+    }
+
+    .pricing-modal .modal-content {
+      padding-left: max(1.5rem, env(safe-area-inset-left)) !important;
+      padding-right: max(1.5rem, env(safe-area-inset-right)) !important;
+      padding-bottom: max(1.5rem, env(safe-area-inset-bottom)) !important;
+    }
+  }
+}
+
+/* ===== MOBILE SAFARI SPECIFIC FIXES ===== */
+
+@media (max-width: 768px) {
+  /* Fix 100vh issues on mobile Safari */
+  .chapter-opening,
+  .pricing-modal {
+    min-height: -webkit-fill-available !important;
+  }
+
+  /* Prevent tap highlight */
+  a,
+  button,
+  .btn {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Smooth scrolling on iOS */
+  .modal-content,
+  .chapter-container {
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* ===== IMPROVED FAQ SECTION ON MOBILE ===== */
+
+@media (max-width: 768px) {
+  .faq-item {
+    padding: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .faq-question {
+    font-size: clamp(1.1rem, 4vw, 1.3rem) !important;
+    line-height: 1.4 !important;
+    padding-right: 2.5rem !important; /* Space for expand icon */
+  }
+
+  .faq-answer {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem) !important;
+    line-height: 1.6 !important;
+    padding-top: 0.75rem !important;
+  }
+}
+
+/* ===== MOBILE FORM OPTIMIZATION ===== */
+
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevent iOS zoom */
+    padding: 0.875rem 1rem !important;
+  }
+}
