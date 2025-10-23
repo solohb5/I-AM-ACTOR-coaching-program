@@ -495,39 +495,18 @@ img[loading="lazy"]:not(.loaded) {
 /* ===== FIX YOUR GUIDE SECTION ON MOBILE ===== */
 
 @media (max-width: 768px) {
-  /* Fix bio section with image alignment */
+  /* Fix bio section with image alignment - MOBILE ONLY */
   [style*="display: flex"][style*="align-items: flex-start"] {
     display: block !important;
     text-align: center !important;
   }
 
-  /* Stack bio image and text vertically on mobile only */
+  /* Stack bio image and text vertically - MOBILE ONLY */
   section img[alt*="Hans Christopher"],
   section img[src*="hans-bio.jpg"] {
-    display: block !important;
     margin: 0 auto 1.5rem auto !important;
     max-width: 200px !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: cover !important;
   }
-}
-
-/* ===== DESKTOP FIXES ===== */
-
-/* Ensure hans bio image always displays on desktop */
-img[src*="hans-bio.jpg"],
-img[alt*="Hans Christopher"] {
-  display: block !important;
-}
-
-/* Ensure tools image always displays */
-img[src*="tools1.png"],
-img[src*="tools.png"] {
-  display: block !important;
-}
-
-@media (max-width: 768px) {
 
   /* Center bio text on mobile */
   section [style*="flex: 1"] {
@@ -535,7 +514,7 @@ img[src*="tools.png"] {
     text-align: center !important;
   }
 
-  /* Fix signature image - white on dark background */
+  /* Fix signature image on mobile - white on dark background */
   img[alt*="signature"],
   img[src*="Hans-Sign"] {
     display: block !important;
@@ -543,10 +522,10 @@ img[src*="tools.png"] {
     opacity: 0.85 !important;
     width: 140px !important;
     height: auto !important;
-    filter: invert(1) brightness(1.2) !important;
+    filter: invert(1) !important;
   }
 
-  /* Ensure tools image shows - but don't override inline styles too aggressively */
+  /* Ensure tools image shows on mobile */
   img[src*="tools1.png"],
   img[alt*="5 Actor's Tools"] {
     display: block !important;
