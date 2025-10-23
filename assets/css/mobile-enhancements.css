@@ -96,9 +96,14 @@ section,
   /* Hide bottom sticky CTA on mobile */
   .sticky-cta,
   .floating-cta,
+  .sticky-mobile-cta,
+  #stickyMobileCTA,
   [class*="sticky"][class*="bottom"],
   [class*="fixed"][class*="bottom"]:not(.modal):not(.nav) {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }
 
