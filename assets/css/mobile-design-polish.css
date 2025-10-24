@@ -15,11 +15,18 @@
     padding: 4rem 1.5rem !important;
   }
 
-  /* Hero section - tighter on mobile */
+  /* Hero section - better vertical balance on mobile */
   .hero,
   section.hero {
-    padding: 3rem 1.5rem 4rem !important;
-    min-height: 90vh !important;
+    padding: 2rem 1.5rem 1rem !important; /* Reduced overall padding */
+    min-height: auto !important; /* Don't force 90vh */
+  }
+
+  /* Hero container - add top margin for breathing room from nav */
+  .hero .container-narrow {
+    margin-top: 3rem !important; /* Push title away from nav */
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   /* Container spacing */
@@ -43,6 +50,16 @@
   /* Section transitions - consistent gap */
   section + section {
     margin-top: 0 !important;
+  }
+
+  /* Reduce spacing between storybook question and Actor's Journey reveal */
+  .scroll-reveal:has(p:contains("All they need is a way back")) {
+    margin-bottom: 1rem !important; /* Cut from 2rem to 1rem */
+  }
+
+  /* Reduce top padding of Actor's Journey section on mobile */
+  .section-light {
+    padding-top: 1rem !important; /* Cut from 2rem to 1rem */
   }
 }
 
@@ -78,10 +95,19 @@
   /* Hero title - dramatic but readable */
   .hero-title,
   .hero h1 {
-    font-size: clamp(2.25rem, 7vw, 3.5rem) !important;
-    line-height: 1.15 !important;
-    letter-spacing: -0.03em !important;
+    font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
     margin-bottom: 1.5rem !important;
+  }
+
+  /* Make "Actor's Journey" main text prominent but fit on one line */
+  .hero-main {
+    font-size: clamp(2.25rem, 7.5vw, 3.5rem) !important; /* Fits on one line */
+    text-shadow: 0 3px 30px rgba(212, 193, 55, 0.5),
+                 0 0 60px rgba(212, 193, 55, 0.4) !important; /* Strong glow */
+    font-weight: 600 !important; /* Bolder than before */
+    letter-spacing: -0.02em !important;
   }
 
   /* Hero subtitle */
@@ -95,7 +121,7 @@
   .hero-tagline {
     font-size: clamp(1rem, 3vw, 1.25rem) !important;
     line-height: 1.5 !important;
-    opacity: 0.9 !important;
+    /* opacity controlled by animation - do not override */
   }
 
   /* Paragraph max-width for readability */
@@ -160,9 +186,65 @@
   .hero-cta-subtext {
     font-size: 0.85rem !important;
     margin-top: 0.75rem !important;
-    opacity: 0.85 !important;
+    /* opacity controlled by animation - do not override */
+  }
+}
+
+/* ==========================================================================
+   STORYBOOK SECTION (Call to Adventure) - Larger Text on Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Storybook pages text - make larger and more impactful on mobile */
+  .scroll-reveal p[style*="font-size: 2rem"] {
+    font-size: clamp(1.5rem, 5.5vw, 2.25rem) !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.01em !important;
   }
 
+  /* Spacing between Storybook chunks - balanced breathing room */
+  .section-light .scroll-reveal {
+    margin-bottom: 8rem !important; /* Sweet spot - not cramped, not too far */
+  }
+
+  /* First storybook item gets extra top margin */
+  .scroll-reveal:first-of-type {
+    margin-top: 4rem !important;
+  }
+
+  /* Make "The Actor's Journey" section title appear faster on mobile */
+  .section-light .scroll-reveal h2[style*="The Actor's Journey"],
+  .section-light .scroll-reveal:has(h2) {
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
+  }
+}
+
+/* ==========================================================================
+   ACT SECTION ICONS - Add Scroll Reveal Animation
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Icons should start hidden and reveal with content */
+  .act-content img[src*="icon"],
+  .act-content img[src*="character-art"] {
+    opacity: 0 !important;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s !important;
+  }
+
+  /* When act-content is revealed, show icon */
+  .act-content.reveal img[src*="icon"],
+  .act-content.reveal img[src*="character-art"] {
+    opacity: 0.9 !important;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   BUTTON & CTA PREMIUM TREATMENT (continued)
+   ========================================================================== */
+
+@media (max-width: 768px) {
   /* Navigation CTA - compact but touchable */
   .nav-cta-btn {
     padding: 0.65rem 1rem !important;
@@ -334,10 +416,11 @@
    ========================================================================== */
 
 @media (max-width: 768px) {
-  /* Hero knight - subtle glow */
+  /* Hero knight - move left, lighten, subtle glow */
   .hero-knight {
     filter: drop-shadow(0 0 30px rgba(212, 193, 55, 0.15)) !important;
-    opacity: 0.4 !important;
+    opacity: 0.5 !important; /* Lightened from 0.4 */
+    left: 10px !important; /* Moved more into corner from 50px */
   }
 
   /* Hans photo - premium treatment */
@@ -495,34 +578,86 @@
 }
 
 /* ==========================================================================
-   11. TESTIMONIAL SECTION POLISH
+   11. TESTIMONIAL SECTION POLISH - Lighter Design for Mobile
    ========================================================================== */
 
 @media (max-width: 768px) {
+  /* Remove heavy card background - make it blend with page */
   .testimonial {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    padding: 2rem 1.5rem !important;
-    margin-top: 3rem !important;
-    backdrop-filter: blur(8px) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 2rem 1rem !important;
+    margin-top: 2rem !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-top: 1px solid rgba(212, 193, 55, 0.2) !important;
+    border-bottom: 1px solid rgba(212, 193, 55, 0.2) !important;
   }
 
   .testimonial-quote {
     font-size: 1.05rem !important;
-    line-height: 1.6 !important;
+    line-height: 1.65 !important;
     font-style: italic !important;
+    color: rgba(255, 254, 240, 0.95) !important;
+    font-weight: 400 !important;
   }
 
   .testimonial-author {
-    font-size: 0.9rem !important;
+    font-size: 0.85rem !important;
     margin-top: 1rem !important;
-    opacity: 0.8 !important;
+    opacity: 0.7 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 600 !important;
   }
 
   .testimonial-stars {
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
     margin-bottom: 1rem !important;
+    opacity: 0.9 !important;
+  }
+
+  /* Reduce testimonial size in hero section on mobile - keep opacity strong */
+  .hero .testimonial {
+    transform: scale(0.88) !important;
+    margin-top: 2rem !important; /* Less gap from date */
+    margin-bottom: 1rem !important; /* Tighten bottom */
+    padding: 1.25rem 0.5rem !important;
+    border-bottom: none !important; /* Remove bottom border, keep top */
+  }
+
+  .hero .testimonial-quote {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    /* Keep original opacity - quote should be readable */
+  }
+
+  .hero .testimonial-stars {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero .testimonial-author {
+    font-size: 0.7rem !important;
+    margin-top: 0.75rem !important;
+  }
+
+  /* Reduce CTA button prominence on mobile - very subtle */
+  .hero .btn--primary,
+  .hero .hero-cta {
+    transform: scale(0.85) !important; /* Smaller */
+    /* opacity controlled by animation - do not override */
+    font-size: 0.9rem !important; /* Smaller text */
+    padding: 0.75rem 1.5rem !important; /* Less padding */
+    box-shadow: 0 1px 8px rgba(212, 193, 55, 0.15) !important; /* Very subtle shadow */
+    font-weight: 600 !important; /* Heavier font weight */
+    margin-top: 2.5rem !important; /* More space from tagline */
+  }
+
+  .hero .hero-cta-subtext {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important; /* Remove bottom margin */
+    /* opacity controlled by animation - do not override */
   }
 }
 
@@ -549,6 +684,45 @@
     padding-top: 1rem !important;
     line-height: 1.65 !important;
     opacity: 0.9 !important;
+  }
+
+  /* ==========================================================================
+     ACT SECTIONS - Consolidated text blocks
+     ========================================================================== */
+
+  /* Consolidate Act paragraphs into single block appearance */
+  .act-content p {
+    display: inline !important; /* Make paragraphs flow together */
+  }
+
+  /* Add space between consolidated paragraphs */
+  .act-content p + p::before {
+    content: " " !important; /* Space between sentences */
+  }
+
+  /* Center the Read more buttons */
+  .read-more-btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important; /* Changed from flex to block for centering */
+    text-align: center !important;
+    width: fit-content !important;
+  }
+
+  /* ==========================================================================
+     PRICING SECTION - Match page styling on mobile
+     ========================================================================== */
+
+  /* Stack pricing cards vertically on mobile */
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Pricing cards - match light section styling */
+  .qualifying-pricing > div[style*="border: 2px solid"] {
+    background: white !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
   }
 }
 

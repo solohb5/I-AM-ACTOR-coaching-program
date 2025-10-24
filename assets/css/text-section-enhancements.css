@@ -149,6 +149,13 @@ span[class*="section-label"] {
   opacity: 0.5;
 }
 
+/* Silver-gray underline for dark sections with brown underlines */
+.truth-label::after,
+.guide-label::after {
+  background: #A8B2BC !important;
+  opacity: 0.6 !important;
+}
+
 /* ==========================================================================
    8. ENHANCED BORDER TREATMENTS
    ========================================================================== */

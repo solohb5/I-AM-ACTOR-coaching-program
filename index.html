@@ -213,6 +213,13 @@
             transform: translateY(0);
         }
 
+        /* Hide Read More buttons on desktop */
+        @media (min-width: 769px) {
+            .read-more-btn.mobile-only {
+                display: none !important;
+            }
+        }
+
         /* Pull Quote */
         .pull-quote {
             font-size: var(--text-xl);
@@ -329,7 +336,6 @@
         .nav-logo img {
             height: 70px;
             transition: opacity 0.3s ease;
-            filter: brightness(0) invert(1);
         }
 
         .nav-logo img:hover {
@@ -595,7 +601,7 @@
             color: rgba(255, 254, 240, 0.9);
             font-style: italic;
             font-weight: 400;
-            opacity: 0.9;
+            opacity: 0;
             margin-bottom: 2.5rem;
             line-height: 1.6;
             animation: fade-in-up 1.2s ease-out 2.5s both;
@@ -1683,7 +1689,7 @@
     <nav class="nav">
         <div class="nav-spots">10 SPOTS LEFT</div>
         <div class="nav-logo">
-            <img src="assets/images/logo.png" alt="I AM ACTOR" onclick="window.location.href='#'">
+            <img src="assets/images/logo-dark.png" alt="I AM ACTOR" onclick="window.location.href='#'">
         </div>
         <button class="btn btn--primary nav-cta-btn" onclick="window.location.href='#investment'">
             Claim Your Spot
@@ -1702,8 +1708,8 @@
                 12 Weeks to Become the Actor<br>Casting Directors Fight For
             </div>
             <div class="hero-tagline">
-                The fire has always been in you.<br>
-                You've just needed to know the way.
+                You don't lack talent.<br>
+                You just forgot how to play.
             </div>
             <button class="btn btn--primary btn--hero hero-cta" onclick="window.location.href='#investment'">
                 Start Your Transformation
@@ -1737,7 +1743,7 @@
             </div>
         </div>
 
-        <!-- Page 2: The Pain -->
+        <!-- Page 2: The Fear -->
         <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
             <div style="max-width: 800px; text-align: center;">
                 <p style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; line-height: 1.5; color: var(--charcoal); margin: 0;">
@@ -1757,18 +1763,27 @@
             </div>
         </div>
 
-        <!-- Page 4: What Got Lost -->
+        <!-- Page 4: What Got Lost - Part 1 -->
         <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
             <div style="max-width: 850px; text-align: center;">
                 <p style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; line-height: 1.5; color: var(--charcoal); margin: 0;">
-                    The little artist who used to play freely.<br>
+                    That little artist in you<br>
+                    who used to play freely.
+                </p>
+            </div>
+        </div>
+
+        <!-- Page 5: What Got Lost - Part 2 -->
+        <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+            <div style="max-width: 850px; text-align: center;">
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; line-height: 1.5; color: var(--charcoal); margin: 0;">
                     Who didn't need to be perfect.<br>
                     Who just created.
                 </p>
             </div>
         </div>
 
-        <!-- Page 5: The Hope -->
+        <!-- Page 6: The Hope -->
         <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
             <div style="max-width: 800px; text-align: center;">
                 <p style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; line-height: 1.5; color: var(--charcoal); margin: 0; opacity: 0.85; font-style: italic;">
@@ -1777,12 +1792,72 @@
             </div>
         </div>
 
-        <!-- Page 6: The Answer -->
-        <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 4rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
-            <div style="max-width: 750px; text-align: center;">
+        <!-- Page 7: The Question - leads into The Truth -->
+        <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+            <div style="max-width: 800px; text-align: center;">
                 <p style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; line-height: 1.6; color: var(--charcoal); margin: 0;">
-                    All they need is the way back.
+                    All they need is a way back.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DARK - The Truth About Acting -->
+    <section class="section section-dark" style="position: relative;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; position: relative;">
+            <!-- Knight on right side -->
+            <div style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); display: none;">
+                <img src="assets/images/knight-look.png" alt="" loading="lazy" style="height: 280px; opacity: 0.4; background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));">
+            </div>
+
+            <div style="text-align: center;">
+                <span class="section-label truth-label">The Truth</span>
+
+                <h2 class="section-title" style="margin-bottom: 3rem;">What Casting Directors Actually Want</h2>
+
+                <!-- Opening lines -->
+                <div style="max-width: 700px; margin: 0 auto 2.5rem; text-align: center;">
+                    <p style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 1.25rem; opacity: 0.95;">
+                        Most people think acting requires special talent.<br>
+                        That you have to be interesting, dynamic, gifted.
+                    </p>
+
+                    <p style="font-size: 1.3rem; line-height: 1.7; margin-bottom: 2rem; opacity: 1;">
+                        <strong>That's the lie that keeps talented people stuck.</strong>
+                    </p>
+
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem; opacity: 0.95;">
+                        Here's what casting directors actually want:
+                    </p>
+
+                    <p style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem; font-weight: 600; color: var(--old-gold);">
+                        Real. Present. Alive.
+                    </p>
+
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; opacity: 0.95;">
+                        Someone who stopped performing and started being human.
+                    </p>
+
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 0; opacity: 0.95;">
+                        And that's what the little artist knows how to do.
+                    </p>
+                </div>
+
+                <!-- Highlight box -->
+                <div class="highlight-box" style="max-width: 650px; margin: 3rem auto; padding: 2rem 2.5rem; text-align: center;">
+                    <p style="font-size: 1.25rem; line-height: 1.7; margin: 0;">
+                        When you reconnect to that part of yourself,<br>
+                        you stop acting, and start being<br>
+                        undeniably <strong>you</strong>.
+                    </p>
+                </div>
+
+                <!-- Closing line -->
+                <div style="max-width: 700px; margin: 3rem auto 0; text-align: center;">
+                    <p style="font-size: 1.2rem; line-height: 1.7; font-style: italic; opacity: 0.9;">
+                        That's what this journey is all about...
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1803,18 +1878,71 @@
         });
     }
 
+    // Parallax effect for knights in LIGHT sections only on mobile (reverse direction)
+    function parallaxKnight() {
+        if (window.innerWidth <= 768) {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = -0.075; // Halved - very subtle upward drift
+
+            // Only apply parallax to knights within light sections
+            const lightSections = document.querySelectorAll('.section-light');
+
+            lightSections.forEach(section => {
+                // Sad knight with flip (if in light section)
+                const sadKnight = section.querySelector('img[src*="knight-sad"]');
+                if (sadKnight) {
+                    sadKnight.style.transform = `translateY(${scrolled * parallaxSpeed}px) scaleX(-1)`;
+                }
+
+                // Hero knight (if in light section)
+                const heroKnight = section.querySelector('.hero-knight');
+                if (heroKnight) {
+                    heroKnight.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                }
+
+                // Act knights (if in light section)
+                const actKnights = section.querySelectorAll('.act-knight img');
+                actKnights.forEach(knight => {
+                    knight.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                });
+
+                // All other knight images in light section
+                const otherKnights = section.querySelectorAll('img[src*="knight"]:not([src*="knight-sad"])');
+                otherKnights.forEach(knight => {
+                    if (!knight.classList.contains('hero-knight') && !knight.closest('.act-knight')) {
+                        knight.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                    }
+                });
+            });
+        }
+    }
+
     window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('scroll', parallaxKnight);
     revealOnScroll(); // Check on load
+    parallaxKnight(); // Initialize parallax
     </script>
 
     <!-- SECTION 3: LIGHT - The 3-Phase Quest -->
-    <section class="section section-light" style="position: relative; padding-top: 4rem;">
+    <section class="section section-light" style="position: relative; padding-top: 2rem;">
         <div class="container">
-            <!-- The Reveal: The Actor's Journey -->
-            <div class="scroll-reveal" style="text-align: center; margin-bottom: 10rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+            <!-- Small header above The Actor's Journey -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 1rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+                <span style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: var(--salmon); text-transform: uppercase; letter-spacing: 2px;">Your Call to Adventure</span>
+            </div>
+
+            <!-- The Answer: The Actor's Journey Title (reveals first) -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 2rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
                 <h2 style="font-family: 'Bentham', Georgia, serif; font-size: 3.5rem; font-weight: 600; color: var(--charcoal); margin: 0; letter-spacing: -0.5px;">
                     The Actor's Journey
                 </h2>
+            </div>
+
+            <!-- The Description (reveals after title) -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 3rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+                <p style="font-family: 'Lora', serif; font-size: 1.25rem; line-height: 1.6; color: var(--charcoal); opacity: 0.9; max-width: 650px; margin: 0 auto; font-weight: 400;">
+                    A 12-week intensive where you discover your superpower, build unshakeable identity, and master the craft. <span style="font-style: italic; color: var(--salmon);">Three acts. One transformation.</span>
+                </p>
             </div>
 
             <!-- Storybook Journey Layout -->
@@ -1826,7 +1954,7 @@
                     <div></div>
 
                     <!-- Act 1 Content -->
-                    <div class="act-content" style="text-align: left;">
+                    <div class="act-content" style="text-align: left; max-width: 500px;">
                         <!-- Icon placeholder -->
                         <div style="margin-bottom: 1.5rem; text-align: center;">
                             <img src="assets/images/star-icon.png" alt="Awaken the Artist" loading="lazy" style="height: 80px; opacity: 0.9; background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));">
@@ -1836,13 +1964,19 @@
                         <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2;">Awaken the Artist</h3>
                         <div style="font-size: 1rem; font-style: italic; color: #666; margin-bottom: 1.25rem;">Weeks 1-4</div>
 
-                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
-                            Remember that little artist who just created? They're still in there. In these first four weeks, we wake them up. We dig into your life story to extract the <strong>Seeds of Character</strong>—the experiences, wounds, and triumphs that make you unmistakably YOU. You'll discover your unique superpower as an actor, the thing only you can bring to every role. This isn't about learning technique. It's about reconnecting to your truth. By the end of Act I, you'll know exactly who you are and what makes you irreplaceable.
+                        <!-- Full text - no expansion needed on desktop -->
+                        <p class="act-full-text" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
+                            In these first four weeks, we dig into your life story to extract the <strong>Seeds of Character</strong>—the experiences, wounds, and triumphs that make you unmistakably YOU. You'll discover your unique superpower as an actor, the thing only you can bring to every role. This isn't about learning technique. It's about reconnecting to your truth. By the end of Act I, you'll know exactly who you are and what makes you irreplaceable.
                         </p>
 
                         <p style="font-size: 1rem; font-style: italic; color: var(--salmon); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(90, 140, 58, 0.2);">
                             From "I can be anything" to "I am UNMISTAKABLY this."
                         </p>
+
+                        <!-- Read More button (mobile only) -->
+                        <button class="read-more-btn mobile-only" onclick="toggleActDetails(this)" style="margin-top: 1rem; background: transparent; border: none; color: var(--salmon); font-size: 0.95rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0; display: none; font-family: 'Lora', serif;">
+                            <span class="btn-text">+ Read more</span>
+                        </button>
                     </div>
 
                     <!-- Empty middle space -->
@@ -1871,7 +2005,7 @@
                     <div></div>
 
                     <!-- Act 2 Content - Right area -->
-                    <div class="act-content" style="text-align: left;">
+                    <div class="act-content" style="text-align: left; max-width: 500px;">
                         <!-- Icon placeholder -->
                         <div style="margin-bottom: 1.5rem; text-align: center;">
                             <img src="assets/images/character-art.png" alt="Character Creation" loading="lazy" style="height: 80px; opacity: 0.9; background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));">
@@ -1881,13 +2015,19 @@
                         <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2;">Character Creation</h3>
                         <div style="font-size: 1rem; font-style: italic; color: #666; margin-bottom: 1.25rem;">Weeks 5-8</div>
 
-                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
-                            This is where you stop performing what you think they want and start playing from your truth. Now that you know who you are, we build your <strong>Character Cards</strong>—the three specific types you were born to play. These aren't arbitrary choices. They're the roles you can embody without pretending, the characters who didn't need to be perfect, who just create. You'll learn the <strong>Tethering Process</strong>, a technique that lets you connect YOUR life to EVERY role you audition for, no matter how different it seems. This is where you become THE actor casting directors remember because you brought something no one else could.
+                        <!-- Full text - no expansion needed on desktop -->
+                        <p class="act-full-text" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
+                            This is where you stop performing what you think they want and start playing from your truth. Now that you know who you are, we build your <strong>Character Cards</strong>—the three specific types you were born to play. These aren't arbitrary choices. They're the roles you can embody without pretending. You'll learn the <strong>Tethering Process</strong>, a technique that lets you connect YOUR life to EVERY role you audition for, no matter how different it seems. This is where you become THE actor casting directors remember because you brought something no one else could.
                         </p>
 
                         <p style="font-size: 1rem; font-style: italic; color: var(--salmon); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(90, 140, 58, 0.2);">
                             From generic actor to THE actor casting directors remember.
                         </p>
+
+                        <!-- Read More button (mobile only) -->
+                        <button class="read-more-btn mobile-only" onclick="toggleActDetails(this)" style="margin-top: 1rem; background: transparent; border: none; color: var(--salmon); font-size: 0.95rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0; display: none; font-family: 'Lora', serif;">
+                            <span class="btn-text">+ Read more</span>
+                        </button>
                     </div>
 
                     <!-- Empty space on far right -->
@@ -1900,7 +2040,7 @@
                     <div></div>
 
                     <!-- Act 3 Content - Left area -->
-                    <div class="act-content" style="text-align: left;">
+                    <div class="act-content" style="text-align: left; max-width: 500px;">
                         <!-- Icon placeholder -->
                         <div style="margin-bottom: 1.5rem; text-align: center;">
                             <img src="assets/images/materials-icon.png" alt="Material Mastery" loading="lazy" style="height: 80px; opacity: 0.9; background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));">
@@ -1910,13 +2050,19 @@
                         <h3 style="font-family: 'Bentham', Georgia, serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2;">Material Mastery</h3>
                         <div style="font-size: 1rem; font-style: italic; color: #666; margin-bottom: 1.25rem;">Weeks 9-12</div>
 
-                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
-                            You're no longer stuck. You're no longer afraid. You have clarity. In these final four weeks, everything comes together. Your headshots now align perfectly with your Character Cards. Your <strong>Castability Sheet</strong> tells agents and managers exactly how to pitch you—not as a generic actor, but as THE person for specific types of roles. Your reel showcases the story only you can tell. Every material, every piece of your brand reflects the truth you discovered in Act I and the characters you created in Act II. You're not wondering if it's too late anymore. You're on the path. You're impossible to ignore.
+                        <!-- Full text - no expansion needed on desktop -->
+                        <p class="act-full-text" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; text-align: justify;">
+                            You're no longer stuck. You're no longer afraid. You have clarity. In these final four weeks, everything comes together. Your headshots align with your Character Cards. Your <strong>Castability Sheet</strong> tells agents exactly how to pitch you. Not as a generic actor, but as THE person for specific types of roles. Your reel showcases the story only you can tell. Every material, every piece of your brand reflects the truth you discovered in Act I and the characters you created in Act II. You're not wondering if it's too late anymore. You're on the path. You're impossible to ignore.
                         </p>
 
                         <p style="font-size: 1rem; font-style: italic; color: var(--salmon); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(90, 140, 58, 0.2);">
                             From "trying to get seen" to "impossible to ignore."
                         </p>
+
+                        <!-- Read More button (mobile only) -->
+                        <button class="read-more-btn mobile-only" onclick="toggleActDetails(this)" style="margin-top: 1rem; background: transparent; border: none; color: var(--salmon); font-size: 0.95rem; font-weight: 600; cursor: pointer; padding: 0.5rem 0; display: none; font-family: 'Lora', serif;">
+                            <span class="btn-text">+ Read more</span>
+                        </button>
                     </div>
 
                     <!-- Empty middle space -->
@@ -2163,7 +2309,7 @@
     <!-- SECTION 6: DARK - Your Guide (Hans) -->
     <section class="section section-dark" style="position: relative;">
         <div class="container-narrow text-center">
-            <span class="section-label">Your Guide</span>
+            <span class="section-label guide-label">Your Guide</span>
             <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 3rem;">Hans Christopher</h2>
 
             <!-- Side-by-side layout: message left, image right -->
@@ -2420,22 +2566,38 @@
     <!-- SECTION 10: DARK - The Choice -->
     <section class="section section-dark">
         <div class="container-narrow text-center">
-            <p style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; line-height: 1.3; font-weight: 600; color: var(--ivory); margin: 0 auto 3rem; max-width: 850px;">
-                You've seen the path.<br>
-                You know what you need.
+            <h2 style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; line-height: 1.3; font-weight: 600; color: var(--ivory); margin: 0 auto 2.5rem; max-width: 850px;">
+                How Long Will You Keep Waiting?
+            </h2>
+
+            <p style="font-size: 1.25rem; line-height: 1.8; color: var(--ivory); opacity: 0.9; margin: 0 auto 2.5rem; max-width: 700px;">
+                You've felt this pull for how long?<br>
+                Months? Years?
             </p>
 
-            <p style="font-size: 1.25rem; line-height: 1.7; color: var(--ivory); opacity: 0.9; margin: 0 auto 3rem; max-width: 700px;">
-                Most actors spend years wandering, hoping someone will show them the way. You're here because that's not you. You're ready to claim it.
+            <p style="font-size: 1.25rem; line-height: 1.8; color: var(--ivory); opacity: 0.9; margin: 0 auto 2.5rem; max-width: 700px;">
+                Every actor who joins says the same thing:<br>
+                <span style="font-style: italic; color: var(--old-gold);">"I wish I'd done this sooner."</span>
             </p>
 
-            <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.75rem; line-height: 1.5; color: var(--old-gold); margin: 3rem auto; max-width: 650px;">
-                The cohort begins November 4th.<br>
-                10 actors. 6 spots remaining.
+            <p style="font-size: 1.25rem; line-height: 1.8; color: var(--ivory); opacity: 0.9; margin: 0 auto 2.5rem; max-width: 700px;">
+                Not because the program is magic.<br>
+                But because they stopped waiting to feel "ready."
             </p>
 
-            <p style="font-size: 1.35rem; line-height: 1.7; color: var(--ivory); opacity: 0.9; margin: 3.5rem auto 2rem; max-width: 700px;">
-                The only question left is: are you one of them?
+            <p style="font-size: 1.3rem; line-height: 1.8; color: var(--ivory); opacity: 0.95; margin: 3rem auto; max-width: 700px; font-weight: 500;">
+                Three months from now, you'll be exactly where you are today—<br>
+                still doubting, still waiting.
+            </p>
+
+            <p style="font-size: 1.3rem; line-height: 1.8; color: var(--ivory); opacity: 0.95; margin: 0 auto 2.5rem; max-width: 700px; font-weight: 500;">
+                Or you'll be on the other side.<br>
+                Actually creating. Finally being who you've always known you could be.
+            </p>
+
+            <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.5rem; line-height: 1.6; color: var(--old-gold); margin: 3rem auto; max-width: 650px; font-weight: 600;">
+                The only difference?<br>
+                Whether you take action today.
             </p>
 
             <!-- CTA -->
@@ -2448,7 +2610,7 @@
     </section>
 
     <!-- SECTION 11: LIGHT - Investment Section -->
-    <section class="section section-light" id="investment" style="padding: 120px 0; background: linear-gradient(180deg, #FAFAF8 0%, #F5F5F0 100%);">
+    <section class="section section-light" id="investment" style="padding: 120px 0; background: linear-gradient(180deg, #FAFAF8 0%, #F7F7F2 100%);">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-left" loading="lazy">
         <div class="container">
             <div style="text-align: center; margin: 0 auto; max-width: 100%;">
@@ -2466,7 +2628,7 @@
                     This isn't for everyone.
                 </p>
                 <p style="font-size: 1.1rem; line-height: 1.8; font-weight: 300; color: var(--charcoal); margin: 0;">
-                    If you're looking for a quick fix or a magic formula, this won't work for you. But if you're ready to do the deep work—to face your truth, own your story, and build a career from the inside out—then you already know this is exactly what you've been looking for.
+                    If you're looking for a quick fix, this won't work. But if you're ready to do the deep work—to face your truth and build from the inside out—you already know this is what you've been looking for.
                 </p>
             </div>
 
@@ -2893,15 +3055,15 @@
                     <div style="padding: 2rem 1.5rem; border: 2px solid var(--old-gold); border-radius: 8px; background: rgba(212, 193, 55, 0.05); text-align: center;">
                         <div style="font-size: 0.875rem; color: var(--old-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Most Popular</div>
                         <div style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem;">$1,297</div>
-                        <div style="font-size: 0.95rem; color: var(--charcoal); opacity: 0.75; margin-bottom: 1.5rem;">One-Time Payment<br>Save $291</div>
+                        <div style="font-size: 0.95rem; color: var(--charcoal); opacity: 0.75; margin-bottom: 1.5rem;">One-Time Payment<br>Save $203</div>
                         <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn-qualify btn-qualify-yes" style="display: block; text-decoration: none; text-align: center;">Claim Your Spot</a>
                     </div>
 
                     <!-- Payment Plan -->
                     <div style="padding: 2rem 1.5rem; border: 2px solid var(--charcoal); border-radius: 8px; text-align: center;">
                         <div style="font-size: 0.875rem; color: transparent; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">.</div>
-                        <div style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem;">$397<span style="font-size: 1.25rem; font-weight: 400;">/mo</span></div>
-                        <div style="font-size: 0.95rem; color: var(--charcoal); opacity: 0.75; margin-bottom: 1.5rem;">4 Monthly Payments<br>$1,588 total</div>
+                        <div style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem;">$375<span style="font-size: 1.25rem; font-weight: 400;">/mo</span></div>
+                        <div style="font-size: 0.95rem; color: var(--charcoal); opacity: 0.75; margin-bottom: 1.5rem;">4 Monthly Payments<br>$1,500 total</div>
                         <a href="https://buy.stripe.com/aFa14m6hqctdcEoeFY1ck0o" class="btn-qualify btn-qualify-no" style="display: block; text-decoration: none; text-align: center;">4 Payments</a>
                     </div>
                 </div>
@@ -2941,12 +3103,13 @@
         .qualifying-modal-content {
             max-width: 700px;
             width: 90%;
-            background: var(--ivory);
+            background: #FAFAF8;
             border: 1px solid rgba(44, 44, 44, 0.15);
             border-radius: 8px;
             padding: 3rem 2.5rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             position: relative;
+            font-family: 'Lora', serif;
         }
 
         .qualifying-knight-icon {
@@ -3370,6 +3533,23 @@
 
         // Run on page load
         window.addEventListener('load', revealOnScroll);
+
+        // Toggle Act Details (Read More functionality)
+        function toggleActDetails(button) {
+            const actContent = button.closest('.act-content');
+            const details = actContent.querySelector('.act-details');
+            const btnText = button.querySelector('.btn-text');
+
+            if (details.style.maxHeight === '0px' || !details.style.maxHeight) {
+                // Expand
+                details.style.maxHeight = details.scrollHeight + 'px';
+                btnText.textContent = '− Read less';
+            } else {
+                // Collapse
+                details.style.maxHeight = '0px';
+                btnText.textContent = '+ Read more';
+            }
+        }
     </script>
 </body>
 </html>

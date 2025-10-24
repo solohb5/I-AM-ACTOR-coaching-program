@@ -28,11 +28,11 @@ section,
 
 /* ===== RESPONSIVE IMAGES FOR MOBILE ===== */
 
-/* Hero knight - use mobile version on small screens */
+/* Hero knight - DISABLED, use red cape knight on all screens */
 @media (max-width: 768px) {
-  .hero-knight {
+  /* .hero-knight {
     content: url('../images/knightartfire-mobile.png');
-  }
+  } */
 
   /* Tools image - DISABLED, using original */
   /* img[src*="tools"] {
@@ -111,22 +111,34 @@ section,
 
 /* Small phones (320px-375px) - iPhone SE, etc */
 @media (max-width: 375px) {
-  .chapter-container {
-    max-width: 85% !important;
+  .chapter-container,
+  .container,
+  .container-narrow {
+    max-width: 92% !important;
+    padding-left: 4% !important;
+    padding-right: 4% !important;
   }
 }
 
 /* Medium phones (376px-430px) - iPhone 12-15 standard */
 @media (min-width: 376px) and (max-width: 430px) {
-  .chapter-container {
-    max-width: 88% !important;
+  .chapter-container,
+  .container,
+  .container-narrow {
+    max-width: 94% !important;
+    padding-left: 3% !important;
+    padding-right: 3% !important;
   }
 }
 
 /* Larger phones (431px-768px) - Pro Max models */
 @media (min-width: 431px) and (max-width: 768px) {
-  .chapter-container {
-    max-width: 90% !important;
+  .chapter-container,
+  .container,
+  .container-narrow {
+    max-width: 95% !important;
+    padding-left: 2.5% !important;
+    padding-right: 2.5% !important;
   }
 }
 
@@ -567,30 +579,66 @@ img[src*="tools1.png"] {
     gap: 0 !important;
     margin-bottom: 4rem !important;
     padding: 0 !important;
+    position: relative !important; /* Enable absolute positioning for knights */
   }
 
   /* Act content takes full width on mobile */
   .act-content {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 0 1.5rem !important;
-    margin-bottom: 2rem !important;
+    padding: 0 1.5rem 3rem 1.5rem !important; /* Extra bottom padding for knight overlap */
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 2 !important; /* Text stays above knight */
   }
 
-  /* Knights appear below content, centered and smaller */
+  /* Knights positioned in bottom corners, overlapping text slightly */
   .act-knight {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    margin: 2rem auto 0 auto !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: auto !important;
+    margin: 0 !important;
     padding: 0 !important;
+    z-index: 1 !important; /* Behind text */
+    display: block !important;
   }
 
-  /* Reduce knight size on mobile */
+  /* Act 1 knight - bottom RIGHT corner, looking left at text */
+  .act-section:nth-of-type(1) .act-knight {
+    right: -1.5rem !important; /* Further right into corner */
+    left: auto !important;
+    bottom: -10rem !important; /* Moved down 8rem from -2rem */
+  }
+
+  /* Act 2 knight - bottom LEFT corner, flipped to point left */
+  .act-section:nth-of-type(2) .act-knight {
+    left: -1.5rem !important; /* Further left into corner */
+    right: auto !important;
+    bottom: -4rem !important; /* Moved up 4rem from -8rem */
+  }
+
+  /* Flip Act 2 knight to point left (opposite of original) */
+  .act-section:nth-of-type(2) .act-knight img {
+    transform: scaleX(-1) !important; /* Flip to face left */
+  }
+
+  /* Act 3 knight - bottom RIGHT corner, larger and lower */
+  .act-section:nth-of-type(3) .act-knight {
+    right: -1.5rem !important; /* All the way right into corner */
+    left: auto !important;
+    bottom: -17rem !important; /* Moved down 5rem more from -12rem */
+  }
+
+  /* Make Act 3 knight 20% larger */
+  .act-section:nth-of-type(3) .act-knight img {
+    height: 108px !important; /* 20% larger than 90px */
+  }
+
+  /* Reduce knight size and lighten opacity on mobile */
   .act-knight img {
-    height: 120px !important;
-    opacity: 0.6 !important;
+    height: 90px !important; /* Slightly smaller to reduce visual noise */
+    opacity: 0.25 !important; /* Even lighter for subtlety */
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08)) !important;
   }
 
   /* Hide empty spacer divs on mobile */
@@ -613,13 +661,78 @@ img[src*="tools1.png"] {
     background: transparent !important;
     mix-blend-mode: normal !important;
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)) !important;
+    height: 70px !important; /* Reduce from 120px to fit mobile */
   }
 
-  /* Ensure pentagon container scales on mobile */
+  /* Ensure pentagon container scales on mobile while maintaining shape */
   div[style*="width: 650px"][style*="height: 650px"] {
     width: 90vw !important;
-    max-width: 500px !important;
+    max-width: 380px !important; /* Smaller to prevent overflow */
     height: 90vw !important;
-    max-height: 500px !important;
+    max-height: 380px !important;
+    margin: 0 auto 3rem !important; /* Center and add spacing */
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Scale down knight labels on mobile */
+  div[style*="width: 650px"] div[style*="position: absolute"] > div:last-child {
+    font-size: 0.7rem !important;
+  }
+
+  /* Reduce spacing on badge labels */
+  div[style*="width: 650px"] div[style*="position: absolute"] > div:last-child span {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* For very small phones (320px-375px) - shrink pentagon further */
+@media (max-width: 425px) {
+  div[style*="width: 650px"][style*="height: 650px"] {
+    max-width: 320px !important;
+    max-height: 320px !important;
+  }
+
+  img[src*="whiteknight"],
+  img[src*="redknight"],
+  img[src*="greenknight"],
+  img[src*="blueknight"],
+  img[src*="blackknight"] {
+    height: 60px !important; /* Even smaller for tiny screens */
+  }
+
+  /* Smaller text on tiny phones */
+  div[style*="width: 650px"] div[style*="position: absolute"] > div:last-child {
+    font-size: 0.65rem !important;
+  }
+
+  div[style*="width: 650px"] div[style*="position: absolute"] > div:last-child span {
+    font-size: 0.6rem !important;
+  }
+}
+
+/* ===== SAD KNIGHT IN CALL TO ADVENTURE SECTION ===== */
+
+@media (max-width: 768px) {
+  /* Reposition sad knight just below "something got lost" with parallax */
+  img[src*="knight-sad"] {
+    position: absolute !important;
+    top: 44rem !important; /* Just below "something got lost" - will move up as you scroll */
+    right: 0.5rem !important;
+    bottom: auto !important;
+    height: 100px !important; /* Smaller on mobile */
+    opacity: 0.3 !important; /* Subtle but visible */
+    z-index: 1 !important; /* Behind text */
+    transition: transform 0.1s ease-out !important; /* Smooth parallax movement */
+    will-change: transform !important; /* Optimize for animation */
+  }
+
+  /* Apply parallax setup to all knights on mobile */
+  img[src*="knight"],
+  .act-knight img,
+  .hero-knight {
+    transition: transform 0.1s ease-out !important;
+    will-change: transform !important;
   }
 }
