@@ -1,0 +1,149 @@
+/* ==========================================================================
+   DESIGN POLISH - I AM ACTOR
+   Premium spacing, typography, and bluebird accent refinements
+   ========================================================================== */
+
+/* ===== BLUEBIRD TURQUOISE ACCENT - LIGHT SECTION POPS ===== */
+
+/* Replace gold with turquoise in light sections */
+.section-light .highlight-box {
+    border-left-color: var(--bluebird);
+    background: rgba(64, 224, 208, 0.08);
+}
+
+/* Checkmark color in light sections - REMOVED: keeping salmon for all checklists */
+/* .section-light .checklist li::before {
+    color: var(--bluebird);
+} */
+
+/* Emphasized/highlighted text in light sections */
+.section-light .highlight-blue,
+.section-light .bluebird-accent {
+    color: var(--bluebird);
+    font-weight: 600;
+}
+
+/* Guarantee badge and decorative circles */
+.section-light .guarantee-badge {
+    border-color: var(--bluebird);
+}
+
+/* Subtle bluebird for interactive hover states */
+.section-light .btn--secondary:hover {
+    border-color: var(--bluebird);
+    color: var(--bluebird);
+}
+
+/* ===== TYPOGRAPHY CONSISTENCY ===== */
+
+/* Standardized heading margins */
+.section h2.section-title {
+    margin-bottom: var(--space-lg);
+}
+
+.section h3 + p {
+    margin-top: var(--space-sm);
+}
+
+/* Standardized paragraph spacing */
+.section p + p {
+    margin-top: var(--space-md);
+}
+
+/* ===== COMPONENT REFINEMENTS ===== */
+
+/* CTA Button Spacing */
+.section .btn--hero {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+/* Testimonial Spacing */
+.testimonial {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+}
+
+/* Card Grid Spacing */
+.card-grid {
+    margin-top: var(--space-lg);
+    gap: var(--space-lg);
+}
+
+/* Investment Card Spacing */
+.investment-grid {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+/* ===== MOBILE REFINEMENTS ===== */
+
+@media (max-width: 768px) {
+    /* Tighter section spacing on mobile */
+    .section-breathing {
+        padding: var(--space-xl) var(--space-sm);
+    }
+
+    .section-compact {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    /* Better content width on mobile */
+    .content-hero,
+    .content-prose,
+    .content-feature,
+    .content-wide {
+        max-width: 100%;
+        padding: 0 var(--space-sm);
+    }
+
+    /* Bluebird accents - slightly more vibrant on mobile */
+    .section-light .section-label {
+        color: var(--bluebird);
+        font-weight: 700;
+    }
+}
+
+/* ===== VISUAL RHYTHM FIXES ===== */
+
+/* Consistent spacing between section label and title */
+.section-label + .section-title,
+.section-label + h2 {
+    margin-top: var(--space-sm);
+}
+
+/* Consistent spacing after titles */
+.section-title + p,
+.section-title + .section-subtitle {
+    margin-top: var(--space-md);
+}
+
+/* List spacing consistency */
+.checklist,
+.transformation-list,
+.arrow-list-green {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+/* FAQ spacing */
+.faq-accordion {
+    margin-top: var(--space-lg);
+}
+
+/* ===== PREMIUM POLISH ===== */
+
+/* Subtle hover states for interactive elements - keeping original colors */
+
+/* Smooth transitions for all interactive elements */
+a, button, .btn, .option-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid var(--bluebird);
+    outline-offset: 2px;
+}

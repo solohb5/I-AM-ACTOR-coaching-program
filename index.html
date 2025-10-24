@@ -33,6 +33,9 @@
     <!-- Text Section Enhancements -->
     <link rel="stylesheet" href="assets/css/text-section-enhancements.css">
 
+    <!-- Design Polish - Premium spacing & bluebird accents -->
+    <link rel="stylesheet" href="assets/css/design-polish.css">
+
     <style>
         /* ===============================================
            DESIGN SYSTEM - The Actor's Journey
@@ -45,6 +48,7 @@
             --ivory: #FFFEF0;
             --salmon: #E86952; /* Salmon red to match knight's fire cape */
             --old-gold: #D4C137;
+            --bluebird: #40E0D0; /* Turquoise from blue knight - subtle accent pops */
             --charcoal: #2C2C2C;
             --deep-charcoal: #0F0F0F;
 
@@ -263,6 +267,16 @@
             position: relative;
         }
 
+        .section-compact {
+            padding: var(--space-lg) var(--space-md);
+            position: relative;
+        }
+
+        .section-breathing {
+            padding: calc(var(--space-xl) * 1.5) var(--space-md);
+            position: relative;
+        }
+
         .section-light {
             background: var(--ivory);
             color: var(--charcoal);
@@ -270,6 +284,15 @@
 
         .section-light p {
             line-height: 1.7;
+        }
+
+        /* Keep section labels salmon in light sections */
+        .section-light .section-label {
+            color: var(--salmon);
+        }
+
+        .section-light strong {
+            color: var(--charcoal);
         }
 
         .section-dark {
@@ -305,6 +328,27 @@
 
         .container-narrow {
             max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Semantic Content Width System */
+        .content-hero {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .content-prose {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-feature {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .content-wide {
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -1175,7 +1219,7 @@
             border-left-color: var(--old-gold);
         }
 
-        /* ===== COMPONENT: SECTION LABELS ===== */
+        /* ===== COMPONENT: SECTION LABELS & TITLES ===== */
         .section-label {
             display: inline-block;
             font-family: 'Crimson Text', Georgia, serif;
@@ -1190,6 +1234,15 @@
         .section-dark .section-label {
             color: var(--old-gold);
             text-shadow: 0 0 20px rgba(212, 193, 55, var(--opacity-border-strong));
+        }
+
+        .section-title {
+            margin-bottom: var(--space-lg);
+        }
+
+        .section-subtitle {
+            margin-bottom: var(--space-md);
+            opacity: var(--opacity-text-muted);
         }
 
         /* ===== FAQ ACCORDION ===== */
@@ -1729,7 +1782,7 @@
     </section>
 
     <!-- SECTION 2: LIGHT - Call to Adventure (Storybook Pages) -->
-    <section class="section section-light" style="position: relative; padding: 10rem 2rem 6rem;">
+    <section class="section section-breathing section-light" style="position: relative;">
         <!-- Sad Knight - appears lower, flipped to face text, near "something got lost" -->
         <img src="assets/images/knight-sad.png" alt="" loading="lazy" style="position: absolute; top: 45rem; right: 5rem; height: 220px; opacity: 0.4; z-index: 1; transform: scaleX(-1);">
 
@@ -1924,22 +1977,21 @@
     </script>
 
     <!-- SECTION 3: LIGHT - The 3-Phase Quest -->
-    <section class="section section-light" style="position: relative; padding-top: 2rem;">
+    <section class="section section-compact section-light" style="position: relative;">
         <div class="container">
-            <!-- Small header above The Actor's Journey -->
-            <div class="scroll-reveal" style="text-align: center; margin-bottom: 1rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
-                <span style="font-family: 'Crimson Text', Georgia, serif; font-size: 0.85rem; font-weight: 700; color: var(--salmon); text-transform: uppercase; letter-spacing: 2px;">Your Call to Adventure</span>
-            </div>
+            <!-- Combined Header Block: Label + Title -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 1.5rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+                <!-- Section Label -->
+                <span class="section-label" style="display: block; margin-bottom: 1rem;">Your Call to Adventure</span>
 
-            <!-- The Answer: The Actor's Journey Title (reveals first) -->
-            <div class="scroll-reveal" style="text-align: center; margin-bottom: 2rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+                <!-- Main Title -->
                 <h2 style="font-family: 'Bentham', Georgia, serif; font-size: 3.5rem; font-weight: 600; color: var(--charcoal); margin: 0; letter-spacing: -0.5px;">
                     The Actor's Journey
                 </h2>
             </div>
 
-            <!-- The Description (reveals after title) -->
-            <div class="scroll-reveal" style="text-align: center; margin-bottom: 3rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+            <!-- Hook Description - Separate with more breathing room -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 5rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
                 <p style="font-family: 'Lora', serif; font-size: 1.25rem; line-height: 1.6; color: var(--charcoal); opacity: 0.9; max-width: 650px; margin: 0 auto; font-weight: 400;">
                     A 12-week intensive where you discover your superpower, build unshakeable identity, and master the craft. <span style="font-style: italic; color: var(--salmon);">Three acts. One transformation.</span>
                 </p>
@@ -2205,25 +2257,26 @@
                 </p>
             </div>
 
-            <div class="testimonial" style="margin-top: 5rem;">
+            <!-- CTA after Self-Tape Games -->
+            <div style="margin-top: 5rem;">
+                <a href="#investment" class="btn btn--primary btn--hero">
+                    Begin Your Journey
+                </a>
+            </div>
+
+            <div class="testimonial" style="margin-top: 4rem;">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                 <div class="testimonial-quote">
                     "The 30 Tape Challenge provided structure and focus that made such a difference for me."
                 </div>
                 <div class="testimonial-author">— Deb LeClair</div>
             </div>
-
-            <!-- CTA after Self-Tape Games -->
-            <div style="margin-top: 6rem;">
-                <a href="#investment" class="btn btn--primary btn--hero">
-                    Begin Your Journey
-                </a>
-            </div>
         </div>
     </section>
 
     <!-- SECTION 5: LIGHT - The Community -->
     <section class="section section-light" style="position: relative;">
+        <img src="assets/images/knight-horse.png" alt="" class="knight-companion knight-right" loading="lazy" style="opacity: 0.4; display: block !important; height: 252px; right: 5rem; bottom: 5rem;">
         <div class="container text-center">
             <span class="section-label">Your Team</span>
             <h2 class="section-title" style="margin-bottom: 2.5rem;">I Am Actor Community</h2>
@@ -2295,7 +2348,7 @@
                     </div>
                 </div>
 
-                <div style="max-width: 600px; margin: 4rem auto 0; padding: 2rem; background: rgba(212, 193, 55, 0.08); border-radius: 8px; border-left: 4px solid var(--old-gold);">
+                <div style="max-width: 600px; margin: 4rem auto 0; padding: 2rem; background: rgba(232, 105, 82, 0.08); border-radius: 8px; border-left: 4px solid var(--salmon);">
                     <p style="font-size: 1.1rem; line-height: 1.7; color: #555; text-align: left; font-style: italic;">
                         "It's truly special to be part of a community of like-minded artists willing to grow together. Hans has created a safe space for actors to explore, take risks, fail, and win!"
                     </p>
@@ -2522,7 +2575,6 @@
 
     <!-- SECTION 9: LIGHT - What's Included -->
     <section class="section section-light">
-        <img src="assets/images/knight.png" alt="" class="knight-companion knight-right" loading="lazy">
         <div class="container-narrow">
             <div style="text-align: center; margin-bottom: 3rem;">
                 <span class="section-label">What's Included</span>
@@ -2606,18 +2658,25 @@
                     Begin Your Journey
                 </a>
             </div>
+
+            <div class="testimonial" style="margin-top: 4rem;">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <div class="testimonial-quote">
+                    "Hans helps actors take control of their careers, demystifying the industry into tangible actions and steps."
+                </div>
+                <div class="testimonial-author">— Trew</div>
+            </div>
         </div>
     </section>
 
     <!-- SECTION 11: LIGHT - Investment Section -->
-    <section class="section section-light" id="investment" style="padding: 120px 0; background: linear-gradient(180deg, #FAFAF8 0%, #F7F7F2 100%);">
+    <section class="section section-light" id="investment">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-left" loading="lazy">
         <div class="container">
             <div style="text-align: center; margin: 0 auto; max-width: 100%;">
-                <h2 style="font-family: 'Bentham', Georgia, serif; font-size: 3.5rem; font-weight: 400; letter-spacing: 0.02em; color: var(--deep-charcoal); margin: 0 auto 1.5rem; text-align: center; display: block;">
-                    November 4th, 2025
-                </h2>
-                <p style="font-family: 'Lato', sans-serif; font-size: 1.1rem; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin: 0 auto 5rem; text-align: center; display: block;">
+                <span class="section-label">Your Adventure Begins</span>
+                <h2 class="section-title">November 4th, 2025</h2>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #666; margin: 0 auto 3rem; max-width: 650px;">
                     10 Actors • 12 Weeks • 2 Paths
                 </p>
             </div>
@@ -2676,7 +2735,7 @@
             <!-- 30-Day Money-Back Guarantee -->
             <div class="guarantee-wrapper" style="margin-top: 4rem; text-align: center;">
                 <div class="guarantee-card" style="max-width: 650px; margin: 0 auto;">
-                    <div class="guarantee-badge" style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--old-gold); color: var(--charcoal); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem;">
+                    <div class="guarantee-badge" style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--salmon); color: var(--charcoal); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem;">
                         ✓
                     </div>
                     <h3 class="guarantee-title" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--salmon);">

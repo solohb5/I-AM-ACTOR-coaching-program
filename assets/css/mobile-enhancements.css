@@ -736,3 +736,17 @@ img[src*="tools1.png"] {
     will-change: transform !important;
   }
 }
+
+/* ===== REDUCE SPACING BETWEEN CALL TO ADVENTURE AND ACTOR'S JOURNEY ===== */
+
+@media (max-width: 768px) {
+  /* Reduce bottom padding on Call to Adventure section */
+  section.section-light[style*="padding: 10rem"] {
+    padding-bottom: 3rem !important;
+  }
+
+  /* Reduce top padding on The Actor's Journey section */
+  section.section-light[style*="padding-top: 4rem"] {
+    padding-top: 2rem !important;
+  }
+}
