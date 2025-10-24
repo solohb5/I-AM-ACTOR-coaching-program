@@ -5,13 +5,9 @@
 
 // Simple analytics stub (replace with real analytics when ready)
 function trackEvent(eventName, eventData = {}) {
-    console.log('[Analytics]', eventName, eventData);
-
     // TODO: Add Google Analytics tracking here
     // Example: gtag('event', eventName, eventData);
-
-    // Or Plausible Analytics:
-    // Example: plausible(eventName, { props: eventData });
+    // Or Plausible Analytics: plausible(eventName, { props: eventData });
 }
 
 // Track page load

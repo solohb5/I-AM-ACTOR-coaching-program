@@ -5,8 +5,8 @@
 
 // Simple analytics stub (replace with real analytics later)
 function trackEvent(eventName, eventData = {}) {
-    console.log('[Analytics]', eventName, eventData);
     // TODO: Integrate with Google Analytics, Plausible, or other service
+    // Example: gtag('event', eventName, eventData);
 }
 
 // Package configurations (must match backend)
@@ -47,7 +47,7 @@ function initStripeIntegration() {
             const packageId = this.dataset.package;
             
             if (!packageId) {
-                console.error('No package ID found');
+                showPaymentError('Package selection error. Please try again.');
                 return;
             }
             
@@ -69,7 +69,6 @@ function initStripeIntegration() {
                 // Call your backend to create checkout session
                 await initiateStripeCheckout(packageId);
             } catch (error) {
-                console.error('Checkout error:', error);
                 showPaymentError(error.message);
                 btn.disabled = false;
                 btn.innerHTML = originalContent;
@@ -132,7 +131,6 @@ async function initiateStripeCheckout(packageId) {
         }
         
     } catch (error) {
-        console.error('Failed to create checkout session:', error);
         throw error;
     }
 }
@@ -226,9 +224,6 @@ function handleStripeReturn() {
     if (urlParams.get('canceled') === 'true') {
         // Handle canceled payment
         trackEvent('stripe_checkout_canceled');
-        
-        // Optionally show a message
-        console.log('Payment was canceled');
     }
 }
 
