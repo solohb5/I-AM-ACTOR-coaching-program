@@ -843,76 +843,103 @@
         /* ===== INVESTMENT CARDS ===== */
         .investment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            max-width: 800px;
-            margin: 3rem auto;
+            grid-template-columns: repeat(2, minmax(320px, 420px));
+            justify-content: center;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 4rem auto;
         }
 
         .investment-card {
             background: white;
-            border: 3px solid var(--salmon);
-            padding: 2.5rem 2rem;
+            border: 1px solid rgba(44, 44, 44, 0.12);
+            padding: 3.5rem 3rem;
             text-align: center;
             position: relative;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .investment-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 48px rgba(90, 140, 58, 0.25);
-            border-color: var(--old-gold);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(44, 44, 44, 0.18);
         }
 
         .investment-card.featured {
-            border-color: var(--salmon);
-            box-shadow: 0 10px 40px rgba(90, 140, 58, 0.2);
+            transform: translateY(-12px);
+            border: 1px solid rgba(44, 44, 44, 0.15);
+            box-shadow:
+                0 24px 48px rgba(0, 0, 0, 0.08),
+                0 12px 24px rgba(0, 0, 0, 0.05);
         }
 
         .investment-card.featured:hover {
-            box-shadow: 0 16px 56px rgba(90, 140, 58, 0.3);
+            transform: translateY(-16px);
+            box-shadow:
+                0 28px 56px rgba(0, 0, 0, 0.10),
+                0 14px 28px rgba(0, 0, 0, 0.06);
         }
 
         .investment-label {
             position: absolute;
-            top: -15px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--salmon);
-            color: var(--ivory);
-            padding: 0.4rem 1.5rem;
-            font-family: 'Alegreya', serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            background: var(--deep-charcoal);
+            color: #FAFAF8;
+            padding: 0.5rem 1.5rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             border-radius: 4px;
         }
 
         .investment-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
         }
 
         .investment-price {
-            font-family: 'Alegreya', serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--salmon);
-            margin: 1rem 0;
+            font-family: 'Bentham', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--deep-charcoal);
+            margin: 2rem 0;
         }
 
         .investment-price-note {
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.6;
+            color: var(--charcoal);
         }
 
         .investment-description {
             color: #666;
             font-size: 1rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            font-weight: 400;
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Investment Section Button Overrides */
+        #investment .investment-card.featured .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18), 0 4px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        #investment .investment-card:not(.featured) .btn:hover {
+            background: var(--deep-charcoal);
+            color: #FAFAF8;
         }
 
         /* Old investment-btn removed - use .btn .btn--primary */
@@ -1366,7 +1393,7 @@
             opacity: 0.9;
         }
 
-        /* ===== STICKY MOBILE CTA ===== */
+        /* ===== SMART STICKY MOBILE CTA (triggers after Investment section) ===== */
         .sticky-mobile-cta {
             position: fixed;
             bottom: 0;
@@ -1409,7 +1436,7 @@
         }
 
         .sticky-mobile-cta-dismiss {
-            background: transparent;
+            background: transparent !important;
             border: none;
             color: var(--deep-charcoal);
             font-size: 1.5rem;
@@ -1418,7 +1445,8 @@
             line-height: 1;
             opacity: 0.7;
             flex-shrink: 0;
-            min-height: auto;
+            min-height: auto !important;
+            flex: 0 !important;
         }
 
         @media (min-width: 769px) {
@@ -1618,6 +1646,20 @@
 
             .investment-grid {
                 grid-template-columns: 1fr;
+                max-width: 480px;
+                gap: 2.5rem;
+            }
+
+            .investment-card.featured {
+                transform: translateY(0);
+            }
+
+            #investment h2 {
+                font-size: 2.5rem !important;
+            }
+
+            .investment-price {
+                font-size: 3rem !important;
             }
         }
     </style>
@@ -1683,7 +1725,7 @@
     <!-- SECTION 2: LIGHT - Call to Adventure (Storybook Pages) -->
     <section class="section section-light" style="position: relative; padding: 10rem 2rem 6rem;">
         <!-- Sad Knight - appears lower, flipped to face text, near "something got lost" -->
-        <img src="assets/images/knight-sad.png" alt="" loading="lazy" style="position: absolute; top: 50rem; right: 5rem; height: 220px; opacity: 0.4; z-index: 1; transform: scaleX(-1);">
+        <img src="assets/images/knight-sad.png" alt="" loading="lazy" style="position: absolute; top: 45rem; right: 5rem; height: 220px; opacity: 0.4; z-index: 1; transform: scaleX(-1);">
 
         <!-- Page 1: The Pull -->
         <div class="scroll-reveal" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10rem; margin-top: 6rem; position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
@@ -1766,14 +1808,12 @@
     </script>
 
     <!-- SECTION 3: LIGHT - The 3-Phase Quest -->
-    <section class="section section-light" style="position: relative; padding-top: 2rem;">
+    <section class="section section-light" style="position: relative; padding-top: 4rem;">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 14rem;">
-                <span class="section-label">THE ACTOR'S JOURNEY</span>
-                <h2 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 500; opacity: 0.75;">
-                    The way back has three acts.<br>
-                    Each one builds on the last.<br>
-                    Each one brings you closer to the artist you were meant to be.
+            <!-- The Reveal: The Actor's Journey -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 10rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+                <h2 style="font-family: 'Bentham', Georgia, serif; font-size: 3.5rem; font-weight: 600; color: var(--charcoal); margin: 0; letter-spacing: -0.5px;">
+                    The Actor's Journey
                 </h2>
             </div>
 
@@ -1808,8 +1848,8 @@
                     <!-- Empty middle space -->
                     <div></div>
 
-                    <!-- Knight - positioned center with more distance -->
-                    <div class="act-knight" style="display: flex; align-items: center; justify-content: flex-start;">
+                    <!-- Knight - positioned toward bottom -->
+                    <div class="act-knight" style="display: flex; align-items: flex-end; justify-content: flex-start;">
                         <img src="assets/images/knight-look.png" alt="" style="height: 220px; opacity: 0.7; background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));">
                     </div>
 
@@ -1884,7 +1924,7 @@
 
                     <!-- Knight on right side -->
                     <div class="act-knight" style="display: flex; align-items: center; justify-content: flex-start;">
-                        <img src="assets/images/knight-aww.png" alt="" style="height: 200px; opacity: 0.7; transform: scaleX(-1); background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));">
+                        <img src="assets/images/knight-aww.png" alt="" style="height: 230px; opacity: 0.7; transform: scaleX(-1); background: transparent; mix-blend-mode: multiply; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));">
                     </div>
 
                     <!-- Empty space on far right -->
@@ -2026,6 +2066,13 @@
                 </div>
                 <div class="testimonial-author">— Deb LeClair</div>
             </div>
+
+            <!-- CTA after Self-Tape Games -->
+            <div style="margin-top: 6rem;">
+                <a href="#investment" class="btn btn--primary btn--hero">
+                    Begin Your Journey
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2128,7 +2175,7 @@
                     </p>
 
                     <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.25rem;">
-                        <strong>It took me 7 years to break through and learn what I know.</strong> I built this journey so you can learn it in 3 months—the complete path and everything you need to do.
+                        <strong>It took me 7 years to book my first job.</strong> I built this journey so you can learn it in 3 months—the complete path and everything you need to do.
                     </p>
 
                     <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.25rem;">
@@ -2141,7 +2188,7 @@
 
                     <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem;">
                         <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0; flex: 1;">
-                            I'm just the guide who knows the way.
+                            I'm just the guide who might know a way...
                         </p>
 
                         <!-- Signature to the right of the text, diagonal -->
@@ -2195,6 +2242,7 @@
                 </div>
                 <div class="testimonial-author">— Mark Saldana</div>
             </div>
+
         </div>
     </section>
 
@@ -2234,7 +2282,7 @@
                     </div>
                     <div style="display: flex; align-items: flex-start; gap: 16px;">
                         <span style="color: var(--salmon); font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">✓</span>
-                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">You're ready to become the actor casting directors fight for</p>
+                        <p style="font-size: 1.125rem; line-height: 1.6; margin: 0; font-weight: 400; opacity: 0.95;">You're ready to become the actor casting directors fight for</p>
                     </div>
                 </div>
             </div>
@@ -2316,6 +2364,13 @@
                     Each tool unlocks at the perfect moment in your journey when you're ready to apply it. They're practical systems working actors use every day.
                 </p>
             </div>
+
+            <!-- CTA after Founding Gift -->
+            <div style="margin-top: 6rem;">
+                <a href="#investment" class="btn btn--primary btn--hero">
+                    Claim Your Founding Gift
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2379,98 +2434,79 @@
                 10 actors. 6 spots remaining.
             </p>
 
-            <p style="font-size: 1.35rem; line-height: 1.7; color: var(--ivory); opacity: 0.9; margin: 3.5rem auto 0; max-width: 700px;">
+            <p style="font-size: 1.35rem; line-height: 1.7; color: var(--ivory); opacity: 0.9; margin: 3.5rem auto 2rem; max-width: 700px;">
                 The only question left is: are you one of them?
             </p>
+
+            <!-- CTA -->
+            <div style="margin-top: 4rem;">
+                <a href="#investment" class="btn btn--primary btn--hero">
+                    Begin Your Journey
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- SECTION 11: LIGHT - Investment Section -->
-    <section class="section section-light" id="investment">
+    <section class="section section-light" id="investment" style="padding: 120px 0; background: linear-gradient(180deg, #FAFAF8 0%, #F5F5F0 100%);">
         <img src="assets/images/knight.png" alt="" class="knight-companion knight-left" loading="lazy">
         <div class="container">
-            <div class="text-center">
-                <span class="section-label">The Investment</span>
-                <h2 class="section-title">Your Journey Begins</h2>
-                <p class="section-subtitle">Choose your path</p>
+            <div style="text-align: center; margin: 0 auto; max-width: 100%;">
+                <h2 style="font-family: 'Bentham', Georgia, serif; font-size: 3.5rem; font-weight: 400; letter-spacing: 0.02em; color: var(--deep-charcoal); margin: 0 auto 1.5rem; text-align: center; display: block;">
+                    November 4th, 2025
+                </h2>
+                <p style="font-family: 'Lato', sans-serif; font-size: 1.1rem; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin: 0 auto 5rem; text-align: center; display: block;">
+                    10 Actors • 12 Weeks • 2 Paths
+                </p>
             </div>
 
-            <!-- Value Stack -->
-            <div class="price-anchor-wrapper">
-                <div class="price-anchor-card">
-                    <p class="price-anchor-intro">
-                        <strong>Your Complete Transformation System:</strong>
-                    </p>
-                    <ul class="price-anchor-list">
-                        <li class="price-anchor-item">
-                            <span>12-Week Small Group Intensive (1-to-10 coaching)</span>
-                            <strong>$2,400</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>Weekly Office Hours with Hans</span>
-                            <strong>$600</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>Self-Tape Games Course (25+ video lessons)</span>
-                            <strong>$497</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>30 Tape Challenge Mini-Course</span>
-                            <strong>$297</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>Private Community Access (3 months)</span>
-                            <strong>$297</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>Self-Tape Jam Session Access</span>
-                            <strong>$197</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>The 5 Actor's Tools</span>
-                            <strong>$200</strong>
-                        </li>
-                        <li class="price-anchor-item">
-                            <span>Exclusive Graduate Bonus (Perfect Pitch Access)</span>
-                            <strong>Priceless</strong>
-                        </li>
-                    </ul>
-                    <p class="price-anchor-total">
-                        <strong>Total Value: $4,488+</strong>
-                    </p>
-                    <p class="price-anchor-conclusion">
-                        <strong style="font-size: 1.4rem; color: var(--salmon);">Founders Price: $1,297</strong>
-                    </p>
-                </div>
+            <!-- Psychological Lead-In -->
+            <div style="max-width: 750px; margin: 0 auto 4rem; text-align: center;">
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 1.5rem; line-height: 1.6; font-weight: 400; color: var(--deep-charcoal); margin-bottom: 1.5rem; font-style: italic;">
+                    This isn't for everyone.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; font-weight: 300; color: var(--charcoal); margin: 0;">
+                    If you're looking for a quick fix or a magic formula, this won't work for you. But if you're ready to do the deep work—to face your truth, own your story, and build a career from the inside out—then you already know this is exactly what you've been looking for.
+                </p>
+            </div>
+
+            <!-- Value Stack - Editorial Style -->
+            <div style="max-width: 700px; margin: 0 auto 5rem; padding: 3rem 3.5rem; background: #FAFAF8; border-bottom: 3px solid var(--deep-charcoal); text-align: center;">
+                <p style="font-size: 1.15rem; font-weight: 300; line-height: 1.8; color: var(--charcoal); margin-bottom: 1.5rem;">
+                    Complete transformation system valued at <strong style="font-weight: 500;">$4,488+</strong>
+                </p>
+                <p style="font-family: 'Bentham', Georgia, serif; font-size: 2.5rem; font-weight: 400; color: var(--deep-charcoal); margin: 0;">
+                    Founding Rate: $1,297
+                </p>
             </div>
 
             <div class="investment-grid">
                 <!-- One-Time Payment -->
                 <div class="investment-card featured">
-                    <div class="investment-label">Best Value - Save $203</div>
-                    <h3 class="investment-title">One-Time Payment</h3>
+                    <div class="investment-label">Recommended</div>
+                    <h3 class="investment-title">Complete Investment</h3>
                     <div class="investment-price">$1,297</div>
                     <p class="investment-description">
-                        Full payment • Save $203<br>
-                        Quest begins November 4, 2025
+                        Full access • Immediate start<br>
+                        <strong style="font-weight: 500;">Founder's advantage: $203</strong>
                     </p>
-                    <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn btn--primary">
-                        Claim Your Spot - Pay in Full
+                    <a href="https://buy.stripe.com/4gM28q21agJtgUE41k1ck0l" class="btn btn--primary" style="background: var(--deep-charcoal); color: #FAFAF8; padding: 1.25rem 2.5rem; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.1em; border-radius: 4px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                        Begin Your Journey
                     </a>
                 </div>
 
                 <!-- Payment Plan -->
                 <div class="investment-card">
-                    <h3 class="investment-title">Payment Plan</h3>
+                    <h3 class="investment-title">Flexible Investment</h3>
                     <div class="investment-price">
                         $375<span class="investment-price-note">/mo</span>
                     </div>
                     <p class="investment-description">
-                        4 monthly payments ($1,500 total)<br>
-                        Quest begins November 4, 2025
+                        4 monthly payments<br>
+                        <span style="opacity: 0.7;">$1,500 total</span>
                     </p>
-                    <a href="https://buy.stripe.com/aFa14m6hqctdcEoeFY1ck0o" class="btn btn--primary">
-                        Claim Your Spot - 4 Payments
+                    <a href="https://buy.stripe.com/aFa14m6hqctdcEoeFY1ck0o" class="btn btn--primary" style="background: transparent; color: var(--deep-charcoal); border: 1.5px solid var(--deep-charcoal); padding: 1.25rem 2.5rem; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.1em; border-radius: 4px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                        Begin Your Journey
                     </a>
                 </div>
             </div>
@@ -2493,20 +2529,13 @@
                 </div>
             </div>
 
-            <div class="text-center" style="margin-top: 48px;">
-                <p style="font-size: 1.1rem; margin-bottom: 1rem;">
-                    <strong>Quest Begins:</strong> November 4, 2025
-                </p>
-                <p class="investment-spots" style="font-size: 1.2rem; color: var(--salmon); font-weight: 700;">
-                    Spots Available: 10 actors only
-                </p>
-
-                <div class="highlight-box" style="margin-top: 48px;">
-                    <p style="font-size: 1.05rem; margin-bottom: 0.5rem;">
+            <div style="margin-top: 64px; text-align: center;">
+                <div style="max-width: 650px; margin: 0 auto; padding: 2.5rem 3rem; background: #FAFAF8; border: 1px solid rgba(44, 44, 44, 0.12); border-radius: 8px; text-align: center;">
+                    <p style="font-size: 1.05rem; font-weight: 300; margin-bottom: 1rem; color: var(--charcoal);">
                         Still have questions? Let's talk:
                     </p>
                     <p>
-                        <a href="https://calendly.com/hans-magic/actors-journey-quick-chat" style="color: var(--salmon); font-weight: 600; text-decoration: none; font-size: 1.1rem;">Book a Quick Chat →</a>
+                        <a href="https://calendly.com/hans-magic/actors-journey-quick-chat" style="color: var(--deep-charcoal); font-weight: 500; text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--deep-charcoal); transition: opacity 0.3s ease;">Book a Quick Chat →</a>
                     </p>
                 </div>
             </div>
@@ -2807,7 +2836,7 @@
         </div>
     </section>
 
-    <!-- Sticky Mobile CTA -->
+    <!-- Smart Sticky Mobile CTA (appears after Investment section) -->
     <div class="sticky-mobile-cta" id="stickyMobileCTA">
         <div class="sticky-mobile-cta-content">
             <button onclick="window.location.href='#investment'">Claim Your Spot</button>
@@ -3227,6 +3256,36 @@
     <!-- Journey-specific JavaScript -->
     <script src="assets/js/journey.js"></script>
 
+    <!-- Smart Sticky Mobile CTA Script (triggers after Investment section) -->
+    <script>
+        let stickyDismissed = sessionStorage.getItem('stickyCtaDismissed');
+        const stickyCTA = document.getElementById('stickyMobileCTA');
+
+        function dismissStickyCTA() {
+            stickyCTA.classList.remove('visible');
+            sessionStorage.setItem('stickyCtaDismissed', 'true');
+        }
+
+        // Show sticky CTA only after scrolling past Investment section
+        if (!stickyDismissed) {
+            window.addEventListener('scroll', function() {
+                const investmentSection = document.getElementById('investment');
+
+                if (investmentSection && window.innerWidth <= 768) {
+                    const investmentBottom = investmentSection.offsetTop + investmentSection.offsetHeight;
+                    const scrollPos = window.scrollY + window.innerHeight;
+
+                    // Show CTA when user scrolls past the Investment section
+                    if (scrollPos > investmentBottom) {
+                        stickyCTA.classList.add('visible');
+                    } else {
+                        stickyCTA.classList.remove('visible');
+                    }
+                }
+            });
+        }
+    </script>
+
     <!-- FAQ Accordion Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -3250,32 +3309,6 @@
                 });
             });
         });
-    </script>
-
-    <!-- Sticky Mobile CTA Script -->
-    <script>
-        let stickyDismissed = sessionStorage.getItem('stickyCtaDismissed');
-        const stickyCTA = document.getElementById('stickyMobileCTA');
-
-        function dismissStickyCTA() {
-            stickyCTA.classList.remove('visible');
-            sessionStorage.setItem('stickyCtaDismissed', 'true');
-        }
-
-        // Show sticky CTA when scrolling past hero
-        if (!stickyDismissed) {
-            window.addEventListener('scroll', function() {
-                const heroSection = document.querySelector('.hero');
-                const heroHeight = heroSection ? heroSection.offsetHeight : 800;
-                const scrollPos = window.scrollY;
-
-                if (scrollPos > heroHeight && window.innerWidth <= 768) {
-                    stickyCTA.classList.add('visible');
-                } else {
-                    stickyCTA.classList.remove('visible');
-                }
-            });
-        }
     </script>
 
     <!-- Spots Counter (Update SPOTS_AVAILABLE when spots are filled) -->
