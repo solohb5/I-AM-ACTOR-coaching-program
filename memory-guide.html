@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.mailerlite.com https://track.mailerlite.com; connect-src 'self' https://assets.mailerlite.com https://track.mailerlite.com https://api.mailerlite.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
     <title>Master Your Lines in Half the Time - Free Memory Mastery Guide</title>
     <meta name="description" content="Get the FREE Memory Mastery Guide - The exact system working actors use to memorize scripts faster and perform with confidence.">
     <meta property="og:title" content="Memory Mastery Guide - I AM ACTOR">
@@ -548,24 +547,8 @@
 
             <!-- Form Container (MOVED UP - Above guide image for conversion) -->
             <div class="form-container" id="email-form-section">
-                <!-- ============================================
-                     MAILERLITE FORM EMBED CODE GOES HERE
-
-                     Hans: Paste your MailerLite form embed code below.
-                     Remove the placeholder form and replace with your embed.
-                     ============================================ -->
-
-                <!-- PLACEHOLDER FORM (Remove when adding MailerLite code) -->
-                <form class="email-form" id="email-form" onsubmit="handleFormSubmit(event)">
-                    <input
-                        type="email"
-                        class="form-input"
-                        placeholder="Your email address"
-                        required
-                        id="email-input"
-                    >
-                    <button type="submit" class="submit-btn">Send Me The Guide</button>
-                </form>
+                <!-- MailerLite Embedded Form -->
+                <div class="ml-embedded" data-form="PZNsEu"></div>
 
                 <!-- Success Message (Hidden by default) -->
                 <div class="success-message" id="success-message">
@@ -651,34 +634,10 @@
         window.addEventListener('load', handleStickyButton);
     </script>
 
+    <!-- MailerLite will handle form submission automatically -->
     <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const emailInput = document.getElementById('email-input');
-            const email = emailInput.value;
-
-            // Validate email
-            if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address');
-                return;
-            }
-
-            // Submit to MailerLite
-            ml('subscribe', {
-                formId: 'PZNsEu',
-                email: email
-            });
-
-            // Hide form
-            document.getElementById('email-form').style.display = 'none';
-
-            // Show success message
-            document.getElementById('success-message').classList.add('show');
-
-            // Clear input
-            emailInput.value = '';
-        }
+        // Optional: Custom success tracking
+        // MailerLite's embedded form handles submission natively
     </script>
 </body>
 </html>
