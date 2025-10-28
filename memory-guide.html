@@ -547,15 +547,10 @@
 
             <!-- Form Container (MOVED UP - Above guide image for conversion) -->
             <div class="form-container" id="email-form-section">
-                <!-- MailerLite Embedded Form -->
-                <div class="ml-embedded" data-form="PZNsEu"></div>
-
-                <!-- Success Message (Hidden by default) -->
-                <div class="success-message" id="success-message">
-                    <div class="checkmark-icon">✓</div>
-                    <p><strong>Success! Check your email for your Memory Mastery Guide.</strong></p>
-                    <p class="note">(Check spam folder if you don't see it in 5 minutes)</p>
-                </div>
+                <!-- MailerLite Button (Opens modal form) -->
+                <button class="submit-btn ml-onclick-form" onclick="ml('show', 'PZNsEu', true)">
+                    Send Me The Guide
+                </button>
 
                 <!-- Privacy Note -->
                 <p class="privacy-note">We respect your privacy. Unsubscribe anytime.</p>
@@ -590,29 +585,12 @@
     </div>
 
     <!-- Sticky CTA Button -->
-    <button class="sticky-cta" id="sticky-cta" onclick="scrollToForm()">
+    <button class="sticky-cta ml-onclick-form" id="sticky-cta" onclick="ml('show', 'PZNsEu', true)">
         Get My Free Guide
     </button>
 
-    <!-- Form Submission Handler (Placeholder - Remove when using MailerLite) -->
     <script>
-        // Smooth scroll to form
-        function scrollToForm() {
-            const formSection = document.getElementById('email-form-section');
-            if (formSection) {
-                formSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-                // Focus on email input after scroll
-                setTimeout(() => {
-                    const emailInput = document.getElementById('email-input');
-                    if (emailInput) emailInput.focus();
-                }, 500);
-            }
-        }
-
-        // Hide/show sticky button based on form visibility
+        // Hide/show sticky button based on button section visibility
         function handleStickyButton() {
             const stickyBtn = document.getElementById('sticky-cta');
             const formSection = document.getElementById('email-form-section');
@@ -632,12 +610,6 @@
         // Listen for scroll events
         window.addEventListener('scroll', handleStickyButton);
         window.addEventListener('load', handleStickyButton);
-    </script>
-
-    <!-- MailerLite will handle form submission automatically -->
-    <script>
-        // Optional: Custom success tracking
-        // MailerLite's embedded form handles submission natively
     </script>
 </body>
 </html>
