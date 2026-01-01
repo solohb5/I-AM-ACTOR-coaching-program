@@ -311,6 +311,42 @@
             transform: translateX(4px);
         }
 
+        /* ===== CREDIBILITY SLIDE ===== */
+        .credibility-slide {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .credibility-photo {
+            width: 180px;
+            height: 240px;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: 8px;
+            margin: 0 auto 32px;
+            display: block;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .credibility-text {
+            margin-bottom: 40px;
+        }
+
+        .credibility-quote {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            color: var(--charcoal);
+        }
+
+        .credibility-credits {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
         /* ===== EMAIL GATE ===== */
         .email-gate {
             text-align: center;
@@ -388,60 +424,121 @@
             margin-bottom: 24px;
         }
 
-        /* ===== TOOLKIT OFFER ===== */
-        .toolkit-offer {
-            background: rgba(232, 105, 82, 0.06);
-            border: 2px solid rgba(232, 105, 82, 0.15);
-            border-radius: 12px;
-            padding: 40px 36px;
+        /* ===== TAKE IT FURTHER BUTTON ===== */
+        .take-further-btn {
             margin-top: 48px;
-            text-align: center;
+            background: var(--salmon) !important;
+            color: white !important;
+            padding: 18px 48px !important;
+            font-size: 1.2rem !important;
         }
 
-        .toolkit-offer h3 {
-            margin-bottom: 20px;
+        .take-further-btn:hover {
+            background: #d45740 !important;
+            transform: translateY(-2px);
         }
 
-        .toolkit-intro {
-            font-size: 1.05rem;
-            margin-bottom: 28px;
-            opacity: 0.9;
+        /* ===== TOOLKIT MODAL ===== */
+        .toolkit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 20000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .toolkit-list {
+        .toolkit-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .toolkit-modal-content {
+            max-width: 600px;
+            width: 90%;
+            background: var(--ivory);
+            border: 1px solid rgba(44, 44, 44, 0.15);
+            border-radius: 12px;
+            padding: 48px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            font-family: 'Lora', serif;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .toolkit-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            padding: 8px;
+        }
+
+        .toolkit-modal-close:hover {
+            opacity: 1;
+        }
+
+        .toolkit-modal-list {
             text-align: left;
             list-style: none;
-            margin-bottom: 32px;
+            margin: 0 auto 32px;
+            max-width: 500px;
             font-size: 1.05rem;
         }
 
-        .toolkit-list li {
-            padding: 8px 0;
-            padding-left: 32px;
-            position: relative;
+        .toolkit-modal-list li {
+            padding: 12px 0;
             line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
         }
 
-        .toolkit-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .toolkit-modal-list .check {
             color: var(--salmon);
             font-weight: 700;
             font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
-        .toolkit-price {
-            font-family: 'Bentham', Georgia, serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 32px;
+        .toolkit-no-thanks {
+            background: transparent;
+            border: none;
+            color: var(--charcoal);
+            opacity: 0.6;
+            font-size: 0.95rem;
+            margin-top: 24px;
+            cursor: pointer;
+            font-family: 'Lora', serif;
+            transition: opacity 0.3s ease;
         }
 
-        .toolkit-subtext {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 16px;
+        .toolkit-no-thanks:hover {
+            opacity: 1;
         }
 
         /* ===== UTILITY ===== */
@@ -495,8 +592,30 @@
                 font-size: 1.15rem;
             }
 
-            .toolkit-offer {
-                padding: 32px 24px;
+            .toolkit-modal-content {
+                padding: 40px 28px;
+            }
+
+            .toolkit-modal-list {
+                font-size: 1rem;
+            }
+
+            .take-further-btn {
+                padding: 16px 32px !important;
+                font-size: 1.1rem !important;
+            }
+
+            .credibility-photo {
+                width: 140px;
+                height: 190px;
+            }
+
+            .credibility-quote {
+                font-size: 1.05rem;
+            }
+
+            .credibility-credits {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -549,6 +668,27 @@
                 </div>
             </div>
 
+            <!-- CREDIBILITY SLIDE -->
+            <div id="credibilitySlide" class="credibility-slide hidden">
+                <img src="assets/images/hans-bio.jpg" alt="Hans Christopher" class="credibility-photo">
+                
+                <div class="credibility-text">
+                    <p class="credibility-quote">
+                        "Hey — I'm Hans.<br><br>
+                        I built this for the version of me who waited 5 years to walk into an acting class... even though I knew the moment I saw my first movie.<br><br>
+                        I know what it feels like to hide this dream from everyone.<br><br>
+                        You're not behind. You're right on time."
+                    </p>
+                    
+                    <p class="credibility-credits">
+                        45+ TV & Film Credits<br>
+                        FBI • The Walking Dead • Animal Kingdom • Waco
+                    </p>
+                </div>
+                
+                <button class="btn" onclick="continueFromCredibility()">Continue →</button>
+            </div>
+
             <!-- EMAIL GATE -->
             <div id="emailGate" class="email-gate hidden">
                 <h2>Almost there...</h2>
@@ -568,6 +708,40 @@
             <div id="result" class="result-content hidden">
                 <!-- Dynamic result -->
             </div>
+        </div>
+    </div>
+
+    <!-- TOOLKIT MODAL -->
+    <div id="toolkitModal" class="toolkit-modal">
+        <div class="toolkit-modal-content">
+            <button class="toolkit-modal-close" onclick="closeToolkitModal()">✕</button>
+            
+            <h2 style="font-family: 'Bentham', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--charcoal); text-align: center;">
+                THE ACTOR'S TOOLKIT
+            </h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--charcoal); opacity: 0.85; text-align: center;">
+                Everything you need to start. Today.
+            </p>
+            
+            <ul class="toolkit-modal-list">
+                <li><span class="check">✓</span> Memory Mastery — Never fear forgetting lines again</li>
+                <li><span class="check">✓</span> Cry on Cue — Access any emotion on command</li>
+                <li><span class="check">✓</span> Quiet Center Tool — Kill stage fright before it kills you</li>
+                <li><span class="check">✓</span> Character Creation — Become anyone in 15 minutes</li>
+                <li><span class="check">✓</span> 3-Day Audition Playbook — Exactly what to do when you get the call</li>
+            </ul>
+            
+            <p style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1.5rem; text-align: center; color: var(--charcoal);">
+                $37 — Instant Access
+            </p>
+            
+            <a href="#" id="toolkitCheckoutBtn" class="btn" style="width: 100%; max-width: 400px; margin: 0 auto; display: block; text-align: center; background: var(--old-gold); color: var(--deep-charcoal);">
+                Get the Toolkit →
+            </a>
+            
+            <button class="toolkit-no-thanks" onclick="closeToolkitModal()">
+                No thanks, just send me the free guide
+            </button>
         </div>
     </div>
 
@@ -807,7 +981,9 @@
             
             currentQuestion++;
             
-            if (currentQuestion === 8) {
+            if (currentQuestion === 5) {
+                showCredibilitySlide();
+            } else if (currentQuestion === 8) {
                 showEmailGate();
             } else if (currentQuestion < questions.length) {
                 const questionCard = document.getElementById('questionCard');
@@ -819,6 +995,24 @@
             } else {
                 calculateAndShowResult();
             }
+        }
+
+        function showCredibilitySlide() {
+            document.getElementById('quiz').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('quiz').classList.add('hidden');
+                document.getElementById('credibilitySlide').classList.remove('hidden');
+            }, 300);
+        }
+
+        function continueFromCredibility() {
+            document.getElementById('credibilitySlide').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('credibilitySlide').classList.add('hidden');
+                document.getElementById('quiz').classList.remove('hidden');
+                document.getElementById('quiz').classList.remove('fade-out');
+                showQuestion();
+            }, 300);
         }
 
         function showEmailGate() {
@@ -921,31 +1115,26 @@
                     ${result.body}
                 </div>
                 
-                <div class="toolkit-offer">
-                    <h3>Ready to take the first step?</h3>
-                    <p class="toolkit-intro">You've been dreaming about this long enough.<br><br>The Actor's Toolkit gives you everything you need to start — today.</p>
-                    
-                    <ul class="toolkit-list">
-                        <li>How Actors Actually Memorize (not what you think)</li>
-                        <li>How to Cry on Cue (and access any emotion)</li>
-                        <li>Build a Character in 15 Minutes</li>
-                        <li>How to Find the Perfect Monologue</li>
-                        <li>Where to Find Readers (even if you don't know any actors)</li>
-                    </ul>
-                    
-                    <p class="toolkit-price">5 guides. Every question answered. <strong>$37.</strong></p>
-                    
-                    <a href="${STRIPE_CHECKOUT_LINK}" class="btn">Get the Actor's Toolkit — $37</a>
-                    
-                    <p class="toolkit-subtext">Instant access. Start this weekend.</p>
-                </div>
+                <button class="btn take-further-btn" onclick="openToolkitModal()">
+                    Want to Take It Further? →
+                </button>
             `;
             
             document.getElementById('loading').classList.add('hidden');
             document.getElementById('result').classList.remove('hidden');
         }
 
-        // Email input enter key
+        function openToolkitModal() {
+            document.getElementById('toolkitModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeToolkitModal() {
+            document.getElementById('toolkitModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Email input enter key and toolkit checkout link
         document.addEventListener('DOMContentLoaded', function() {
             const emailInput = document.getElementById('emailInput');
             if (emailInput) {
@@ -955,6 +1144,19 @@
                     }
                 });
             }
+            
+            // Set toolkit checkout link
+            const checkoutBtn = document.getElementById('toolkitCheckoutBtn');
+            if (checkoutBtn && STRIPE_CHECKOUT_LINK) {
+                checkoutBtn.href = STRIPE_CHECKOUT_LINK;
+            }
+            
+            // Close modal on outside click
+            document.getElementById('toolkitModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeToolkitModal();
+                }
+            });
         });
     </script>
 </body>
