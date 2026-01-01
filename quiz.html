@@ -525,6 +525,24 @@
             flex-shrink: 0;
         }
 
+        .toolkit-image-wrapper {
+            margin: 0 auto 40px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .toolkit-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 280px;
+            filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.15));
+            transition: transform 0.3s ease;
+        }
+
+        .toolkit-image:hover {
+            transform: scale(1.02);
+        }
+
         .toolkit-no-thanks {
             background: transparent;
             border: none;
@@ -616,6 +634,15 @@
 
             .credibility-credits {
                 font-size: 0.85rem;
+            }
+
+            .toolkit-image-wrapper {
+                padding: 0 10px;
+                margin-bottom: 32px;
+            }
+
+            .toolkit-image {
+                max-height: 220px;
             }
         }
     </style>
@@ -716,12 +743,17 @@
         <div class="toolkit-modal-content">
             <button class="toolkit-modal-close" onclick="closeToolkitModal()">✕</button>
             
-            <h2 style="font-family: 'Bentham', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--charcoal); text-align: center;">
+            <h2 style="font-family: 'Bentham', serif; font-size: 2rem; margin-bottom: 0.5rem; color: var(--charcoal); text-align: center;">
                 THE ACTOR'S TOOLKIT
             </h2>
             <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--charcoal); opacity: 0.85; text-align: center;">
                 Everything you need to start. Today.
             </p>
+            
+            <!-- Tools Image -->
+            <div class="toolkit-image-wrapper">
+                <img src="assets/images/tools-mobile.png" alt="The Actor's Toolkit - 5 Essential Guides" class="toolkit-image">
+            </div>
             
             <ul class="toolkit-modal-list">
                 <li><span class="check">✓</span> Memory Mastery — Never fear forgetting lines again</li>
@@ -735,7 +767,7 @@
                 $37 — Instant Access
             </p>
             
-            <a href="#" id="toolkitCheckoutBtn" class="btn" style="width: 100%; max-width: 400px; margin: 0 auto; display: block; text-align: center; background: var(--old-gold); color: var(--deep-charcoal);">
+            <a href="#" id="toolkitCheckoutBtn" class="btn" style="width: 100%; max-width: 400px; margin: 0 auto; display: block; text-align: center; background: var(--old-gold); color: var(--deep-charcoal); box-shadow: 0 4px 12px rgba(212, 193, 55, 0.3);">
                 Get the Toolkit →
             </a>
             
