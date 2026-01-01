@@ -1,21 +1,9 @@
 // Vercel Serverless Function for MailerLite Subscription
 module.exports = async function handler(req, res) {
-  // Security headers and CORS
-  const allowedOrigins = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'https://i-am-actor-coaching-program.vercel.app',
-    'https://i-am-actor-coaching-program-git-main-hans-projects-9a2b05f1.vercel.app'
-  ];
-  
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -25,73 +13,69 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  try {
-    // Validate environment
-    console.log('Environment check:', {
-      hasApiKey: !!process.env.MAILERLITE_API_KEY,
-      envKeys: Object.keys(process.env).filter(k => k.includes('MAILER'))
+  // Check environment variable
+  const apiKey = process.env.MAILERLITE_API_KEY;
+  
+  if (!apiKey) {
+    console.error('MAILERLITE_API_KEY not found');
+    return res.status(500).json({ 
+      error: 'Email system not configured',
+      hasKey: false
     });
-    
-    if (!process.env.MAILERLITE_API_KEY) {
-      console.error('MAILERLITE_API_KEY not configured');
-      console.error('Available env vars:', Object.keys(process.env));
-      return res.status(500).json({ 
-        error: 'Email system not configured',
-        debug: 'MAILERLITE_API_KEY environment variable is missing'
-      });
-    }
+  }
 
-    const { email, resultType } = req.body;
-    
-    // Input validation
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
-      return res.status(400).json({ error: 'Invalid email address' });
-    }
-    
-    if (!resultType || typeof resultType !== 'string') {
-      return res.status(400).json({ error: 'Invalid result type' });
-    }
+  const { email, resultType } = req.body;
+  
+  // Validate input
+  if (!email || !email.includes('@')) {
+    return res.status(400).json({ error: 'Invalid email' });
+  }
+  
+  if (!resultType) {
+    return res.status(400).json({ error: 'Invalid result type' });
+  }
 
-    // MailerLite API call
-    console.log('Submitting to MailerLite:', { email, resultType });
+  // Call MailerLite API
+  try {
+    console.log('Calling MailerLite API for:', email);
     
     const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${process.env.MAILERLITE_API_KEY}`
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
         email: email,
-        groups: ['175430226583488139'], // Quiz Funnel 2026
+        groups: ['175430226583488139'],
         fields: {
           quiz_result: resultType
         }
       })
     });
 
-    const responseData = await response.json();
+    const data = await response.json();
 
     if (!response.ok) {
-      console.error('MailerLite API error:', responseData);
+      console.error('MailerLite API error:', data);
       return res.status(response.status).json({ 
-        error: 'MailerLite submission failed',
-        details: responseData 
+        error: 'MailerLite API failed',
+        details: data 
       });
     }
 
-    console.log('MailerLite success:', responseData);
+    console.log('MailerLite success:', email);
     return res.status(200).json({ 
       success: true,
-      data: responseData 
+      data: data 
     });
 
   } catch (error) {
-    console.error('MailerLite error:', error);
+    console.error('Error:', error);
     return res.status(500).json({ 
-      error: 'Email subscription failed',
-      details: error.message 
+      error: 'Submission failed',
+      message: error.message 
     });
   }
 }
