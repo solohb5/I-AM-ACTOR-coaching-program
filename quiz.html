@@ -409,16 +409,35 @@
         }
 
         /* ===== RESULT STATE ===== */
+        .result-content {
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        .result-knight {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            height: 180px;
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .result-content h2 {
             color: var(--old-gold);
             text-align: center;
             margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
         }
 
         .result-body {
             font-size: 1.15rem;
             line-height: 1.7;
             margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .result-body p {
@@ -432,6 +451,8 @@
             color: white !important;
             padding: 18px 48px !important;
             font-size: 1.2rem !important;
+            position: relative;
+            z-index: 1;
         }
 
         .take-further-btn:hover {
@@ -651,6 +672,13 @@
 
             .toolkit-image {
                 max-height: 160px;
+            }
+
+            .result-knight {
+                height: 120px;
+                bottom: -10px;
+                right: 10px;
+                opacity: 0.2;
             }
         }
     </style>
@@ -977,10 +1005,8 @@
             setTimeout(() => {
                 document.getElementById('hero').classList.add('hidden');
                 document.getElementById('quiz').classList.remove('hidden');
-                setTimeout(() => {
-                    document.getElementById('quiz').classList.add('active');
-                    showQuestion();
-                }, 50);
+                document.getElementById('quiz').classList.add('active');
+                showQuestion();
             }, 300);
         }
 
@@ -1148,6 +1174,7 @@
         function displayResult(result) {
             const resultContent = document.getElementById('result');
             resultContent.innerHTML = `
+                <img src="assets/images/knightartfirered (500 x 500 px)(2).png" alt="" class="result-knight">
                 <h2>${result.headline}</h2>
                 <div class="result-body">
                     ${result.body}
