@@ -1129,20 +1129,14 @@
             document.getElementById('emailGate').classList.add('fade-out');
             setTimeout(() => {
                 document.getElementById('emailGate').classList.add('hidden');
-                document.getElementById('loading').classList.remove('hidden');
-            }, 300);
-            
-            await submitToConvertKit(email, ['quiz-completed']);
-            
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
                 document.getElementById('quiz').classList.remove('hidden');
                 document.getElementById('quiz').classList.remove('fade-out');
-                setTimeout(() => {
-                    document.getElementById('quiz').classList.add('active');
-                    showQuestion();
-                }, 50);
-            }, 1000);
+                document.getElementById('quiz').classList.add('active');
+                showQuestion();
+            }, 300);
+            
+            // Submit to ConvertKit in background
+            submitToConvertKit(email, ['quiz-completed']);
         }
 
         async function submitToConvertKit(email, tags, customFields = {}) {
