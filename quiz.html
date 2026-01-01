@@ -461,16 +461,18 @@
         }
 
         .toolkit-modal-content {
-            max-width: 600px;
+            max-width: 560px;
             width: 90%;
             background: var(--ivory);
             border: 1px solid rgba(44, 44, 44, 0.15);
             border-radius: 12px;
-            padding: 48px 40px;
+            padding: 36px 32px 32px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             position: relative;
             font-family: 'Lora', serif;
             animation: slideIn 0.3s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes slideIn {
@@ -505,28 +507,29 @@
         .toolkit-modal-list {
             text-align: left;
             list-style: none;
-            margin: 0 auto 32px;
-            max-width: 500px;
-            font-size: 1.05rem;
+            margin: 0 auto 24px;
+            max-width: 480px;
+            font-size: 1rem;
         }
 
         .toolkit-modal-list li {
-            padding: 12px 0;
-            line-height: 1.6;
+            padding: 8px 0;
+            line-height: 1.5;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
         }
 
         .toolkit-modal-list .check {
             color: var(--salmon);
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .toolkit-image-wrapper {
-            margin: 0 auto 40px;
+            margin: 0 auto 24px;
             text-align: center;
             padding: 0 20px;
         }
@@ -534,8 +537,8 @@
         .toolkit-image {
             max-width: 100%;
             height: auto;
-            max-height: 280px;
-            filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.15));
+            max-height: 200px;
+            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
             transition: transform 0.3s ease;
         }
 
@@ -611,11 +614,15 @@
             }
 
             .toolkit-modal-content {
-                padding: 40px 28px;
+                padding: 28px 24px 24px;
             }
 
             .toolkit-modal-list {
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .toolkit-modal-list li {
+                padding: 6px 0;
             }
 
             .take-further-btn {
@@ -638,11 +645,11 @@
 
             .toolkit-image-wrapper {
                 padding: 0 10px;
-                margin-bottom: 32px;
+                margin-bottom: 20px;
             }
 
             .toolkit-image {
-                max-height: 220px;
+                max-height: 160px;
             }
         }
     </style>
@@ -743,10 +750,10 @@
         <div class="toolkit-modal-content">
             <button class="toolkit-modal-close" onclick="closeToolkitModal()">✕</button>
             
-            <h2 style="font-family: 'Bentham', serif; font-size: 2rem; margin-bottom: 0.5rem; color: var(--charcoal); text-align: center;">
+            <h2 style="font-family: 'Bentham', serif; font-size: 1.75rem; margin-bottom: 0.5rem; color: var(--charcoal); text-align: center; line-height: 1.2;">
                 THE ACTOR'S TOOLKIT
             </h2>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--charcoal); opacity: 0.85; text-align: center;">
+            <p style="font-size: 1rem; margin-bottom: 1.5rem; color: var(--charcoal); opacity: 0.85; text-align: center;">
                 Everything you need to start. Today.
             </p>
             
@@ -763,15 +770,15 @@
                 <li><span class="check">✓</span> 3-Day Audition Playbook — Exactly what to do when you get the call</li>
             </ul>
             
-            <p style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1.5rem; text-align: center; color: var(--charcoal);">
+            <p style="font-size: 1.4rem; font-weight: 700; margin: 1.5rem 0 1.25rem; text-align: center; color: var(--charcoal);">
                 $37 — Instant Access
             </p>
             
-            <a href="#" id="toolkitCheckoutBtn" class="btn" style="width: 100%; max-width: 400px; margin: 0 auto; display: block; text-align: center; background: var(--old-gold); color: var(--deep-charcoal); box-shadow: 0 4px 12px rgba(212, 193, 55, 0.3);">
+            <a href="#" id="toolkitCheckoutBtn" class="btn" style="width: 100%; max-width: 380px; margin: 0 auto; display: block; text-align: center; background: var(--old-gold); color: var(--deep-charcoal); box-shadow: 0 4px 12px rgba(212, 193, 55, 0.3); padding: 16px 32px; font-size: 1.1rem;">
                 Get the Toolkit →
             </a>
             
-            <button class="toolkit-no-thanks" onclick="closeToolkitModal()">
+            <button class="toolkit-no-thanks" onclick="closeToolkitModal()" style="margin-top: 16px;">
                 No thanks, just send me the free guide
             </button>
         </div>
