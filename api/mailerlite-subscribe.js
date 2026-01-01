@@ -27,9 +27,18 @@ module.exports = async function handler(req, res) {
 
   try {
     // Validate environment
+    console.log('Environment check:', {
+      hasApiKey: !!process.env.MAILERLITE_API_KEY,
+      envKeys: Object.keys(process.env).filter(k => k.includes('MAILER'))
+    });
+    
     if (!process.env.MAILERLITE_API_KEY) {
       console.error('MAILERLITE_API_KEY not configured');
-      return res.status(500).json({ error: 'Email system not configured' });
+      console.error('Available env vars:', Object.keys(process.env));
+      return res.status(500).json({ 
+        error: 'Email system not configured',
+        debug: 'MAILERLITE_API_KEY environment variable is missing'
+      });
     }
 
     const { email, resultType } = req.body;
