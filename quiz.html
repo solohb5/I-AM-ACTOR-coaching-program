@@ -818,6 +818,8 @@
         const CONVERTKIT_API_KEY = 'YOUR_API_KEY_HERE';
         const CONVERTKIT_FORM_ID = 'YOUR_FORM_ID_HERE';
         const STRIPE_CHECKOUT_LINK = 'https://buy.stripe.com/bJe4gyeNWal51ZK69s1ck0p';
+        
+        // MailerLite Configuration - Handled by serverless function at /api/mailerlite-subscribe
 
         // ===== 8 QUESTIONS - Pain Question Last =====
         const questions = [
@@ -1090,6 +1092,7 @@
         }
 
         async function submitEmail() {
+            console.log('🔵 submitEmail() called');
             const emailInput = document.getElementById('emailInput');
             const email = emailInput.value.trim();
             
@@ -1099,6 +1102,26 @@
             }
             
             userEmail = email;
+            console.log('✅ Email captured:', email);
+            
+            // Calculate preliminary result based on current answers
+            const priority = ['lateBlocker', 'truthTeller', 'transformer', 'storyteller', 'observer'];
+            let maxScore = 0;
+            let preliminaryResultType = 'lateBlocker';
+            
+            priority.forEach(type => {
+                if (scores[type] > maxScore) {
+                    maxScore = scores[type];
+                    preliminaryResultType = type;
+                }
+            });
+            
+            const preliminaryResult = resultTypes[preliminaryResultType];
+            console.log('📊 Preliminary result:', preliminaryResult.name);
+            
+            // Try to add to MailerLite (will likely fail due to CORS)
+            console.log('🚀 Attempting MailerLite API call...');
+            addToMailerLite(email, preliminaryResult.name);
             
             document.getElementById('emailGate').classList.add('fade-out');
             setTimeout(() => {
@@ -1136,6 +1159,43 @@
             }
         }
 
+        async function addToMailerLite(email, resultType) {
+            console.log('📧 addToMailerLite() called with:', { email, resultType });
+            
+            const payload = {
+                email: email,
+                resultType: resultType
+            };
+            
+            console.log('📦 Payload:', JSON.stringify(payload, null, 2));
+            
+            try {
+                console.log('⏳ Sending request to serverless function...');
+                const response = await fetch('/api/mailerlite-subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                console.log('📬 Response status:', response.status, response.statusText);
+                
+                const responseData = await response.json();
+                
+                if (!response.ok) {
+                    console.error('❌ MailerLite submission failed:', responseData);
+                } else {
+                    console.log('✅ Successfully added to MailerLite via serverless function!');
+                    console.log('Response data:', responseData);
+                }
+            } catch (error) {
+                console.error('💥 Error submitting to MailerLite:', error);
+                console.error('Error name:', error.name);
+                console.error('Error message:', error.message);
+            }
+        }
+
         function calculateAndShowResult() {
             document.getElementById('quiz').classList.add('fade-out');
             setTimeout(() => {
@@ -1156,6 +1216,7 @@
             
             const result = resultTypes[resultType];
             
+            // Submit to ConvertKit
             submitToConvertKit(userEmail, ['quiz-completed', result.tag], {
                 quiz_result: result.name,
                 result_type: resultType,
