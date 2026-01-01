@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Kind of Actor Have You Always Been? - I AM ACTOR</title>
+    <meta name="description" content="2-minute quiz. No judgment. Just recognition. Discover your actor type and unlock your path.">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Bentham&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <style>
+        /* ===== CINEMATIC FOUNDATION ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ivory: #FFFEF0;
+            --salmon: #E86952;
+            --old-gold: #D4C137;
+            --charcoal: #2C2C2C;
+            --deep-charcoal: #0F0F0F;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--deep-charcoal);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== CINEMATIC BACKGROUND ===== */
+        .cinematic-bg {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                var(--deep-charcoal) 0%, 
+                #1a1a1a 50%, 
+                var(--deep-charcoal) 100%);
+            z-index: 0;
+        }
+
+        /* Subtle vignette */
+        .cinematic-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                rgba(0,0,0,0.4) 100%
+            );
+        }
+
+        /* I AM ACTOR Branding - Triangle Formation, Charcoal on Black */
+        .brand-corner {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: rgba(44, 44, 44, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            pointer-events: none;
+            z-index: 100;
+            user-select: none;
+            line-height: 1.4;
+            text-align: center;
+        }
+        
+        .brand-corner .brand-i { display: block; letter-spacing: 0.3em; }
+        .brand-corner .brand-am { display: block; letter-spacing: 0.25em; }
+        .brand-corner .brand-actor { display: block; letter-spacing: 0.3em; }
+        
+        /* Credit Footer - Subtle Film Credit Style */
+        .credit-footer {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Lora', serif;
+            font-size: 0.75rem;
+            color: rgba(255, 254, 240, 0.3);
+            z-index: 99;
+            letter-spacing: 0.3px;
+            line-height: 1.5;
+            text-align: center;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* Mobile adjustments for credit footer */
+        @media (max-width: 768px) {
+            .credit-footer {
+                font-size: 0.65rem;
+                bottom: 12px;
+                max-width: 90%;
+            }
+        }
+        
+        /* Knight Background Art - Left Side, Facing Right */
+        .knight-background {
+            position: fixed;
+            bottom: -50px;
+            left: -50px;
+            height: 400px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+            transform: scaleX(-1);
+        }
+
+        /* ===== MODAL CONTAINER ===== */
+        .modal-container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .modal-card {
+            background: var(--ivory);
+            border-radius: 16px;
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+            max-width: 700px;
+            width: 100%;
+            padding: 64px 48px;
+            position: relative;
+            animation: fadeInScale 0.6s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Removed - knight now in background */
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3 {
+            font-family: 'Bentham', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--charcoal);
+        }
+
+        h1 { font-size: 2.75rem; margin-bottom: 16px; }
+        h2 { font-size: 2.25rem; margin-bottom: 24px; }
+        h3 { font-size: 1.5rem; }
+
+        /* ===== HERO STATE ===== */
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.85;
+            margin-bottom: 48px;
+        }
+
+        .testimonial {
+            max-width: 500px;
+            margin: 48px auto 0;
+            padding-top: 32px;
+            border-top: 1px solid rgba(44, 44, 44, 0.15);
+            text-align: center;
+        }
+
+        .testimonial-stars {
+            color: var(--old-gold);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-quote {
+            font-size: 1.05rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding: 20px 56px;
+            background: var(--salmon);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(232, 105, 82, 0.3);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #F17A5F;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(232, 105, 82, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* ===== QUIZ STATE ===== */
+        .quiz-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .quiz-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .progress-text {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--salmon);
+            margin-bottom: 12px;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: rgba(44, 44, 44, 0.1);
+            border-radius: 2px;
+            margin-bottom: 48px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--old-gold);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .question-text {
+            font-family: 'Bentham', Georgia, serif;
+            font-size: 1.75rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--charcoal);
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .answer-card {
+            background: rgba(90, 140, 58, 0.04);
+            border: 1px solid rgba(90, 140, 58, 0.12);
+            padding: 18px 24px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .answer-card:hover {
+            background: rgba(90, 140, 58, 0.08);
+            border-color: rgba(90, 140, 58, 0.25);
+            transform: translateX(4px);
+        }
+
+        /* ===== EMAIL GATE ===== */
+        .email-gate {
+            text-align: center;
+        }
+
+        .email-gate h2 {
+            margin-bottom: 16px;
+        }
+
+        .email-gate p {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            opacity: 0.85;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            font-family: 'Lora', Georgia, serif;
+            border: 2px solid rgba(44, 44, 44, 0.15);
+            border-radius: 8px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--salmon);
+            box-shadow: 0 0 0 3px rgba(232, 105, 82, 0.1);
+        }
+
+        .email-subtext {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 16px;
+        }
+
+        /* ===== LOADING STATE ===== */
+        .loading {
+            text-align: center;
+            padding: 48px 0;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 24px;
+            border: 4px solid rgba(44, 44, 44, 0.1);
+            border-top: 4px solid var(--old-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== RESULT STATE ===== */
+        .result-content h2 {
+            color: var(--old-gold);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .result-body {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .result-body p {
+            margin-bottom: 24px;
+        }
+
+        /* ===== TOOLKIT OFFER ===== */
+        .toolkit-offer {
+            background: rgba(232, 105, 82, 0.06);
+            border: 2px solid rgba(232, 105, 82, 0.15);
+            border-radius: 12px;
+            padding: 40px 36px;
+            margin-top: 48px;
+            text-align: center;
+        }
+
+        .toolkit-offer h3 {
+            margin-bottom: 20px;
+        }
+
+        .toolkit-intro {
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            opacity: 0.9;
+        }
+
+        .toolkit-list {
+            text-align: left;
+            list-style: none;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .toolkit-list li {
+            padding: 8px 0;
+            padding-left: 32px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .toolkit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--salmon);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .toolkit-price {
+            font-family: 'Bentham', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .toolkit-subtext {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 16px;
+        }
+
+        /* ===== UTILITY ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            .modal-card {
+                padding: 48px 32px;
+                border-radius: 12px;
+            }
+
+            .brand-corner {
+                font-size: 0.75rem;
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .knight-background {
+                height: 280px;
+                bottom: -30px;
+                left: -30px;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+
+            .question-text {
+                font-size: 1.4rem;
+            }
+
+            .answer-card {
+                font-size: 1rem;
+                padding: 16px 20px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 18px 40px;
+                font-size: 1.15rem;
+            }
+
+            .toolkit-offer {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cinematic Background -->
+    <div class="cinematic-bg"></div>
+    
+    <!-- Knight Background Art -->
+    <img src="assets/images/knight-look.png" alt="" class="knight-background">
+    
+    <!-- I AM ACTOR Branding - Triangle -->
+    <div class="brand-corner">
+        <span class="brand-i">I</span>
+        <span class="brand-am">AM</span>
+        <span class="brand-actor">ACTOR</span>
+    </div>
+    
+    <!-- Credit Footer -->
+    <div class="credit-footer">
+        Created by Hans Christopher<br>
+        Working Actor (The Walking Dead, FBI Most Wanted, Waco) & Guide
+    </div>
+
+    <!-- Modal Container -->
+    <div class="modal-container">
+        <div class="modal-card">
+
+            <!-- HERO STATE -->
+            <div id="hero" class="hero-content">
+                <h1>What Kind of Actor Have You Always Been?</h1>
+                <p class="hero-subtitle">2-minute quiz. No judgment. Just recognition.</p>
+                <button class="btn" onclick="startQuiz()">Start the Quiz →</button>
+
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"Working with Hans has been truly inspiring. He transformed how I approach the craft."</p>
+                    <p class="testimonial-author">— Monique</p>
+                </div>
+            </div>
+
+            <!-- QUIZ STATE -->
+            <div id="quiz" class="quiz-content hidden">
+                <div class="progress-text" id="progressText">Question 1 of 9</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div id="questionCard">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+            <!-- EMAIL GATE -->
+            <div id="emailGate" class="email-gate hidden">
+                <h2>Almost there...</h2>
+                <p>Enter your email to see your result.</p>
+                <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
+                <button class="btn" onclick="submitEmail()">See My Result →</button>
+                <p class="email-subtext">I'll send you the actual audition that got me on The Walking Dead.</p>
+            </div>
+
+            <!-- LOADING -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Discovering your type...</p>
+            </div>
+
+            <!-- RESULT -->
+            <div id="result" class="result-content hidden">
+                <!-- Dynamic result -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CONFIGURATION =====
+        const CONVERTKIT_API_KEY = 'YOUR_API_KEY_HERE';
+        const CONVERTKIT_FORM_ID = 'YOUR_FORM_ID_HERE';
+        const STRIPE_CHECKOUT_LINK = 'YOUR_STRIPE_LINK_HERE'; // Add your Stripe checkout link
+
+        // ===== 8 QUESTIONS - Pain Question Last =====
+        const questions = [
+            {
+                id: 1,
+                question: "When you watch movies or TV, do you ever think 'I could do that'?",
+                answers: [
+                    { text: "Yes, all the time", scores: { storyteller: 3, transformer: 2 } },
+                    { text: "Sometimes", scores: { truthTeller: 2, observer: 2 } },
+                    { text: "Rarely, but I'm curious", scores: { lateBlocker: 2, observer: 1 } }
+                ]
+            },
+            {
+                id: 2,
+                question: "What type of content do you watch most?",
+                answers: [
+                    { text: "Dramas that make me feel something", scores: { truthTeller: 3, storyteller: 1 } },
+                    { text: "Comedies that make me laugh", scores: { observer: 3 } },
+                    { text: "Action, thrillers, or fantasy", scores: { transformer: 3 } },
+                    { text: "Everything — I love it all", scores: { storyteller: 2, lateBlocker: 1 } }
+                ]
+            },
+            {
+                id: 3,
+                question: "Have you ever acted before? (School plays, community theater, etc.)",
+                answers: [
+                    { text: "Yes, and I loved it", scores: { storyteller: 3, truthTeller: 2 } },
+                    { text: "A little bit, long ago", scores: { lateBlocker: 3, transformer: 1 } },
+                    { text: "No, but I've always wanted to", scores: { lateBlocker: 3, observer: 2 } },
+                    { text: "No, I'm just exploring", scores: { observer: 2, transformer: 1 } }
+                ]
+            },
+            {
+                id: 4,
+                question: "How long have you been thinking about acting?",
+                answers: [
+                    { text: "Less than a year", scores: { observer: 1, transformer: 1, storyteller: 1, truthTeller: 1, lateBlocker: 1 } },
+                    { text: "1-3 years", scores: { transformer: 2, storyteller: 2 } },
+                    { text: "3-10 years", scores: { truthTeller: 2, lateBlocker: 2 } },
+                    { text: "More than 10 years", scores: { lateBlocker: 3, truthTeller: 2 } }
+                ]
+            },
+            {
+                id: 5,
+                question: "What draws you to acting?",
+                answers: [
+                    { text: "Expressing real emotions", scores: { truthTeller: 3 } },
+                    { text: "Making people laugh", scores: { observer: 3 } },
+                    { text: "Becoming different characters", scores: { transformer: 3 } },
+                    { text: "Telling important stories", scores: { storyteller: 3 } }
+                ]
+            },
+            {
+                id: 6,
+                question: "What kind of roles excite you most?",
+                answers: [
+                    { text: "Deep, emotional, dramatic roles", scores: { truthTeller: 3 } },
+                    { text: "Comedy and making people laugh", scores: { observer: 3 } },
+                    { text: "Villains, heroes, transformations", scores: { transformer: 3 } },
+                    { text: "Roles that tell meaningful stories", scores: { storyteller: 3 } }
+                ]
+            },
+            // Question 7 after email - The Secret
+            {
+                id: 7,
+                question: "Do people in your life know you want to act?",
+                answers: [
+                    { text: "No, I keep it to myself", scores: { truthTeller: 3, lateBlocker: 2 } },
+                    { text: "A few people know", scores: { observer: 2, storyteller: 2 } },
+                    { text: "Yes, everyone knows", scores: { storyteller: 3, transformer: 1 } }
+                ]
+            },
+            // Question 8 - The Pain Question (builds maximum identification)
+            {
+                id: 8,
+                question: "What's really stopped you from starting?",
+                answers: [
+                    { text: "Someone told me it wasn't practical", scores: { lateBlocker: 3, truthTeller: 2 } },
+                    { text: "I thought I was too old", scores: { lateBlocker: 3, storyteller: 1 } },
+                    { text: "I was scared of being judged", scores: { truthTeller: 3, observer: 1 } },
+                    { text: "I didn't know where to begin", scores: { observer: 2, transformer: 2 } },
+                    { text: "All of the above", scores: { lateBlocker: 4, truthTeller: 2, observer: 1, transformer: 1, storyteller: 1 } }
+                ]
+            },
+            // Question 9 - Final Commitment (after email gate)
+            {
+                id: 9,
+                question: "If I sent you 5 simple lines right now, could you record yourself saying them on your phone?",
+                subtext: "If you said yes, check your inbox.",
+                answers: [
+                    { text: "Yes", scores: { storyteller: 2, truthTeller: 2, transformer: 2 } },
+                    { text: "Maybe", scores: { truthTeller: 2, observer: 1 } },
+                    { text: "No, not yet", scores: { lateBlocker: 2, observer: 1 } }
+                ]
+            }
+        ];
+
+        const resultTypes = {
+            truthTeller: {
+                name: "The Emotional Truth-Teller",
+                tag: "type-truth-teller",
+                headline: "You're an Emotional Truth-Teller.",
+                body: `
+                    <p>You feel things deeply — and it shows.</p>
+                    <p>You're drawn to drama, to moments that crack people open. The roles that stay with you are the ones that make you FEEL something. You've probably cried at movies more than you'd admit.</p>
+                    <p>Meryl Streep, Viola Davis, Joaquin Phoenix — they're Emotional Truth-Tellers. They don't just act. They expose something real.</p>
+                    <p>Here's the thing: <strong>You've been rehearsing for this your whole life.</strong> Every time you felt something deeply and held it in? That's material. Every heartbreak, every joy, every moment of rage you swallowed? That's fuel.</p>
+                    <p>This thing you've been feeling — the pull toward acting — it's not random. It's not silly. It's not too late.</p>
+                    <p><strong>It's a signal.</strong></p>
+                    <p><strong>You're allowed to want this.</strong></p>
+                `
+            },
+            observer: {
+                name: "The Witty Observer",
+                tag: "type-observer",
+                headline: "You're a Witty Observer.",
+                body: `
+                    <p>You see what others miss.</p>
+                    <p>The absurdity. The irony. The tiny human moments that are actually hilarious if anyone would just pay attention. You've been making people laugh your whole life — sometimes on purpose, sometimes just by being yourself.</p>
+                    <p>Robin Williams, Julia Louis-Dreyfus, Bill Hader — they're Witty Observers. They don't tell jokes. They reveal truth through humor.</p>
+                    <p>Here's the thing: <strong>Comedy isn't about being funny. It's about seeing clearly.</strong> And you already do that. You notice the weird, wonderful, ridiculous details of being human.</p>
+                    <p>That's not a party trick. That's a superpower.</p>
+                    <p>The world needs people who can make others laugh. Especially now.</p>
+                    <p><strong>You're allowed to want this.</strong></p>
+                `
+            },
+            transformer: {
+                name: "The Transformer",
+                tag: "type-transformer",
+                headline: "You're a Transformer.",
+                body: `
+                    <p>You disappear into other people.</p>
+                    <p>Different voice. Different walk. Different soul. You're not interested in playing yourself — you want to become someone else entirely. The idea of transformation thrills you.</p>
+                    <p>Gary Oldman, Cate Blanchett, Christian Bale — they're Transformers. You watch their work and forget who's underneath.</p>
+                    <p>Here's the thing: <strong>You've been shapeshifting your whole life.</strong> Adapting to situations. Reading rooms. Becoming who you needed to be. That's not fakeness. That's range.</p>
+                    <p>Most people are stuck being one version of themselves. You have access to multitudes.</p>
+                    <p>That's not weird. That's a gift.</p>
+                    <p><strong>You're allowed to want this.</strong></p>
+                `
+            },
+            storyteller: {
+                name: "The Natural Storyteller",
+                tag: "type-storyteller",
+                headline: "You're a Natural Storyteller.",
+                body: `
+                    <p>When you talk, people lean in.</p>
+                    <p>You have presence. Something about the way you tell a story — the timing, the pauses, the way you hold a room — makes people want to listen. You've probably been told you're "captivating" or "magnetic" without fully understanding why.</p>
+                    <p>Tom Hanks, Oprah, Denzel Washington — they're Natural Storytellers. They don't need tricks. They just ARE compelling.</p>
+                    <p>Here's the thing: <strong>Presence isn't something you learn. It's something you uncover.</strong> And you already have it — you just might not have had a place to use it.</p>
+                    <p>The camera loves people like you. Audiences trust people like you.</p>
+                    <p>Stop hiding in rooms where no one's paying attention.</p>
+                    <p><strong>You're allowed to want this.</strong></p>
+                `
+            },
+            lateBlocker: {
+                name: "The Late Bloomer",
+                tag: "type-late-bloomer",
+                headline: "You're a Late Bloomer.",
+                body: `
+                    <p>You've been carrying this dream for a long time.</p>
+                    <p>Years. Maybe decades. You've watched others do what you secretly wanted to do. You've told yourself it's too late, you're too old, the window closed.</p>
+                    <p><strong>It didn't.</strong></p>
+                    <p>Morgan Freeman got his first major role at 52. Alan Rickman was in his 40s. Kathryn Joosten started at 56. Viola Davis didn't get her breakthrough until 43.</p>
+                    <p>Here's the thing: <strong>Late Bloomers have something 22-year-olds don't.</strong> Life experience. Depth. Stories written on your face. You can't fake that. You can't teach it.</p>
+                    <p>The industry is desperate for actors who look like real people, not teenagers playing adults.</p>
+                    <p>Your "lateness" isn't a disadvantage. It's your edge.</p>
+                    <p><strong>You're allowed to want this.</strong></p>
+                `
+            }
+        };
+
+        // ===== STATE =====
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let userEmail = '';
+        let scores = {
+            truthTeller: 0,
+            observer: 0,
+            transformer: 0,
+            storyteller: 0,
+            lateBlocker: 0
+        };
+
+        // ===== FUNCTIONS =====
+        function startQuiz() {
+            document.getElementById('hero').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('hero').classList.add('hidden');
+                document.getElementById('quiz').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('quiz').classList.add('active');
+                    showQuestion();
+                }, 50);
+            }, 300);
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            
+            // Show "Last Question" for question 9
+            const progressText = currentQuestion === 8 ? 'Last Question' : `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('progressText').textContent = progressText;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            const questionCard = document.getElementById('questionCard');
+            questionCard.innerHTML = `
+                <div class="question-text">${question.question}</div>
+                ${question.subtext ? `<p style="font-size: 0.95rem; opacity: 0.7; text-align: center; margin-top: -20px; margin-bottom: 32px; font-style: italic;">${question.subtext}</p>` : ''}
+                <div class="answers">
+                    ${question.answers.map((answer, index) => `
+                        <div class="answer-card" onclick="selectAnswer(${index})">
+                            ${answer.text}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function selectAnswer(answerIndex) {
+            const question = questions[currentQuestion];
+            const answer = question.answers[answerIndex];
+            
+            userAnswers.push(answer);
+            
+            Object.entries(answer.scores).forEach(([type, points]) => {
+                scores[type] += points;
+            });
+            
+            currentQuestion++;
+            
+            if (currentQuestion === 8) {
+                showEmailGate();
+            } else if (currentQuestion < questions.length) {
+                const questionCard = document.getElementById('questionCard');
+                questionCard.classList.add('fade-out');
+                setTimeout(() => {
+                    questionCard.classList.remove('fade-out');
+                    showQuestion();
+                }, 300);
+            } else {
+                calculateAndShowResult();
+            }
+        }
+
+        function showEmailGate() {
+            document.getElementById('quiz').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('quiz').classList.add('hidden');
+                document.getElementById('emailGate').classList.remove('hidden');
+            }, 300);
+        }
+
+        async function submitEmail() {
+            const emailInput = document.getElementById('emailInput');
+            const email = emailInput.value.trim();
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            userEmail = email;
+            
+            document.getElementById('emailGate').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('emailGate').classList.add('hidden');
+                document.getElementById('loading').classList.remove('hidden');
+            }, 300);
+            
+            await submitToConvertKit(email, ['quiz-completed']);
+            
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('quiz').classList.remove('hidden');
+                document.getElementById('quiz').classList.remove('fade-out');
+                setTimeout(() => {
+                    document.getElementById('quiz').classList.add('active');
+                    showQuestion();
+                }, 50);
+            }, 1000);
+        }
+
+        async function submitToConvertKit(email, tags, customFields = {}) {
+            try {
+                const response = await fetch(`https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        api_key: CONVERTKIT_API_KEY,
+                        email: email,
+                        tags: tags,
+                        fields: customFields
+                    })
+                });
+                
+                if (!response.ok) {
+                    console.error('ConvertKit submission failed');
+                }
+            } catch (error) {
+                console.error('Error submitting to ConvertKit:', error);
+            }
+        }
+
+        function calculateAndShowResult() {
+            document.getElementById('quiz').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('quiz').classList.add('hidden');
+                document.getElementById('loading').classList.remove('hidden');
+            }, 300);
+            
+            const priority = ['lateBlocker', 'truthTeller', 'transformer', 'storyteller', 'observer'];
+            let maxScore = 0;
+            let resultType = 'lateBlocker';
+            
+            priority.forEach(type => {
+                if (scores[type] > maxScore) {
+                    maxScore = scores[type];
+                    resultType = type;
+                }
+            });
+            
+            const result = resultTypes[resultType];
+            
+            submitToConvertKit(userEmail, ['quiz-completed', result.tag], {
+                quiz_result: result.name,
+                result_type: resultType,
+                quiz_completed: new Date().toISOString()
+            });
+            
+            setTimeout(() => {
+                displayResult(result);
+            }, 2000);
+        }
+
+        function displayResult(result) {
+            const resultContent = document.getElementById('result');
+            resultContent.innerHTML = `
+                <h2>${result.headline}</h2>
+                <div class="result-body">
+                    ${result.body}
+                </div>
+                
+                <div class="toolkit-offer">
+                    <h3>Ready to take the first step?</h3>
+                    <p class="toolkit-intro">You've been dreaming about this long enough.<br><br>The Actor's Toolkit gives you everything you need to start — today.</p>
+                    
+                    <ul class="toolkit-list">
+                        <li>How Actors Actually Memorize (not what you think)</li>
+                        <li>How to Cry on Cue (and access any emotion)</li>
+                        <li>Build a Character in 15 Minutes</li>
+                        <li>How to Find the Perfect Monologue</li>
+                        <li>Where to Find Readers (even if you don't know any actors)</li>
+                    </ul>
+                    
+                    <p class="toolkit-price">5 guides. Every question answered. <strong>$37.</strong></p>
+                    
+                    <a href="${STRIPE_CHECKOUT_LINK}" class="btn">Get the Actor's Toolkit — $37</a>
+                    
+                    <p class="toolkit-subtext">Instant access. Start this weekend.</p>
+                </div>
+            `;
+            
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        // Email input enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('emailInput');
+            if (emailInput) {
+                emailInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        submitEmail();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
