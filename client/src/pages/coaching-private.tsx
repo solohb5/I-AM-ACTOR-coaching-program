@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function CoachingPrivate() {
   const [isInverted, setIsInverted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [expandedCard, setExpandedCard] = useState<'single' | '3pack' | null>(null);
+  const [expandedCard, setExpandedCard] = useState<'single' | '3pack' | '5pack' | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -273,12 +273,7 @@ export default function CoachingPrivate() {
             flexWrap: 'wrap',
             marginBottom: '48px'
           }}>
-            <a 
-              href="#single"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('🔗 STRIPE LINK NEEDED\n\nReplace this href with your Single Session Stripe payment link ($149).');
-              }}
+            <div 
               style={{
                 fontFamily: "'EB Garamond', serif",
                 fontSize: 'clamp(15px, 1.8vw, 17px)',
@@ -287,7 +282,6 @@ export default function CoachingPrivate() {
                 background: 'transparent',
                 color: '#0A0A0A',
                 textAlign: 'center',
-                textDecoration: 'none',
                 border: '1px solid rgba(10, 10, 10, 0.15)',
                 borderRadius: '8px',
                 transition: 'all 0.3s ease',
@@ -295,27 +289,70 @@ export default function CoachingPrivate() {
                 flexDirection: 'column',
                 gap: '4px',
                 maxWidth: '180px',
-                minWidth: '160px'
+                minWidth: '160px',
+                cursor: 'pointer',
+                overflow: 'hidden',
+                minHeight: expandedCard === 'single' ? '200px' : 'auto'
               }}
               onMouseEnter={(e) => {
+                setExpandedCard('single');
                 e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.4)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
+                setExpandedCard(null);
                 e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.15)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               <span style={{ opacity: 0.6 }}>Single Session</span>
               <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$149</span>
-            </a>
+              
+              {/* Expandable Details */}
+              <div style={{
+                maxHeight: expandedCard === 'single' ? '200px' : '0',
+                opacity: expandedCard === 'single' ? 1 : 0,
+                overflow: 'hidden',
+                transition: 'all 0.4s ease',
+                marginTop: expandedCard === 'single' ? '12px' : '0',
+                paddingTop: expandedCard === 'single' ? '12px' : '0',
+                borderTop: expandedCard === 'single' ? '1px solid rgba(10, 10, 10, 0.1)' : 'none'
+              }}>
+                <div style={{
+                  fontSize: 'clamp(12px, 1.4vw, 14px)',
+                  lineHeight: 1.6,
+                  opacity: 0.7,
+                  fontStyle: 'italic',
+                  textAlign: 'left'
+                }}>
+                  • 1 hour live coaching<br/>
+                  • Scene breakdown<br/>
+                  • Character work<br/>
+                  • Record your best take
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert('🔗 STRIPE LINK NEEDED\n\nReplace with your Single Session Stripe payment link ($149).');
+                  }}
+                  style={{
+                    marginTop: '12px',
+                    padding: '8px 16px',
+                    background: '#0A0A0A',
+                    color: '#F8F8F7',
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontSize: 'clamp(13px, 1.5vw, 15px)',
+                    cursor: 'pointer',
+                    fontFamily: "'EB Garamond', serif"
+                  }}
+                >
+                  Reserve
+                </button>
+              </div>
+            </div>
 
-            <a 
-              href="#3pack"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('🔗 STRIPE LINK NEEDED\n\nReplace this href with your 3-Pack Stripe payment link ($349).');
-              }}
+            <div 
               style={{
                 fontFamily: "'EB Garamond', serif",
                 fontSize: 'clamp(15px, 1.8vw, 17px)',
@@ -324,7 +361,6 @@ export default function CoachingPrivate() {
                 background: 'transparent',
                 color: '#0A0A0A',
                 textAlign: 'center',
-                textDecoration: 'none',
                 border: '1px solid rgba(10, 10, 10, 0.3)',
                 borderRadius: '8px',
                 transition: 'all 0.3s ease',
@@ -333,13 +369,18 @@ export default function CoachingPrivate() {
                 gap: '4px',
                 maxWidth: '180px',
                 minWidth: '160px',
-                position: 'relative'
+                position: 'relative',
+                cursor: 'pointer',
+                overflow: 'hidden',
+                minHeight: expandedCard === '3pack' ? '220px' : 'auto'
               }}
               onMouseEnter={(e) => {
+                setExpandedCard('3pack');
                 e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.5)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
+                setExpandedCard(null);
                 e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.3)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
@@ -351,14 +392,52 @@ export default function CoachingPrivate() {
                 opacity: 0.5,
                 fontStyle: 'italic'
               }}>Save $98</span>
-            </a>
 
-            <a 
-              href="#5pack"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('🔗 STRIPE LINK NEEDED\n\nReplace this href with your 5-Pack Stripe payment link ($500).');
-              }}
+              {/* Expandable Details */}
+              <div style={{
+                maxHeight: expandedCard === '3pack' ? '200px' : '0',
+                opacity: expandedCard === '3pack' ? 1 : 0,
+                overflow: 'hidden',
+                transition: 'all 0.4s ease',
+                marginTop: expandedCard === '3pack' ? '12px' : '0',
+                paddingTop: expandedCard === '3pack' ? '12px' : '0',
+                borderTop: expandedCard === '3pack' ? '1px solid rgba(10, 10, 10, 0.1)' : 'none'
+              }}>
+                <div style={{
+                  fontSize: 'clamp(12px, 1.4vw, 14px)',
+                  lineHeight: 1.6,
+                  opacity: 0.7,
+                  fontStyle: 'italic',
+                  textAlign: 'left'
+                }}>
+                  • 3 sessions to use anytime<br/>
+                  • Lock in your price<br/>
+                  • Priority booking<br/>
+                  • $447 value → $349
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 3-Pack Stripe payment link ($349).');
+                  }}
+                  style={{
+                    marginTop: '12px',
+                    padding: '8px 16px',
+                    background: '#0A0A0A',
+                    color: '#F8F8F7',
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontSize: 'clamp(13px, 1.5vw, 15px)',
+                    cursor: 'pointer',
+                    fontFamily: "'EB Garamond', serif"
+                  }}
+                >
+                  Reserve
+                </button>
+              </div>
+            </div>
+
+            <div 
               style={{
                 fontFamily: "'EB Garamond', serif",
                 fontSize: 'clamp(16px, 2vw, 18px)',
@@ -367,7 +446,6 @@ export default function CoachingPrivate() {
                 background: '#0A0A0A',
                 color: '#F8F8F7',
                 textAlign: 'center',
-                textDecoration: 'none',
                 border: '1px solid #0A0A0A',
                 borderRadius: '8px',
                 transition: 'all 0.3s ease',
@@ -376,13 +454,18 @@ export default function CoachingPrivate() {
                 gap: '6px',
                 maxWidth: '200px',
                 minWidth: '180px',
-                position: 'relative'
+                position: 'relative',
+                cursor: 'pointer',
+                overflow: 'hidden',
+                minHeight: expandedCard === '5pack' ? '260px' : 'auto'
               }}
               onMouseEnter={(e) => {
+                setExpandedCard('5pack');
                 e.currentTarget.style.transform = 'translateY(-2px)';
                 e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
               }}
               onMouseLeave={(e) => {
+                setExpandedCard(null);
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
@@ -396,7 +479,51 @@ export default function CoachingPrivate() {
                 lineHeight: 1.4,
                 marginTop: '6px'
               }}>Includes playbook (first 10 only)</span>
-            </a>
+
+              {/* Expandable Details */}
+              <div style={{
+                maxHeight: expandedCard === '5pack' ? '220px' : '0',
+                opacity: expandedCard === '5pack' ? 1 : 0,
+                overflow: 'hidden',
+                transition: 'all 0.4s ease',
+                marginTop: expandedCard === '5pack' ? '12px' : '0',
+                paddingTop: expandedCard === '5pack' ? '12px' : '0',
+                borderTop: expandedCard === '5pack' ? '1px solid rgba(248, 248, 247, 0.2)' : 'none'
+              }}>
+                <div style={{
+                  fontSize: 'clamp(12px, 1.4vw, 14px)',
+                  lineHeight: 1.6,
+                  opacity: 0.85,
+                  fontStyle: 'italic',
+                  textAlign: 'left'
+                }}>
+                  • 5 sessions to use anytime<br/>
+                  • Priority booking<br/>
+                  • 3-Day Audition Playbook<br/>
+                  • $745 value → $500<br/>
+                  • Save $245 total
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 5-Pack Stripe payment link ($500).');
+                  }}
+                  style={{
+                    marginTop: '12px',
+                    padding: '8px 16px',
+                    background: '#F8F8F7',
+                    color: '#0A0A0A',
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontSize: 'clamp(13px, 1.5vw, 15px)',
+                    cursor: 'pointer',
+                    fontFamily: "'EB Garamond', serif"
+                  }}
+                >
+                  Reserve
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Testimonial */}
