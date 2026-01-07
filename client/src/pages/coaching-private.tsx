@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function CoachingPrivate() {
   const [isInverted, setIsInverted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [expandedCard, setExpandedCard] = useState<'single' | '3pack' | null>(null);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ export default function CoachingPrivate() {
 
         {/* Right: Hamburger Menu */}
         <button
+          onClick={() => setMenuOpen(!menuOpen)}
           style={{
             background: 'none',
             border: 'none',
@@ -90,9 +92,90 @@ export default function CoachingPrivate() {
         </button>
       </nav>
 
-
-
-
+      {/* MENU OVERLAY */}
+      {menuOpen && (
+        <div
+          onClick={() => setMenuOpen(false)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(248, 248, 247, 0.98)',
+            backdropFilter: 'blur(20px)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '48px',
+            textAlign: 'center'
+          }}>
+            <div
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                alert('Coming Soon'); 
+              }}
+              style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: 'clamp(32px, 5vw, 56px)',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                color: '#0A0A0A',
+                cursor: 'pointer',
+                transition: 'opacity 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
+              The Door
+            </div>
+            <div
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                alert('Coming Soon'); 
+              }}
+              style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: 'clamp(32px, 5vw, 56px)',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                color: '#0A0A0A',
+                cursor: 'pointer',
+                transition: 'opacity 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
+              The Secret
+            </div>
+            <div
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                alert('Coming Soon'); 
+              }}
+              style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: 'clamp(32px, 5vw, 56px)',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                color: '#0A0A0A',
+                cursor: 'pointer',
+                transition: 'opacity 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
+              The Challenge
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* VIDEO - Positioned to peek 10% at bottom of hero and 10% at top of quote */}
       <div style={{
