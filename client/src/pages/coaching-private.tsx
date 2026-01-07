@@ -279,9 +279,9 @@ export default function CoachingPrivate() {
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
-                fontSize: 'clamp(15px, 1.8vw, 17px)',
+                fontSize: 'clamp(13px, 1.8vw, 17px)',
                 fontWeight: 400,
-                padding: '16px 20px',
+                padding: 'clamp(12px, 2vw, 16px) clamp(14px, 2.5vw, 20px)',
                 background: 'transparent',
                 color: '#0A0A0A',
                 textAlign: 'center',
@@ -292,7 +292,7 @@ export default function CoachingPrivate() {
                 flexDirection: 'column',
                 gap: '4px',
                 maxWidth: '180px',
-                minWidth: '160px',
+                minWidth: 'clamp(120px, 20vw, 160px)',
                 cursor: 'pointer',
                 overflow: 'hidden',
                 minHeight: expandedCard === 'single' ? '200px' : 'auto'
@@ -314,7 +314,7 @@ export default function CoachingPrivate() {
               }}>
                 {expandedCard === 'single' ? 'My Single Session' : 'Single Session'}
               </span>
-              <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$149</span>
+              <span style={{ fontSize: 'clamp(20px, 3vw, 28px)', fontWeight: 400 }}>$149</span>
               
               {/* Expandable Details */}
               <div style={{
@@ -347,9 +347,9 @@ export default function CoachingPrivate() {
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
-                fontSize: 'clamp(15px, 1.8vw, 17px)',
+                fontSize: 'clamp(13px, 1.8vw, 17px)',
                 fontWeight: 400,
-                padding: '16px 20px',
+                padding: 'clamp(12px, 2vw, 16px) clamp(14px, 2.5vw, 20px)',
                 background: 'transparent',
                 color: '#0A0A0A',
                 textAlign: 'center',
@@ -360,7 +360,7 @@ export default function CoachingPrivate() {
                 flexDirection: 'column',
                 gap: '4px',
                 maxWidth: '180px',
-                minWidth: '160px',
+                minWidth: 'clamp(120px, 20vw, 160px)',
                 position: 'relative',
                 cursor: 'pointer',
                 overflow: 'hidden',
@@ -383,7 +383,7 @@ export default function CoachingPrivate() {
               }}>
                 {expandedCard === '3pack' ? 'My 3-Pack' : '3-Pack'}
               </span>
-              <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$349</span>
+              <span style={{ fontSize: 'clamp(20px, 3vw, 28px)', fontWeight: 400 }}>$349</span>
               <span style={{ 
                 fontSize: 'clamp(12px, 1.4vw, 14px)', 
                 opacity: 0.5,
@@ -421,9 +421,9 @@ export default function CoachingPrivate() {
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
-                fontSize: 'clamp(16px, 2vw, 18px)',
+                fontSize: 'clamp(14px, 2vw, 18px)',
                 fontWeight: 400,
-                padding: '20px 24px',
+                padding: 'clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 24px)',
                 background: '#0A0A0A',
                 color: '#F8F8F7',
                 textAlign: 'center',
@@ -434,7 +434,7 @@ export default function CoachingPrivate() {
                 flexDirection: 'column',
                 gap: '6px',
                 maxWidth: '200px',
-                minWidth: '180px',
+                minWidth: 'clamp(140px, 24vw, 180px)',
                 position: 'relative',
                 cursor: 'pointer',
                 overflow: 'hidden',
@@ -457,7 +457,7 @@ export default function CoachingPrivate() {
               }}>
                 {expandedCard === '5pack' ? 'My 5-Pack' : '5-Pack'}
               </span>
-              <span style={{ fontSize: 'clamp(28px, 3.5vw, 32px)', fontWeight: 400 }}>$500</span>
+              <span style={{ fontSize: 'clamp(24px, 3.5vw, 32px)', fontWeight: 400 }}>$500</span>
               <span style={{ 
                 fontSize: 'clamp(12px, 1.4vw, 14px)', 
                 opacity: 0.7,
@@ -509,7 +509,7 @@ export default function CoachingPrivate() {
         </section>
 
         {/* SPACER for video */}
-        <div style={{ height: '40vh' }} />
+        <div style={{ height: '25vh' }} />
 
         {/* YOUR QUOTE - The audience watching the screen (video above) */}
         <section style={{
