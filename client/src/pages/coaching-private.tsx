@@ -261,7 +261,7 @@ export default function CoachingPrivate() {
             opacity: 0.8,
             marginBottom: '64px'
           }}>
-            Opening 15 slots. Lock in your price now. Use it when the big audition comes.
+            Opening 10 slots. Lock in your price now. Use it when the big audition comes.
           </p>
 
           {/* Minimal Pricing Cards */}
