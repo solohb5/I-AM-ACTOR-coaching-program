@@ -1,0 +1,393 @@
+/* ===============================================
+   COLLINS DESIGN SYSTEM - I AM ACTOR
+   "Never be boring. Distinctive over safe."
+   =============================================== */
+
+/* Import fonts - Collins uses 2 fonts only */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* COLLINS TYPOGRAPHY */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* COLLINS COLOR SYSTEM - Restrained */
+  --collins-black: #0A0A0A;
+  --collins-white: #FFFFFF;
+  --collins-cream: #F8F8F7;
+  
+  /* Keep YOUR accent color */
+  --collins-accent: #E86952;  /* Your coral/salmon */
+  
+  /* Grays */
+  --collins-gray-900: #0F0F0F;
+  --collins-gray-800: #1A1A1A;
+  --collins-gray-700: #333333;
+  --collins-gray-500: #666666;
+  --collins-gray-300: #CCCCCC;
+  --collins-gray-100: #F5F5F5;
+  
+  /* COLLINS SPACING - Generous */
+  --collins-space-1: 0.5rem;    /* 8px */
+  --collins-space-2: 1rem;      /* 16px */
+  --collins-space-3: 1.5rem;    /* 24px */
+  --collins-space-4: 2rem;      /* 32px */
+  --collins-space-6: 3rem;      /* 48px */
+  --collins-space-8: 4rem;      /* 64px */
+  --collins-space-12: 6rem;     /* 96px */
+  --collins-space-16: 8rem;     /* 128px */
+  --collins-space-24: 12rem;    /* 192px */
+  
+  /* COLLINS MARGINS - 10-15% on sides */
+  --collins-margin-mobile: 5%;
+  --collins-margin-desktop: 12%;
+  
+  /* COLLINS TRANSITIONS */
+  --collins-transition: 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ===== COLLINS BASE STYLES ===== */
+.collins-site {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--collins-gray-700);
+  background: var(--collins-cream);
+}
+
+/* ===== COLLINS TYPOGRAPHY ===== */
+
+/* Display Headlines - BOLD & LARGE */
+.collins-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;  /* TIGHT - Collins signature */
+  line-height: 1.1;
+  color: var(--collins-black);
+}
+
+/* Hero headline - 96px desktop */
+.collins-hero-text {
+  font-size: clamp(3rem, 8vw, 6rem);  /* 48px → 96px */
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--collins-black);
+}
+
+/* Large headline */
+.collins-h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);  /* 40px → 64px */
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--collins-black);
+}
+
+/* Medium headline */
+.collins-h2 {
+  font-size: clamp(2rem, 4vw, 3rem);  /* 32px → 48px */
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--collins-black);
+}
+
+/* Body text - generous line height */
+.collins-body {
+  font-family: var(--font-body);
+  font-size: 1.125rem;  /* 18px minimum */
+  line-height: 1.7;
+  color: var(--collins-gray-700);
+}
+
+.collins-body-lg {
+  font-family: var(--font-body);
+  font-size: 1.25rem;  /* 20px */
+  line-height: 1.7;
+  color: var(--collins-gray-700);
+}
+
+.collins-body-xl {
+  font-family: var(--font-body);
+  font-size: 1.5rem;  /* 24px */
+  line-height: 1.6;
+  color: var(--collins-gray-700);
+}
+
+/* ===== COLLINS SECTIONS ===== */
+
+/* Light section - cream/white background */
+.collins-section-light {
+  background: var(--collins-cream);
+  color: var(--collins-gray-700);
+  padding: var(--collins-space-16) var(--collins-margin-mobile);
+  position: relative;
+}
+
+/* Dark section - black background */
+.collins-section-dark {
+  background: var(--collins-black);
+  color: var(--collins-white);
+  padding: var(--collins-space-16) var(--collins-margin-mobile);
+  position: relative;
+}
+
+/* White headlines in dark sections */
+.collins-section-dark .collins-headline,
+.collins-section-dark .collins-hero-text,
+.collins-section-dark .collins-h1,
+.collins-section-dark .collins-h2 {
+  color: var(--collins-white);
+}
+
+/* Light body text in dark sections */
+.collins-section-dark .collins-body,
+.collins-section-dark .collins-body-lg,
+.collins-section-dark .collins-body-xl {
+  color: var(--collins-gray-300);
+}
+
+@media (min-width: 768px) {
+  .collins-section-light,
+  .collins-section-dark {
+    padding-left: var(--collins-margin-desktop);
+    padding-right: var(--collins-margin-desktop);
+    padding-top: var(--collins-space-24);
+    padding-bottom: var(--collins-space-24);
+  }
+}
+
+/* ===== COLLINS TRANSITIONS ===== */
+/* Smooth gradient overlay between sections */
+.collins-transition {
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.03));
+  position: relative;
+}
+
+.collins-transition-light-to-dark {
+  background: linear-gradient(180deg, 
+    var(--collins-cream) 0%,
+    var(--collins-gray-100) 20%,
+    var(--collins-gray-300) 40%,
+    var(--collins-gray-700) 70%,
+    var(--collins-black) 100%
+  );
+}
+
+.collins-transition-dark-to-light {
+  background: linear-gradient(180deg,
+    var(--collins-black) 0%,
+    var(--collins-gray-700) 30%,
+    var(--collins-gray-300) 60%,
+    var(--collins-gray-100) 80%,
+    var(--collins-cream) 100%
+  );
+}
+
+/* ===== COLLINS CONTAINERS ===== */
+/* Max width with generous margins */
+.collins-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.collins-container-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.collins-container-text {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===== COLLINS BUTTONS ===== */
+.collins-btn {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--collins-transition),
+              box-shadow var(--collins-transition);
+  display: inline-block;
+  text-decoration: none;
+}
+
+.collins-btn-primary {
+  background: var(--collins-black);
+  color: var(--collins-white);
+}
+
+.collins-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(10, 10, 10, 0.2);
+}
+
+.collins-btn-accent {
+  background: var(--collins-accent);
+  color: var(--collins-white);
+}
+
+.collins-btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(232, 105, 82, 0.3);
+}
+
+.collins-btn-lg {
+  padding: 1.5rem 3rem;
+  font-size: 1.25rem;
+}
+
+/* ===== COLLINS HERO ===== */
+.collins-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--collins-gray-900) 0%, var(--collins-black) 100%);
+  overflow: hidden;
+}
+
+.collins-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.collins-hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.collins-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, 
+    rgba(232, 105, 82, 0.08) 0%, 
+    transparent 50%);
+  z-index: 2;
+}
+
+.collins-hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: var(--collins-space-8);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===== COLLINS CARDS ===== */
+.collins-card {
+  background: var(--collins-white);
+  border-radius: 8px;
+  padding: var(--collins-space-6);
+  transition: box-shadow var(--collins-transition),
+              transform var(--collins-transition);
+}
+
+.collins-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+/* ===== COLLINS GRID ===== */
+.collins-grid {
+  display: grid;
+  gap: var(--collins-space-8);
+}
+
+.collins-grid-2 {
+  grid-template-columns: 1fr;
+}
+
+.collins-grid-3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .collins-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .collins-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== COLLINS ANIMATIONS ===== */
+@keyframes collins-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.collins-reveal {
+  animation: collins-fadeIn 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Scroll reveal (add with JS) */
+.collins-scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s var(--collins-transition),
+              transform 0.6s var(--collins-transition);
+}
+
+.collins-scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== UTILITIES ===== */
+.collins-text-center {
+  text-align: center;
+}
+
+.collins-text-accent {
+  color: var(--collins-accent);
+}
+
+.collins-mb-2 { margin-bottom: var(--collins-space-2); }
+.collins-mb-4 { margin-bottom: var(--collins-space-4); }
+.collins-mb-6 { margin-bottom: var(--collins-space-6); }
+.collins-mb-8 { margin-bottom: var(--collins-space-8); }
+.collins-mb-12 { margin-bottom: var(--collins-space-12); }
+
+.collins-mt-2 { margin-top: var(--collins-space-2); }
+.collins-mt-4 { margin-top: var(--collins-space-4); }
+.collins-mt-6 { margin-top: var(--collins-space-6); }
+.collins-mt-8 { margin-top: var(--collins-space-8); }
+.collins-mt-12 { margin-top: var(--collins-space-12); }
+
+/* ===== REMOVE COMPLEXITY ===== */
+/* Override any busy animations/effects */
+.collins-site * {
+  transition-duration: 0.3s;
+}
+
+/* Minimal, clean focus states */
+.collins-site *:focus-visible {
+  outline: 2px solid var(--collins-accent);
+  outline-offset: 2px;
+}
+
+
+
+

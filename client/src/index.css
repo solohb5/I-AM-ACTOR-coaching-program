@@ -1,0 +1,550 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* STORYBOOK PALETTE (Light Mode) */
+  --color-ivory: hsl(45 30% 96%); /* #FFFEF0 */
+  --color-parchment: hsl(40 25% 92%);
+  --color-ink: hsl(220 15% 20%);
+  --color-gold: #D4C137; /* Old Gold - Red Antler brand */
+  --color-coral: hsl(12 76% 55%); /* #E86952 - Coral Fire */
+  --color-bluebird: #40E0D0; /* Hope, secondary accent */
+
+  /* CINEMATIC PALETTE (Dark Mode) */
+  --color-void: hsl(0 0% 0%);
+  --color-onyx: hsl(0 0% 8%);
+  --color-smoke: hsl(0 0% 20%);
+  --color-alabaster: hsl(0 0% 95%);
+  --color-bronze: hsl(30 40% 40%);
+
+  /* RED ANTLER BRAND COLORS */
+  --color-deep-charcoal: #2C2C2C; /* Text - Red Antler brand */
+  --color-salmon: #E86952; /* Same as Coral Fire */
+
+  /* SPACING SYSTEM */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 120px;
+
+  /* Typography System */
+  --font-display: "Cinzel", serif;    /* Cinematic Headlines */
+  --font-heading: "Bentham", serif;   /* Storybook Headlines */
+  --font-body: "Lora", serif;         /* Storybook Body */
+  --font-sans: "Inter", sans-serif;   /* UI Elements */
+  
+  --color-background: var(--ivory);
+  --color-foreground: var(--ink);
+  
+  --color-primary: var(--coral);
+  --color-primary-foreground: var(--ivory);
+  
+  --color-secondary: var(--gold);
+  --color-secondary-foreground: var(--ink);
+  
+  --color-muted: var(--parchment);
+  --color-muted-foreground: hsl(220 15% 40%);
+  
+  --color-border: hsl(220 15% 85%);
+}
+
+:root {
+  --ivory: 45 30% 96%;
+  --parchment: 40 25% 92%;
+  --ink: 220 15% 20%;
+  --gold: 52 63% 51%; /* #D4C137 - Old Gold */
+  --coral: 12 76% 55%; /* #E86952 - Coral Fire */
+  --bluebird: 174 72% 56%; /* #40E0D0 */
+
+  --void: 0 0% 0%;
+  --onyx: 0 0% 8%;
+  --smoke: 0 0% 20%;
+  --alabaster: 0 0% 95%;
+  --bronze: 30 40% 40%;
+  --deep-charcoal: 0 0% 17%; /* #2C2C2C */
+}
+
+@layer base {
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-body antialiased;
+    background-color: hsl(var(--color-ivory));
+  }
+
+  /* Theme Classes */
+  .theme-storybook {
+    @apply bg-ivory text-ink font-body;
+    background-color: hsl(var(--color-ivory));
+  }
+  
+  .theme-cinematic {
+    @apply bg-void text-alabaster font-heading;
+    background-color: hsl(var(--color-void));
+  }
+
+  /* Custom Cursor - Adapts to theme */
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.1s;
+  }
+
+  .cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.2s, width 0.3s, height 0.3s;
+    mix-blend-mode: difference;
+  }
+  
+  /* Typography Scale - RED ANTLER REFINEMENTS */
+  .text-mega {
+    font-size: clamp(4rem, 15vw, 16rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    @apply font-display font-bold uppercase;
+  }
+  
+  .text-storybook-h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    @apply font-heading;
+  }
+
+  /* Premium Body Text */
+  .text-premium-body {
+    font-size: clamp(1.125rem, 1.5vw, 1.25rem); /* 18px -> 20px on desktop */
+    line-height: 1.8;
+    max-width: 65ch;
+  }
+
+  /* Headline Glow (Dark Sections) - ENHANCED */
+  .headline-glow {
+    text-shadow: 
+      0 2px 40px rgba(212, 193, 55, 0.4),
+      0 4px 60px rgba(212, 193, 55, 0.2);
+    animation: subtle-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes subtle-glow {
+    0%, 100% {
+      text-shadow: 
+        0 2px 40px rgba(212, 193, 55, 0.4),
+        0 4px 60px rgba(212, 193, 55, 0.2);
+    }
+    50% {
+      text-shadow: 
+        0 2px 50px rgba(212, 193, 55, 0.5),
+        0 4px 70px rgba(212, 193, 55, 0.3);
+    }
+  }
+
+  /* Utilities */
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+    color: transparent;
+  }
+  
+  .paper-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.15; /* Increased from 0.08 for more premium feel */
+    mix-blend-mode: multiply;
+    animation: texture-drift 60s ease-in-out infinite;
+  }
+
+  @keyframes texture-drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2px, 2px); }
+  }
+
+  /* SECTION SYSTEM - RED ANTLER SPACING */
+  .section {
+    @apply relative;
+    padding: 10rem var(--space-md); /* Increased vertical padding for premium feel */
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 5rem 1.5rem;
+    }
+  }
+
+  .section-light {
+    @apply bg-ivory text-ink;
+  }
+
+  .section-dark {
+    background: var(--color-deep-charcoal);
+    color: rgba(255, 254, 240, 0.95);
+    position: relative;
+  }
+
+  /* Enhanced atmospheric overlay for dark sections - RED ANTLER - PREMIUM */
+  .section-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(212, 193, 55, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 70% 80%, rgba(232, 105, 82, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(64, 224, 208, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: atmosphere-drift 20s ease-in-out infinite;
+  }
+
+  @keyframes atmosphere-drift {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.05);
+    }
+  }
+
+  .section-dark > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Dark section typography - RED ANTLER REFINEMENT */
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3 {
+    font-family: var(--font-display);
+    color: hsl(var(--gold));
+    text-shadow: 0 2px 40px rgba(212, 193, 55, 0.3);
+    letter-spacing: 0.02em;
+  }
+
+  /* KNIGHT COMPANIONS - RED ANTLER ANIMATION SYSTEM - ENHANCED */
+  .knight-companion {
+    @apply absolute pointer-events-none;
+    height: 180px;
+    opacity: 0.45;
+    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.6s ease;
+    z-index: 1;
+    will-change: transform, opacity, filter;
+    animation: knight-breathe 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.15));
+  }
+
+  @keyframes knight-breathe {
+    0%, 100% { 
+      transform: scale(1) translateY(0) rotate(0deg); 
+    }
+    50% { 
+      transform: scale(1.03) translateY(-6px) rotate(1deg); 
+    }
+  }
+
+  .section:hover .knight-companion {
+    opacity: 0.65;
+    transform: scale(1.05) rotate(3deg);
+    filter: drop-shadow(0 8px 24px rgba(232, 105, 82, 0.3));
+  }
+
+  /* Hero knights are BIGGER - RED ANTLER - MAGNETIC EFFECT */
+  .hero-knight {
+    height: 450px;
+    opacity: 0.5;
+    filter: drop-shadow(0 12px 40px rgba(232, 105, 82, 0.35));
+    animation: knight-breathe-hero 5s ease-in-out infinite;
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes knight-breathe-hero {
+    0%, 100% { 
+      transform: scale(1) translateY(0) rotate(0deg); 
+    }
+    50% { 
+      transform: scale(1.04) translateY(-8px) rotate(-1deg); 
+    }
+  }
+
+  .hero-knight:hover {
+    opacity: 0.7;
+    transform: translateY(-12px) scale(1.08) rotate(-2deg);
+    filter: drop-shadow(0 20px 60px rgba(232, 105, 82, 0.5));
+  }
+
+  /* Knight Glow Effects */
+  .knight-glow-orange {
+    filter: drop-shadow(0 0 24px rgba(232, 105, 82, 0.4));
+  }
+
+  .knight-glow-blue {
+    filter: drop-shadow(0 0 24px rgba(64, 224, 208, 0.4));
+  }
+
+  @media (max-width: 768px) {
+    .knight-companion {
+      height: 120px;
+      opacity: 0.4;
+    }
+
+    .hero-knight {
+      height: 220px; /* Increased from 180px */
+    }
+  }
+
+  /* SECTION LABELS - RED ANTLER DECORATION */
+  .section-label {
+    @apply inline-block font-bold uppercase mb-8;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 0.875rem;
+    letter-spacing: 3.5px; /* Increased for elegance */
+    color: var(--color-salmon);
+  }
+
+  .section-dark .section-label {
+    color: hsl(var(--gold));
+  }
+
+  /* SCROLL INDICATOR - Hero Section */
+  .scroll-indicator {
+    animation: scroll-bounce 2s ease-in-out infinite;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .scroll-indicator:hover {
+    opacity: 1;
+  }
+
+  @keyframes scroll-bounce {
+    0%, 100% { 
+      transform: translateY(0); 
+    }
+    50% { 
+      transform: translateY(10px); 
+    }
+  }
+
+  /* HERO VIGNETTE - ENHANCED ATMOSPHERIC DEPTH */
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(
+        ellipse 120% 100% at 50% 0%,
+        rgba(232, 105, 82, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 100%
+      );
+    pointer-events: none;
+    animation: vignette-pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes vignette-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  /* Premium loading skeleton states */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(220, 220, 220, 0.2) 0%,
+      rgba(220, 220, 220, 0.4) 50%,
+      rgba(220, 220, 220, 0.2) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 2s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Smooth page transitions */
+  .page-transition-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  /* PREMIUM SCROLL BEHAVIOR */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced focus states for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Premium link hover states */
+  a {
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+
+  a:hover {
+    opacity: 0.85;
+  }
+
+  /* Smooth image loading */
+  img {
+    transition: opacity 0.4s ease;
+  }
+
+  img[loading] {
+    opacity: 0;
+  }
+
+  img:not([loading]) {
+    opacity: 1;
+  }
+
+  /* REDUCED MOTION SUPPORT */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* PREMIUM BUTTON STYLES - RED ANTLER + MICRO-INTERACTIONS */
+  .btn-premium {
+    background: linear-gradient(135deg, #E86952 0%, #D55A45 100%);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .btn-premium:hover::before {
+    opacity: 1;
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 24px 48px rgba(232, 105, 82, 0.35),
+                0 12px 24px rgba(232, 105, 82, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-premium:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 12px 24px rgba(232, 105, 82, 0.25);
+  }
+
+  /* Magnetic hover effect for premium buttons */
+  @media (hover: hover) {
+    .btn-premium {
+      transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+    }
+  }
+
+  /* Arrow animation in buttons - More pronounced */
+  .btn-premium .arrow-icon {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+  }
+
+  .btn-premium:hover .arrow-icon {
+    transform: translateX(6px);
+  }
+
+  /* Pulse feedback on tap/click */
+  .btn-premium:active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: inherit;
+    animation: button-pulse 0.5s ease-out;
+  }
+
+  @keyframes button-pulse {
+    0% {
+      opacity: 1;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Enhanced card hover states */
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12),
+                0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+}
