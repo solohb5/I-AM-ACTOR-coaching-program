@@ -479,7 +479,9 @@ export default function CoachingPrivate() {
             height: '100%',
             opacity: 0.12,
             zIndex: 1,
-            pointerEvents: 'none'
+            pointerEvents: 'none',
+            filter: isInverted ? 'invert(1)' : 'invert(0)',
+            transition: 'filter 0.6s ease-in-out'
           }}>
             <div style={{
               position: 'absolute',
@@ -489,7 +491,7 @@ export default function CoachingPrivate() {
               bottom: 0,
               backgroundImage: 'url(/assets/images/hans-bio.jpg)',
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: 'center top',
               backgroundRepeat: 'no-repeat',
               filter: 'grayscale(40%) contrast(0.9)',
               maskImage: 'radial-gradient(ellipse 60% 70% at center, black 0%, transparent 70%)',
