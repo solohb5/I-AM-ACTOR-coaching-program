@@ -390,12 +390,12 @@ export default function CoachingPrivate() {
               <span style={{ opacity: 0.7 }}>5-Pack</span>
               <span style={{ fontSize: 'clamp(28px, 3.5vw, 32px)', fontWeight: 400 }}>$500</span>
               <span style={{ 
-                fontSize: 'clamp(11px, 1.3vw, 13px)', 
-                opacity: 0.5,
+                fontSize: 'clamp(12px, 1.4vw, 14px)', 
+                opacity: 0.7,
                 fontStyle: 'italic',
                 lineHeight: 1.4,
-                marginTop: '4px'
-              }}>Includes playbook<br/>(first 10 only)</span>
+                marginTop: '6px'
+              }}>Includes playbook (first 10 only)</span>
             </a>
           </div>
 
