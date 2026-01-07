@@ -212,8 +212,7 @@ export default function CoachingPrivate() {
               borderRadius: '8px'
             }}
           >
-            {/* 🎥 DROP YOUR MP4 HERE: /assets/video/hero/your-reel.mp4 */}
-            <source src="/assets/video/hero/your-reel.mp4" type="video/mp4" />
+            <source src="/assets/video/HansChristoher_REEL.mp4" type="video/mp4" />
             Your browser does not support video playback.
           </video>
         </div>
