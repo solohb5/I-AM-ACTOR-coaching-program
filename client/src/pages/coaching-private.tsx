@@ -469,15 +469,15 @@ export default function CoachingPrivate() {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Subtle background portrait - fades into darkness */}
+          {/* Subtle background portrait - barely visible, atmospheric */}
           <div style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)',
+            transform: 'translate(-50%, -45%)',
             width: '100%',
             height: '100%',
-            opacity: 0.12,
+            opacity: 0.04,
             zIndex: 1,
             pointerEvents: 'none',
             filter: isInverted ? 'invert(1)' : 'invert(0)',
@@ -491,11 +491,11 @@ export default function CoachingPrivate() {
               bottom: 0,
               backgroundImage: 'url(/assets/images/hans-bio.jpg)',
               backgroundSize: 'cover',
-              backgroundPosition: 'center top',
+              backgroundPosition: 'center 20%',
               backgroundRepeat: 'no-repeat',
-              filter: 'grayscale(40%) contrast(0.9)',
-              maskImage: 'radial-gradient(ellipse 60% 70% at center, black 0%, transparent 70%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 60% 70% at center, black 0%, transparent 70%)'
+              filter: 'grayscale(60%) contrast(0.8) blur(1px)',
+              maskImage: 'radial-gradient(ellipse 50% 60% at center, black 0%, rgba(0,0,0,0.4) 40%, transparent 65%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 50% 60% at center, black 0%, rgba(0,0,0,0.4) 40%, transparent 65%)'
             }} />
           </div>
           
