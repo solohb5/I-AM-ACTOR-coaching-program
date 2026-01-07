@@ -274,6 +274,9 @@ export default function CoachingPrivate() {
             marginBottom: '48px'
           }}>
             <div 
+              onClick={() => {
+                alert('🔗 STRIPE LINK NEEDED\n\nReplace with your Single Session Stripe payment link ($149).');
+              }}
               style={{
                 fontFamily: "'EB Garamond', serif",
                 fontSize: 'clamp(15px, 1.8vw, 17px)',
@@ -330,29 +333,13 @@ export default function CoachingPrivate() {
                   • Character work<br/>
                   • Record your best take
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert('🔗 STRIPE LINK NEEDED\n\nReplace with your Single Session Stripe payment link ($149).');
-                  }}
-                  style={{
-                    marginTop: '12px',
-                    padding: '8px 16px',
-                    background: '#0A0A0A',
-                    color: '#F8F8F7',
-                    border: 'none',
-                    borderRadius: '4px',
-                    fontSize: 'clamp(13px, 1.5vw, 15px)',
-                    cursor: 'pointer',
-                    fontFamily: "'EB Garamond', serif"
-                  }}
-                >
-                  Reserve
-                </button>
               </div>
             </div>
 
             <div 
+              onClick={() => {
+                alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 3-Pack Stripe payment link ($349).');
+              }}
               style={{
                 fontFamily: "'EB Garamond', serif",
                 fontSize: 'clamp(15px, 1.8vw, 17px)',
@@ -415,29 +402,13 @@ export default function CoachingPrivate() {
                   • Priority booking<br/>
                   • $447 value → $349
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 3-Pack Stripe payment link ($349).');
-                  }}
-                  style={{
-                    marginTop: '12px',
-                    padding: '8px 16px',
-                    background: '#0A0A0A',
-                    color: '#F8F8F7',
-                    border: 'none',
-                    borderRadius: '4px',
-                    fontSize: 'clamp(13px, 1.5vw, 15px)',
-                    cursor: 'pointer',
-                    fontFamily: "'EB Garamond', serif"
-                  }}
-                >
-                  Reserve
-                </button>
               </div>
             </div>
 
             <div 
+              onClick={() => {
+                alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 5-Pack Stripe payment link ($500).');
+              }}
               style={{
                 fontFamily: "'EB Garamond', serif",
                 fontSize: 'clamp(16px, 2vw, 18px)',
@@ -503,25 +474,6 @@ export default function CoachingPrivate() {
                   • $745 value → $500<br/>
                   • Save $245 total
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 5-Pack Stripe payment link ($500).');
-                  }}
-                  style={{
-                    marginTop: '12px',
-                    padding: '8px 16px',
-                    background: '#F8F8F7',
-                    color: '#0A0A0A',
-                    border: 'none',
-                    borderRadius: '4px',
-                    fontSize: 'clamp(13px, 1.5vw, 15px)',
-                    cursor: 'pointer',
-                    fontFamily: "'EB Garamond', serif"
-                  }}
-                >
-                  Reserve
-                </button>
               </div>
             </div>
           </div>
