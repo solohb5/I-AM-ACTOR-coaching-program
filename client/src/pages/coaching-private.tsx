@@ -308,7 +308,12 @@ export default function CoachingPrivate() {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <span style={{ opacity: 0.6 }}>Single Session</span>
+              <span style={{ 
+                opacity: 0.6,
+                transition: 'opacity 0.3s ease'
+              }}>
+                {expandedCard === 'single' ? 'My Single Session' : 'Single Session'}
+              </span>
               <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$149</span>
               
               {/* Expandable Details */}
@@ -372,7 +377,12 @@ export default function CoachingPrivate() {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <span style={{ opacity: 0.6 }}>3-Pack</span>
+              <span style={{ 
+                opacity: 0.6,
+                transition: 'opacity 0.3s ease'
+              }}>
+                {expandedCard === '3pack' ? 'My 3-Pack' : '3-Pack'}
+              </span>
               <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$349</span>
               <span style={{ 
                 fontSize: 'clamp(12px, 1.4vw, 14px)', 
@@ -441,7 +451,12 @@ export default function CoachingPrivate() {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              <span style={{ opacity: 0.7 }}>5-Pack</span>
+              <span style={{ 
+                opacity: 0.7,
+                transition: 'opacity 0.3s ease'
+              }}>
+                {expandedCard === '5pack' ? 'My 5-Pack' : '5-Pack'}
+              </span>
               <span style={{ fontSize: 'clamp(28px, 3.5vw, 32px)', fontWeight: 400 }}>$500</span>
               <span style={{ 
                 fontSize: 'clamp(12px, 1.4vw, 14px)', 
