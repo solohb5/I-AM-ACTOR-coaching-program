@@ -521,13 +521,13 @@ export default function CoachingPrivate() {
           justifyContent: 'center',
           padding: '0 10% 40px',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          zIndex: 20
         }}>
           <div style={{
             maxWidth: '800px',
             textAlign: 'center',
-            position: 'relative',
-            zIndex: 10
+            position: 'relative'
           }}>
             <p style={{
               fontFamily: "'EB Garamond', serif",
@@ -559,7 +559,8 @@ export default function CoachingPrivate() {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '0 10% 80px',
-          position: 'relative'
+          position: 'relative',
+          zIndex: 20
         }}>
           <div style={{
             maxWidth: '600px',
@@ -592,7 +593,8 @@ export default function CoachingPrivate() {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '0 10% 120px',
-          position: 'relative'
+          position: 'relative',
+          zIndex: 20
         }}>
           <button
             onClick={() => setModalOpen(true)}
@@ -848,22 +850,20 @@ export default function CoachingPrivate() {
                     gap: '16px',
                     alignItems: 'flex-start'
                   }}>
-                    {/* Playbook Cover Placeholder */}
-                    <div style={{
-                      width: 'clamp(70px, 12vw, 100px)',
-                      height: 'clamp(88px, 15vw, 125px)',
-                      background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
-                      borderRadius: '4px',
-                      flexShrink: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: 'clamp(28px, 5vw, 40px)',
-                      border: '1px solid rgba(248, 248, 247, 0.15)',
-                      boxShadow: '0 4px 16px rgba(212, 175, 55, 0.35)'
-                    }}>
-                      📖
-                    </div>
+                    {/* Playbook Cover */}
+                    <img 
+                      src="/assets/images/3-day-art.png" 
+                      alt="3-Day Audition Playbook"
+                      style={{
+                        width: 'clamp(70px, 12vw, 100px)',
+                        height: 'clamp(88px, 15vw, 125px)',
+                        borderRadius: '4px',
+                        flexShrink: 0,
+                        objectFit: 'cover',
+                        border: '1px solid rgba(248, 248, 247, 0.15)',
+                        boxShadow: '0 4px 16px rgba(212, 175, 55, 0.35)'
+                      }}
+                    />
 
                     {/* Playbook Description */}
                     <div style={{
