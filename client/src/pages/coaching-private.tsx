@@ -193,7 +193,8 @@ export default function CoachingPrivate() {
           position: 'relative',
           overflow: 'hidden',
           borderRadius: '8px',
-          boxShadow: '0 40px 120px rgba(0,0,0,0.15)'
+          boxShadow: '0 40px 120px rgba(0,0,0,0.15)',
+          background: '#000'
         }}>
           <video
             autoPlay
@@ -204,10 +205,13 @@ export default function CoachingPrivate() {
             poster="/assets/images/hans-accessible.png"
             style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              minWidth: '100%',
+              minHeight: '100%',
+              width: 'auto',
+              height: 'auto',
               objectFit: 'cover',
               borderRadius: '8px'
             }}
