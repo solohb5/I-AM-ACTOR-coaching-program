@@ -457,7 +457,7 @@ export default function CoachingPrivate() {
         </section>
 
         {/* SPACER for video */}
-        <div style={{ height: '25vh' }} />
+        <div style={{ height: '50vh' }} />
 
         {/* YOUR QUOTE - The audience watching the screen (video above) */}
         <section style={{
