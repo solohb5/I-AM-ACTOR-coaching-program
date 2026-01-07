@@ -264,16 +264,14 @@ export default function CoachingPrivate() {
             Opening 15 slots. Lock in your price now. Use it when the big audition comes.
           </p>
 
-          {/* Quick CTA Buttons */}
+          {/* Minimal Pricing Cards */}
           <div id="pricing" style={{
             display: 'flex',
-            gap: '20px',
+            gap: '16px',
             justifyContent: 'center',
-            alignItems: 'stretch',
+            alignItems: 'center',
             flexWrap: 'wrap',
-            marginBottom: '48px',
-            width: '100%',
-            maxWidth: '600px'
+            marginBottom: '48px'
           }}>
             <a 
               href="#single"
@@ -283,76 +281,33 @@ export default function CoachingPrivate() {
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
-                fontSize: 'clamp(18px, 2.2vw, 20px)',
+                fontSize: 'clamp(15px, 1.8vw, 17px)',
                 fontWeight: 400,
-                padding: '20px 24px',
+                padding: '16px 20px',
                 background: 'transparent',
                 color: '#0A0A0A',
                 textAlign: 'center',
                 textDecoration: 'none',
-                border: '1px solid rgba(10, 10, 10, 0.2)',
-                borderRadius: '4px',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                border: '1px solid rgba(10, 10, 10, 0.15)',
+                borderRadius: '2px',
+                transition: 'all 0.3s ease',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '8px',
-                overflow: 'hidden',
-                minHeight: '120px',
-                flex: '1 1 240px',
-                minWidth: '220px',
-                minHeight: expandedCard === 'single' ? '280px' : '120px'
+                gap: '4px',
+                maxWidth: '180px',
+                minWidth: '160px'
               }}
               onMouseEnter={(e) => {
-                const target = e.currentTarget;
-                target.style.borderColor = 'rgba(10, 10, 10, 0.4)';
-                target.style.transform = 'translateY(-4px)';
-                target.style.boxShadow = '0 12px 40px rgba(0,0,0,0.12)';
-                target.style.minHeight = '280px';
-                const details = target.querySelector('.session-details') as HTMLElement;
-                if (details) {
-                  details.style.maxHeight = '200px';
-                  details.style.opacity = '1';
-                  details.style.marginTop = '16px';
-                }
+                e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.4)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                const target = e.currentTarget;
-                target.style.borderColor = 'rgba(10, 10, 10, 0.2)';
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = 'none';
-                target.style.minHeight = expandedCard === 'single' ? '280px' : '120px';
-                const details = target.querySelector('.session-details') as HTMLElement;
-                if (details && expandedCard !== 'single') {
-                  details.style.maxHeight = '0';
-                  details.style.opacity = '0';
-                  details.style.marginTop = '0';
-                }
+                e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.15)';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
-              onTouchStart={() => setExpandedCard(expandedCard === 'single' ? null : 'single')}
             >
-              <span>Single Session</span>
-              <span style={{ fontSize: 'clamp(28px, 3.5vw, 36px)', fontWeight: 400 }}>$149</span>
-              <div 
-                className="session-details"
-                style={{
-                  maxHeight: '0',
-                  opacity: 0,
-                  overflow: 'hidden',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  fontSize: 'clamp(14px, 1.8vw, 16px)',
-                  lineHeight: 1.6,
-                  textAlign: 'center',
-                  marginTop: '0'
-                }}
-              >
-                <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(10, 10, 10, 0.15)', marginBottom: '12px' }} />
-                <div style={{ opacity: 0.75, fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 15px)' }}>
-                  • 1 hour live coaching<br/>
-                  • Scene breakdown & character work<br/>
-                  • Immediate feedback<br/>
-                  • Record your best take
-                </div>
-              </div>
+              <span style={{ opacity: 0.6 }}>Single Session</span>
+              <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$149</span>
             </a>
 
             <a 
@@ -363,7 +318,50 @@ export default function CoachingPrivate() {
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
-                fontSize: 'clamp(18px, 2.2vw, 20px)',
+                fontSize: 'clamp(15px, 1.8vw, 17px)',
+                fontWeight: 400,
+                padding: '16px 20px',
+                background: 'transparent',
+                color: '#0A0A0A',
+                textAlign: 'center',
+                textDecoration: 'none',
+                border: '1px solid rgba(10, 10, 10, 0.3)',
+                borderRadius: '2px',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                maxWidth: '180px',
+                minWidth: '160px',
+                position: 'relative'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.5)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.3)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <span style={{ opacity: 0.6 }}>3-Pack</span>
+              <span style={{ fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 400 }}>$349</span>
+              <span style={{ 
+                fontSize: 'clamp(12px, 1.4vw, 14px)', 
+                opacity: 0.5,
+                fontStyle: 'italic'
+              }}>Save $98</span>
+            </a>
+
+            <a 
+              href="#5pack"
+              onClick={(e) => {
+                e.preventDefault();
+                alert('🔗 STRIPE LINK NEEDED\n\nReplace this href with your 5-Pack Stripe payment link ($500).');
+              }}
+              style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: 'clamp(16px, 2vw, 18px)',
                 fontWeight: 400,
                 padding: '20px 24px',
                 background: '#0A0A0A',
@@ -371,73 +369,31 @@ export default function CoachingPrivate() {
                 textAlign: 'center',
                 textDecoration: 'none',
                 border: '1px solid #0A0A0A',
-                borderRadius: '4px',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                borderRadius: '2px',
+                transition: 'all 0.3s ease',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '8px',
-                position: 'relative',
-                overflow: 'hidden',
-                minHeight: '140px',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-                flex: '1 1 240px',
-                minWidth: '220px',
-                minHeight: expandedCard === '3pack' ? '300px' : '140px'
+                gap: '6px',
+                maxWidth: '200px',
+                minWidth: '180px',
+                position: 'relative'
               }}
               onMouseEnter={(e) => {
-                const target = e.currentTarget;
-                target.style.transform = 'translateY(-4px)';
-                target.style.boxShadow = '0 16px 48px rgba(0,0,0,0.16)';
-                target.style.minHeight = '300px';
-                const details = target.querySelector('.session-details') as HTMLElement;
-                if (details) {
-                  details.style.maxHeight = '200px';
-                  details.style.opacity = '1';
-                  details.style.marginTop = '16px';
-                }
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
               }}
               onMouseLeave={(e) => {
-                const target = e.currentTarget;
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)';
-                target.style.minHeight = expandedCard === '3pack' ? '300px' : '140px';
-                const details = target.querySelector('.session-details') as HTMLElement;
-                if (details && expandedCard !== '3pack') {
-                  details.style.maxHeight = '0';
-                  details.style.opacity = '0';
-                  details.style.marginTop = '0';
-                }
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
-              onTouchStart={() => setExpandedCard(expandedCard === '3pack' ? null : '3pack')}
             >
-              <span>3-Pack</span>
-              <span style={{ fontSize: 'clamp(28px, 3.5vw, 36px)', fontWeight: 400 }}>$349</span>
+              <span style={{ opacity: 0.7 }}>5-Pack</span>
+              <span style={{ fontSize: 'clamp(28px, 3.5vw, 32px)', fontWeight: 400 }}>$500</span>
               <span style={{ 
-                fontSize: 'clamp(14px, 1.8vw, 16px)', 
-                opacity: 0.7,
+                fontSize: 'clamp(13px, 1.5vw, 15px)', 
+                opacity: 0.6,
                 fontStyle: 'italic'
-              }}>Save $98</span>
-              <div 
-                className="session-details"
-                style={{
-                  maxHeight: expandedCard === '3pack' ? '200px' : '0',
-                  opacity: expandedCard === '3pack' ? 1 : 0,
-                  overflow: 'hidden',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  fontSize: 'clamp(14px, 1.8vw, 16px)',
-                  lineHeight: 1.6,
-                  textAlign: 'center',
-                  marginTop: expandedCard === '3pack' ? '16px' : '0'
-                }}
-              >
-                <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(248,248,247,0.3)', marginBottom: '12px' }} />
-                <div style={{ opacity: 0.85, fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 15px)' }}>
-                  • 3 sessions to use anytime<br/>
-                  • Lock in your price<br/>
-                  • Priority booking<br/>
-                  • Save $98 total
-                </div>
-              </div>
+              }}>Save $245</span>
             </a>
           </div>
 
