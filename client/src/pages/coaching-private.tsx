@@ -4,6 +4,8 @@ export default function CoachingPrivate() {
   const [isInverted, setIsInverted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedCard, setExpandedCard] = useState<'single' | '3pack' | '5pack' | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [playbookExpanded, setPlaybookExpanded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -504,7 +506,7 @@ export default function CoachingPrivate() {
             marginTop: '64px'
           }}>
             <p>"Having Hans on speed dial changed everything."</p>
-            <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', marginTop: '12px', opacity: 0.6 }}>— Maya R., FBI: Most Wanted</p>
+            <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', marginTop: '12px', opacity: 0.6 }}>— Brandon Sutton, Blackbird</p>
           </div>
         </section>
 
@@ -583,7 +585,367 @@ export default function CoachingPrivate() {
             </p>
           </div>
         </section>
+
+        {/* BOTTOM CTA BUTTON */}
+        <section style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '0 10% 120px',
+          position: 'relative'
+        }}>
+          <button
+            onClick={() => setModalOpen(true)}
+            style={{
+              fontFamily: "'EB Garamond', serif",
+              fontSize: 'clamp(18px, 2.2vw, 22px)',
+              fontWeight: 400,
+              padding: '16px 32px',
+              background: 'transparent',
+              color: '#0A0A0A',
+              border: '1px solid rgba(10, 10, 10, 0.2)',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              letterSpacing: '0.02em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.5)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.2)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            Book My Session
+            <span style={{ fontSize: '16px' }}>→</span>
+          </button>
+        </section>
       </div>
+
+      {/* PRICING MODAL - Cinematic Version */}
+      {modalOpen && (
+        <div
+          onClick={() => setModalOpen(false)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(10, 10, 10, 0.90)',
+            backdropFilter: 'blur(20px)',
+            zIndex: 10000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px',
+            animation: 'fadeIn 0.4s ease'
+          }}
+        >
+          <style>
+            {`
+              @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+              }
+              @keyframes scaleIn {
+                from { 
+                  opacity: 0;
+                  transform: scale(0.95);
+                }
+                to { 
+                  opacity: 1;
+                  transform: scale(1);
+                }
+              }
+            `}
+          </style>
+
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: '#F8F8F7',
+              borderRadius: '8px',
+              width: 'clamp(85%, 70vw, 900px)',
+              maxWidth: '900px',
+              position: 'relative',
+              padding: 'clamp(40px, 6vh, 56px) clamp(40px, 5vw, 64px)',
+              animation: 'scaleIn 0.5s ease',
+              boxShadow: '0 40px 120px rgba(0,0,0,0.4)',
+              textAlign: 'center'
+            }}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setModalOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '24px',
+                right: '24px',
+                background: 'none',
+                border: 'none',
+                fontSize: '28px',
+                cursor: 'pointer',
+                color: '#0A0A0A',
+                opacity: 0.4,
+                transition: 'opacity 0.2s ease',
+                lineHeight: 1,
+                padding: '8px',
+                zIndex: 10
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '0.4'}
+            >
+              ×
+            </button>
+
+            {/* One Poignant Line */}
+            <h2 style={{
+              fontFamily: "'EB Garamond', serif",
+              fontSize: 'clamp(32px, 4.8vw, 56px)',
+              fontWeight: 400,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              color: '#0A0A0A',
+              marginBottom: 'clamp(32px, 5vh, 48px)',
+              maxWidth: '680px',
+              margin: '0 auto clamp(32px, 5vh, 48px)'
+            }}>
+              The difference between good and undeniable.
+            </h2>
+
+            {/* Three Options - Text with Arrows, Hover = Button */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'clamp(16px, 2.5vh, 24px)',
+              maxWidth: '560px',
+              margin: '0 auto'
+            }}>
+              {/* Single Session - $149 */}
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  alert('🔗 STRIPE LINK NEEDED\n\nReplace with your Single Session Stripe payment link ($149).');
+                }}
+                style={{
+                  fontFamily: "'EB Garamond', serif",
+                  fontSize: 'clamp(19px, 2.5vw, 26px)',
+                  color: '#0A0A0A',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  padding: '14px 20px',
+                  borderRadius: '6px',
+                  background: 'transparent',
+                  border: '1px solid transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(10, 10, 10, 0.04)';
+                  e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.12)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.borderColor = 'transparent';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                Single Session — $149 →
+              </div>
+
+              {/* 3-Pack - $349 */}
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 3-Pack Stripe payment link ($349).');
+                }}
+                style={{
+                  fontFamily: "'EB Garamond', serif",
+                  fontSize: 'clamp(20px, 2.8vw, 28px)',
+                  color: '#0A0A0A',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  padding: '16px 24px',
+                  borderRadius: '8px',
+                  background: 'transparent',
+                  border: '1px solid transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(10, 10, 10, 0.04)';
+                  e.currentTarget.style.borderColor = 'rgba(10, 10, 10, 0.12)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.borderColor = 'transparent';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                3-Pack — $349 →
+              </div>
+
+              {/* 5-Pack - $500 (EMPHASIZED WITH PLAYBOOK EXPANSION) */}
+              <div
+                onMouseEnter={() => setPlaybookExpanded(true)}
+                onMouseLeave={() => setPlaybookExpanded(false)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 5-Pack Stripe payment link ($500).');
+                }}
+                style={{
+                  fontFamily: "'EB Garamond', serif",
+                  cursor: 'pointer',
+                  transition: 'all 0.4s ease',
+                  padding: playbookExpanded ? '20px 24px' : '18px 24px',
+                  borderRadius: '8px',
+                  background: playbookExpanded ? '#1A1A1A' : 'transparent',
+                  border: playbookExpanded ? '1px solid #1A1A1A' : '1px solid rgba(10, 10, 10, 0.15)',
+                  transform: playbookExpanded ? 'translateY(-4px)' : 'translateY(0)',
+                  boxShadow: playbookExpanded ? '0 12px 32px rgba(0,0,0,0.15)' : 'none',
+                  overflow: 'hidden'
+                }}
+              >
+                {/* Main CTA Text */}
+                <div style={{
+                  fontSize: 'clamp(22px, 3.2vw, 32px)',
+                  color: playbookExpanded ? '#F8F8F7' : '#0A0A0A',
+                  fontWeight: 500,
+                  marginBottom: playbookExpanded ? '16px' : '0',
+                  transition: 'all 0.3s ease',
+                  textShadow: playbookExpanded ? '0 1px 3px rgba(0,0,0,0.15)' : 'none'
+                }}>
+                  5-Pack — $500 <span style={{ 
+                    fontSize: 'clamp(14px, 1.8vw, 17px)', 
+                    fontWeight: 400,
+                    opacity: playbookExpanded ? 0.85 : 0.7,
+                    fontStyle: 'italic',
+                    marginLeft: '8px'
+                  }}>+ playbook</span> →
+                </div>
+
+                {/* Playbook Details - Expands on Hover */}
+                <div style={{
+                  maxHeight: playbookExpanded ? '180px' : '0',
+                  opacity: playbookExpanded ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'all 0.4s ease'
+                }}>
+                  {/* Divider Line */}
+                  <div style={{
+                    width: '100%',
+                    height: '1px',
+                    background: 'rgba(248, 248, 247, 0.2)',
+                    marginBottom: '16px'
+                  }} />
+
+                  <div style={{
+                    display: 'flex',
+                    gap: '16px',
+                    alignItems: 'flex-start'
+                  }}>
+                    {/* Playbook Cover Placeholder */}
+                    <div style={{
+                      width: 'clamp(70px, 12vw, 100px)',
+                      height: 'clamp(88px, 15vw, 125px)',
+                      background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
+                      borderRadius: '4px',
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 'clamp(28px, 5vw, 40px)',
+                      border: '1px solid rgba(248, 248, 247, 0.15)',
+                      boxShadow: '0 4px 16px rgba(212, 175, 55, 0.35)'
+                    }}>
+                      📖
+                    </div>
+
+                    {/* Playbook Description */}
+                    <div style={{
+                      flex: 1,
+                      color: '#F8F8F7'
+                    }}>
+                      <h4 style={{
+                        fontSize: 'clamp(15px, 1.9vw, 18px)',
+                        fontWeight: 500,
+                        marginBottom: '6px',
+                        lineHeight: 1.3,
+                        opacity: 1,
+                        letterSpacing: '0.01em',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                      }}>
+                        Includes: 3-Day Audition Playbook
+                      </h4>
+                      <p style={{
+                        fontSize: 'clamp(13px, 1.6vw, 15px)',
+                        lineHeight: 1.5,
+                        opacity: 0.9,
+                        marginBottom: '8px',
+                        letterSpacing: '0.01em'
+                      }}>
+                        The exact system for breaking down sides, making bold choices, and walking in ready.
+                      </p>
+                      <p style={{
+                        fontSize: 'clamp(12px, 1.5vw, 14px)',
+                        lineHeight: 1.4,
+                        opacity: 0.75,
+                        fontStyle: 'italic',
+                        letterSpacing: '0.015em'
+                      }}>
+                        Limited release — first 10 bookings only.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* What They're Getting - Below CTAs */}
+            <div style={{
+              fontFamily: "'EB Garamond', serif",
+              fontSize: 'clamp(15px, 1.8vw, 18px)',
+              lineHeight: 1.6,
+              color: '#0A0A0A',
+              opacity: 0.5,
+              maxWidth: '520px',
+              margin: 'clamp(32px, 5vh, 48px) auto 0',
+              textAlign: 'center',
+              paddingBottom: 'clamp(16px, 3vh, 24px)'
+            }}>
+              One hour. You and me on Zoom. Shoot your audition together. Dive into a booked role. Career mentorship. <span style={{ fontStyle: 'italic' }}>We'll figure it out.</span>
+            </div>
+
+            {/* I AM ACTOR Triangle Logo - Bottom Signature */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              marginTop: 'clamp(16px, 3vh, 32px)',
+              opacity: 0.35
+            }}>
+              <div style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: 'clamp(11px, 1.4vw, 14px)',
+                fontWeight: 400,
+                letterSpacing: '0.12em',
+                color: '#0A0A0A',
+                lineHeight: 1.2,
+                textAlign: 'center'
+              }}>
+                <div>I</div>
+                <div>AM</div>
+                <div>ACTOR</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
     </>
   );
 }
