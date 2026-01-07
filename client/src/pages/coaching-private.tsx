@@ -573,7 +573,7 @@ export default function CoachingPrivate() {
               opacity: 0.7,
               marginBottom: '12px'
             }}>
-              "This isn't like other coaching. Hans sees what you can't."
+              "Your self-tapes are now at an entirely different level."
             </p>
             <p style={{
               fontFamily: "'EB Garamond', serif",
@@ -581,7 +581,7 @@ export default function CoachingPrivate() {
               opacity: 0.5,
               letterSpacing: '0.02em'
             }}>
-              — Jordan T., Succession
+              — Manager to Client, Major Agency
             </p>
           </div>
         </section>
