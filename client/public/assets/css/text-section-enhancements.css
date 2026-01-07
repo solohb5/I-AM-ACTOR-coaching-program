@@ -1,0 +1,335 @@
+/* ==========================================================================
+   TEXT SECTION VISUAL ENHANCEMENTS
+   Makes text-heavy sections more scannable and visually engaging
+   ========================================================================== */
+
+/* ==========================================================================
+   1. DROP CAPS - Storybook feel for opening paragraphs (DISABLED - needs refinement)
+   ========================================================================== */
+
+/* TEMPORARILY DISABLED - Drop caps need better targeting
+.section-light p:first-of-type::first-letter {
+  font-size: 3.8em;
+  line-height: 0.85;
+  float: left;
+  margin: 0.05em 0.12em 0 0;
+  font-family: 'Cinzel', serif;
+  color: var(--salmon);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .section-light p:first-of-type::first-letter {
+    font-size: 3.2em;
+    margin: 0.08em 0.1em 0 0;
+  }
+}
+*/
+
+/* ==========================================================================
+   2. PULL QUOTE STYLING - Highlight key phrases
+   ========================================================================== */
+
+/* Enhanced pull quote treatment */
+.pull-quote,
+p[style*="font-style: italic"][style*="font-size: 1.75rem"],
+p[style*="font-style: italic"][style*="font-size: 2.25rem"] {
+  position: relative;
+  padding: 1.5rem 0;
+  margin: 3rem auto !important;
+}
+
+.pull-quote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--salmon), transparent);
+}
+
+.pull-quote::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--salmon), transparent);
+}
+
+/* ==========================================================================
+   3. ACCENT LINES - Visual breaks between concepts
+   ========================================================================== */
+
+/* Decorative separator */
+.section-light .container > p + p {
+  position: relative;
+  margin-top: 2.5rem !important;
+}
+
+.section-light .container > p + p::before {
+  content: '';
+  position: absolute;
+  top: -1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--salmon), transparent);
+  opacity: 0.4;
+}
+
+/* ==========================================================================
+   4. STAT HIGHLIGHTS - Numbers that pop
+   ========================================================================== */
+
+/* Style for emphasized stats */
+strong[style*="font-size"],
+.stat-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(232, 105, 82, 0.08), rgba(212, 193, 55, 0.08));
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--salmon);
+}
+
+/* ==========================================================================
+   5. BREATHING ROOM BOXES - Highlight key concepts
+   ========================================================================== */
+
+/* Golden box for important callouts */
+div[style*="background: rgba(212, 193, 55, 0.08)"] {
+  box-shadow: 0 2px 12px rgba(212, 193, 55, 0.08) !important;
+  transition: all 0.3s ease;
+}
+
+div[style*="background: rgba(212, 193, 55, 0.08)"]:hover {
+  box-shadow: 0 4px 20px rgba(212, 193, 55, 0.12) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. ALTERNATING TEXT RHYTHM - Subtle width variation
+   ========================================================================== */
+
+@media (min-width: 769px) {
+  .section .container > p:nth-of-type(odd) {
+    max-width: 620px !important;
+  }
+
+  .section .container > p:nth-of-type(even) {
+    max-width: 680px !important;
+  }
+}
+
+/* ==========================================================================
+   7. SECTION LABEL ENHANCEMENT - More premium feel
+   ========================================================================== */
+
+.section-label,
+span[class*="section-label"] {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: var(--salmon);
+  opacity: 0.5;
+}
+
+/* Silver-gray underline for dark sections with brown underlines */
+.truth-label::after,
+.guide-label::after {
+  background: #A8B2BC !important;
+  opacity: 0.6 !important;
+}
+
+/* ==========================================================================
+   8. ENHANCED BORDER TREATMENTS
+   ========================================================================== */
+
+/* Better border styling for dividers */
+[style*="border-bottom: 1px solid"] {
+  border-bottom-color: rgba(44, 44, 44, 0.06) !important;
+  transition: border-color 0.3s ease;
+}
+
+[style*="border-left: 4px solid"] {
+  border-left-width: 3px !important;
+  box-shadow: inset 3px 0 8px rgba(212, 193, 55, 0.08);
+}
+
+/* ==========================================================================
+   9. SMOOTH EMPHASIS TRANSITIONS
+   ========================================================================== */
+
+/* Emphasized text gets subtle background */
+strong {
+  position: relative;
+  padding: 0 0.15em;
+  transition: all 0.2s ease;
+}
+
+.section-light strong {
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(232, 105, 82, 0.08) 60%,
+    rgba(232, 105, 82, 0.08) 100%);
+}
+
+/* ==========================================================================
+   10. PARAGRAPH SPACING REFINEMENTS
+   ========================================================================== */
+
+/* Better vertical rhythm for text blocks */
+.section p {
+  margin-bottom: 1.5rem;
+}
+
+.section p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Tighter spacing for related paragraphs */
+.section p + p {
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   11. QUOTE MARK STYLING (for testimonials)
+   ========================================================================== */
+
+/* Add decorative quote marks */
+p[style*="font-style: italic"]::before {
+  content: '';
+  /* Subtle visual indicator without actual quote marks */
+}
+
+/* Enhanced testimonial quotes */
+.testimonial-quote {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.testimonial-quote::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -0.2em;
+  font-size: 3em;
+  color: var(--salmon);
+  opacity: 0.2;
+  font-family: 'Cinzel', serif;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   12. MOBILE TEXT ENHANCEMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Tighter but still readable */
+  .section p {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Remove some decorative elements on mobile for cleanliness */
+  .section-light .container > p + p::before {
+    display: none;
+  }
+
+  /* Simpler pull quote treatment */
+  .pull-quote::before,
+  .pull-quote::after {
+    width: 40px;
+  }
+}
+
+/* ==========================================================================
+   13. READABILITY ENHANCEMENTS
+   ========================================================================== */
+
+/* Optimal line length */
+.section p {
+  max-width: 65ch; /* ~65 characters per line */
+}
+
+/* Better text rendering */
+.section p {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent orphans (single words on last line) */
+.section p {
+  text-wrap: pretty;
+  orphans: 2;
+  widows: 2;
+}
+
+/* ==========================================================================
+   14. LINK STYLING IN TEXT (if any)
+   ========================================================================== */
+
+.section-light a {
+  color: var(--salmon);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232, 105, 82, 0.3);
+  transition: all 0.2s ease;
+}
+
+.section-light a:hover {
+  border-bottom-color: var(--salmon);
+  background: rgba(232, 105, 82, 0.05);
+}
+
+/* ==========================================================================
+   15. FINAL POLISH - Subtle animations
+   ========================================================================== */
+
+/* Fade in paragraphs on scroll (optional) */
+.section p {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.section p:nth-child(1) { animation-delay: 0.1s; }
+.section p:nth-child(2) { animation-delay: 0.2s; }
+.section p:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Disable on mobile for performance */
+@media (max-width: 768px) {
+  .section p {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section p {
+    animation: none;
+  }
+}

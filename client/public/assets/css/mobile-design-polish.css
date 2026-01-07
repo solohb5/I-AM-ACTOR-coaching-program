@@ -1,0 +1,799 @@
+/* ==========================================================================
+   MOBILE DESIGN POLISH - I AM ACTOR
+   Premium $20K landing page experience for mobile
+   Clean, scannable, effortless
+   ========================================================================== */
+
+/* ==========================================================================
+   1. SPACING & RHYTHM - Systematic vertical flow
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Consistent section spacing */
+  .section,
+  section {
+    padding: 4rem 1.5rem !important;
+  }
+
+  /* Hero section - better vertical balance on mobile */
+  .hero,
+  section.hero {
+    padding: 2rem 1.5rem 1rem !important; /* Reduced overall padding */
+    min-height: auto !important; /* Don't force 90vh */
+  }
+
+  /* Hero container - add top margin for breathing room from nav */
+  .hero .container-narrow {
+    margin-top: 3rem !important; /* Push title away from nav */
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Container spacing */
+  .container,
+  .container-narrow {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Internal element spacing - 8-point grid */
+  h1 + p,
+  h2 + p,
+  h3 + p {
+    margin-top: 1rem !important;
+  }
+
+  p + p {
+    margin-top: 1.5rem !important;
+  }
+
+  /* Section transitions - consistent gap */
+  section + section {
+    margin-top: 0 !important;
+  }
+
+  /* Reduce spacing between storybook question and Actor's Journey reveal */
+  .scroll-reveal:has(p:contains("All they need is a way back")) {
+    margin-bottom: 1rem !important; /* Cut from 2rem to 1rem */
+  }
+
+  /* Reduce top padding of Actor's Journey section on mobile */
+  .section-light {
+    padding-top: 1rem !important; /* Cut from 2rem to 1rem */
+  }
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY SCALE - Smooth, readable hierarchy
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Body text - optimal readability */
+  body {
+    font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Heading scale - gradual reduction */
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem) !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Hero title - dramatic but readable */
+  .hero-title,
+  .hero h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Make "Actor's Journey" main text prominent but fit on one line */
+  .hero-main {
+    font-size: clamp(2.25rem, 7.5vw, 3.5rem) !important; /* Fits on one line */
+    text-shadow: 0 3px 30px rgba(212, 193, 55, 0.5),
+                 0 0 60px rgba(212, 193, 55, 0.4) !important; /* Strong glow */
+    font-weight: 600 !important; /* Bolder than before */
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Hero subtitle */
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem) !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Hero tagline */
+  .hero-tagline {
+    font-size: clamp(1rem, 3vw, 1.25rem) !important;
+    line-height: 1.5 !important;
+    /* opacity controlled by animation - do not override */
+  }
+
+  /* Paragraph max-width for readability */
+  p {
+    max-width: 680px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Tighter letter-spacing on mobile */
+  .section-label,
+  [style*="letter-spacing: 3px"] {
+    letter-spacing: 2px !important;
+  }
+}
+
+/* ==========================================================================
+   3. BUTTON & CTA PREMIUM TREATMENT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* All buttons - premium feel */
+  .btn,
+  button,
+  .hero-cta,
+  [class*="cta"],
+  a[class*="btn"] {
+    min-height: 52px !important;
+    padding: 0.875rem 2rem !important;
+    border-radius: 8px !important;
+    font-size: clamp(0.95rem, 3vw, 1.05rem) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12),
+                0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: none !important;
+  }
+
+  /* Button hover/active states */
+  .btn:active,
+  button:active {
+    transform: translateY(1px) scale(0.98) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Primary CTA - extra emphasis */
+  .btn--primary,
+  .hero-cta {
+    box-shadow: 0 4px 16px rgba(212, 193, 55, 0.25),
+                0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  /* CTA spacing */
+  .hero-cta {
+    margin: 2rem auto 1rem !important;
+    max-width: 280px !important;
+    width: 100% !important;
+  }
+
+  /* CTA subtext */
+  .hero-cta-subtext {
+    font-size: 0.85rem !important;
+    margin-top: 0.75rem !important;
+    /* opacity controlled by animation - do not override */
+  }
+}
+
+/* ==========================================================================
+   STORYBOOK SECTION (Call to Adventure) - Larger Text on Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Storybook pages text - make larger and more impactful on mobile */
+  .scroll-reveal p[style*="font-size: 2rem"] {
+    font-size: clamp(1.5rem, 5.5vw, 2.25rem) !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* Spacing between Storybook chunks - balanced breathing room */
+  .section-light .scroll-reveal {
+    margin-bottom: 8rem !important; /* Sweet spot - not cramped, not too far */
+  }
+
+  /* First storybook item gets extra top margin */
+  .scroll-reveal:first-of-type {
+    margin-top: 4rem !important;
+  }
+
+  /* Make "The Actor's Journey" section title appear faster on mobile */
+  .section-light .scroll-reveal h2[style*="The Actor's Journey"],
+  .section-light .scroll-reveal:has(h2) {
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
+  }
+}
+
+/* ==========================================================================
+   ACT SECTION ICONS - Add Scroll Reveal Animation
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Icons should start hidden and reveal with content */
+  .act-content img[src*="icon"],
+  .act-content img[src*="character-art"] {
+    opacity: 0 !important;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s !important;
+  }
+
+  /* When act-content is revealed, show icon */
+  .act-content.reveal img[src*="icon"],
+  .act-content.reveal img[src*="character-art"] {
+    opacity: 0.9 !important;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   BUTTON & CTA PREMIUM TREATMENT (continued)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Navigation CTA - compact but touchable */
+  .nav-cta-btn {
+    padding: 0.65rem 1rem !important;
+    font-size: 0.8rem !important;
+    min-height: 44px !important;
+    box-shadow: none !important;
+    border: 1.5px solid currentColor !important;
+  }
+}
+
+/* ==========================================================================
+   4. WHITESPACE OPTIMIZATION - Luxury breathing room
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Content width - comfortable not cramped */
+  .container {
+    max-width: 90% !important;
+  }
+
+  .container-narrow {
+    max-width: 600px !important;
+  }
+
+  /* Card grids - consistent spacing */
+  [class*="grid"] {
+    gap: 1.5rem !important;
+  }
+
+  /* Text blocks - generous margins */
+  .section p:not(:last-child) {
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* List items - breathing room */
+  li {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Checkmark lists - optimal spacing */
+  div[style*="display: flex"] {
+    margin-bottom: 1.25rem !important;
+  }
+
+  /* Between major content blocks */
+  .hero + .section,
+  section + section {
+    padding-top: 4rem !important;
+  }
+}
+
+/* ==========================================================================
+   5. SECTION TRANSITIONS - Smooth visual flow
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Gradient fade between sections */
+  .section-dark {
+    position: relative !important;
+  }
+
+  .section-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.03));
+    pointer-events: none;
+  }
+
+  .section-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.03));
+    pointer-events: none;
+  }
+
+  /* Smooth color transitions */
+  section {
+    transition: background-color 0.4s ease !important;
+  }
+}
+
+/* ==========================================================================
+   6. NAVIGATION ENHANCEMENT - Premium header
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Glassmorphism effect */
+  .nav,
+  nav {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgba(26, 26, 26, 0.92) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15) !important;
+    padding: 0.875rem 1rem !important;
+  }
+
+  /* Logo - more presence */
+  .nav-logo img,
+  .logo-image {
+    height: 3.25rem !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) !important;
+  }
+
+  /* Spots counter - badge style */
+  .nav-spots {
+    background: rgba(212, 193, 55, 0.15) !important;
+    border: 1px solid rgba(212, 193, 55, 0.3) !important;
+    padding: 0.35rem 0.65rem !important;
+    border-radius: 12px !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .nav-spots .spots-number {
+    color: #D4AF37 !important;
+  }
+}
+
+/* ==========================================================================
+   7. COLOR CONTRAST & ACCESSIBILITY
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Ensure readable text contrast */
+  .section-light {
+    color: #1a1a1a !important;
+  }
+
+  .section-light p {
+    color: #2a2a2a !important;
+  }
+
+  .section-dark {
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  .section-dark p {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Salmon text - ensure visibility */
+  [style*="color: var(--salmon)"],
+  .pull-quote {
+    color: #E86952 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Gold text - readable on dark */
+  [style*="color: var(--old-gold)"],
+  .section-dark h2,
+  .section-dark h3 {
+    color: #D4C137 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+/* ==========================================================================
+   8. IMAGE TREATMENT - Polished presentation
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hero knight - move left, lighten, subtle glow */
+  .hero-knight {
+    filter: drop-shadow(0 0 30px rgba(212, 193, 55, 0.15)) !important;
+    opacity: 0.5 !important; /* Lightened from 0.4 */
+    left: 10px !important; /* Moved more into corner from 50px */
+  }
+
+  /* Hans photo - premium treatment */
+  img[alt*="Hans"],
+  img[src*="hans-bio"] {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Tools graphic - elevated */
+  img[alt*="Tools"],
+  img[src*="tools"] {
+    border-radius: 8px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15),
+                0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* All images - smooth loading */
+  img {
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+  }
+
+  img[loading="lazy"] {
+    opacity: 0;
+  }
+
+  img[loading="lazy"].loaded {
+    opacity: 1;
+  }
+
+  /* Poster carousel - fade edges */
+  .credits-posters {
+    mask-image: linear-gradient(to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent) !important;
+    -webkit-mask-image: linear-gradient(to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent) !important;
+  }
+}
+
+/* ==========================================================================
+   9. MICRO-INTERACTIONS - Subtle motion design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Checkmarks - gentle reveal */
+  div[style*="display: flex"] > span:first-child {
+    animation: checkFadeIn 0.3s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+
+  @keyframes checkFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Cards - lift on view */
+  [class*="card"],
+  .testimonial-card,
+  .pathway-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s ease !important;
+  }
+
+  /* Scroll reveal - smooth entrance */
+  .act-content,
+  .reveal {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Navigation scroll effect */
+  .nav.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* Testimonial stars - subtle pulse */
+  .testimonial-stars {
+    animation: subtlePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes subtlePulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+}
+
+/* ==========================================================================
+   10. LOADING STATES - Premium feedback
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Shimmer effect for loading images - DISABLED */
+  /* img[loading="lazy"]:not(.loaded) {
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  } */
+
+  /* Prevent layout shift */
+  img {
+    aspect-ratio: attr(width) / attr(height);
+    object-fit: cover;
+  }
+
+  /* Smooth opacity transition when loaded */
+  img.loaded {
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* ==========================================================================
+   11. TESTIMONIAL SECTION POLISH - Lighter Design for Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Remove heavy card background - make it blend with page */
+  .testimonial {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 2rem 1rem !important;
+    margin-top: 2rem !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-top: 1px solid rgba(212, 193, 55, 0.2) !important;
+    border-bottom: 1px solid rgba(212, 193, 55, 0.2) !important;
+  }
+
+  .testimonial-quote {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important;
+    font-style: italic !important;
+    color: rgba(255, 254, 240, 0.95) !important;
+    font-weight: 400 !important;
+  }
+
+  .testimonial-author {
+    font-size: 0.85rem !important;
+    margin-top: 1rem !important;
+    opacity: 0.7 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 600 !important;
+  }
+
+  .testimonial-stars {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+    opacity: 0.9 !important;
+  }
+
+  /* Reduce testimonial size in hero section on mobile - keep opacity strong */
+  .hero .testimonial {
+    transform: scale(0.88) !important;
+    margin-top: 2rem !important; /* Less gap from date */
+    margin-bottom: 1rem !important; /* Tighten bottom */
+    padding: 1.25rem 0.5rem !important;
+    border-bottom: none !important; /* Remove bottom border, keep top */
+  }
+
+  .hero .testimonial-quote {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    /* Keep original opacity - quote should be readable */
+  }
+
+  .hero .testimonial-stars {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero .testimonial-author {
+    font-size: 0.7rem !important;
+    margin-top: 0.75rem !important;
+  }
+
+  /* Reduce CTA button prominence on mobile - very subtle */
+  .hero .btn--primary,
+  .hero .hero-cta {
+    transform: scale(0.85) !important; /* Smaller */
+    /* opacity controlled by animation - do not override */
+    font-size: 0.9rem !important; /* Smaller text */
+    padding: 0.75rem 1.5rem !important; /* Less padding */
+    box-shadow: 0 1px 8px rgba(212, 193, 55, 0.15) !important; /* Very subtle shadow */
+    font-weight: 600 !important; /* Heavier font weight */
+    margin-top: 2.5rem !important; /* More space from tagline */
+  }
+
+  .hero .hero-cta-subtext {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important; /* Remove bottom margin */
+    /* opacity controlled by animation - do not override */
+  }
+}
+
+/* ==========================================================================
+   12. FAQ SECTION ENHANCEMENT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .faq-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .faq-question {
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+  }
+
+  .faq-answer {
+    padding-top: 1rem !important;
+    line-height: 1.65 !important;
+    opacity: 0.9 !important;
+  }
+
+  /* ==========================================================================
+     ACT SECTIONS - Consolidated text blocks
+     ========================================================================== */
+
+  /* Consolidate Act paragraphs into single block appearance */
+  .act-content p {
+    display: inline !important; /* Make paragraphs flow together */
+  }
+
+  /* Add space between consolidated paragraphs */
+  .act-content p + p::before {
+    content: " " !important; /* Space between sentences */
+  }
+
+  /* Center the Read more buttons */
+  .read-more-btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important; /* Changed from flex to block for centering */
+    text-align: center !important;
+    width: fit-content !important;
+  }
+
+  /* ==========================================================================
+     PRICING SECTION - Match page styling on mobile
+     ========================================================================== */
+
+  /* Stack pricing cards vertically on mobile */
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Pricing cards - match light section styling */
+  .qualifying-pricing > div[style*="border: 2px solid"] {
+    background: white !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
+/* ==========================================================================
+   13. FINAL TOUCHES - Premium details
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Remove page border on mobile - cleaner */
+  body::after {
+    display: none !important;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Selection color - brand colored */
+  ::selection {
+    background: rgba(212, 193, 55, 0.3);
+    color: inherit;
+  }
+
+  /* Focus states - accessible and pretty */
+  *:focus-visible {
+    outline: 2px solid #D4C137;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Prevent text selection on UI elements */
+  button,
+  .nav,
+  [onclick] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Optimize font rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ==========================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hardware acceleration for smooth animations */
+  .nav,
+  .btn,
+  img,
+  [class*="card"] {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

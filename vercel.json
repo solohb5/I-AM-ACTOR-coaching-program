@@ -1,31 +1,12 @@
 {
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' js.stripe.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; connect-src 'self' api.stripe.com connect.mailerlite.com; frame-src js.stripe.com;"
-        }
-      ]
+  "build": {
+    "env": {
+      "NODE_VERSION": "22"
     }
-  ],
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "framework": "vite",
   "functions": {
     "api/create-checkout.js": {
       "maxDuration": 10
@@ -33,5 +14,15 @@
     "api/mailerlite-subscribe.js": {
       "maxDuration": 10
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
