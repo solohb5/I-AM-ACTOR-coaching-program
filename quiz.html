@@ -815,8 +815,6 @@
 
     <script>
         // ===== CONFIGURATION =====
-        const CONVERTKIT_API_KEY = 'YOUR_API_KEY_HERE';
-        const CONVERTKIT_FORM_ID = 'YOUR_FORM_ID_HERE';
         const STRIPE_CHECKOUT_LINK = 'https://buy.stripe.com/bJe4gyeNWal51ZK69s1ck0p';
         
         // MailerLite Configuration - Handled by serverless function at /api/mailerlite-subscribe
@@ -1131,32 +1129,6 @@
                 document.getElementById('quiz').classList.add('active');
                 showQuestion();
             }, 300);
-            
-            // Submit to ConvertKit in background
-            submitToConvertKit(email, ['quiz-completed']);
-        }
-
-        async function submitToConvertKit(email, tags, customFields = {}) {
-            try {
-                const response = await fetch(`https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        api_key: CONVERTKIT_API_KEY,
-                        email: email,
-                        tags: tags,
-                        fields: customFields
-                    })
-                });
-                
-                if (!response.ok) {
-                    console.error('ConvertKit submission failed');
-                }
-            } catch (error) {
-                console.error('Error submitting to ConvertKit:', error);
-            }
         }
 
         async function addToMailerLite(email, resultType) {
@@ -1215,14 +1187,7 @@
             });
             
             const result = resultTypes[resultType];
-            
-            // Submit to ConvertKit
-            submitToConvertKit(userEmail, ['quiz-completed', result.tag], {
-                quiz_result: result.name,
-                result_type: resultType,
-                quiz_completed: new Date().toISOString()
-            });
-            
+
             setTimeout(() => {
                 displayResult(result);
             }, 2000);

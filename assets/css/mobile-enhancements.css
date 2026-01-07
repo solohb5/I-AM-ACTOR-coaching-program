@@ -750,3 +750,166 @@ img[src*="tools1.png"] {
     padding-top: 2rem !important;
   }
 }
+
+/* ===== PHOTOGRAPHY SYSTEM MOBILE ENHANCEMENTS ===== */
+
+@media (max-width: 968px) {
+  /* Photo-text grid - Stack vertically on mobile */
+  .photo-text-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md, 32px) !important;
+  }
+
+  /* Photo appears first on mobile */
+  .photo-text-grid--reverse .photo-text-image {
+    order: -1 !important;
+  }
+
+  .photo-text-grid--reverse .photo-text-content {
+    order: 0 !important;
+  }
+
+  /* Testimonials grid - Single column stacking */
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md, 32px) !important;
+  }
+
+  /* Testimonial cards - Reduce padding on mobile */
+  .testimonial-card {
+    padding: var(--space-md, 32px) !important;
+  }
+
+  /* Testimonial photo - Smaller on mobile */
+  .testimonial-card-photo {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* Video modal - Full screen on mobile */
+  .video-modal-content {
+    width: 95% !important;
+  }
+
+  .video-modal-close {
+    top: -45px !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 20px !important;
+  }
+
+  /* Trust photo - Smaller on mobile */
+  .trust-photo {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  /* Toolkit welcome video - Responsive */
+  .toolkit-welcome-video {
+    padding: 0 var(--space-sm, 16px) !important;
+  }
+
+  .toolkit-video-intro {
+    font-size: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Section padding - Reduce on small screens */
+  .section-photo-text,
+  .testimonials-section {
+    padding: var(--space-md, 32px) 0 !important;
+  }
+
+  /* Testimonial cards - Even smaller photo on tiny screens */
+  .testimonial-card-photo {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  /* Trust photo - Even smaller */
+  .trust-photo {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  /* Video trigger button - Slightly smaller */
+  .testimonial-video-trigger {
+    width: 48px !important;
+    height: 48px !important;
+    bottom: 8px !important;
+    right: 8px !important;
+  }
+
+  .play-icon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* ===== HERO VIDEO MOBILE OPTIMIZATIONS ===== */
+
+@media (max-width: 768px) {
+  /* Hero video - More subtle on mobile */
+  .hero-video-bg {
+    opacity: 0.3 !important;
+  }
+
+  /* Knight accent - Smaller and lighter */
+  .hero-knight-accent {
+    width: 120px !important;
+    bottom: -1rem !important;
+    left: 1rem !important;
+    opacity: 0.2 !important;
+  }
+}
+
+/* ===== VIDEO MODAL TOUCH OPTIMIZATION ===== */
+
+@media (max-width: 768px) {
+  /* Larger touch target for close button */
+  .video-modal-close {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  /* Video trigger buttons */
+  .testimonial-video-trigger {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+}
+
+/* ===== LAZY LOADING MOBILE PERFORMANCE ===== */
+
+@media (max-width: 768px) {
+  /* Optimize lazy loading on mobile */
+  .lazy-image,
+  .lazy-video {
+    will-change: opacity !important;
+  }
+
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    .lazy-image,
+    .lazy-video,
+    .testimonial-card {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+/* ===== ACCESSIBILITY - HIGH CONTRAST MODE ===== */
+
+@media (prefers-contrast: high) {
+  .testimonial-card,
+  .photo-text-image,
+  .trust-photo {
+    border: 2px solid currentColor !important;
+  }
+
+  .video-modal-close {
+    border: 2px solid currentColor !important;
+  }
+}

@@ -1,143 +1,181 @@
-# I AM ACTOR - The Actor's Journey
+# 🎭 I AM ACTOR - The Actor's Journey Landing Page
 
-Landing page for Hans's 12-week Actor's Journey coaching program.
+**A conversion-optimized landing page for a premium 12-week acting coaching intensive.**
+
+---
 
 ## 🚀 Quick Start
 
-1. **Production URL**: Deploy to Vercel
-2. **Local Development**: Open `index.html` in browser (no build needed!)
+**New here?**
+1. Read [`00-START-HERE.md`](./00-START-HERE.md) - Complete orientation
+2. Check [`01-FOCUS-TODAY.md`](./01-FOCUS-TODAY.md) - Today's tasks
+3. Review [`docs/CLAUDE.md`](./docs/CLAUDE.md) - Full project context for AI
 
-## 📁 Project Structure
+**Returning?**
+- Open [`01-FOCUS-TODAY.md`](./01-FOCUS-TODAY.md) and get to work
+
+---
+
+## 📁 What's Here
 
 ```
 /
-├── index.html                  # Main landing page (Actor's Journey)
-├── success.html               # Stripe payment success page
-├── assets/
-│   ├── css/
-│   │   ├── storybook.css      # Legacy (not used by Actor's Journey)
-│   │   └── production-overrides.css  # Consolidated overrides
-│   ├── js/
-│   │   ├── journey.js         # Main JavaScript for Actor's Journey
-│   │   ├── minimal-safe.js    # Legacy (for other pages)
-│   │   └── stripe-integration.js  # Stripe checkout handlers
-│   └── images/                # All image assets
-├── api/
-│   └── create-checkout.js     # Vercel serverless function (Stripe)
-├── archive/                    # Old versions (safe to ignore)
-│   ├── old-versions/          # Archived HTML experiments
-│   ├── unused-js/             # Archived JavaScript
-│   └── unused-css/            # Archived CSS
-└── vercel.json                # Vercel deployment config
+├── 00-START-HERE.md          ← Start here!
+├── 01-FOCUS-TODAY.md          ← Daily task list
+├── 02-BIG-PICTURE.md          ← Vision & roadmap
+├── 03-IDEA-PARKING.md         ← Idea capture
+├── CLAUDE.md                  ← AI context (comprehensive)
+├── AGENTS.md                  ← AI agent modes
+│
+├── index.html                 ← Main landing page
+├── success.html               ← Post-purchase page
+├── memory-guide.html          ← Example bonus resource
+│
+├── assets/                    ← CSS, JS, images
+├── api/                       ← Stripe serverless function
+└── archive/                   ← Old versions, research
 ```
 
-## ⚙️ Configuration
+---
 
-### Update Spots Available
-Edit line 1838 in `index.html`:
-```javascript
-const SPOTS_AVAILABLE = 10; // Change this number
-```
+## 🛠️ Tech Stack
 
-### Add Google Analytics
-1. Get your GA4 Measurement ID (format: `G-XXXXXXXXXX`)
-2. Edit `index.html` lines 1217-1226
-3. Uncomment and replace `G-XXXXXXXXXX` with your ID
-
-### Update Stripe Payments
-Direct Stripe Checkout links are at:
-- Line 1709: One-time payment ($1,297)
-- Line 1724: Payment plan (3 × $449)
-- Line 1782: Footer one-time link
-- Line 1786: Footer payment plan link
-
-### Update Calendly Link
-Current: `https://calendly.com/hans-magic/actors-road-map-coaching`
-- Line 1743: Investment section
-- Line 1818: Footer
-
-## 🎨 Design System
-
-### Colors
-- **Ivory**: `#FFFEF0` - Light sections background
-- **Adventure Green**: `#5A8C3A` - Primary accent (light sections)
-- **Old Gold**: `#D4C137` - Primary accent (dark sections)
-- **Deep Charcoal**: `#1A1A1A` - Dark sections background
-
-### Typography
-- **Headlines**: Bentham (hero), Cinzel (dark sections), Crimson Text (light sections)
-- **Body**: Lora (serif)
-- **Accents**: Alegreya (CTAs, labels)
-
-## 📊 Analytics Events
-
-The `journey.js` file tracks:
-- `page_loaded` - Initial page view
-- `stripe_checkout_clicked` - Payment button clicks
-- `calendly_clicked` - Booking link clicks
-- `nav_cta_clicked` - Navigation CTA
-- `hero_cta_clicked` - Hero section CTA
-- `scroll_depth` - 25%, 50%, 75%, 100%
-- `time_on_page` - Every 30 seconds
-- `page_visibility_change` - Tab switching
-- `javascript_error` - Any JS errors
-
-## 🖼️ Image Optimization TODO
-
-See `IMAGE-OPTIMIZATION-TODO.md` for compression instructions.
-
-**Priority images to compress:**
-1. `tools1.png` (889KB → ~150KB)
-2. `hans-bio.jpg` (620KB → ~80KB)
-3. `knightartfire (500 x 500 px).png` (301KB → ~50KB)
-
-## 🔐 Environment Variables (Vercel)
-
-Set in Vercel dashboard → Settings → Environment Variables:
-
-- `STRIPE_SECRET_KEY` - Your Stripe secret key
-
-## 🚢 Deployment
-
-### Vercel (Recommended)
-```bash
-vercel
-```
-
-Or push to GitHub and connect to Vercel dashboard.
-
-### Custom Domain
-Update CORS in `api/create-checkout.js` line 15-18 to include your domain.
-
-## 📝 Content Updates
-
-### Program Details
-- **Price**: $1,297 one-time or 3 × $449/month
-- **Duration**: 12 weeks
-- **Start Date**: November 4, 2025
-- **Spots**: Update `SPOTS_AVAILABLE` constant
-
-### Testimonials
-Current testimonials are from:
-- Monique (Hero)
-- Deb LeClair (Self-Tape section)
-- Gen (Path section)
-- Brandon (Final section)
-
-Add/edit directly in `index.html`.
-
-## 🔧 Tech Stack
-
-- **Frontend**: Vanilla HTML/CSS/JavaScript (no framework!)
-- **Payments**: Stripe Checkout (direct links)
-- **Scheduling**: Calendly embeds
+- **Frontend**: Pure HTML/CSS/JavaScript (no frameworks)
+- **Payments**: Stripe Checkout
 - **Hosting**: Vercel
-- **Backend**: Vercel Serverless Functions (Node.js)
+- **AI Tools**: Cursor + Claude Code with MCP servers
 
-## 📞 Support
+---
 
-Questions? Contact Hans via Calendly link on site.
+## 🎯 The Offer
 
-## 📄 License
+**The Actor's Journey** - 12-week intensive coaching program
 
-© 2025 I AM ACTOR. All rights reserved.
+- **Act I**: Awaken the Artist (discover your superpower)
+- **Act II**: Character Creation (build your 3 Character Cards)
+- **Act III**: Material Mastery (strategic materials & brand)
+- **Plus**: Self-Tape Games (30 challenges, badge progression)
+- **Bonus**: The 5 Actor's Tools (founding members only)
+
+**Investment**: $1,297 (or 4 × $375/month)  
+**Spots**: 10 per cohort  
+**Launch**: November 4, 2025
+
+---
+
+## 🎨 Design Philosophy
+
+**"Storybook Meets Cinematic Epic"**
+
+- Warm, narrative-driven voice
+- Knight companions throughout
+- Light/dark section rhythm
+- Acknowledges fear, offers hope
+- Transformation over information
+
+**Fonts**: Bentham, Cinzel, Crimson Text, Lora  
+**Colors**: Ivory, Salmon, Old Gold, Charcoal
+
+---
+
+## 📚 Key Documentation
+
+| File | Purpose |
+|------|---------|
+| [`00-START-HERE.md`](./00-START-HERE.md) | Complete workspace orientation |
+| [`docs/CLAUDE.md`](./docs/CLAUDE.md) | Full project context for AI |
+| [`docs/AGENTS.md`](./docs/AGENTS.md) | Specialized AI workflows |
+| [`docs/WORKFLOW-GUIDE.md`](./docs/WORKFLOW-GUIDE.md) | How to work effectively here |
+| [`docs/MCP-QUICK-REF.md`](./docs/MCP-QUICK-REF.md) | MCP tools quick reference |
+
+---
+
+## 🚀 Deployment
+
+**Live Site**: https://iamactor.com
+
+**Deploy to Vercel:**
+```bash
+vercel deploy
+# Or push to main for auto-deploy
+```
+
+**Test Locally:**
+```bash
+npx serve
+# Open http://localhost:3000
+```
+
+---
+
+## 🔑 Environment Setup
+
+1. **Copy template:**
+   ```bash
+   cp env.template .env
+   ```
+
+2. **Add API keys** (see [`env.template`](./env.template)):
+   - Stripe (payment processing)
+   - Firecrawl (optional, for web scraping)
+   - GitHub (optional, for Git automation)
+   - Brave Search (optional, for web search)
+
+3. **Never commit `.env`** (already in `.gitignore`)
+
+---
+
+## 💡 Working Here
+
+This workspace uses the **cursor-workflow-template** methodology:
+
+- **One task at a time** (see `01-FOCUS-TODAY.md`)
+- **Ideas get parked** (see `03-IDEA-PARKING.md`)
+- **Vision stays visible** (see `02-BIG-PICTURE.md`)
+- **AI stays context-aware** (see `docs/CLAUDE.md`)
+
+Read [`docs/WORKFLOW-GUIDE.md`](./docs/WORKFLOW-GUIDE.md) for complete instructions.
+
+---
+
+## 🤖 AI Tools
+
+This project uses **MCP (Model Context Protocol)** to enhance Claude/Cursor:
+
+- 🔥 **Firecrawl** - Web scraping
+- 🐙 **GitHub** - Git automation
+- 📚 **Context7** - Current API docs
+- 🧠 **Sequential Thinking** - Complex reasoning
+- 🔍 **Brave Search** - Web search
+
+See [`docs/MCP-QUICK-REF.md`](./docs/MCP-QUICK-REF.md) for usage.
+
+---
+
+## 📞 Links
+
+- **Live Site**: https://iamactor.com
+- **Calendly**: https://calendly.com/hans-magic/actors-journey-quick-chat
+- **Stripe Dashboard**: [Your Stripe account]
+
+---
+
+## 👤 About
+
+Created by **Hans Christopher** - Actor, coach, and guide for The Actor's Journey.
+
+Built with the [cursor-workflow-template](https://github.com/your-repo) for optimal AI-assisted development.
+
+---
+
+## 🎯 Current Phase
+
+**Starting fresh with new copy and structure.**
+
+Previous version backed up in [`archive/old-versions/`](./archive/old-versions/).
+
+See [`01-FOCUS-TODAY.md`](./01-FOCUS-TODAY.md) for current tasks.
+
+---
+
+**Ready to work? Open [`00-START-HERE.md`](./00-START-HERE.md) and dive in!** 🚀

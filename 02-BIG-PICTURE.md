@@ -18,13 +18,55 @@ Transform actors from scattered and uncertain to clear, confident, and castable 
 
 ## 📊 Current Site Structure
 
-### Live Pages:
-- `/index.html` - Main landing page (Actor's Journey program)
-- `/quiz.html` - **NEW: Actor Type Quiz** (lead gen + toolkit offer)
-- `/challenge.html` - Challenge page
+### React Pages (localhost:5002):
+- `/actual` - **The Door** (philosophy) - Collins-style with scroll-activated inversion
+- `/secret` - **The Secret** (method) - 11 powerful beats, starts dark → flips light
+- `/challenge` - **The Challenge** ($365 offer) - 15 powerful beats, starts light → flips dark
+- `/quiz` - Actor Type Quiz (lead gen + toolkit offer)
+- `/toolkit` - The Actor's Toolkit (member home with golden ritual)
+- `/success` - Success/thank you page
+
+### Legacy HTML Pages:
+- `/index.html` - Original landing page (Actor's Journey program)
+- `/quiz.html` - Original quiz HTML version
+- `/toolkit.html` - Original toolkit HTML version
+- `/challenge.html` - Original challenge HTML version
 - `/memory-guide.html` - Memory Mastery Guide
-- `/philosophy.html` - Philosophy page
-- `/success.html` - Success/thank you page
+- `/philosophy.html` - Original philosophy page
+
+---
+
+## 🎨 Collins-Style Design System (NEW)
+
+**Philosophy:**
+"Say more with less. Let the work breathe."
+
+**Core Principles:**
+- Extreme restraint - massive white space, single powerful lines
+- Dramatic scroll-activated color shifts (not jarring alternations)
+- Unified light backgrounds + CSS inversion filter
+- 70% scroll trigger for emotional impact
+- EB Garamond serif typography
+- No unnecessary decoration
+
+**Color System:**
+- Base: `#F8F8F7` (warm cream/light) - ALL sections
+- Text: `#0A0A0A` (almost black)
+- Dark mode: CSS `filter: invert(1)`
+- Transition: 0.6s smooth ease-in-out
+
+**Typography:**
+- Font: 'EB Garamond', serif
+- Sizes: clamp(48px, 7vw, 80px) for body, clamp(56px, 8vw, 96px) for hero
+- Letter-spacing: -0.02em (tight, cinematic)
+- Line height: 1.1-1.2 (compact, impactful)
+
+**Layout:**
+- Full viewport sections (100vh)
+- 15% horizontal padding
+- 192px vertical padding
+- Center-aligned content
+- Max-width: 900px for text blocks
 
 ---
 
@@ -49,7 +91,7 @@ Lead generation funnel that captures emails and soft-sells the $37 Actor's Toolk
 ### Technical Status:
 ✅ Fully built and deployed  
 ✅ Stripe checkout connected ($37)  
-⏳ ConvertKit API keys needed (see `QUIZ-AUTOMATION-SPEC.md`)
+✅ MailerLite API connected via serverless function
 
 ### Key Files:
 - `quiz.html` - Complete quiz page
@@ -94,6 +136,15 @@ Lead generation funnel that captures emails and soft-sells the $37 Actor's Toolk
 **Positioned as:** Everything you need to start acting. Today.
 
 **Sold via:** Quiz result page (soft-sell modal after personalized validation)
+
+**Member Experience (`/toolkit.html`):**
+- **Golden Ritual Unlock**: Press and hold the I AM ACTOR wax seal for 2.5 seconds
+- Dark leather storybook cover with real wax seal
+- Golden sparks, swirling particles, and progress ring during charge
+- Massive golden explosion on completion
+- Premium member home with all 5 tools + bonus
+- Challenge upsell section (30-Tape Challenge)
+- **"Not a click, but a ritual"** - intentional, magical, memorable
 
 ---
 
@@ -153,7 +204,10 @@ Lead generation funnel that captures emails and soft-sells the $37 Actor's Toolk
 
 ## 🎨 Brand & Design
 
-**Aesthetic:**
+**Primary Aesthetic (Collins-Style):**
+"Extreme Restraint Meets Cinematic Drama"
+
+**Secondary Aesthetic (Quiz/Toolkit):**
 "Storybook Meets Cinematic Epic"
 
 **Voice:**
@@ -162,8 +216,19 @@ Lead generation funnel that captures emails and soft-sells the $37 Actor's Toolk
 - Offers hope without hype
 - Positions transformation as a journey, not a destination
 - "You're right on time" (not "you're not behind")
+- **Collins pages**: Powerful single lines, massive pauses, emotional build
 
 **Visual Elements:**
+
+*Collins Pages (Door/Secret/Challenge):*
+- Minimal navigation (2-line hamburger)
+- Scroll-activated color inversion
+- Single powerful statements per screen
+- Massive white space
+- EB Garamond serif only
+- No images, no decoration
+
+*Quiz/Toolkit Pages:*
 - Knights as playful companions and guides
 - Storybook-style text sections
 - Cinematic dark backgrounds with gold accents
@@ -192,13 +257,14 @@ Lead generation funnel that captures emails and soft-sells the $37 Actor's Toolk
 **✅ COMPLETED:**
 - Main landing page (`index.html`) - Actor's Journey program
 - Actor Type Quiz (`quiz.html`) - Lead gen + tripwire funnel
+- **The Actor's Toolkit Page (`toolkit.html`)** - Member home with golden ritual
 - Stripe integration for both products
+- MailerLite quiz integration (Quiz Funnel 2026)
 - Mobile responsive design
 - Vercel deployment
 
 **🔧 NEEDS SETUP (Outside of Code):**
-- ConvertKit API keys for quiz email capture
-- ConvertKit automation (see `QUIZ-AUTOMATION-SPEC.md`)
+- MailerLite automation for quiz email capture (API connected)
 - Traffic generation (ads, social, SEO)
 
 **📋 FUTURE PHASES:**
@@ -230,8 +296,19 @@ If no → cut it.
 - "You're right on time" (more powerful than "not behind")
 - Credibility before asking for email (trust-building)
 - Soft-sell approach (optional, not forced)
+- **Collins approach**: Powerful single lines that hit harder than paragraphs
+- **The shift at 70%**: Color flip enhances emotional arc
 
 **Design:**
+
+*Collins Pages:*
+- Unified light background + CSS inversion (cleaner than alternating)
+- Scroll-activated drama (not jarring section switches)
+- Single statements with massive breathing room
+- EB Garamond serif for elegance
+- 70% scroll trigger for perfect "shift" moment
+
+*Quiz/Toolkit Pages:*
 - Cinematic black backgrounds
 - Warm, accessible photos (not headshots)
 - Knights as subtle guides/encouragers
@@ -243,25 +320,75 @@ If no → cut it.
 - Loading screen only after commitment (not after email)
 - Knight pointing at CTA (subtle nudge)
 - "No thanks" option that feels guilt-free
+- **Hold-to-charge ritual** (intentional delay = memorable experience)
+- Golden particle effects (makes interactions feel magical)
+- **Smooth scroll** (Lenis) + scroll-activated effects = cinematic feel
+- "Download Guide" > "Download PDF" (better positioning)
 
 ---
 
 ## 📚 Key Resources
 
 **Documentation:**
-- `QUIZ-AUTOMATION-SPEC.md` - ConvertKit setup instructions
-- `01-FOCUS-TODAY.md` - Session handoff notes
-- `AGENTS.md` - Agent personalities and workflows
+- `SESSION-COMPLETE.md` - Collins-style scroll-activated inversion system (Jan 3, 2026)
+- `01-FOCUS-TODAY.md` - Daily session notes
+- `02-BIG-PICTURE.md` - This file (project vision)
+- `QUIZ-AUTOMATION-SPEC.md` - Email automation spec (MailerLite)
 
-**Code:**
-- `index.html` - Main landing page
-- `quiz.html` - Actor Type Quiz
+**Code (React/Collins):**
+- `/client/src/pages/collins-actual.tsx` - The Door (philosophy)
+- `/client/src/pages/secret.tsx` - The Secret (method)
+- `/client/src/pages/challenge.tsx` - The Challenge (offer)
+- `/client/src/App.tsx` - Router + Lenis smooth scroll
+
+**Code (Legacy HTML):**
+- `index.html` - Original landing page
+- `quiz.html` - Original quiz
+- `toolkit.html` - Original toolkit
 - `assets/` - Images, CSS, JavaScript
 - `api/create-checkout.js` - Stripe serverless function
 
 **Archives:**
 - `archive/old-versions/` - Previous landing page versions
-- `archive/research-docs/` - Research and planning docs
+- `archive/legacy-project-context/` - Previous project docs
+
+---
+
+## 🚀 Current Status & Roadmap
+
+**✅ COMPLETED (Jan 3, 2026):**
+- **Collins-style scroll-activated color inversion system**
+- Three main pages: The Door, The Secret, The Challenge
+- Unified light background + CSS inversion approach
+- 70% scroll trigger for dramatic color shifts
+- Distilled content to powerful single-line beats
+- Mobile-responsive typography (clamp)
+- Lenis smooth scroll integration
+- Minimal navigation with overlay menu
+
+**✅ COMPLETED (Previous):**
+- Main landing page (`index.html`) - Actor's Journey program
+- Actor Type Quiz (`quiz.html`) - Lead gen + tripwire funnel
+- The Actor's Toolkit Page (`toolkit.html`) - Member home with golden ritual
+- Stripe integration for both products
+- MailerLite quiz integration (Quiz Funnel 2026)
+- Mobile responsive design
+- Vercel deployment
+
+**🔧 NEEDS SETUP (Outside of Code):**
+- MailerLite automation for quiz email capture (API connected)
+- Stripe payment link for Challenge page ($365)
+- Traffic generation (ads, social, SEO)
+
+**📋 FUTURE PHASES:**
+- Test Collins pages on various devices and browsers
+- Fine-tune 70% scroll trigger if needed
+- Add video content to Collins pages (if desired)
+- A/B test Collins vs. Red Antler versions
+- Implement analytics tracking
+- Build email nurture sequences
+- Create more tripwire products
+- Build testimonial collection system
 
 ---
 

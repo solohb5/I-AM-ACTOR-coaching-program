@@ -1,61 +1,67 @@
-# Environment variables - CRITICAL SECURITY
+# Environment Variables
 .env
 .env.local
-.env.production
-.env.development
-*.pem
+.env.*.local
 
-# Node modules
+# Node Modules
 node_modules/
+package-lock.json
 
 # Vercel
 .vercel
 
-# Build outputs
+# Build Output
 dist/
 build/
+.next/
+out/
 
 # Logs
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# Dependency directories
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# OS generated files
+# OS Files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
 *.swp
 *.swo
+*~
 
-# Temporary files
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary Files
+tmp/
+temp/
 *.tmp
-*.temp
-EOF < /dev/null
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key
+
+# MCP Local Cache (if any)
+.mcp-cache/
+
+# Claude/Agent temp files
+.claude/temp/
+.agent/temp/
+
+# Backup files (keep in archive instead)
+*.backup
+*-backup.*

@@ -36,6 +36,9 @@
     <!-- Design Polish - Premium spacing & bluebird accents -->
     <link rel="stylesheet" href="assets/css/design-polish.css">
 
+    <!-- Photography & Video System - World-class visual integration -->
+    <link rel="stylesheet" href="assets/css/photography-system.css">
+
     <style>
         /* ===============================================
            DESIGN SYSTEM - The Actor's Journey
@@ -1792,9 +1795,18 @@
     </nav>
 
     <!-- SECTION 1: DARK - Hero -->
-    <section class="hero section-dark">
-        <img src="assets/images/knightartfirered (500 x 500 px)(2).png" alt="" class="hero-knight">
-        <div class="container-narrow text-center">
+    <section class="hero section-dark hero--video">
+        <!-- Hero Video Background -->
+        <video class="hero-video-bg lazy-video" autoplay muted loop playsinline>
+            <source data-src="assets/video/hero/hero-coaching-moment.webm" type="video/webm">
+            <source data-src="assets/video/hero/hero-coaching-moment.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+
+        <!-- Knight Accent (30% opacity, bottom-left corner) -->
+        <img src="assets/images/knightartfirered (500 x 500 px)(2).png" alt="" class="hero-knight-accent">
+
+        <div class="container-narrow text-center hero-content">
             <h1 class="hero-title">
                 <span class="hero-article">The</span>
                 <span class="hero-main" data-text="Actor's Journey">Actor's Journey</span>
@@ -1956,6 +1968,46 @@
                         That's what this journey is all about...
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: LIGHT - Meet Hans (Photography Integration) -->
+    <section class="section section-light section-photo-text">
+        <div class="photo-text-grid">
+            <div class="photo-text-image">
+                <img
+                    class="lazy-image lazy-image-placeholder"
+                    data-src="assets/images/photography/hans/hans-teaching-wide.jpg"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 1600'%3E%3Crect fill='%23D4C137' opacity='0.1' width='2400' height='1600'/%3E%3C/svg%3E"
+                    alt="Hans coaching an actor"
+                    loading="lazy"
+                >
+            </div>
+            <div class="photo-text-content">
+                <span class="section-label">Your Guide</span>
+                <h2 class="section-title">Meet Hans</h2>
+                <p>
+                    I waited 5 years before stepping into my first acting class.
+                </p>
+                <p>
+                    Not because I didn't want to act. But because standing in front of people felt like stepping onto a battlefield with no armor.
+                </p>
+                <p>
+                    Stage fright consumed me. The idea of being seen, judged, evaluated—it was paralyzing.
+                </p>
+                <p>
+                    But I discovered something that changed everything: <strong>Acting isn't about being fearless. It's about rediscovering play.</strong>
+                </p>
+                <p>
+                    When I stopped trying to be impressive and started being human, everything shifted. The camera loved it. Casting directors responded. Roles started coming.
+                </p>
+                <p>
+                    Now I teach actors how to find that same freedom—how to stop performing and start being undeniably, magnetically themselves.
+                </p>
+                <p style="font-style: italic; color: var(--old-gold); margin-top: 2rem;">
+                    <strong>The fire has always been in you. You've just needed to know the way back.</strong>
+                </p>
             </div>
         </div>
     </section>
@@ -2315,6 +2367,80 @@
                     "The 30 Tape Challenge provided structure and focus that made such a difference for me."
                 </div>
                 <div class="testimonial-author">— Deb LeClair</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DARK - Student Testimonials (Photography Integration) -->
+    <section class="section section-dark testimonials-section">
+        <div class="container text-center">
+            <span class="section-label">Student Transformations</span>
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Real Actors, Real Results</h2>
+            <p style="font-family: 'Lora', serif; font-size: 1.2rem; line-height: 1.7; opacity: 0.85; max-width: 650px; margin: 0 auto 5rem;">
+                These actors stopped performing and started being human. The camera loved it.
+            </p>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Testimonial 1: Monique -->
+            <div class="testimonial-card animate-fade-in-up">
+                <div class="testimonial-card-photo">
+                    <img
+                        class="lazy-image"
+                        data-src="assets/images/photography/testimonials/monique-headshot.jpg"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Ccircle fill='%23D4C137' opacity='0.15' cx='120' cy='120' r='120'/%3E%3C/svg%3E"
+                        alt="Monique"
+                        loading="lazy"
+                    >
+                    <!-- Video trigger button (optional - add data-video-id when video is available) -->
+                    <!-- <button class="testimonial-video-trigger" data-video-id="VIMEO_ID_HERE" aria-label="Play testimonial video from Monique">
+                        <svg class="play-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <span class="sr-only">Play video</span>
+                    </button> -->
+                </div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <blockquote class="testimonial-quote">
+                    "Working with Hans has been truly inspiring. He transformed how I approach the craft. I stopped trying to be perfect and started being present."
+                </blockquote>
+                <cite class="testimonial-author">— Monique</cite>
+            </div>
+
+            <!-- Testimonial 2: Deb LeClair -->
+            <div class="testimonial-card animate-fade-in-up">
+                <div class="testimonial-card-photo">
+                    <img
+                        class="lazy-image"
+                        data-src="assets/images/photography/testimonials/deb-headshot.jpg"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Ccircle fill='%23D4C137' opacity='0.15' cx='120' cy='120' r='120'/%3E%3C/svg%3E"
+                        alt="Deb LeClair"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <blockquote class="testimonial-quote">
+                    "The 30 Tape Challenge provided structure and focus that made such a difference for me. Hans showed me how to stop second-guessing and start trusting my instincts."
+                </blockquote>
+                <cite class="testimonial-author">— Deb LeClair</cite>
+            </div>
+
+            <!-- Testimonial 3: Mark Saldana -->
+            <div class="testimonial-card animate-fade-in-up">
+                <div class="testimonial-card-photo">
+                    <img
+                        class="lazy-image"
+                        data-src="assets/images/photography/testimonials/mark-headshot.jpg"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Ccircle fill='%23D4C137' opacity='0.15' cx='120' cy='120' r='120'/%3E%3C/svg%3E"
+                        alt="Mark Saldana"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <blockquote class="testimonial-quote">
+                    "Hans helped me reconnect to the part of myself that just loves to play. Now auditions feel like an adventure instead of a test. That shift changed everything."
+                </blockquote>
+                <cite class="testimonial-author">— Mark Saldana</cite>
             </div>
         </div>
     </section>
@@ -2723,6 +2849,25 @@
                 <h2 class="section-title">November 4th, 2025</h2>
                 <p style="font-size: 1.1rem; line-height: 1.7; color: #666; margin: 0 auto 3rem; max-width: 650px;">
                     10 Actors • 12 Weeks • 2 Paths
+                </p>
+            </div>
+
+            <!-- Hans Promise (Trust Signal) -->
+            <div style="text-align: center; margin: 0 auto 4rem;">
+                <div class="trust-photo">
+                    <img
+                        class="lazy-image"
+                        data-src="assets/images/photography/hans/hans-headshot-circle.jpg"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle fill='%23D4C137' opacity='0.15' cx='100' cy='100' r='100'/%3E%3C/svg%3E"
+                        alt="Hans Brofeldt"
+                        loading="lazy"
+                    >
+                </div>
+                <p class="trust-message">
+                    "The fire has always been in you. This journey is about finding the way back to it."
+                </p>
+                <p style="font-family: 'Cinzel', serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--old-gold);">
+                    — Hans
                 </p>
             </div>
 
@@ -3702,5 +3847,9 @@
             }
         }
     </script>
+
+    <!-- Photography & Video System Scripts -->
+    <script src="assets/js/lazy-images.js"></script>
+    <script src="assets/js/video-player.js"></script>
 </body>
 </html>

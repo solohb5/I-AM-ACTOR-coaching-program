@@ -1,181 +1,185 @@
 # 📅 Today's Focus
 
-> **Date**: January 1, 2026  
-> **Session**: MailerLite Quiz Integration  
-> **Status**: ✅ **MAILERLITE INTEGRATION LIVE**
+> **Date**: January 6, 2026
+> **Session**: COACHING PAGE + SITE ARCHITECTURE CLEANUP ✅
+> **Status**: ✅ Router fixed, coaching page complete, ready for deployment
+> **Next:** Redeploy to Vercel with correct homepage
 
 ---
 
-## 🎯 Primary Task
+## 🎯 CURRENT STATE: Collins-Style Redesign Complete
 
-**✅ COMPLETED**: Connect quiz to MailerLite automation (Quiz Funnel 2026)
+**React version is running:** http://localhost:5002/
+- ✅ The Door (collins-actual.tsx) - Philosophy page with scroll-activated inversion
+- ✅ The Secret (secret.tsx) - 11 powerful beats, starts dark → flips light at 70%
+- ✅ The Challenge (challenge.tsx) - 15 powerful beats, starts light → flips dark at 70%
+- ✅ Quiz, Toolkit, Success pages (funnel pages working)
 
----
-
-## ✅ Completed Today (Jan 1, 2026)
-
-**MAILERLITE QUIZ INTEGRATION - LIVE:**
-
-### What Was Built:
-- [x] Created serverless API function: `/api/mailerlite-subscribe.js`
-- [x] Fixed CORS issues (server-side API route vs client-side call)
-- [x] Integrated MailerLite at email gate (correct timing)
-- [x] Added comprehensive console logging for debugging
-- [x] Set up environment variable in Vercel (both projects)
-- [x] Tested and verified subscriber appears in MailerLite
-
-### Technical Details:
-- **Trigger Point**: When user clicks "See My Result" at email gate
-- **Data Sent**: Email + Quiz Result Type (e.g., "The Late Bloomer")
-- **MailerLite Group**: Quiz Funnel 2026 (ID: 175430226583488139)
-- **Automation**: "Quiz to Challenge Funnel" triggers automatically
-
-### Key Fix:
-- Environment variable needed in BOTH Vercel projects:
-  - `actors-journey` (main quiz project)
-  - `i-am-actor-coaching-program-ydqa` (backup)
-
-### Files Created/Modified:
-- ✅ `/api/mailerlite-subscribe.js` - Serverless function (bypasses CORS)
-- ✅ `quiz.html` - Updated to call API at email gate
-- ✅ `vercel.json` - Added function configuration
-- ✅ `MAILERLITE-SETUP-GUIDE.md` - Full technical documentation
-- ✅ `MAILERLITE-FIX-SUMMARY.md` - Troubleshooting guide
+**THIS IS PRODUCTION-READY** - Collins-style restraint with dramatic scroll effects implemented.
 
 ---
 
-## ✅ Previously Completed (Dec 31, 2025)
+## ✅ COMPLETED: Collins-Style Scroll-Activated Color Inversion System
 
-**QUIZ LANDING PAGE - FULLY SHIPPED:**
+### Design Philosophy ✅
+**Collins-style restraint:**
+- Say more with less - massive white space, single powerful lines
+- Dramatic color shifts enhance narrative arc (not distract)
+- Unified system across all pages
+- Scroll-activated instead of jarring section alternation
 
-### Core Build:
-- [x] Created `quiz.html` - full actor type quiz landing page
-- [x] 9 emotionally engaging questions (Liven-style, fast and leading)
-- [x] Cinematic black background with ivory modal card
-- [x] Knight art (bottom left, flipped to face inward)
-- [x] "I AM ACTOR" branding (bottom right, charcoal triangle formation)
-- [x] One powerful testimonial (Monique)
+### Color System ✅
+- **Base background**: `#F8F8F7` (warm cream/light) - ALL sections
+- **Base text**: `#0A0A0A` (almost black)
+- **CSS filter**: `invert(1)` creates dark appearance
+- **Transition**: 0.6s smooth ease-in-out for dramatic effect
 
-### User Flow:
-- [x] Hero section with "Start the Quiz" CTA
-- [x] Questions 1-5 (building engagement)
-- [x] **Credibility slide after Q5** (Hans intro + photo + credits)
-- [x] Email gate after Q6 (Walking Dead audition tease)
-- [x] Questions 7-9 (final commitment questions)
-- [x] Loading screen ("Discovering your type...")
-- [x] Result page (1 of 5 actor types with validation copy)
-- [x] "Want to Take It Further?" CTA → Toolkit modal
+### Technical Implementation ✅
+**Scroll-activated inversion at 70% scroll:**
+```javascript
+const flipPoint = (documentHeight - windowHeight) * 0.7;
+setIsInverted(scrollPosition > flipPoint); // or < for reverse
+```
 
-### Design Polish:
-- [x] Credibility slide redesign (110px rounded square photo, better spacing)
-- [x] Photo: `hans-accessible.png` (warm, approachable outdoor shot)
-- [x] Knight on result page (knight-look.png pointing at CTA button)
-- [x] Toolkit modal tightened (compact, premium feel with product image)
-- [x] Removed redundant credit footer
-- [x] Fixed animation hitch on quiz start
-- [x] Loading screen only shows after final question (not after email)
+### The Door (collins-actual.tsx) ✅
+- **Starts**: Light (normal)
+- **At 70%**: Inverts to dark
+- Clean, dramatic shift that matches the emotional arc
+- Philosophy content with powerful single-line statements
 
-### Final Copy Polish:
-- [x] Hero subtitle: "Quick quiz. No judgment. Just recognition."
-- [x] Credibility quote: "I built this... You're right on time. — Hans"
-- [x] Toolkit list: Changed "Cry on Cue" → "Into the Well"
-- [x] Email gate: "I'll send you the actual audition that got me on The Walking Dead"
+### The Secret (secret.tsx) ✅
+**11 Powerful Beats:**
+1. The industry changed
+2. Here's what every acting program gets wrong
+3. They add pressure
+4. Because you're trying too hard
+5. Make it a job, and it becomes work
+6. Make it a hobby, and you'll do it for the rest of your life
+7. When you were a kid, you didn't ask if you were good enough
+8. You just pretended
+9. **[THE SHIFT - 70%]** This is where we bring them back
+10. I started booking. Not because I got more serious
+11. Because I got more playful
 
-### Technical:
-- [x] ConvertKit integration ready (API placeholders in place)
-- [x] Stripe checkout link connected: https://buy.stripe.com/bJe4gyeNWal51ZK69s1ck0p
-- [x] Mobile responsive
-- [x] All 5 result types tested and working
-- [x] Deployed to Vercel (same domain as main site)
+- **Starts**: Inverted (appears dark)
+- **At 70%**: Flips to light
+- Perfect for "the shift" moment in the narrative
 
----
+### The Challenge (challenge.tsx) ✅
+**15 Powerful Beats:**
+1. The 30-Tape Challenge / $365
+2. That was Tape 1
+3. The only difference between you and them?
+4. They've done it 30 times. Then 100. Then 500
+5. The magic number isn't 1
+6. It's 30
+7. 30 tapes does
+8. By tape 30, a self-tape isn't a test
+9. That's when the great work starts
+10. This isn't a course
+11. It's a bet on yourself
+12. **[THE SHIFT - 70%]** Complete all 30? I give you every penny back
+13. The only way you lose is if you give up
+14. You've been waiting for permission
+15. You're allowed
 
-## 📋 Handoff Notes for Next Agent
+- **Starts**: Light (normal)
+- **At 70%**: Inverts to dark
+- Matches the emotional arc of commitment
 
-### ✅ What's Done:
-The quiz is **100% complete and live**. The entire user flow works:
-- Quiz → Email Capture → Result → Toolkit Offer ($37 via Stripe)
-
-### 🔧 What Needs Setup (Outside of Code):
-
-1. **ConvertKit Automation** (Hans/Team to handle):
-   - See `QUIZ-AUTOMATION-SPEC.md` for full setup instructions
-   - Tags: `quiz-completed`, `type-[result]` (5 types)
-   - Custom fields: `quiz_result`, `result_type`, `quiz_completed`
-   - Email #1: Send audition sides based on actor type
-   - Email #2: Reward after "DONE" reply
-   - Reply detection for engagement tracking
-
-2. **Update API Keys in `quiz.html`** (Lines 818-820):
-   ```javascript
-   const CONVERTKIT_API_KEY = 'YOUR_API_KEY_HERE';
-   const CONVERTKIT_FORM_ID = 'YOUR_FORM_ID_HERE';
-   ```
-
-### 📁 Key Files:
-- `/quiz.html` - The quiz landing page (live and working)
-- `/QUIZ-AUTOMATION-SPEC.md` - ConvertKit automation instructions
-- `/assets/images/hans-accessible.png` - Credibility slide photo
-- `/assets/images/knight-look.png` - Result page knight (pointing at CTA)
-- `/assets/images/tools-mobile.png` - Toolkit product image
-
-### 🔗 Live URLs:
-- Main site: `[YOUR-VERCEL-DOMAIN]`
-- Quiz: `[YOUR-VERCEL-DOMAIN]/quiz.html`
-- Stripe checkout: https://buy.stripe.com/bJe4gyeNWal51ZK69s1ck0p
-
-### 🎯 Next Possible Steps (Optional):
-- Drive traffic to quiz via ads/social
-- A/B test different result page copy
-- Add more testimonials to hero section
-- Create follow-up email sequence for quiz takers who don't buy
-- Track conversion metrics (quiz start → email → purchase)
+### Navigation ✅
+- Fixed navigation inverts with page
+- Minimal 2-line hamburger menu
+- "I AM ACTOR" branding in EB Garamond
+- Full-screen overlay menu
 
 ---
 
-## 🎉 Session Summary
+## 📂 File Structure
 
-**What We Built:**
-A complete, polished actor type quiz that captures emails, builds trust, and soft-sells the $37 Actor's Toolkit. The entire flow is warm, cinematic, and conversion-optimized.
+**React Pages (localhost:5002):**
+- `/client/src/pages/collins-actual.tsx` - The Door (philosophy) ✅ COLLINS-STYLE
+- `/client/src/pages/secret.tsx` - The Secret (method) ✅ COLLINS-STYLE
+- `/client/src/pages/challenge.tsx` - The Challenge ($365) ✅ COLLINS-STYLE
+- `/client/src/pages/quiz.tsx` - Full quiz flow ✅ COMPLETE
+- `/client/src/pages/toolkit.tsx` - Golden Ritual ✅ COMPLETE
+- `/client/src/pages/success.tsx` - Thank you page ✅ COMPLETE
+- `/client/src/pages/not-found.tsx` - 404 page ✅ COMPLETE
 
-**Key Decisions:**
-- Credibility slide before email gate (trust-building)
-- Soft-sell approach (optional modal, not forced redirect)
-- "You're right on time" messaging (more powerful than "not behind")
-- Knight pointing at CTA (subtle UX nudge)
-- Quick quiz promise (accurate expectations)
+**Legacy Pages (for reference):**
+- `/client/src/pages/home.tsx` - Original Red Antler homepage
+- `/client/src/pages/method.tsx` - Original Red Antler method page
+- `/client/src/pages/home-collins.tsx` - Early Collins iteration
+- `/client/src/pages/collins-clean.tsx` - Early Collins iteration
 
-**Result:**
-A fully functional lead generation + tripwire sales machine ready to convert dreamers into paying students.
+**App Configuration:**
+- `/client/src/App.tsx` - Router + Lenis smooth scroll ✅
+- Routes: `/actual` (Door), `/secret` (Method), `/challenge` ✅
 
----
+**API:**
+- `/api/create-checkout.js` - Stripe checkout ($37/$365) ✅
 
-## 📋 What to Do Now
-
-### 1. ✅ Verify in MailerLite (2 minutes):
-- Go to: MailerLite Dashboard → Subscribers
-- Check: "Quiz Funnel 2026" group
-- Confirm: `hans@zepagmail.com` appears with `quiz_result` field
-- Verify: Automation "Quiz to Challenge Funnel" is active
-
-### 2. 🧪 Test Again (Optional):
-- Use a different email to confirm it's consistently working
-- Check that automation emails are sending
-
-### 3. 🧹 Cleanup (Optional - for production):
-- Delete test file: `/api/test-env.js` (debugging endpoint)
-- Remove excessive console logs from quiz.html
-- Consider moving to single Vercel project (consolidate)
-
-### 4. 🚀 Launch:
-Quiz is now **100% functional** and connected to your automation:
-- ✅ Email capture working
-- ✅ MailerLite integration live
-- ✅ Automation triggers automatically
-- ✅ Stripe checkout connected
-
-**Ready to drive traffic!** 🔥
+**Design System:**
+- Inline CSS (no external stylesheets for main pages)
+- EB Garamond serif typography
+- Color tokens: #F8F8F7 (light), #0A0A0A (almost black)
 
 ---
 
-**Status: MAILERLITE INTEGRATION COMPLETE. QUIZ FULLY OPERATIONAL.**
+## 🎯 User Journey (Collins-Style)
+
+**Visitor Flow:**
+1. **The Door** (`/actual`) → Philosophy + narrative → "Ready to play?" CTA
+2. **The Secret** (`/secret`) → 11 beats about the method → "The Challenge" CTA
+3. **The Challenge** (`/challenge`) → 15 beats about 30-Tape Challenge → Quiz or Stripe
+4. **Quiz** → 9 questions → Email → Result → Toolkit ($37)
+5. **Toolkit** → 5 tools + Challenge upsell
+6. **Success** → Thank you + next steps
+
+**Navigation:**
+- The Door (Philosophy)
+- The Secret (Method)
+- The Challenge (Offer)
+
+**All CTAs point to:**
+- Primary: Quiz (builds list + $37 toolkit)
+- Secondary: Challenge ($365)
+
+---
+
+## 📝 Next Steps (When Ready)
+
+### Testing:
+- Test scroll behavior on different screen sizes
+- Fine-tune 70% flip point if needed
+- Mobile optimization review
+- Verify color inversion works across browsers
+
+### Content:
+- Add video content to replace placeholders (if desired)
+- Integrate Stripe checkout functionality for Challenge page
+- Update Stripe payment link in challenge.tsx
+
+### Optional Polish:
+- Add transitions between pages
+- Consider hover effects on CTAs
+- Test accessibility (color contrast after inversion)
+
+---
+
+## 🚀 Technical Notes
+
+**CSS Filter Inversion:**
+- The inversion filter affects ALL colors including images
+- Navigation stays fixed and inverts with the page
+- Buttons maintain contrast through the inversion
+- Smooth scroll (Lenis) already implemented via App.tsx
+
+**Performance:**
+- Scroll listeners are optimized
+- Transitions are hardware-accelerated
+- No external CSS files = faster load times
+
+---
+
+**Status: Collins-style scroll-activated color inversion system complete. Ready for review and testing. 🎬**
