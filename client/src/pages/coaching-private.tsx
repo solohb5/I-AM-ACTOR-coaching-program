@@ -6,6 +6,7 @@ export default function CoachingPrivate() {
   const [expandedCard, setExpandedCard] = useState<'single' | '3pack' | '5pack' | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [playbookExpanded, setPlaybookExpanded] = useState(false);
+  const [comingSoon, setComingSoon] = useState<'door' | 'secret' | 'challenge' | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -97,7 +98,7 @@ export default function CoachingPrivate() {
       {/* MENU OVERLAY */}
       {menuOpen && (
         <div
-          onClick={() => setMenuOpen(false)}
+          onClick={() => { setMenuOpen(false); setComingSoon(null); }}
           style={{
             position: 'fixed',
             top: 0,
@@ -121,7 +122,7 @@ export default function CoachingPrivate() {
             <div
               onClick={(e) => { 
                 e.stopPropagation(); 
-                alert('Coming Soon'); 
+                setComingSoon('door'); 
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
@@ -130,17 +131,18 @@ export default function CoachingPrivate() {
                 letterSpacing: '-0.01em',
                 color: '#0A0A0A',
                 cursor: 'pointer',
-                transition: 'opacity 0.3s ease'
+                transition: 'opacity 0.3s ease',
+                opacity: comingSoon === 'door' ? 0.4 : 1
               }}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              onMouseEnter={(e) => { if (comingSoon !== 'door') e.currentTarget.style.opacity = '0.6'; }}
+              onMouseLeave={(e) => { if (comingSoon !== 'door') e.currentTarget.style.opacity = '1'; }}
             >
-              The Door
+              {comingSoon === 'door' ? 'Coming Soon' : 'The Door'}
             </div>
             <div
               onClick={(e) => { 
                 e.stopPropagation(); 
-                alert('Coming Soon'); 
+                setComingSoon('secret'); 
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
@@ -149,17 +151,18 @@ export default function CoachingPrivate() {
                 letterSpacing: '-0.01em',
                 color: '#0A0A0A',
                 cursor: 'pointer',
-                transition: 'opacity 0.3s ease'
+                transition: 'opacity 0.3s ease',
+                opacity: comingSoon === 'secret' ? 0.4 : 1
               }}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              onMouseEnter={(e) => { if (comingSoon !== 'secret') e.currentTarget.style.opacity = '0.6'; }}
+              onMouseLeave={(e) => { if (comingSoon !== 'secret') e.currentTarget.style.opacity = '1'; }}
             >
-              The Secret
+              {comingSoon === 'secret' ? 'Coming Soon' : 'The Secret'}
             </div>
             <div
               onClick={(e) => { 
                 e.stopPropagation(); 
-                alert('Coming Soon'); 
+                setComingSoon('challenge'); 
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
@@ -168,10 +171,11 @@ export default function CoachingPrivate() {
                 letterSpacing: '-0.01em',
                 color: '#0A0A0A',
                 cursor: 'pointer',
-                transition: 'opacity 0.3s ease'
+                transition: 'opacity 0.3s ease',
+                opacity: comingSoon === 'challenge' ? 0.4 : 1
               }}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.6'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              onMouseEnter={(e) => { if (comingSoon !== 'challenge') e.currentTarget.style.opacity = '0.6'; }}
+              onMouseLeave={(e) => { if (comingSoon !== 'challenge') e.currentTarget.style.opacity = '1'; }}
             >
               The Challenge
             </div>
