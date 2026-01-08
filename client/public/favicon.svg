@@ -1,0 +1,6 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" fill="#F8F8F7"/>
+  <text x="32" y="26" font-family="EB Garamond, serif" font-size="11" font-weight="500" fill="#0A0A0A" text-anchor="middle" letter-spacing="0.5">I</text>
+  <text x="32" y="40" font-family="EB Garamond, serif" font-size="11" font-weight="500" fill="#0A0A0A" text-anchor="middle" letter-spacing="0.5">AM</text>
+  <text x="32" y="54" font-family="EB Garamond, serif" font-size="10" font-weight="500" fill="#0A0A0A" text-anchor="middle" letter-spacing="0.3">ACTOR</text>
+</svg>
