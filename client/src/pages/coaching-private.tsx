@@ -277,7 +277,7 @@ export default function CoachingPrivate() {
           }}>
             <div 
               onClick={() => {
-                alert('🔗 STRIPE LINK NEEDED\n\nReplace with your Single Session Stripe payment link ($149).');
+                window.location.href = 'https://buy.stripe.com/28EaEW9tCdxhgUEeFY1ck0q';
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
@@ -345,7 +345,7 @@ export default function CoachingPrivate() {
 
             <div 
               onClick={() => {
-                alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 3-Pack Stripe payment link ($349).');
+                window.location.href = 'https://buy.stripe.com/3cIfZg35e1OzgUE69s1ck0r';
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
@@ -419,7 +419,7 @@ export default function CoachingPrivate() {
 
             <div 
               onClick={() => {
-                alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 5-Pack Stripe payment link ($500).');
+                window.location.href = 'https://buy.stripe.com/14A7sKfS0ctdfQAgO61ck0s';
               }}
               style={{
                 fontFamily: "'EB Garamond', serif",
@@ -733,7 +733,7 @@ export default function CoachingPrivate() {
               <div
                 onClick={(e) => {
                   e.stopPropagation();
-                  alert('🔗 STRIPE LINK NEEDED\n\nReplace with your Single Session Stripe payment link ($149).');
+                  window.location.href = 'https://buy.stripe.com/28EaEW9tCdxhgUEeFY1ck0q';
                 }}
                 style={{
                   fontFamily: "'EB Garamond', serif",
@@ -764,7 +764,7 @@ export default function CoachingPrivate() {
               <div
                 onClick={(e) => {
                   e.stopPropagation();
-                  alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 3-Pack Stripe payment link ($349).');
+                  window.location.href = 'https://buy.stripe.com/3cIfZg35e1OzgUE69s1ck0r';
                 }}
                 style={{
                   fontFamily: "'EB Garamond', serif",
@@ -797,7 +797,7 @@ export default function CoachingPrivate() {
                 onMouseLeave={() => setPlaybookExpanded(false)}
                 onClick={(e) => {
                   e.stopPropagation();
-                  alert('🔗 STRIPE LINK NEEDED\n\nReplace with your 5-Pack Stripe payment link ($500).');
+                  window.location.href = 'https://buy.stripe.com/14A7sKfS0ctdfQAgO61ck0s';
                 }}
                 style={{
                   fontFamily: "'EB Garamond', serif",
@@ -888,7 +888,7 @@ export default function CoachingPrivate() {
                         marginBottom: '8px',
                         letterSpacing: '0.01em'
                       }}>
-                        The exact system for breaking down sides, making bold choices, and walking in ready.
+                        The exact system for breaking down sides, making bold choices, and showing up on fire. 🔥
                       </p>
                       <p style={{
                         fontSize: 'clamp(12px, 1.5vw, 14px)',
