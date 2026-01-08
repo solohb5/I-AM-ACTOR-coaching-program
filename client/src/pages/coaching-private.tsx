@@ -187,7 +187,7 @@ export default function CoachingPrivate() {
         transform: 'translateX(-50%) translateY(-10%)',
         width: '70%',
         maxWidth: '900px',
-        zIndex: 10
+        zIndex: 5
       }}>
         <div style={{
           width: '100%',
@@ -498,28 +498,42 @@ export default function CoachingPrivate() {
           {/* Testimonial */}
           <div style={{
             fontFamily: "'EB Garamond', serif",
-            fontSize: 'clamp(19px, 2.4vw, 23px)',
+            fontSize: 'clamp(16px, 2.4vw, 23px)',
             lineHeight: 1.6,
             fontStyle: 'italic',
             opacity: 0.85,
             maxWidth: '650px',
-            marginTop: '64px'
+            marginTop: 'clamp(32px, 8vw, 64px)',
+            marginBottom: '40px',
+            position: 'relative',
+            zIndex: 10
           }}>
             <p>"Having Hans on speed dial changed everything."</p>
             <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', marginTop: '12px', opacity: 0.6 }}>— Brandon Sutton, Blackbird</p>
           </div>
         </section>
 
-        {/* SPACER for video */}
-        <div style={{ height: '25vh' }} />
+        {/* VIDEO GHOST PLACEHOLDER - Same dimensions as video, text flows around it */}
+        <div style={{
+          width: '70%',
+          maxWidth: '900px',
+          margin: '0 auto',
+          position: 'relative'
+        }}>
+          <div style={{
+            width: '100%',
+            paddingBottom: '56.25%', // 16:9 aspect ratio - matches video
+            background: 'transparent'
+          }} />
+        </div>
 
         {/* YOUR QUOTE - The audience watching the screen (video above) */}
         <section style={{
-          minHeight: '70vh',
+          minHeight: 'clamp(40vh, 50vw, 70vh)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '0 10% 40px',
+          padding: 'clamp(40px, 10vw, 120px) 10% 40px',
           position: 'relative',
           overflow: 'hidden',
           zIndex: 20
@@ -582,7 +596,7 @@ export default function CoachingPrivate() {
               opacity: 0.5,
               letterSpacing: '0.02em'
             }}>
-              — Manager to Client, Major Agency
+              — Manager to our client
             </p>
           </div>
         </section>
