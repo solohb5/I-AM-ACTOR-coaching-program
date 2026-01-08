@@ -600,7 +600,7 @@ export default function CoachingPrivate() {
               opacity: 0.5,
               letterSpacing: '0.02em'
             }}>
-              — Manager to our client
+              — Manager to our client, Major Agency
             </p>
           </div>
         </section>
