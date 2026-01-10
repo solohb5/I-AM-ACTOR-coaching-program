@@ -7,6 +7,18 @@ export default function CoachingPrivate() {
   const [modalOpen, setModalOpen] = useState(false);
   const [playbookExpanded, setPlaybookExpanded] = useState(false);
   const [comingSoon, setComingSoon] = useState<'door' | 'secret' | 'challenge' | null>(null);
+  const [logoClicks, setLogoClicks] = useState(0);
+  const [easterEgg, setEasterEgg] = useState(false);
+
+  // Easter egg: Click logo 7 times
+  useEffect(() => {
+    if (logoClicks >= 7) {
+      setEasterEgg(true);
+      console.log("🎭 You found it. The secret is: you already have everything you need.");
+      setTimeout(() => setEasterEgg(false), 4000);
+      setLogoClicks(0);
+    }
+  }, [logoClicks]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,6 +38,35 @@ export default function CoachingPrivate() {
 
   return (
     <>
+      {/* 🎭 Easter Egg */}
+      {easterEgg && (
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 99999,
+          background: 'rgba(10, 10, 10, 0.95)',
+          color: '#F8F8F7',
+          padding: '48px 64px',
+          borderRadius: '12px',
+          fontFamily: "'EB Garamond', serif",
+          fontSize: 'clamp(24px, 4vw, 36px)',
+          textAlign: 'center',
+          animation: 'fadeIn 0.5s ease',
+          boxShadow: '0 40px 120px rgba(0,0,0,0.5)',
+          maxWidth: '90vw'
+        }}>
+          <div style={{ marginBottom: '16px', fontSize: '48px' }}>🎭</div>
+          <div style={{ fontStyle: 'italic', lineHeight: 1.4 }}>
+            "You already have everything you need."
+          </div>
+          <div style={{ fontSize: '16px', opacity: 0.5, marginTop: '16px' }}>
+            — Solo was here
+          </div>
+        </div>
+      )}
+
       {/* Google Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -50,14 +91,19 @@ export default function CoachingPrivate() {
         borderBottom: 'none'
       }}>
         {/* Left: I AM ACTOR */}
-        <div style={{
-          fontFamily: "'EB Garamond', serif",
-          fontSize: '20px',
-          fontWeight: 400,
-          letterSpacing: '0.05em',
-          color: isInverted ? '#F8F8F7' : '#0A0A0A',
-          transition: 'color 0.6s ease-in-out'
-        }}>
+        <div 
+          onClick={() => setLogoClicks(prev => prev + 1)}
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontSize: '20px',
+            fontWeight: 400,
+            letterSpacing: '0.05em',
+            color: isInverted ? '#F8F8F7' : '#0A0A0A',
+            transition: 'color 0.6s ease-in-out',
+            cursor: 'pointer',
+            userSelect: 'none'
+          }}
+        >
           I AM ACTOR
         </div>
 
